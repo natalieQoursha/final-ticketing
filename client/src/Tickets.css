@@ -12,3 +12,17 @@ main{
     justify-content: center;
     min-height: 100vh;
 }
+.newticketbutton{
+    background-color: orange;
+    color: black;
+    border-bottom: 3px solid fuchsia;
+    border-radius: 7px;
+    width: 300px;
+    height: 200px;
+}
+.newticketbutton:hover{
+    background-color: fuchsia;
+    color: black;
+    border-bottom: 3px solid orange;
+    transition: all 0.2s ease;
+}

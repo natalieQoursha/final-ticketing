@@ -6,12 +6,11 @@ function Popup(props) {
   const [ticketType, setTicketType] = useState("");
   const [description, setDescription] = useState("");
   const [sevirity, setSeverity] = useState("Not Important");
-  const [ticketTitle, setTicketTitle] = useState();
-  const [role, setRole] = useState("");
+  const [product, setProduct] = useState("Software");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const data = { ticketTitle, role, ticketType, description, sevirity };
+    const data = { ticketType, description, sevirity, product };
     console.log(data);
   };
   return props.trigger ? (
@@ -21,13 +20,13 @@ function Popup(props) {
           <button className="close-btn" onClick={() => props.setTrigger(false)}>
             X
           </button>
-          <h1>Create Ticket</h1>
+          <h1>Welcome (data.User) from (data.Company)</h1>
           <br />
           <div className="alignment">
             <label for="Ticket Type">Ticket type : </label>
             <select
               value={sevirity}
-              onChange={(e) => setSeverity(e.target.value)}
+              onChange={(e) => setTicketType(e.target.value)}
               name="Severity"
               id="Severity"
             >
@@ -54,7 +53,7 @@ function Popup(props) {
             <label for="Type">Product : </label>
             <select
               value={ticketType}
-              onChange={(e) => setTicketType(e.target.value)}
+              onChange={(e) => setProduct(e.target.value)}
               name="Type"
               id="Type"
             >
