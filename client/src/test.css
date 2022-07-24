@@ -1,6 +1,7 @@
 .myTable1{
     margin-top: 200px;
     border-color: blue;
+    background-color: red;
     max-width: fit-content;
   }
 
