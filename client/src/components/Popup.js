@@ -10,7 +10,7 @@ function Popup(props) {
 
   const submitUser = (e) => { 
     e.preventDefault();
-    const data = { ticketTitle, role, ticketType, description, sevirity };
+    const data = { ticketType, description, sevirity };
     axios
       .post("http://localhost:5000/api/ticket/all-tickets", data, {
         headers: {
