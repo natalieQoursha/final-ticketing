@@ -15,8 +15,6 @@ router.get('/all-users',(req,response)=>{
       });
 })
 
-router.post('/all-users',(req,response)=>{
-  console.log(req.body)
-})
+
 
 module.exports=router;
