@@ -1,6 +1,6 @@
-import React from "react";
 import "./Popup.css";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 function Popup(props) {
   const [ticketType, setTicketType] = useState("");
@@ -8,13 +8,21 @@ function Popup(props) {
   const [sevirity, setSeverity] = useState("Not Important");
   const [product, setProduct] = useState("Software");
 
-  const handleSubmit = (e) => {
+
+
+  const submitUser = (e) => {
     e.preventDefault();
-    const data = { ticketType, description, sevirity, product };
-    console.log(data);
-  };
+    const data = { ticketTitle, role, ticketType, description, sevirity };
+    axios
+      .post("http://localhost:5000/api/ticket/all-tickets", data, {
+        headers: {
+          "Content-type": "application/json",
+        },
+      }).then(res => console.log(res))  
+    }
+
   return props.trigger ? (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={submitUser}>
       <div className="popup">
         <div className=".popup-inner">
           <button className="close-btn" onClick={() => props.setTrigger(false)}>
