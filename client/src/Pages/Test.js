@@ -19,6 +19,8 @@ const Test = () => {
         },
       }).then(res => console.log(res))  
     }
+
+
       
   
 
@@ -38,6 +40,7 @@ const Test = () => {
 
 
 <button onClick={submitUser}>Submit</button>
+
 <table id="myTable1">
           <thead>
             <tr>
