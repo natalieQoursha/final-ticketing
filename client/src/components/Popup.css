@@ -25,7 +25,7 @@ h1{
     cursor:pointer;
     font-size: 1em;
     font-weight: bold;
-    border: #5890ff;
+    border: darkblue;
     border-radius: 5px;
     justify-content: center;
 }
@@ -64,23 +64,35 @@ h1{
     padding-top: 4%;
 }
 table {
-    border: 2px solid #333;
-    width: 100%;
-    height: 200px;
+    border: 1px solid black;
+    width: 90%;
+    min-height: 100%;
+    height: 10em;
+    margin: auto;
   }
     
 th {
     margin-top: 50%;
-    border-bottom: 1px solid #333;
-    background-color: #333;
+    border-bottom: 1px solid black;
+    background-color: darkblue;
     color: white;
+    font-size: 1.1em;
+    
     }
     
 td {
     text-align: center;
+    border: 2px solid black;
+    
+    }
+    .Ticket_ID{
+        background-color: grey;
+        color: white;
+        border-radius: 10px;
     }
   
 .scrollingTable {
+    
     width: 30em;
     overflow-y: auto;
 }
