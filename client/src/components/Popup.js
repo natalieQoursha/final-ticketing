@@ -9,9 +9,7 @@ function Popup(props) {
   const [ticketTitle, setTicketTitle] = useState();
   const [role, setRole] = useState("");
 
-
-
-  const submitUser = (e) => {
+  const submitUser = (e) => { 
     e.preventDefault();
     const data = { ticketTitle, role, ticketType, description, sevirity };
     axios
