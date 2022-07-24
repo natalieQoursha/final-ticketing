@@ -33,7 +33,6 @@ router.post('/all-tickets',(req,response)=>{
         response.status(200).json();
       });
     }
-    console.log("hello")
   });
 
 
