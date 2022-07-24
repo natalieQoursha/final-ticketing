@@ -72,6 +72,16 @@ const Navbar = () => {
         >
           Tickets
         </Link>
+        <Link
+          to="/test"
+          style={{
+            color: "rgb(36, 145, 196)",
+            fontSize: 20,
+            borderRadius: 40,
+          }}
+        >
+          Test
+        </Link>
       </div>
 
       <h1>Estarta Solutions</h1>
