@@ -4,22 +4,21 @@ import axios from "axios";
 
 function Popup(props) {
   const [ticketType, setTicketType] = useState("");
+  const [sevirity, setSeverity] = useState("");
   const [description, setDescription] = useState("");
-  const [sevirity, setSeverity] = useState("Not Important");
-  const [product, setProduct] = useState("Software");
-
-
+  const [product, setProduct] = useState("");
 
   const submitUser = (e) => {
-    e.preventDefault();
-    const data = { ticketTitle, role, ticketType, description, sevirity };
+    const data = { ticketType, sevirity, product, description };
     axios
       .post("http://localhost:5000/api/ticket/all-tickets", data, {
         headers: {
           "Content-type": "application/json",
         },
-      }).then(res => console.log(res))  
-    }
+      })
+      .then((res) => console.log(res));
+    alert("Ticket submitted successfully");
+  };
 
   return props.trigger ? (
     <form onSubmit={submitUser}>
@@ -33,10 +32,10 @@ function Popup(props) {
           <div className="alignment">
             <label for="Ticket Type">Ticket type : </label>
             <select
-              value={sevirity}
+              value={ticketType}
               onChange={(e) => setTicketType(e.target.value)}
-              name="Severity"
-              id="Severity"
+              name="ticketType"
+              id="ticketType"
             >
               <option value="General">General</option>
               <option value="Software">Software</option>
@@ -58,12 +57,12 @@ function Popup(props) {
             </select>
           </div>
           <div className="alignment">
-            <label for="Type">Product : </label>
+            <label for="product">Product : </label>
             <select
-              value={ticketType}
+              value={product}
               onChange={(e) => setProduct(e.target.value)}
-              name="Type"
-              id="Type"
+              name="product"
+              id="product"
             >
               <option value="Parking">Parking</option>
               <option value="General Building">General Building</option>
@@ -90,5 +89,4 @@ function Popup(props) {
     ""
   );
 }
-
 export default Popup;
