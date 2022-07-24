@@ -1,9 +1,7 @@
-import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import Popup from "./components/Popup";
 import SearchBar from "./components/SearchBar";
 import bookData from "./data.json";
-import axios from "axios";
 
 function Tickets() {
   const [buttonPopup, setButtonPopup] = useState(false);
@@ -35,23 +33,6 @@ function Tickets() {
       date: "20-10-2017",
     },
   ];
-
-  // function makeTableScroll() {
-  //   var maxRows = 2;
-
-  //   var table = document.getElementById("myTable");
-  //   var wrapper = table.parentNode;
-  //   var rowsInTable = table.rows.length;
-  //   var height = 0;
-  //   if (rowsInTable > maxRows) {
-  //     for (var i = 0; i < maxRows; i++) {
-  //       height += table.rows[i].clientHeight;
-  //     }
-  //     wrapper.style.height = height + "px";
-  //   }
-  // }
-
-
 
   return (
     <>
@@ -89,7 +70,7 @@ function Tickets() {
           <br />
           <button onClick={() => setButtonPopup(true)}>New Ticket</button>
         </main>
-        
+
         <Popup trigger={buttonPopup} setTrigger={setButtonPopup}></Popup>
       </div>
     </>
