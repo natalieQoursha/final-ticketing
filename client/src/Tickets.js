@@ -11,7 +11,7 @@ function Tickets() {
 
   const data = [
     {
-      TicketTitle: "Add button kareem>natalie",
+      TicketTitle: "Add button",
       TicketID: 123,
       Severity: 1,
       CreateBy: "customer1",
