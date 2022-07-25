@@ -3,13 +3,28 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function Popup(props) {
-  const [ticketType, setTicketType] = useState("");
-  const [sevirity, setSeverity] = useState("");
-  const [description, setDescription] = useState("");
-  const [product, setProduct] = useState("");
+  const [Ticket_Type, setTicketType] = useState("");
+  const [Sevirity, setSeverity] = useState("");
+  const [Description, setDescription] = useState("");
+  const [Product_Types, setProduct] = useState("");
+
+  const [users, setUsers] = useState();
+
+  useEffect(() => {
+    const fetchUsers = () => {
+      axios.get("http://localhost:5000/api/ticket/all-users/").then((res) => {
+        setUsers(res.data);
+        console.log(res.data.ID)
+      });
+    };
+    fetchUsers();
+  }, []);
+
+
+
 
   const submitUser = (e) => {
-    const data = { ticketType, sevirity, product, description };
+    const data = { Ticket_Type, Sevirity, Product_Types, Description ,Created_On: "2022-10-10T00:00:00.000Z"};
     axios
       .post("http://localhost:5000/api/ticket/all-tickets", data, {
         headers: {
@@ -30,12 +45,12 @@ function Popup(props) {
           <h1>Welcome (data.User) from (data.Company)</h1>
           <br />
           <div className="alignment">
-            <label for="Ticket Type">Ticket type : </label>
+            <label for="Ticket_Type">Ticket type : </label>
             <select
-              value={ticketType}
+              value={Ticket_Type}
               onChange={(e) => setTicketType(e.target.value)}
-              name="ticketType"
-              id="ticketType"
+              name="Ticket_Type"
+              id="Ticket_Type"
             >
               <option value="General">General</option>
               <option value="Software">Software</option>
@@ -46,7 +61,7 @@ function Popup(props) {
           <div className="alignment">
             <label for="Severity">Severity : </label>
             <select
-              value={sevirity}
+              value={Sevirity}
               onChange={(e) => setSeverity(e.target.value)}
               name="Severity"
               id="Severity"
@@ -57,12 +72,12 @@ function Popup(props) {
             </select>
           </div>
           <div className="alignment">
-            <label for="product">Product : </label>
+            <label for="Product_Types">Product : </label>
             <select
-              value={product}
+              value={Product_Types}
               onChange={(e) => setProduct(e.target.value)}
-              name="product"
-              id="product"
+              name="Product_Types"
+              id="Product_Types"
             >
               <option value="Parking">Parking</option>
               <option value="General Building">General Building</option>
@@ -76,7 +91,7 @@ function Popup(props) {
         </div>
         <div>
           <textarea
-            value={description}
+            value={Description}
             onChange={(e) => setDescription(e.target.value)}
             className="txta"
           ></textarea>
