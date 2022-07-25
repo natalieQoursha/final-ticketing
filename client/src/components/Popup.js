@@ -86,7 +86,7 @@ function Popup(props) {
             </select>
           </div>
           <br />
-          <p>Ticket description : </p>
+          <h2>Ticket Description : </h2>
           {props.children}
         </div>
         <div>

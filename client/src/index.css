@@ -5,10 +5,9 @@
   margin: 0;
   padding: 0;
   font-family: "Quicksand";
-  color: #333;
+  color: black;
   font-size: 1em;
 }
-
 
 
 a{
@@ -25,7 +24,7 @@ a{
 }
 
 .navbar {
-  background-color: #333;
+  background-color: #ff5757;
   padding: 1%;
   display: flex;
   max-width: 100%;
@@ -43,7 +42,7 @@ a{
   width: 40px;
   height: 5px;
   margin-bottom: 10px;
-  background-color: rgb(36, 145, 196);
+  background-color: #ff8585;
 }
 
 .nav__link {
@@ -51,7 +50,7 @@ a{
   width: 94%;
   top: 5rem;
   left: 18px;
-  background-color: rgb(36, 145, 196); 
+  background-color: #ff8585; 
 }
 
 .nav__link a {
@@ -61,7 +60,7 @@ a{
 }
 
 .nav__link a:hover {
-  border-bottom: 3px solid rgb(36, 145, 196);
+  border-bottom: 3px solid #ff8585;
   border-radius: 7px;
   transition: all 0.2s ease;
 }
@@ -75,7 +74,7 @@ a{
   text-align: justify;
   align-items: center;
   margin-top: 20%;
-  color: rgb(17, 19, 19);
+  color: #ff8585;
   font-weight: 700;
   font-size: 20px;
 
@@ -107,15 +106,14 @@ a{
 
 .navbar h1 {
   size: 1em;
-  color: crimson;
-  background-color: #333;
+  color:  #ffebeb;
 }
 .navbar .links {
   max-width: 100%;
   max-height: 100%;
   margin-right: 1%;
   margin-top: 1.5%;
-  background-color: white;
+  background-color:  #ffebeb;
   margin-bottom: 2%;
 }
 .imgg{
@@ -132,18 +130,18 @@ right: auto;
 }
 h1{
   font-size: 1.5em;
-  color: black;
+  color:  #ffebeb;
   text-align: center;
 }
 h2{
   text-align: center;
   font-size: 1em;
-  color:black;
+  color: #ffebeb;
 }
 h3{
   text-align: center;
   font-size: 1.5em;
-  color:black;
+  color: black;
 }
 h4{
   text-align: center;
@@ -235,7 +233,7 @@ main {
   padding-bottom: 60px;
 }
 .footer {
-  background-color:#333;
+  background-color:#ff5757;
   margin-top:15em;
   position:fixed;
   width: 100%;
@@ -253,7 +251,8 @@ main {
   margin-left: auto;
 }
 h2{
-  color: white;
+  color: #ffebeb;
+  font-size: 1.3em;
 }
 
 *,
@@ -519,3 +518,7 @@ input[type="text"] {
 .c-cb > input[type="checkbox"]:checked + label::after {
   opacity: 1;
 }
+.unclickable{
+  pointer-events: none;
+  opacity: 0;
+  }

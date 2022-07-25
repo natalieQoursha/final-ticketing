@@ -6,34 +6,28 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import SignUp from "./Pages/SignUp";
 import SignIn from "./Pages/SignIn";
 import Tickets from "./Tickets";
-import Popup from "./components/Popup";
 import { useState } from "react";
 import Test from "./Pages/Test";
+import "./App.css";
 
 function App(props) {
-  /*const [backendData, setBackendData] = useState([{}]);
-
-     useEffect(() => {
-    fetch("/api")
-      .then((response) => response.json())
-      .then((data) => {
-        setBackendData(data);
-      }, []);
-  }); */
+  const [buttonPopup, setButtonPopup] = useState(false);
 
   return (
     <>
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/signIn" element={<SignIn />} />
-          <Route path="/signUp" element={<SignUp />} />
-          <Route path="/Tickets" element={<Tickets />} />
-          <Route path="/test" element={<Test />} />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
+      <div className={buttonPopup ? "unclickable" : "tickets"}>
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/signIn" element={<SignIn />} />
+            <Route path="/signUp" element={<SignUp />} />
+            <Route path="/Tickets" element={<Tickets />} />
+            <Route path="/test" element={<Test />} />
+          </Routes>
+          <Footer />
+        </BrowserRouter>
+      </div>
     </>
   );
 }

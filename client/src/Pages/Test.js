@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Popup from "../components/Popup";
 
 const Test = () => {
   const [users, setUsers] = useState();
@@ -13,20 +12,17 @@ const Test = () => {
     };
     fetchUsers();
   }, []);
-
+  const [Status, setStatus] = useState("Pending");
 
   return (
-        <div className='testPage'>
-
-
-
-<table id="myTable1">
-          <thead>
-            <tr>
-            <th>Ticket_ID</th>
-            <th>Product_Types</th>
-            <th>Ticket_Type</th>
-            <th>Created_On</th>
+    <div className="testPage">
+      <table id="myTable1">
+        <thead>
+          <tr>
+            <th>Ticket ID</th>
+            <th>Product Type</th>
+            <th>Ticket Type</th>
+            <th>Created On</th>
             <th>Status</th>
             <th>Sevirity</th>
           </tr>
@@ -40,7 +36,26 @@ const Test = () => {
                   <td>{element.Product_Types}</td>
                   <td>{element.Ticket_Type}</td>
                   <td>{element.Created_On}</td>
-                  <td>{element.Status}</td>
+                  <td>
+                    {
+                      <select
+                        className="Choice"
+                        value={Status}
+                        onChange={(e) => setStatus(e.target.value)}
+                        name="Status"
+                        id="Status"
+                      >
+                        <option className="Accepted" value="General">
+                          Accepted
+                        </option>
+                        <option className="Rejected" value="Software">
+                          Rejected
+                        </option>
+                      </select>
+                    }
+                    <button>Update</button>
+                  </td>
+
                   <td>{element.Sevirity}</td>
                 </tbody>
               </>
