@@ -20,7 +20,7 @@ function Tickets() {
           </div>
         </main>
 
-        <Popup trigger={buttonPopup} setTrigger={setButtonPopup}></Popup>
+        <Popup trigger={buttonPopup} setTrigger={setButtonPopup} ></Popup>
       </div>
     </>
   );
