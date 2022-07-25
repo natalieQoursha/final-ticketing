@@ -7,15 +7,17 @@ function Tickets() {
 
   return (
     <>
-      <div className="Tickets">
+      <div>
         <main>
           <br />
-          <button
-            className="newticketbutton"
-            onClick={() => setButtonPopup(true)}
-          >
-            Create New Ticket
-          </button>
+          <div className={buttonPopup ? "unclickable" : "tickets"}>
+            <button
+              className="newticketbutton"
+              onClick={() => setButtonPopup(true)}
+            >
+              Create New Ticket
+            </button>
+          </div>
         </main>
 
         <Popup trigger={buttonPopup} setTrigger={setButtonPopup}></Popup>

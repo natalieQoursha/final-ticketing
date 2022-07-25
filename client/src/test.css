@@ -4,6 +4,8 @@
     background-color: red;
     max-width: fit-content;
   }
-
+.choice{
+  width: max-content;
+}
 
   
