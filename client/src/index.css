@@ -24,7 +24,7 @@ a{
 }
 
 .navbar {
-  background-color: #ff5757;
+  background-color: #8399A8;
   padding: 1%;
   display: flex;
   max-width: 100%;
@@ -42,7 +42,7 @@ a{
   width: 40px;
   height: 5px;
   margin-bottom: 10px;
-  background-color: #ff8585;
+  background-color: #8399A8;
 }
 
 .nav__link {
@@ -50,7 +50,7 @@ a{
   width: 94%;
   top: 5rem;
   left: 18px;
-  background-color: #ff8585; 
+  background-color: #8399A8; 
 }
 
 .nav__link a {
@@ -60,7 +60,7 @@ a{
 }
 
 .nav__link a:hover {
-  border-bottom: 3px solid #ff8585;
+  border-bottom: 3px solid white;
   border-radius: 7px;
   transition: all 0.2s ease;
 }
@@ -74,7 +74,7 @@ a{
   text-align: justify;
   align-items: center;
   margin-top: 20%;
-  color: #ff8585;
+  color: #8399A8;
   font-weight: 700;
   font-size: 20px;
 
@@ -106,7 +106,7 @@ a{
 
 .navbar h1 {
   size: 1em;
-  color:  #ffebeb;
+  color:  white ;
 }
 .navbar .links {
   max-width: 100%;
@@ -235,7 +235,7 @@ main {
   padding-bottom: 60px;
 }
 .footer {
-  background-color:#ff5757;
+  background-color:#8399A8;
   margin-top:15em;
   position:fixed;
   width: 100%;

@@ -19,29 +19,6 @@ const Navbar = () => {
           Home
         </Link>
 
-        <a
-          href="mailto:kareem.shaweesh077@gmail.com"
-          style={{
-            color: "#ffebeb",
-            fontSize: 20,
-            borderRadius: 40,
-          }}
-        >
-          contact
-        </a>
-
-        <a
-          href="https://www.estartasolutions.com/Pages/About.aspx"
-          target="blank"
-          style={{
-            color: "#ffebeb",
-            fontSize: 20,
-            borderRadius: 40,
-          }}
-        >
-          about
-        </a>
-
         <Link
           to="/test"
           style={{
@@ -72,6 +49,27 @@ const Navbar = () => {
         >
           sign up
         </Link>
+        <a
+          href="https://www.estartasolutions.com/Pages/About.aspx"
+          target="blank"
+          style={{
+            color: "#ffebeb",
+            fontSize: 20,
+            borderRadius: 40,
+          }}
+        >
+          about
+        </a>
+        <a
+          href="mailto:kareem.shaweesh077@gmail.com"
+          style={{
+            color: "#ffebeb",
+            fontSize: 20,
+            borderRadius: 40,
+          }}
+        >
+          contact
+        </a>
       </div>
 
       <h1>Estarta Solutions</h1>

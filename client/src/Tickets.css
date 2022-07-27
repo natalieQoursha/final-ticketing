@@ -13,16 +13,16 @@ main{
     min-height: 100vh;
 }
 .newticketbutton{
-    background-color: #ff8585;
-    color: #ffebeb;
+    background-color: #A3CCBE;
+    color: white;
     font-size: 1.5em;
     border-radius: 7px;
     width: 225px;
     height: 50px;
 }
 .newticketbutton:hover{
-    background-color:  #ff007b;
-    color: #ffebeb;
+    background-color:  #BF9D9D;
+    color: white;
     transition: all 0.2s ease;
 }
 .unclickable{
