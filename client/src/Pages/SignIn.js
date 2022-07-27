@@ -1,19 +1,25 @@
-import React, { useState } from "react";
 import "../SignIn.css";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import {Link} from 'react-router-dom'
 
-const signIn = () => {
+const SignIn = () => {
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const data = { Email, Password };
 
   const handleLogin = (e) => {
-    console.log(data);
-    localStorage.setItem("Email", Email);
-    localStorage.getItem(Email);
-    localStorage.setItem("Password", Password);
-    localStorage.getItem(Password);
+    const data = { Email, Password };
+    axios
+      .post("http://localhost:5000/api/user/login", data)
+      .then((res) => sessionStorage.setItem('user',JSON.stringify(res.data)));
+    console.log(data);  
+   const x = JSON.parse(localStorage.getItem('user'))
+   console.log(x)
+   // localStorage.removeItem('user')
     alert("Welcome " + localStorage.getItem("Email"));
+
+    // useNavigate
   };
 
   return (
@@ -31,11 +37,8 @@ const signIn = () => {
         onChange={(e) => setPassword(e.target.value)}
         required
       ></input>
-
-      <Link to="/tickets">
         <button onClick={handleLogin}>Login</button>
-      </Link>
     </>
   );
 };
-export default signIn;
+export default SignIn;
