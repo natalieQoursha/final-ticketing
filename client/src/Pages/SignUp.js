@@ -14,7 +14,7 @@ const SignUp = () => {
   const handleSignUp = (e) => {
     console.log("Hello");
 
-    const data = { firstName, lastName, Email, Password, Role,companyID };
+    const data = { firstName, lastName, Email, Password, Role, companyID };
 
     console.log(data);
     localStorage.setItem("firstName", firstName);
@@ -37,7 +37,9 @@ const SignUp = () => {
   };
   return (
     <main style={{ padding: "1rem 0" }}>
-      <div>
+      <div className="signupboxescontainer">
+        <h1>Sign up</h1>
+        <br />
         <div className="signupboxes">
           <input
             type={"text"}
@@ -46,8 +48,6 @@ const SignUp = () => {
             required
             placeholder="First name"
           ></input>
-        </div>
-        <div className="signupboxes">
           <input
             type={"text"}
             value={lastName}
@@ -64,8 +64,6 @@ const SignUp = () => {
             required
             placeholder="Email"
           ></input>
-        </div>
-        <div className="signupboxes">
           <input
             type={"password"}
             onChange={(e) => setPassword(e.target.value)}
@@ -80,8 +78,7 @@ const SignUp = () => {
             required
             placeholder="Role"
           ></input>
-        </div>
-        <div className="signupboxes">
+
           <input
             type={"number"}
             onChange={(e) => setCompanyID(e.target.value)}
@@ -90,7 +87,9 @@ const SignUp = () => {
           ></input>
         </div>
         <Link to="/SignIn">
-          <button onClick={handleSignUp}>Sign up</button>
+          <button className="submit" onClick={handleSignUp}>
+            Sign up
+          </button>
         </Link>
       </div>
     </main>
