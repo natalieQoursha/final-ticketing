@@ -222,8 +222,10 @@ code {
 }
 .placeholders{
   display: block;
-  margin-top: 15%;
-  margin-left: 36%;
+
+}
+.signupboxes{
+  padding: 5px;
 }
 
 main {

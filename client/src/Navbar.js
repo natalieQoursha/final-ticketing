@@ -53,14 +53,24 @@ const Navbar = () => {
           View Tickets
         </Link>
         <Link
-          to="/Tickets"
+          to="/SignIn"
           style={{
             color: "#ffebeb",
             fontSize: 20,
             borderRadius: 40,
           }}
         >
-          Create Ticket
+          Sign In
+        </Link>
+        <Link
+          to="/SignUp"
+          style={{
+            color: "#ffebeb",
+            fontSize: 20,
+            borderRadius: 40,
+          }}
+        >
+          sign up
         </Link>
       </div>
 

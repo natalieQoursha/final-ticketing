@@ -2,15 +2,22 @@ import "../SignIn.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const SignIn = () => {
+const signIn = () => {
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
+  const data = { Email, Password };
 
   const handleLogin = (e) => {
     const data = { Email, Password };
     axios
       .post("http://localhost:5000/api/user/login", data)
       .then((res) => console.log(res));
+    console.log(data);
+    localStorage.setItem("Email", Email);
+    localStorage.getItem(Email);
+    localStorage.setItem("Password", Password);
+    localStorage.getItem(Password);
+    alert("Welcome " + localStorage.getItem("Email"));
   };
 
   return (
@@ -28,8 +35,11 @@ const SignIn = () => {
         onChange={(e) => setPassword(e.target.value)}
         required
       ></input>
-      <button onClick={handleLogin}>Login</button>
+
+      <Link to="/tickets">
+        <button onClick={handleLogin}>Login</button>
+      </Link>
     </>
   );
 };
-export default SignIn;
+export default signIn;
