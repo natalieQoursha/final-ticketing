@@ -14,17 +14,20 @@ function Popup(props) {
     const fetchUsers = () => {
       axios.get("http://localhost:5000/api/ticket/all-users/").then((res) => {
         setUsers(res.data);
-        console.log(res.data.ID)
+        console.log(res.data.ID);
       });
     };
     fetchUsers();
   }, []);
 
-
-
-
   const submitUser = (e) => {
-    const data = { Ticket_Type, Sevirity, Product_Types, Description ,Created_On: "2022-10-10T00:00:00.000Z"};
+    const data = {
+      Ticket_Type,
+      Sevirity,
+      Product_Types,
+      Description,
+      Created_On: "2022-10-10T00:00:00.000Z",
+    };
     axios
       .post("http://localhost:5000/api/ticket/all-tickets", data, {
         headers: {
@@ -42,7 +45,7 @@ function Popup(props) {
           <button className="close-btn" onClick={() => props.setTrigger(false)}>
             X
           </button>
-          <h1>Welcome (data.User) from (data.Company)</h1>
+          <h1>{`Welcome ${localStorage.getItem("Email")}`}</h1>
           <br />
           <div className="alignment">
             <label for="Ticket_Type">Ticket type : </label>
@@ -92,6 +95,8 @@ function Popup(props) {
         <div>
           <textarea
             value={Description}
+            rows="5"
+            cols="50"
             onChange={(e) => setDescription(e.target.value)}
             className="txta"
           ></textarea>

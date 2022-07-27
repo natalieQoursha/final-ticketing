@@ -1,77 +1,68 @@
-import React from "react";
-function signUp() {
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+
+const SignUp = () => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [Email, setEmail] = useState("");
+  const [Password, setPassword] = useState("");
+  const handleSignUp = (e) => {
+    const data = { firstName, lastName, Email, Password };
+
+    console.log(data);
+    localStorage.setItem("firstName", firstName);
+    localStorage.getItem(firstName);
+    localStorage.setItem("last_Name", lastName);
+    localStorage.getItem(lastName);
+    localStorage.setItem("Email", Email);
+    localStorage.getItem(Email);
+    localStorage.setItem("Password", Password);
+    localStorage.getItem(Password);
+    alert("Welcome " + localStorage.getItem("First_Name"));
+  };
   return (
     <main style={{ padding: "1rem 0" }}>
-      <div className="placeholders">
-        <div>
+      <div>
+        <div className="signupboxes">
           <input
-            type="text"
-            placeholder="First Name"
-            style={{
-              color: "black",
-              backgroundColor: "white",
-              borderRadius: "8px",
-              fontSize: 25,
-            }}
-          />
-          <input
-            type="text"
-            placeholder="Last Name"
-            style={{
-              color: "black",
-              backgroundColor: "white",
-              borderRadius: "8px",
-              fontSize: 25,
-            }}
-          />
+            type={"text"}
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            required
+            placeholder="First name"
+          ></input>
         </div>
-        <div>
-        <input
-          type="date"
-          placeholder="Date Of Birth"
-          style={{
-            color: "black",
-            backgroundColor: "white",
-            borderRadius: "8px",
-            fontSize: 25,
-          }}
-        />
-        <div>
+        <div className="signupboxes">
           <input
-            type="text"
-            placeholder="E-Mail"
-            style={{
-              color: "black",
-              backgroundColor: "white",
-              borderRadius: "8px",
-              fontSize: 25,
-            }}
-          /></div>
-          <input
-            type="number"
-            placeholder="Phone Number"
-            style={{
-              color: "black",
-              backgroundColor: "white",
-              borderRadius: "8px",
-              fontSize: 25,
-            }}
-          />
+            type={"text"}
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            required
+            placeholder="Last name"
+          ></input>
         </div>
-        <input
-          type="password"
-          placeholder="Password"
-          style={{
-            color: "black",
-            backgroundColor: "white",
-            borderRadius: "8px",
-            fontSize: 25,
-          }}
-        />
-        <div></div>
-        <button>Sign In</button>
+        <div className="signupboxes">
+          <input
+            type={"text"}
+            value={Email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            placeholder="Email"
+          ></input>
+        </div>
+        <div className="signupboxes">
+          <input
+            type={"password"}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            placeholder="Password"
+          ></input>
+        </div>
+        <Link to="/SignIn">
+          <button onClick={handleSignUp}>Sign up</button>
+        </Link>
       </div>
     </main>
   );
-}
-export default signUp;
+};
+export default SignUp;
