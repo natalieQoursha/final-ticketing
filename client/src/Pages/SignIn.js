@@ -9,11 +9,7 @@ const SignIn = () => {
   const handleLogin = (e) => {
     const data = { Email, Password };
     axios
-      .post("http://localhost:5000/api/ticket/all-user", data, {
-        headers: {
-          "Content-type": "application/json",
-        },
-      })
+      .post("http://localhost:5000/api/user/login", data)
       .then((res) => console.log(res));
   };
 

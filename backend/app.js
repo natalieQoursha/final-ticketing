@@ -26,6 +26,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/api/user", require("./routes/api/user"))
 app.use("/api/ticket", require("./routes/api/ticket"))
 
+
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 
