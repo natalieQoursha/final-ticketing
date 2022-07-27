@@ -1,5 +1,6 @@
-import React, { useState } from "react";
 import "../SignIn.css";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const SignIn = () => {
   const [Email, setEmail] = useState("");
@@ -7,7 +8,13 @@ const SignIn = () => {
 
   const handleLogin = (e) => {
     const data = { Email, Password };
-    console.log(data);
+    axios
+      .post("http://localhost:5000/api/ticket/all-user", data, {
+        headers: {
+          "Content-type": "application/json",
+        },
+      })
+      .then((res) => console.log(res));
   };
 
   return (
