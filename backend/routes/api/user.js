@@ -28,12 +28,7 @@ console.log("test")
         if(!result){
           res.status(400).json({error_messaeg:"Wrong Credentials"})
         }
-          
-        
         res.status(200).json(result.recordset[0]);
-        localStorage.setItem("First_Name", result.recordset[0].First_Name);
-        localStorage.setItem("Last_Name", result.recordset[0].Last_Name);
-
       });
     }
   });
