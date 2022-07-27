@@ -9,6 +9,7 @@ function Popup(props) {
   const [Product_Types, setProduct] = useState("");
 
   const [users, setUsers] = useState();
+  const user= JSON.parse(sessionStorage.getItem('user'))
 
   useEffect(() => {
     const fetchUsers = () => {
@@ -45,7 +46,7 @@ function Popup(props) {
           <button className="close-btn" onClick={() => props.setTrigger(false)}>
             X
           </button>
-          <h1>{`Welcome ${localStorage.getItem("Email")}`}</h1>
+          <h1>{`Welcome ${user.First_Name},${user.Company_Name}`}</h1>
           <br />
           <div className="alignment">
             <label for="Ticket_Type">Ticket type : </label>

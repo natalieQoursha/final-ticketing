@@ -57,7 +57,8 @@ router.post('/login',(req,res)=>{
   conn.connect().then((response) => {
 console.log("test")
     if (response.connected) {
-      response.request().query(`Select * from dbo.USERS where Email='${userName}' and Password='${Pass}'`, (err, result) => {
+      response.request().query(`Select * from dbo.USERS  
+      JOIN Companies ON Users.Company_ID=Companies.Company_ID and Email='${userName}' and Password='${Pass}' `, (err, result) => {
         if(!result){
           res.status(400).json({error_messaeg:"Wrong Credentials"})
         }

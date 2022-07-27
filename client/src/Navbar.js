@@ -70,6 +70,26 @@ const Navbar = () => {
         >
           contact
         </a>
+        <Link
+          to="/test"
+          style={{
+            color: "#ffebeb",
+            fontSize: 20,
+            borderRadius: 40,
+          }}
+        >
+          tickets
+        </Link>
+        <Link
+          to="/tickets"
+          style={{
+            color: "#ffebeb",
+            fontSize: 20,
+            borderRadius: 40,
+          }}
+        >
+          create
+        </Link>
       </div>
 
       <h1>Estarta Solutions</h1>
