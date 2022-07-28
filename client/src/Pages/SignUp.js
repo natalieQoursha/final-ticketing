@@ -1,40 +1,31 @@
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const SignUp = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [First_Name, setFirstName] = useState("");
+  const [Last_Name, setLastName] = useState("");
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const [data, setUsers] = useState("");
   const [Role, setRole] = useState("");
-  const [companyID, setCompanyID] = useState("");
-
+  const [Company_ID, setCompanyID] = useState("");
+  const history=useNavigate();
   const handleSignUp = (e) => {
-    console.log("Hello");
+    const data = { First_Name, Last_Name, Email, Password, Role, Company_ID };
+    
+    axios
+      .post("http://localhost:5000/api/user/signup", data)
+      .then((res) => {if(res.status===200){
+        window.alert('Signed Up Login with the Credintials You Entered')
+        history('/signIn')
 
-    const data = { firstName, lastName, Email, Password, Role, companyID };
-
-    console.log(data);
-    localStorage.setItem("firstName", firstName);
-    localStorage.getItem(firstName);
-    localStorage.setItem("last_Name", lastName);
-    localStorage.getItem(lastName);
-    localStorage.setItem("Email", Email);
-    localStorage.getItem(Email);
-    localStorage.setItem("Password", Password);
-    localStorage.getItem(Password);
-    localStorage.setItem("Role", Role);
-    localStorage.getItem(Role);
-    alert("Welcome " + localStorage.getItem("firstName"));
-    const fetchUsers = () => {
-      axios.post("http://localhost:5000/api/user/signup", data).then((res) => {
-        console.log("Hello");
-      });
-    };
-    fetchUsers();
+      }});
+      
+   const x = JSON.parse(localStorage.getItem('user'))
   };
+
+
   return (
     <main style={{ padding: "1rem 0" }}>
       <div className="signupboxescontainer">
@@ -43,14 +34,14 @@ const SignUp = () => {
         <div className="signupboxes">
           <input
             type={"text"}
-            value={firstName}
+            value={First_Name}
             onChange={(e) => setFirstName(e.target.value)}
             required
             placeholder="First name"
           ></input>
           <input
             type={"text"}
-            value={lastName}
+            value={Last_Name}
             onChange={(e) => setLastName(e.target.value)}
             required
             placeholder="Last name"
@@ -86,10 +77,11 @@ const SignUp = () => {
             placeholder="Company ID"
           ></input>
         </div>
-        <Link to="/SignIn">
-          <button className="submit" onClick={handleSignUp}>
+        <button className="submit" onClick={handleSignUp}>
             Sign up
           </button>
+        <Link to="/SignIn">
+          SignIn
         </Link>
       </div>
     </main>

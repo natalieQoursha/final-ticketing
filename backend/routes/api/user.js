@@ -17,12 +17,12 @@ router.get("/all-users", (req, response) => {
 
 router.post("/signup", (req, response) => {
   console.log(req.body);
-  const FN = req.body.firstName;
-  const LN = req.body.lastName;
+  const FN = req.body.First_Name;
+  const LN = req.body.Last_Name;
   const mail = req.body.Email;
   const pass = req.body.Password;
   const role = req.body.Role;
-  const companyID = req.body.companyID;
+  const companyID = req.body.Company_ID;
   conn.connect().then((res) => {
     if (res.connected) {
       console.log("connecteddd to db");
@@ -42,7 +42,7 @@ router.post("/signup", (req, response) => {
           ,'${role}'
           ,${companyID})`,
         (err, res) => {
-          response.status(200).json();
+          response.status(200).send();
         }
       );
     }
@@ -60,7 +60,7 @@ console.log("test")
       response.request().query(`Select * from dbo.USERS  
       JOIN Companies ON Users.Company_ID=Companies.Company_ID and Email='${userName}' and Password='${Pass}' `, (err, result) => {
         if(!result){
-          res.status(400).json({error_messaeg:"Wrong Credentials"})
+          res.status(400).send("Wrong Credintials");
         }
         res.status(200).json(result.recordset[0]);
       });
