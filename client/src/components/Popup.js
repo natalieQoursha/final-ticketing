@@ -9,7 +9,7 @@ function Popup(props) {
   const [Product_Types, setProduct] = useState("");
 
   const [users, setUsers] = useState();
-  const user= JSON.parse(sessionStorage.getItem('user'))
+  const user = JSON.parse(sessionStorage.getItem("user"));
 
   useEffect(() => {
     const fetchUsers = () => {

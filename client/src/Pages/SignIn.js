@@ -10,7 +10,7 @@ const SignIn = () => {
 
   const handleLogin = (e) => {
     const data = { Email, Password };
-    
+
     axios
       .post("http://localhost:5000/api/user/login", data)
       .then((res) => {if(res.status===400){alert('Wrong Credintials'); return;} sessionStorage.setItem('user',JSON.stringify( res.data))});
@@ -24,7 +24,7 @@ const SignIn = () => {
    }
    // localStorage.removeItem('user')
 
-    // useNavigate
+    const x = JSON.parse(localStorage.getItem("user"));
   };
 
   const handleLogout = (e) =>{
