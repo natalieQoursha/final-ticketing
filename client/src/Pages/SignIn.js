@@ -10,15 +10,12 @@ const SignIn = () => {
 
   const handleLogin = (e) => {
     const data = { Email, Password };
-    
+
     axios
       .post("http://localhost:5000/api/user/login", data)
-      .then((res) =>  sessionStorage.setItem('user',JSON.stringify( res.data)));
-      
-   const x = JSON.parse(localStorage.getItem('user'))
-   // localStorage.removeItem('user')
+      .then((res) => sessionStorage.setItem("user", JSON.stringify(res.data)));
 
-    // useNavigate
+    const x = JSON.parse(localStorage.getItem("user"));
   };
 
   return (

@@ -3,6 +3,21 @@ import axios from "axios";
 
 const Test = () => {
   const [users, setUsers] = useState();
+  const [Status, setStatus] = useState();
+  const [ticketID, setTicketID] = useState("");
+  const data = { ticketID, Status };
+
+  const changeStatus = (e) => {
+    const data = { ticketID, Status };
+
+    axios
+      .update("http://localhost:5000/api/user/Test", data)
+      .then((res) =>
+        sessionStorage.setItem("Status", JSON.stringify(res.data))
+      );
+
+    const x = JSON.parse(localStorage.getItem("user"));
+  };
 
   useEffect(() => {
     const fetchUsers = () => {
@@ -11,8 +26,7 @@ const Test = () => {
       });
     };
     fetchUsers();
-  }, []);
-  const [Status, setStatus] = useState("Pending");
+  });
 
   return (
     <div className="testPage">
@@ -36,32 +50,33 @@ const Test = () => {
                   <td>{element.Product_Types}</td>
                   <td>{element.Ticket_Type}</td>
                   <td>{element.Created_On}</td>
-                  <td>
-                    {
-                      <select
-                        className="Choice"
-                        value={Status}
-                        onChange={(e) => setStatus(e.target.value)}
-                        name="Status"
-                        id="Status"
-                      >
-                        <option className="Accepted" value="General">
-                          Accepted
-                        </option>
-                        <option className="Rejected" value="Software">
-                          Rejected
-                        </option>
-                      </select>
-                    }
-                    <button>Update</button>
-                  </td>
-
+                  <td>{element.Status}</td>
                   <td>{element.Sevirity}</td>
                 </tbody>
               </>
             );
           })}
       </table>
+      <br />
+      <h3>Edit ticket status</h3>
+      <br />
+      <input type={"number"} placeholder="Ticket ID" required></input>
+      <select
+        className="Choice"
+        value={Status}
+        onChange={(e) => setStatus(e.target.value)}
+        name="Status"
+        id="Status"
+      >
+        <option className="Accepted" value="General">
+          Accepted
+        </option>
+        <option className="Rejected" value="Software">
+          Rejected
+        </option>
+      </select>
+
+      <button onClick={changeStatus}>Update</button>
     </div>
   );
 };

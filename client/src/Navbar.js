@@ -18,17 +18,6 @@ const Navbar = () => {
         >
           Home
         </Link>
-
-        <Link
-          to="/test"
-          style={{
-            color: "#ffebeb",
-            fontSize: 20,
-            borderRadius: 40,
-          }}
-        >
-          View Tickets
-        </Link>
         <Link
           to="/SignIn"
           style={{
@@ -92,7 +81,7 @@ const Navbar = () => {
         </Link>
       </div>
 
-      <h1>Estarta Solutions</h1>
+      <h1>Estarta</h1>
     </nav>
   );
 };
