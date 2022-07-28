@@ -28,7 +28,7 @@ const SignIn = () => {
   };
 
   const handleLogout = (e) =>{
-    localStorage.removeItem('user')
+    sessionStorage.removeItem('user')
   }
 
   return (
