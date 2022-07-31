@@ -58,30 +58,6 @@ const Test = () => {
           })}
       </table>
       <br />
-      <h3>Edit ticket status</h3>
-      <br />
-      <input
-        type={"number"}
-        placeholder="TicketID"
-        required
-        value={"data.ticketID"}
-      ></input>
-      <select
-        className="Choice"
-        value={"Status"}
-        onChange={(e) => setStatus(e.target.value)}
-        name="Status"
-        id="Status"
-      >
-        <option className="Accepted" value="General">
-          Accepted
-        </option>
-        <option className="Rejected" value="Software">
-          Rejected
-        </option>
-      </select>
-
-      <button onClick={changeStatus}>Update</button>
     </div>
   );
 };

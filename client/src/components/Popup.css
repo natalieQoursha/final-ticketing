@@ -7,7 +7,7 @@
     display: flex;
     flex-direction: column;
     padding:2em;
-    background-color: #ff8585;
+    background-color: #A3CCBE;
 }
 
 h1{
@@ -24,7 +24,6 @@ h1{
     cursor:pointer;
     font-size: 1em;
     font-weight: bold;
-    border: #5890ff;
     border-radius: 5px;
     justify-content: center;
 }
@@ -64,13 +63,13 @@ h1{
     width: 100%;
 }
 table {
-    border: 2px solid #ff8585;
+    border: 2px solid #333;
     width: 100%;
     height: 200px;
   }
     
 th {
-    background-color: #ff8585;
+    background-color: #A3CCBE;
     color: #ffebeb;
     font-size: 1.4em;
     height: 3em;

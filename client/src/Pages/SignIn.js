@@ -11,25 +11,22 @@ const SignIn = () => {
   const handleLogin = (e) => {
     const data = { Email, Password };
 
-    axios
-      .post("http://localhost:5000/api/user/login", data)
-      .then((res) => {if(res.status===400){alert('Wrong Credintials'); return;} sessionStorage.setItem('user',JSON.stringify( res.data))});
-    const user=JSON.parse(sessionStorage.getItem('user')) || undefined
+    axios.post("http://localhost:5000/api/user/login", data).then((res) => {
+      if (res.status === 400) {
+        alert("Wrong Credintials");
+        return;
+      }
+      sessionStorage.setItem("user", JSON.stringify(res.data));
+    });
+    const user = JSON.parse(sessionStorage.getItem("user")) || undefined;
     console.log(user);
-   if(user===undefined){
-    alert("Login Is Invalid")
-   }
-   else{
-    alert("welcome")                                                      
+    if (user === undefined) {
+      alert("Login Is Invalid");
+    } else {
+      alert("welcome");
     }
-    // localStorage.removeItem('user')
-
     const x = JSON.parse(localStorage.getItem("user"));
   };
-
-  const handleLogout = (e) =>{
-    sessionStorage.removeItem('user')
-  }
 
   return (
     <main style={{ padding: "1rem 0" }}>
@@ -54,9 +51,6 @@ const SignIn = () => {
         </div>
         <button onClick={handleLogin} className="submit">
           Login
-        </button>
-        <button onClick={handleLogout} className="logOut">
-          Logout
         </button>
       </div>
     </main>
