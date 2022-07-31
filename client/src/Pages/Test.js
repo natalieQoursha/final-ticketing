@@ -4,19 +4,18 @@ import axios from "axios";
 const Test = () => {
   const [users, setUsers] = useState();
   const [Status, setStatus] = useState();
-  const [ticketID, setTicketID] = useState("");
-  const data = { ticketID, Status };
+  const [Ticket_ID, setTicketID] = useState("");
+  const data = { Ticket_ID, Status };
 
   const changeStatus = (e) => {
-    const data = { ticketID, Status };
+    const data = { Ticket_ID, Status };
 
     axios
-      .update("http://localhost:5000/api/user/Test", data)
+      .put("http://localhost:5000/api/ticket/status", data)
       .then((res) =>
         sessionStorage.setItem("Status", JSON.stringify(res.data))
       );
 
-    const x = JSON.parse(localStorage.getItem("user"));
   };
 
   useEffect(() => {

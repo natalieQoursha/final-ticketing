@@ -25,11 +25,16 @@ const SignUp = () => {
    const x = JSON.parse(localStorage.getItem('user'))
   };
 
+  function isEmail(email) {
+    var regex = "(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}";
+    return regex.test(email);
+  }
+
 
   return (
     <main style={{ padding: "1rem 0" }}>
       <div className="signupboxescontainer">
-        <h1>Sign p</h1>
+        <h1>Sign up</h1>
         <br />
         <div className="signupboxes">
           <input
@@ -48,13 +53,17 @@ const SignUp = () => {
           ></input>
         </div>
         <div className="signupboxes">
+          <form>
           <input
-            type={"text"}
+            type={"email"}
             value={Email}
             onChange={(e) => setEmail(e.target.value)}
             required
             placeholder="Email"
+            pattern="[[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 4}$]"
           ></input>
+          </form>
+
           <input
             type={"password"}
             onChange={(e) => setPassword(e.target.value)}
@@ -80,9 +89,7 @@ const SignUp = () => {
         <button className="submit" onClick={handleSignUp}>
             Sign up
           </button>
-        <Link to="/SignIn">
-          SignIn
-        </Link>
+
       </div>
     </main>
   );
