@@ -21,8 +21,8 @@ const SignIn = () => {
    }
    else{
     alert("welcome")                                                      
-   }
-   // localStorage.removeItem('user')
+    }
+    // localStorage.removeItem('user')
 
     const x = JSON.parse(localStorage.getItem("user"));
   };

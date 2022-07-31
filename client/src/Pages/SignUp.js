@@ -1,4 +1,4 @@
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -10,26 +10,24 @@ const SignUp = () => {
   const [data, setUsers] = useState("");
   const [Role, setRole] = useState("");
   const [Company_ID, setCompanyID] = useState("");
-  const history=useNavigate();
+  const history = useNavigate();
   const handleSignUp = (e) => {
     const data = { First_Name, Last_Name, Email, Password, Role, Company_ID };
-    
-    axios
-      .post("http://localhost:5000/api/user/signup", data)
-      .then((res) => {if(res.status===200){
-        window.alert('Signed Up Login with the Credintials You Entered')
-        history('/signIn')
 
-      }});
-      
-   const x = JSON.parse(localStorage.getItem('user'))
+    axios.post("http://localhost:5000/api/user/signup", data).then((res) => {
+      if (res.status === 200) {
+        window.alert("Signed Up Login with the Credintials You Entered");
+        history("/signIn");
+      }
+    });
+
+    const x = JSON.parse(localStorage.getItem("user"));
   };
-
 
   return (
     <main style={{ padding: "1rem 0" }}>
       <div className="signupboxescontainer">
-        <h1>Sign p</h1>
+        <h1>Sign up</h1>
         <br />
         <div className="signupboxes">
           <input
@@ -78,11 +76,8 @@ const SignUp = () => {
           ></input>
         </div>
         <button className="submit" onClick={handleSignUp}>
-            Sign up
-          </button>
-        <Link to="/SignIn">
-          SignIn
-        </Link>
+          Sign up
+        </button>
       </div>
     </main>
   );

@@ -11,7 +11,7 @@ const Test = () => {
     const data = { ticketID, Status };
 
     axios
-      .update("http://localhost:5000/api/user/Test", data)
+      .update("http://localhost:5000/api/user/Test", data.Status)
       .then((res) =>
         sessionStorage.setItem("Status", JSON.stringify(res.data))
       );
@@ -60,10 +60,15 @@ const Test = () => {
       <br />
       <h3>Edit ticket status</h3>
       <br />
-      <input type={"number"} placeholder="Ticket ID" required></input>
+      <input
+        type={"number"}
+        placeholder="TicketID"
+        required
+        value={"data.ticketID"}
+      ></input>
       <select
         className="Choice"
-        value={Status}
+        value={"Status"}
         onChange={(e) => setStatus(e.target.value)}
         name="Status"
         id="Status"

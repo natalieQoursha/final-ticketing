@@ -1,5 +1,5 @@
 import "../src/index.css";
-
+import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <div className="Home">
@@ -8,7 +8,20 @@ const Home = () => {
       <br></br>
       <br></br>
       <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
       <h4>Ticketing Page</h4>
+      <br></br>
       <br></br>
       <br></br>
       <br></br>
@@ -23,14 +36,6 @@ const Home = () => {
         delivered expertise to clients through a wide range of services which
         have supported our clients' success.
       </h3>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
     </div>
   );
 };
