@@ -1,6 +1,9 @@
 import "../src/index.css";
-import { Link } from "react-router-dom";
+
 const Home = () => {
+  const handleLogout = (e) => {
+    sessionStorage.removeItem("user");
+  };
   return (
     <div className="Home">
       <br></br>
@@ -25,6 +28,9 @@ const Home = () => {
       <br></br>
       <br></br>
       <br></br>
+      <button onClick={handleLogout} className="submit">
+        Logout
+      </button>
       <br></br>
       <br></br>
       <br></br>
