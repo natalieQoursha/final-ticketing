@@ -67,7 +67,7 @@ const Navbar = () => {
             borderRadius: 40,
           }}
         >
-          tickets
+          view tickets
         </Link>
         <Link
           to="/tickets"
@@ -77,7 +77,7 @@ const Navbar = () => {
             borderRadius: 40,
           }}
         >
-          create
+          Create ticket
         </Link>
       </div>
 

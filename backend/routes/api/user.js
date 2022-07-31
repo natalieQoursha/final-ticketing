@@ -60,12 +60,12 @@ console.log("test")
       response.request().query(`Select * from dbo.USERS  
       JOIN Companies ON Users.Company_ID=Companies.Company_ID and Email='${userName}' and Password='${Pass}' `, (err, result) => {
         if(!result){
-          res.status(400).send("Wrong Credintials");
-        }
-        res.status(200).json(result.recordset[0]);
-      });
-    }
+            res.status(400).send("Wrong Credintials");
+          }
+          res.status(200).json(result.recordset[0]);
   });
+    }
+});
 
 
 
