@@ -23,6 +23,8 @@ const SignIn = () => {
     if (user === undefined) {
       alert("Login Is Invalid");
     } else {
+      <Link to="/"></Link>;
+      window.location.reload();
       alert("welcome");
     }
     const x = JSON.parse(localStorage.getItem("user"));

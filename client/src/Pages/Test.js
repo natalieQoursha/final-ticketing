@@ -34,11 +34,11 @@ const Test = () => {
         <thead>
           <tr>
             <th>Ticket ID</th>
+            <th>Sevirity</th>
             <th>Product Type</th>
             <th>Ticket Type</th>
             <th>Created On</th>
             <th>Status</th>
-            <th>Sevirity</th>
           </tr>
         </thead>
         {users &&
@@ -47,11 +47,11 @@ const Test = () => {
               <>
                 <tbody>
                   <td>{element.Ticket_ID}</td>
+                  <td>{element.Sevirity}</td>
                   <td>{element.Product_Types}</td>
                   <td>{element.Ticket_Type}</td>
                   <td>{element.Created_On}</td>
                   <td>{element.Status}</td>
-                  <td>{element.Sevirity}</td>
                 </tbody>
               </>
             );

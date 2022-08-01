@@ -22,6 +22,7 @@ function Popup(props) {
   }, []);
 
   const submitUser = (e) => {
+    e.preventDefault()
     const data = {
       Ticket_Type,
       Sevirity,
@@ -35,7 +36,7 @@ function Popup(props) {
           "Content-type": "application/json",
         },
       })
-      .then((res) => console.log(res));
+    .then((res) => props.setTrigger(!props.trigger));
     alert("Ticket submitted successfully");
   };
 
