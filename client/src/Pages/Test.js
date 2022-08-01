@@ -3,21 +3,7 @@ import axios from "axios";
 
 const Test = () => {
   const [users, setUsers] = useState();
-  const [Status, setStatus] = useState();
-  const [ticketID, setTicketID] = useState("");
-  const data = { ticketID, Status };
-
-  const changeStatus = (e) => {
-    const data = { ticketID, Status };
-
-    axios
-      .update("http://localhost:5000/api/user/Test", data.Status)
-      .then((res) =>
-        sessionStorage.setItem("Status", JSON.stringify(res.data))
-      );
-
-    const x = JSON.parse(localStorage.getItem("user"));
-  };
+  
 
   useEffect(() => {
     const fetchUsers = () => {
@@ -26,39 +12,38 @@ const Test = () => {
       });
     };
     fetchUsers();
-  });
-
+  }, []);
   return (
-    <div className="testPage">
-      <table id="myTable1">
-        <thead>
-          <tr>
-            <th>Ticket ID</th>
-            <th>Sevirity</th>
-            <th>Product Type</th>
-            <th>Ticket Type</th>
-            <th>Created On</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        {users &&
-          users.map((element) => {
-            return (
-              <>
-                <tbody>
-                  <td>{element.Ticket_ID}</td>
-                  <td>{element.Sevirity}</td>
-                  <td>{element.Product_Types}</td>
-                  <td>{element.Ticket_Type}</td>
-                  <td>{element.Created_On}</td>
-                  <td>{element.Status}</td>
-                </tbody>
-              </>
-            );
-          })}
-      </table>
-      <br />
-    </div>
+    <table>
+      <caption>Tickets</caption>
+      <thead>
+        <tr>
+          <th>Ticket_ID</th>
+          <th>Product_Types</th>
+          <th>Ticket_Type</th>
+          <th>Created_On</th>
+          <th>Status</th>
+          <th>Sevirity</th>
+        </tr>
+      </thead>
+
+      {users &&
+        users.map((element) => {
+          return (
+            <>
+              <tbody>
+                <td>{element.Ticket_ID}</td>
+                <td>{element.Product_Types}</td>
+                <td>{element.Ticket_Type}</td>
+                <td>{element.Created_On}</td>
+                <td>{element.Status}</td>
+                <td>{element.Sevirity}</td>
+
+              </tbody>
+            </>
+          );
+        })}
+    </table>
   );
 };
 

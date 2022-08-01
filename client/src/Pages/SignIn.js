@@ -23,7 +23,6 @@ const SignIn = () => {
     if (user === undefined) {
       alert("Login Is Invalid");
     } else {
-      <Link to="/"></Link>;
       window.location.reload();
       alert("welcome");
     }
@@ -51,9 +50,11 @@ const SignIn = () => {
             placeholder="Password"
           ></input>
         </div>
-        <button onClick={handleLogin} className="submit">
-          Login
-        </button>
+        <Link to="/">
+          <button onClick={handleLogin} className="submit">
+            login
+          </button>
+        </Link>
       </div>
     </main>
   );

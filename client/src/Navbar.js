@@ -29,16 +29,6 @@ const Navbar = () => {
           >
             Sign In
           </Link>
-          <Link
-            to="/SignUp"
-            style={{
-              color: "#ffebeb",
-              fontSize: 20,
-              borderRadius: 40,
-            }}
-          >
-            sign up
-          </Link>
           <a
             href="https://www.estartasolutions.com/Pages/About.aspx"
             target="blank"
@@ -79,6 +69,24 @@ const Navbar = () => {
           </Link>
 
           <div class="nav__link">
+            <h
+              style={{
+                color: "red",
+                fontSize: 15,
+              }}
+            >
+              {user.First_Name}
+            </h>
+            <Link
+              to="/test"
+              style={{
+                color: "#ffebeb",
+                fontSize: 20,
+                borderRadius: 40,
+              }}
+            >
+              View all tickets
+            </Link>
             <a
               href="https://www.estartasolutions.com/Pages/About.aspx"
               target="blank"
@@ -100,16 +108,6 @@ const Navbar = () => {
             >
               contact
             </a>
-            <Link
-              to="/test"
-              style={{
-                color: "#ffebeb",
-                fontSize: 20,
-                borderRadius: 40,
-              }}
-            >
-              View all tickets
-            </Link>
             <Link
               to="/"
               style={{
@@ -148,6 +146,24 @@ const Navbar = () => {
           </Link>
 
           <div class="nav__link">
+            <h
+              style={{
+                color: "red",
+                fontSize: 15,
+              }}
+            >
+              {user.First_Name}
+            </h>
+            <Link
+              to="/test"
+              style={{
+                color: "#ffebeb",
+                fontSize: 20,
+                borderRadius: 40,
+              }}
+            >
+              View tickets
+            </Link>
             <a
               href="https://www.estartasolutions.com/Pages/About.aspx"
               target="blank"
@@ -168,16 +184,6 @@ const Navbar = () => {
               }}
             >
               contact
-              <Link
-                to="/test"
-                style={{
-                  color: "#ffebeb",
-                  fontSize: 20,
-                  borderRadius: 40,
-                }}
-              >
-                View tickets
-              </Link>
             </a>
             <Link
               to="/"
@@ -217,6 +223,24 @@ const Navbar = () => {
           </Link>
 
           <div class="nav__link">
+            <h
+              style={{
+                color: "#ffebeb",
+                fontSize: 20,
+              }}
+            >
+              {user.First_Name}
+            </h>
+            <Link
+              to="/tickets"
+              style={{
+                color: "#ffebeb",
+                fontSize: 20,
+                borderRadius: 40,
+              }}
+            >
+              Create ticket
+            </Link>
             <a
               href="https://www.estartasolutions.com/Pages/About.aspx"
               target="blank"
@@ -238,16 +262,6 @@ const Navbar = () => {
             >
               contact
             </a>
-            <Link
-              to="/tickets"
-              style={{
-                color: "#ffebeb",
-                fontSize: 20,
-                borderRadius: 40,
-              }}
-            >
-              Create ticket
-            </Link>
             <Link
               to="/"
               style={{
