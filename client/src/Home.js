@@ -1,8 +1,13 @@
 import "../src/index.css";
+import { Link, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const Home = () => {
+  const history = useNavigate();
   const handleLogout = (e) => {
     sessionStorage.removeItem("user");
+    history("/signIn");
   };
   return (
     <div className="Home">

@@ -22,12 +22,16 @@ function Popup(props) {
   }, []);
 
   const submitUser = (e) => {
+    const user = JSON.parse(sessionStorage.getItem("user")) || undefined;
     const data = {
       Ticket_Type,
       Sevirity,
       Product_Types,
       Description,
-      Created_On: "2022-10-10T00:00:00.000Z",
+      CreatedOn: new Date(),
+      Company_ID:user.Company_ID,
+      User_ID:user.ID,
+      Status:"new ticket"
     };
     axios
       .post("http://localhost:5000/api/ticket/all-tickets", data, {

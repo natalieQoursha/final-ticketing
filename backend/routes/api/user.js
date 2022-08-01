@@ -57,8 +57,8 @@ router.post('/login',(req,res)=>{
   conn.connect().then((response) => {
 console.log("test")
     if (response.connected) {
-      response.request().query(`Select * from dbo.USERS  
-      JOIN Companies ON Users.Company_ID=Companies.Company_ID and Email='${userName}' and Password='${Pass}' `, (err, result) => {
+      response.request().query(`Select Companies.Company_ID,Companies.User_ID,Companies.Company_Name,Companies.Limit, Users.Email,Users.First_Name,Users.Last_Name,Users.Password,Users.Role,Users.ID from dbo.USERS  
+      Inner JOIN Companies ON Users.Company_ID=Companies.Company_ID and Email='${userName}' and Password='${Pass}' `, (err, result) => {
         if(!result){
             res.status(400).send("Wrong Credintials");
           }

@@ -1,12 +1,14 @@
 import "../SignIn.css";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+
 
 const SignIn = () => {
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const data = { Email, Password };
+  const history = useNavigate();
 
   const handleLogin = (e) => {
     const data = { Email, Password };
@@ -19,13 +21,12 @@ const SignIn = () => {
       sessionStorage.setItem("user", JSON.stringify(res.data));
     });
     const user = JSON.parse(sessionStorage.getItem("user")) || undefined;
-    console.log(user);
     if (user === undefined) {
       alert("Login Is Invalid");
     } else {
       alert("welcome");
+      history("/Test");
     }
-    const x = JSON.parse(localStorage.getItem("user"));
   };
 
   return (
