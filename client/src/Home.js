@@ -33,9 +33,6 @@ const Home = () => {
       <br></br>
       <br></br>
       <br></br>
-      <button onClick={handleLogout} className="submit">
-        Logout
-      </button>
       <br></br>
       <br></br>
       <br></br>
