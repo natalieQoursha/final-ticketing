@@ -6,20 +6,24 @@ function Popup(props) {
   const [Ticket_Type, setTicketType] = useState("");
   const [Sevirity, setSeverity] = useState("");
   const [Description, setDescription] = useState("");
-  const [Product_Types, setProduct] = useState("");
+  const [Product_Types, setProduct] = useState();
 
-  const [users, setUsers] = useState();
+
   const user = JSON.parse(sessionStorage.getItem("user"));
 
   useEffect(() => {
     const fetchUsers = () => {
-      axios.get("http://localhost:5000/api/ticket/all-users/").then((res) => {
-        setUsers(res.data);
-        console.log(res.data.ID);
-      });
+      const enduser = JSON.parse(sessionStorage.getItem("user")) || undefined;
+      const info = {
+        Company_ID:enduser.Company_ID,
+      };      
+      axios.post("http://localhost:5000/api/service/view-service",info).then((res) => {
+        setProduct( res.data);
+      }); 
     };
     fetchUsers();
-  }, []);
+  },[]);
+
 
   const submitUser = (e) => {
     const user = JSON.parse(sessionStorage.getItem("user")) || undefined;
@@ -45,9 +49,13 @@ function Popup(props) {
   };
 
   return props.trigger ? (
+
     <form onSubmit={submitUser}>
+          {console.log("hello")}
+
       <div className="popup">
         <div className=".popup-inner">
+          
           <button className="close-btn" onClick={() => props.setTrigger(false)}>
             X
           </button>
@@ -61,10 +69,11 @@ function Popup(props) {
               name="Ticket_Type"
               id="Ticket_Type"
             >
-              <option value="General">General</option>
+
+               <option value="General">General</option>
               <option value="Software">Software</option>
-              <option value="Hardware">Hardware</option>
-              <option value="Networks">Networks</option>
+               <option value="Hardware">Hardware</option>
+               <option value="Networks">Networks</option>  
             </select>
           </div>
           <div className="alignment">
@@ -83,15 +92,10 @@ function Popup(props) {
           <div className="alignment">
             <label for="Product_Types">Product : </label>
             <select
-              value={Product_Types}
-              onChange={(e) => setProduct(e.target.value)}
               name="Product_Types"
               id="Product_Types"
             >
-              <option value="Parking">Parking</option>
-              <option value="General Building">General Building</option>
-              <option value="Computer">Computer</option>
-              <option value="Staff">Staff</option>
+               {Product_Types?.map(info=>{return(<option value={info.Product_Name}>{info.Product_Name}</option>)}) }
             </select>
           </div>
           <br />

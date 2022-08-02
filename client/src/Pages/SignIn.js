@@ -8,7 +8,6 @@ const SignIn = () => {
   const [Password, setPassword] = useState("");
   const data = { Email, Password };
   const history = useNavigate();
-  const [dummyState,setDummyState] = useState(null)
 
   const handleLogin = (e) => {
     e.preventDefault()
@@ -24,12 +23,11 @@ const SignIn = () => {
     const user = JSON.parse(sessionStorage.getItem("user")) || undefined;
     if (user === undefined) {
       alert("Login Is Invalid");
-      setDummyState("NOT LOGGED")
     } else {
-      setDummyState("LOGGED")
-      window.location.reload();
       alert("welcome");
       history("/Test");
+      window.location.reload();
+      // <Link to="/"></Link>;
     }
   };
 

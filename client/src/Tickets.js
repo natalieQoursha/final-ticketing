@@ -1,10 +1,11 @@
-import React, { useState } from "react";
 import Popup from "./components/Popup";
 import "../src/Tickets.css";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 function Tickets() {
   const [buttonPopup, setButtonPopup] = useState(false);
-
+  
   return (
     <>
       <div>
@@ -17,6 +18,7 @@ function Tickets() {
             >
               Create New Ticket
             </button>
+            {/* <button onClick={handleClicking}>View Service</button> */}
           </div>
         </main>
 
