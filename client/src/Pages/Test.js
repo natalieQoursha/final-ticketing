@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Test = () => {
   const [users, setUsers] = useState("");
-  const [Status, setStatus] = useState("");
+  const [Status, setStatus] = useState("Accepted");
   const [Ticket_ID, getTicketID] = useState("");
   const [Reply, setReply] = useState("");
+  const history = useNavigate();
 
   useEffect(() => {
     const fetchUsers = () => {
@@ -24,16 +26,27 @@ const Test = () => {
 
     fetchUsers();
   }, []);
+
   const changeStatus = (e) => {
+    const data = { Status, Ticket_ID, Reply };
+
+    axios
+      .post("http://localhost:5000/api/ticket/test-update", data)
+      .then((res) => {
+        if (res.status === 200) {
+          
+        }
+      });
+
+
     alert("Ticket updated successfully");
-    // this.Status = Status;
-    // this.Reply = Reply;
-    window.location.reload();
+    console.log(data);
+    //window.location.reload();
   };
+
   return (
     <>
       <table>
-        <caption>Tickets</caption>
         <thead>
           <tr>
             <th>Ticket ID</th>
@@ -68,11 +81,11 @@ const Test = () => {
       <h3>Ticket control</h3>
       <br />
       <input
+        required
         value={Ticket_ID}
         onChange={(e) => getTicketID(e.target.value)}
         type={"number"}
         placeholder="Ticket ID"
-        required
       ></input>
 
       <select
