@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-
 const SignIn = () => {
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
@@ -11,6 +10,7 @@ const SignIn = () => {
   const history = useNavigate();
 
   const handleLogin = (e) => {
+    e.preventDefault()
     const data = { Email, Password };
 
     axios.post("http://localhost:5000/api/user/login", data).then((res) => {
@@ -23,8 +23,7 @@ const SignIn = () => {
     const user = JSON.parse(sessionStorage.getItem("user")) || undefined;
     if (user === undefined) {
       alert("Login Is Invalid");
-    } 
-    else {
+    } else {
       alert("welcome");
       history("/Test");
       window.location.reload();
@@ -53,9 +52,11 @@ const SignIn = () => {
             placeholder="Password"
           ></input>
         </div>
-        <button onClick={handleLogin} className="submit">
-          Login
-        </button>
+        <Link to="/">
+          <button onClick={handleLogin} className="submit">
+            login
+          </button>
+        </Link>
       </div>
     </main>
   );

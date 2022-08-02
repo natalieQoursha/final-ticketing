@@ -28,7 +28,7 @@ const Home = () => {
       <br></br>
       <br></br>
       <br></br>
-      <h4>Ticketing Page</h4>
+      <h4>Home Page</h4>
       <br></br>
       <br></br>
       <br></br>
