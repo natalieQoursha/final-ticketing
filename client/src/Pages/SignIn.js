@@ -23,11 +23,12 @@ const SignIn = () => {
     const user = JSON.parse(sessionStorage.getItem("user")) || undefined;
     if (user === undefined) {
       alert("Login Is Invalid");
-    } else {
-      <Link to="/"></Link>;
-      window.location.reload();
+    } 
+    else {
       alert("welcome");
       history("/Test");
+      window.location.reload();
+      // <Link to="/"></Link>;
     }
   };
 

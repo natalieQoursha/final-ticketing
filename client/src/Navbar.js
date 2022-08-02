@@ -1,9 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 const Navbar = () => {
+  const history = useNavigate();
   const user = JSON.parse(sessionStorage.getItem("user")) || undefined;
   const handleLogout = (e) => {
     sessionStorage.removeItem("user");
-    window.location.reload();
+    history("/");
+    // window.location.reload();
   };
   if (user === undefined) {
     return (
@@ -266,6 +270,16 @@ const Navbar = () => {
               >
                 Logout
               </button>
+            </Link>
+            <Link
+              to="/test"
+              style={{
+                color: "#ffebeb",
+                fontSize: 20,
+                borderRadius: 40,
+              }}
+            >
+              view tickets
             </Link>
           </div>
         </div>
