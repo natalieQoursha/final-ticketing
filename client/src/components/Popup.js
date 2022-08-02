@@ -23,16 +23,16 @@ function Popup(props) {
 
   const submitUser = (e) => {
     const user = JSON.parse(sessionStorage.getItem("user")) || undefined;
-    e.preventDefault()
+    e.preventDefault();
     const data = {
       Ticket_Type,
       Sevirity,
       Product_Types,
       Description,
       CreatedOn: new Date(),
-      Company_ID:user.Company_ID,
-      User_ID:user.ID,
-      Status:"new ticket"
+      Company_ID: user.Company_ID,
+      User_ID: user.ID,
+      Status: "Submitted",
     };
     axios
       .post("http://localhost:5000/api/ticket/all-tickets", data, {
@@ -40,7 +40,7 @@ function Popup(props) {
           "Content-type": "application/json",
         },
       })
-    .then((res) => props.setTrigger(!props.trigger));
+      .then((res) => props.setTrigger(!props.trigger));
     alert("Ticket submitted successfully");
   };
 

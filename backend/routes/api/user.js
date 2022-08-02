@@ -49,34 +49,26 @@ router.post("/signup", (req, response) => {
   });
 });
 
-router.post('/login',(req,res)=>{
-  console.log(req.body)
-  const userName= req.body.Email;
-  const Pass=req.body.Password;
+router.post("/login", (req, res) => {
+  console.log(req.body);
+  const userName = req.body.Email;
+  const Pass = req.body.Password;
 
   conn.connect().then((response) => {
-console.log("test")
+    console.log("test");
     if (response.connected) {
-      response.request().query(`Select Companies.Company_ID,Companies.User_ID,Companies.Company_Name,Companies.Limit, Users.Email,Users.First_Name,Users.Last_Name,Users.Password,Users.Role,Users.ID from dbo.USERS  
-      Inner JOIN Companies ON Users.Company_ID=Companies.Company_ID and Email='${userName}' and Password='${Pass}' `, (err, result) => {
-        if(!result){
+      response.request().query(
+        `Select Companies.Company_ID,Companies.Company_Name, Users.Email,Users.First_Name,Users.Last_Name,Users.Password,Users.Role,Users.ID from dbo.USERS  
+      Inner JOIN Companies ON Users.Company_ID=Companies.Company_ID and Email='${userName}' and Password='${Pass}' `,
+        (err, result) => {
+          if (!result) {
             res.status(400).send("Wrong Credintials");
           }
           res.status(200).json(result.recordset[0]);
-  });
+        }
+      );
     }
+  });
 });
 
-
-
-})
-
-
-
-
-
-
-
-
-
-module.exports=router;
+module.exports = router;

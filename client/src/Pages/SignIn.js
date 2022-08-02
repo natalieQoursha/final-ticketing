@@ -3,14 +3,15 @@ import { Link, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-
 const SignIn = () => {
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const data = { Email, Password };
   const history = useNavigate();
+  const [dummyState,setDummyState] = useState(null)
 
   const handleLogin = (e) => {
+    e.preventDefault()
     const data = { Email, Password };
 
     axios.post("http://localhost:5000/api/user/login", data).then((res) => {
@@ -23,7 +24,9 @@ const SignIn = () => {
     const user = JSON.parse(sessionStorage.getItem("user")) || undefined;
     if (user === undefined) {
       alert("Login Is Invalid");
+      setDummyState("NOT LOGGED")
     } else {
+      setDummyState("LOGGED")
       window.location.reload();
       alert("welcome");
       history("/Test");
