@@ -20,15 +20,25 @@ const SignIn = () => {
       }
       sessionStorage.setItem("user", JSON.stringify(res.data));
     });
+
+
     const user = JSON.parse(sessionStorage.getItem("user")) || undefined;
-    if (user === undefined) {
+
+      if (user === undefined) {
       alert("Login Is Invalid");
-    } else {
+    } 
+    else {
       alert("welcome");
       history("/Test");
       window.location.reload();
       // <Link to="/"></Link>;
     }
+
+
+     
+
+
+
   };
 
   return (

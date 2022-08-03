@@ -1,13 +1,261 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,Component } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+
 const Test = () => {
-  const [users, setUsers] = useState("");
+  
+
+  const [users, setUsers] = useState();
   const [Status, setStatus] = useState("Accepted");
   const [Ticket_ID, getTicketID] = useState("");
   const [Reply, setReply] = useState("");
   const history = useNavigate();
+  
+
+  const [toggle,setToggle]= useState(false)
+  const handleSortingByDateDES = (e) => {
+    e.preventDefault()
+    const info={
+      sortBasedOn:"Created_ON",
+    };
+
+    if(toggle){
+      axios.post("http://localhost:5000/api/ticket/sorting",info).then((res) => {
+        setUsers(res.data);
+      });
+      setToggle(!toggle)
+    }
+    else{
+      axios.post("http://localhost:5000/api/ticket/sortingASC",info).then((res) => {
+        setUsers(res.data);
+      });
+      setToggle(!toggle)
+    }
+
+  };
+
+  const handleSortingByTicketIDDES = (e) => {
+    e.preventDefault()
+    const info={
+      sortBasedOn:"Ticket_ID",
+    };
+
+    if(toggle){
+      axios.post("http://localhost:5000/api/ticket/sorting",info).then((res) => {
+        setUsers(res.data);
+      });
+      setToggle(!toggle)
+    }
+    else{
+      axios.post("http://localhost:5000/api/ticket/sortingASC",info).then((res) => {
+        setUsers(res.data);
+      });
+      setToggle(!toggle)
+    }
+  };
+
+  const handleSortingByTicketTypeDES = (e) => {
+    e.preventDefault()
+    const info={
+      sortBasedOn:"Ticket_Type",
+    };
+
+    if(toggle){
+      axios.post("http://localhost:5000/api/ticket/sorting",info).then((res) => {
+        setUsers(res.data);
+      });
+      setToggle(!toggle)
+    }
+    else{
+      axios.post("http://localhost:5000/api/ticket/sortingASC",info).then((res) => {
+        setUsers(res.data);
+      });
+      setToggle(!toggle)
+    }
+  };
+
+  const handleSortingByStatusDES = (e) => {
+    e.preventDefault()
+    const info={
+      sortBasedOn:"Status",
+    };
+
+    if(toggle){
+      axios.post("http://localhost:5000/api/ticket/sorting",info).then((res) => {
+        setUsers(res.data);
+      });
+      setToggle(!toggle)
+    }
+    else{
+      axios.post("http://localhost:5000/api/ticket/sortingASC",info).then((res) => {
+        setUsers(res.data);
+      });
+      setToggle(!toggle)
+    }
+  };
+
+  const handleSortingBySeverityDES = (e) => {
+    e.preventDefault()
+    const info={
+      sortBasedOn:"Sevirity",
+    };
+
+    if(toggle){
+      axios.post("http://localhost:5000/api/ticket/sorting",info).then((res) => {
+        setUsers(res.data);
+      });
+      setToggle(!toggle)
+    }
+    else{
+      axios.post("http://localhost:5000/api/ticket/sortingASC",info).then((res) => {
+        setUsers(res.data);
+      });
+      setToggle(!toggle)
+    }
+  };
+
+  const handleSortingByProductTypeDES= (e) => {
+    e.preventDefault()
+    const info={
+      sortBasedOn:"Product_Types",
+    };
+
+    if(toggle){
+      axios.post("http://localhost:5000/api/ticket/sorting",info).then((res) => {
+        setUsers(res.data);
+      });
+      setToggle(!toggle)
+    }
+    else{
+      axios.post("http://localhost:5000/api/ticket/sortingASC",info).then((res) => {
+        setUsers(res.data);
+      });
+      setToggle(!toggle)
+    }
+  };
+
+  const handleSortingByCompanyIDDES = (e) => {
+    e.preventDefault()
+    const info={
+      sortBasedOn:"Company_ID",
+    }
+
+    if(toggle){
+      axios.post("http://localhost:5000/api/ticket/sorting",info).then((res) => {
+        setUsers(res.data);
+      });
+      setToggle(!toggle)
+    }
+    else{
+      axios.post("http://localhost:5000/api/ticket/sortingASC",info).then((res) => {
+        setUsers(res.data);
+      });
+      setToggle(!toggle)
+    }
+  };
+
+  const handleSortingByDescriptionDES = (e) => {
+    e.preventDefault()
+    const info={
+      sortBasedOn:"Description",
+    }
+
+    if(toggle){
+      axios.post("http://localhost:5000/api/ticket/sorting",info).then((res) => {
+        setUsers(res.data);
+      });
+      setToggle(!toggle)
+    }
+    else{
+      axios.post("http://localhost:5000/api/ticket/sortingASC",info).then((res) => {
+        setUsers(res.data);
+      });
+      setToggle(!toggle)
+    }
+  };
+
+
+  const handleSortingByDateASC = (e) => {
+    e.preventDefault()
+    const info={
+      sortBasedOn:"Created_ON",
+    };
+    axios.post("http://localhost:5000/api/ticket/sortingASC",info).then((res) => {
+      setUsers(res.data);
+    });
+  };
+
+  const handleSortingByTicketIDASC = (e) => {
+    e.preventDefault()
+    const info={
+      sortBasedOn:"Ticket_ID",
+    };
+    axios.post("http://localhost:5000/api/ticket/sortingASC",info).then((res) => {
+      setUsers(res.data);
+    });
+  };
+
+  const handleSortingByTicketTypeASC = (e) => {
+    e.preventDefault()
+    const info={
+      sortBasedOn:"Ticket_Type",
+    };
+    axios.post("http://localhost:5000/api/ticket/sortingASC",info).then((res) => {
+      setUsers(res.data);
+    });
+  };
+
+  const handleSortingByStatusASC = (e) => {
+    e.preventDefault()
+    const info={
+      sortBasedOn:"Status",
+    };
+    axios.post("http://localhost:5000/api/ticket/sortingASC",info).then((res) => {
+      setUsers(res.data);
+    });
+  };
+
+  const handleSortingBySeverityASC = (e) => {
+    e.preventDefault()
+    const info={
+      sortBasedOn:"Sevirity",
+    };
+    axios.post("http://localhost:5000/api/ticket/sortingASC",info).then((res) => {
+      setUsers(res.data);
+    });
+  };
+
+  const handleSortingByProductTypeASC= (e) => {
+    e.preventDefault()
+    const info={
+      sortBasedOn:"Product_Types",
+    };
+    axios.post("http://localhost:5000/api/ticket/sortingASC",info).then((res) => {
+      setUsers(res.data);
+    });
+  };
+
+  const handleSortingByCompanyIDASC = (e) => {
+    e.preventDefault()
+    const info={
+      sortBasedOn:"Company_ID",
+    }
+    axios.post("http://localhost:5000/api/ticket/sortingASC",info).then((res) => {
+      setUsers(res.data);
+    });
+  };
+  const handleSortingByDescriptionASC = (e) => {
+    e.preventDefault()
+    const info={
+      sortBasedOn:"Description",
+    }
+    axios.post("http://localhost:5000/api/ticket/sortingASC",info).then((res) => {
+      setUsers(res.data);
+    });
+  };
+
+
 
   useEffect(() => {
     const fetchUsers = () => {
@@ -20,7 +268,7 @@ const Test = () => {
         .post("http://localhost:5000/api/ticket/view-tickets", info)
         .then((res) => {
           setUsers(res.data);
-          console.log("response is: " + res.data.Ticket_ID);
+
         });
     };
 
@@ -44,40 +292,11 @@ const Test = () => {
     //window.location.reload();
   };
 
-  return (
-    <>
-      <table>
-        <thead>
-          <tr>
-            <th>Ticket ID</th>
-            <th>Sevirity</th>
-            <th>Product Type</th>
-            <th>Ticket Type</th>
-            <th>Date Created</th>
-            <th>Status</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-
-        {users &&
-          users.map((element) => {
-            return (
-              <>
-                <tbody>
-                  <td>{element.Ticket_ID}</td>
-                  <td>{element.Sevirity}</td>
-                  <td>{element.Product_Types}</td>
-                  <td>{element.Ticket_Type}</td>
-                  <td>{element.Created_On}</td>
-                  <td>{element.Status}</td>
-                  <td>{element.Description}</td>
-                </tbody>
-              </>
-            );
-          })}
-      </table>
-      <br />
-
+  const user = JSON.parse(sessionStorage.getItem("user")) || undefined;
+  const companyID=user.Company_ID;
+  function checkCompany() {
+    if(companyID==1){
+      return         <div>
       <h3>Ticket control</h3>
       <br />
       <input
@@ -113,6 +332,50 @@ const Test = () => {
       ></input>
 
       <button onClick={changeStatus}>Update</button>
+      </div>
+    }
+  }
+
+  return (
+    <>
+      <table>
+        <thead>
+          <tr>
+            <th><button onClick={handleSortingByTicketIDDES}>Ticket ID</button></th>
+            <th><button onClick={handleSortingBySeverityDES}>Severity</button></th>
+            <th><button onClick={handleSortingByProductTypeDES}>Product Type </button></th>
+            <th><button onClick={handleSortingByTicketTypeDES}>Ticket Type</button></th>
+            <th><button  onClick={handleSortingByDateDES}  >Created ON</button></th>
+            <th><button onClick={handleSortingByStatusDES}>Status</button></th>
+            <th><button onClick={handleSortingByCompanyIDDES}>Company ID</button></th>
+            <th><button onClick={handleSortingByDescriptionDES}>Description</button></th>
+          </tr>
+        </thead>
+
+        {users &&
+          users.map((element) => {
+
+            return (
+              <>
+                <tbody>
+                  <td>{element.Ticket_ID}</td>
+                  <td>{element.Sevirity}</td>
+                  <td>{element.Product_Types}</td>
+                  <td>{element.Ticket_Type}</td>
+                  <td>{element.Created_On}</td>
+                  <td>{element.Status}</td>
+                  <td>{element.Company_ID}</td>
+                  <td>{element.Description}</td>
+                </tbody>
+              </>
+            );
+          })}
+      </table>
+      <br />
+      {checkCompany()}
+
+
+
     </>
   );
 };

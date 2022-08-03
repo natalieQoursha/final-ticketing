@@ -24,10 +24,7 @@ const SignUp = () => {
     const x = JSON.parse(localStorage.getItem("user"));
   };
 
-  function isEmail(email) {
-    var regex = "(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}";
-    return regex.test(email);
-  }
+
 
 
   return (

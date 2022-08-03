@@ -5,6 +5,7 @@ import axios from "axios";
 function Popup(props) {
   const [Ticket_Type, setTicketType] = useState("");
   const [Sevirity, setSeverity] = useState("");
+  const [productType, setProductType] = useState("");
   const [Description, setDescription] = useState("");
   const [Product_Types, setProduct] = useState();
 
@@ -31,8 +32,8 @@ function Popup(props) {
     const data = {
       Ticket_Type,
       Sevirity,
-      Product_Types,
-      Description,
+      Product_Types: productType,
+      Description: Description,
       CreatedOn: new Date(),
       Company_ID: user.Company_ID,
       User_ID: user.ID,
@@ -62,6 +63,16 @@ function Popup(props) {
           <h1>{`Welcome ${user.First_Name},${user.Company_Name}`}</h1>
           <br />
           <div className="alignment">
+            <label for="Product_Types">Product : </label>
+            <select
+            onChange={(e)=>setProductType(e.target.value)}
+              name="Product_Types"
+              id="Product_Types"
+            >
+               {Product_Types?.map(info=>{return(<option value={info.Product_Name} >{info.Product_Name}</option>)}) }
+            </select>
+          </div>
+          <div className="alignment">
             <label for="Ticket_Type">Ticket type : </label>
             <select
               value={Ticket_Type}
@@ -71,7 +82,7 @@ function Popup(props) {
             >
 
                <option value="General">General</option>
-              <option value="Software">Software</option>
+               <option value="Software">Software</option>
                <option value="Hardware">Hardware</option>
                <option value="Networks">Networks</option>  
             </select>
@@ -87,17 +98,9 @@ function Popup(props) {
               <option value="Not Important">Not Important</option>
               <option value="Important">Important</option>
               <option value="Very Important">Very Important</option>
-            </select>
+              </select>
           </div>
-          <div className="alignment">
-            <label for="Product_Types">Product : </label>
-            <select
-              name="Product_Types"
-              id="Product_Types"
-            >
-               {Product_Types?.map(info=>{return(<option value={info.Product_Name}>{info.Product_Name}</option>)}) }
-            </select>
-          </div>
+
           <br />
           <h2>Ticket Description : </h2>
           {props.children}
