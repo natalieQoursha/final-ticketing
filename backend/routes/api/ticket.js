@@ -5,6 +5,71 @@ const sql = require("mssql/msnodesqlv8");
 
 const conn = new sql.ConnectionPool(DBconf);
 
+
+router.post("/sorting", (req, response) => {
+
+  conn.connect().then((res) => {
+    const sortBy = req.body.sortBasedOn;
+    const com=req.body.companyID;
+    console.log(sortBy)
+      if (res.connected) {
+        if (com == 1) {
+          res.request().query(`SELECT * FROM dbo.Tickets ORDER BY '${sortBy}' DESC`, (err, res) => {
+            response.status(200).json(res.recordset);
+          });
+        } 
+        else if (com == 2) {
+          res
+            .request()
+            .query(`SELECT * FROM dbo.Tickets where Company_ID=2 ORDER BY '${sortBy}' DESC `, (err, res) => {
+              response.status(200).json(res.recordset);
+            });
+        } else if (com == 3) {
+          res
+            .request()
+            .query(`SELECT * FROM dbo.Tickets where Company_ID=3 ORDER BY '${sortBy}' DESC `, (err, res) => {
+              response.status(200).json(res.recordset);
+            });
+        }
+      }
+
+    
+  });
+});
+
+router.post("/sortingASC", (req, response) => {
+
+  conn.connect().then((res) => {
+    const sortBy = req.body.sortBasedOn;
+    const com=req.body.companyID;
+    console.log(sortBy)
+    if (res.connected) {
+      if (com == 1) {
+        res.request().query(`SELECT * FROM dbo.Tickets ORDER BY '${sortBy}' ASC`, (err, res) => {
+          response.status(200).json(res.recordset);
+        });
+      } 
+      else if (com == 2) {
+        res
+          .request()
+          .query(`SELECT * FROM dbo.Tickets where Company_ID=2 ORDER BY '${sortBy}' ASC `, (err, res) => {
+            response.status(200).json(res.recordset);
+          });
+      } else if (com == 3) {
+        res
+          .request()
+          .query(`SELECT * FROM dbo.Tickets where Company_ID=3 ORDER BY '${sortBy}' ASC `, (err, res) => {
+            response.status(200).json(res.recordset);
+          });
+      }
+    }
+
+  });
+});
+
+
+
+
 router.post("/view-tickets", (req, response) => {
   const CompanyID = req.body.Company_ID;
   conn.connect().then((res) => {
@@ -13,7 +78,8 @@ router.post("/view-tickets", (req, response) => {
         res.request().query("Select * from dbo.Tickets", (err, res) => {
           response.status(200).json(res.recordset);
         });
-      } else if (CompanyID == 2) {
+      } 
+      else if (CompanyID == 2) {
         res
           .request()
           .query("Select * from dbo.Tickets where Company_ID=2", (err, res) => {
@@ -52,6 +118,7 @@ router.post("/all-tickets", (req, response) => {
         .query(
           `INSERT INTO dbo.Tickets (Product_Types,Ticket_Type,Status,Sevirity,Company_ID,Created_ON, User_ID,Description) VALUES ('${PT}','${TT}','${Status}', '${severity}', '${ID}','${Created_ON}', '${userid}','${description}')`,
           (err, res) => {
+            if(err) console.log(err.response)
             response.status(200).json();
           }
         );

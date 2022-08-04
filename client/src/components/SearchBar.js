@@ -16,6 +16,7 @@ function SearchBar({ placeholder, data }) {
       setFilteredData(newFilter);
     }
   };
+  
   return (
     <div className="search">
       <div className="searchInputs"></div>
