@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "../test.css";
 
 const Test = () => {
   const [users, setUsers] = useState("");
@@ -34,15 +35,54 @@ const Test = () => {
       .post("http://localhost:5000/api/ticket/test-update", data)
       .then((res) => {
         if (res.status === 200) {
-          
         }
       });
 
-
     alert("Ticket updated successfully");
-    console.log(data);
-    //window.location.reload();
   };
+  //   function disp(){
+  // <>
+  //     {if (users.Role === "Admin" || "Employer" ) {
+  //       return(
+
+  //         <h3>Ticket control</h3>
+  //         <br />
+  //         <input
+  //           required
+  //           value={Ticket_ID}
+  //           onChange={(e) => getTicketID(e.target.value)}
+  //           type={"number"}
+  //           placeholder="Ticket ID"
+  //         ></input>
+
+  //         <select
+  //           className="Choice"
+  //           value={Status}
+  //           onChange={(e) => setStatus(e.target.value)}
+  //           name="Status"
+  //           id="Status"
+  //           placeholder="Status"
+  //         >
+  //           <option className="Accepted" value="Accepted">
+  //             Accepted
+  //           </option>
+
+  //           <option className="Rejected" value="Rejected">
+  //             Rejected
+  //           </option>
+  //         </select>
+  //         <br />
+  //         <input
+  //           value={Reply}
+  //           onChange={(e) => setReply(e.target.value)}
+  //           type={"textarea"}
+  //           placeholder="Add reply (optional)"
+  //         ></input>
+
+  //         <button>Update</button>
+  //       )}}
+  //     </>
+  //   }
 
   return (
     <>
@@ -69,7 +109,10 @@ const Test = () => {
                   <td>{element.Product_Types}</td>
                   <td>{element.Ticket_Type}</td>
                   <td>{element.Created_On}</td>
-                  <td>{element.Status}</td>
+                  <td>
+                    {element.Status}
+                    {<button>Edit</button>}
+                  </td>
                   <td>{element.Description}</td>
                 </tbody>
               </>
@@ -77,42 +120,6 @@ const Test = () => {
           })}
       </table>
       <br />
-
-      <h3>Ticket control</h3>
-      <br />
-      <input
-        required
-        value={Ticket_ID}
-        onChange={(e) => getTicketID(e.target.value)}
-        type={"number"}
-        placeholder="Ticket ID"
-      ></input>
-
-      <select
-        className="Choice"
-        value={Status}
-        onChange={(e) => setStatus(e.target.value)}
-        name="Status"
-        id="Status"
-        placeholder="Status"
-      >
-        <option className="Accepted" value="Accepted">
-          Accepted
-        </option>
-
-        <option className="Rejected" value="Rejected">
-          Rejected
-        </option>
-      </select>
-      <br />
-      <input
-        value={Reply}
-        onChange={(e) => setReply(e.target.value)}
-        type={"textarea"}
-        placeholder="Add reply (optional)"
-      ></input>
-
-      <button onClick={changeStatus}>Update</button>
     </>
   );
 };

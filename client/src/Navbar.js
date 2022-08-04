@@ -1,13 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
 const Navbar = () => {
   const history = useNavigate();
   const user = JSON.parse(sessionStorage.getItem("user")) || undefined;
   const handleLogout = (e) => {
     sessionStorage.removeItem("user");
     history("/");
-    // window.location.reload();
   };
   if (user === undefined) {
     return (
@@ -122,7 +120,7 @@ const Navbar = () => {
             >
               <button
                 style={{
-                  color: "#ffebeb",
+                  color: "black",
                   fontSize: 20,
                   borderRadius: 40,
                   background: "none",
@@ -130,7 +128,7 @@ const Navbar = () => {
                 }}
                 onClick={handleLogout}
               >
-                Logout
+                LOGOUT
               </button>
             </Link>
           </div>
@@ -201,13 +199,15 @@ const Navbar = () => {
             >
               <button
                 style={{
-                  color: "#ffebeb",
+                  color: "black",
                   fontSize: 20,
                   borderRadius: 40,
+                  background: "none",
+                  border: "none",
                 }}
                 onClick={handleLogout}
               >
-                Logout
+                LOGOUT
               </button>
             </Link>
           </div>
@@ -278,13 +278,15 @@ const Navbar = () => {
             >
               <button
                 style={{
-                  color: "#ffebeb",
+                  color: "black",
                   fontSize: 20,
                   borderRadius: 40,
+                  background: "none",
+                  border: "none",
                 }}
                 onClick={handleLogout}
               >
-                Logout
+                LOGOUT
               </button>
             </Link>
             <Link

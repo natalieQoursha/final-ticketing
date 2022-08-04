@@ -10,7 +10,7 @@ const SignIn = () => {
   const history = useNavigate();
 
   const handleLogin = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const data = { Email, Password };
 
     axios.post("http://localhost:5000/api/user/login", data).then((res) => {
@@ -25,9 +25,8 @@ const SignIn = () => {
       alert("Login Is Invalid");
     } else {
       alert("welcome");
-      history("/Test");
+      history("/");
       window.location.reload();
-      // <Link to="/"></Link>;
     }
   };
 
@@ -52,11 +51,9 @@ const SignIn = () => {
             placeholder="Password"
           ></input>
         </div>
-        <Link to="/">
-          <button onClick={handleLogin} className="submit">
-            login
-          </button>
-        </Link>
+        <button onClick={handleLogin} className="submit">
+          login
+        </button>
       </div>
     </main>
   );
