@@ -10,13 +10,30 @@ router.post("/sorting", (req, response) => {
 
   conn.connect().then((res) => {
     const sortBy = req.body.sortBasedOn;
-    const Type=req.body.type;
+    const com=req.body.companyID;
     console.log(sortBy)
-    if (res.connected) {
-        res.request().query(`SELECT * FROM dbo.Tickets ORDER BY '${sortBy}' DESC`, (err, res) => {
-          response.status(200).json(res.recordset);
-        });
-    }
+      if (res.connected) {
+        if (com == 1) {
+          res.request().query(`SELECT * FROM dbo.Tickets ORDER BY '${sortBy}' DESC`, (err, res) => {
+            response.status(200).json(res.recordset);
+          });
+        } 
+        else if (com == 2) {
+          res
+            .request()
+            .query(`SELECT * FROM dbo.Tickets where Company_ID=2 ORDER BY '${sortBy}' DESC `, (err, res) => {
+              response.status(200).json(res.recordset);
+            });
+        } else if (com == 3) {
+          res
+            .request()
+            .query(`SELECT * FROM dbo.Tickets where Company_ID=3 ORDER BY '${sortBy}' DESC `, (err, res) => {
+              response.status(200).json(res.recordset);
+            });
+        }
+      }
+
+    
   });
 });
 
@@ -24,13 +41,29 @@ router.post("/sortingASC", (req, response) => {
 
   conn.connect().then((res) => {
     const sortBy = req.body.sortBasedOn;
-    const Type=req.body.type;
+    const com=req.body.companyID;
     console.log(sortBy)
     if (res.connected) {
+      if (com == 1) {
         res.request().query(`SELECT * FROM dbo.Tickets ORDER BY '${sortBy}' ASC`, (err, res) => {
           response.status(200).json(res.recordset);
         });
+      } 
+      else if (com == 2) {
+        res
+          .request()
+          .query(`SELECT * FROM dbo.Tickets where Company_ID=2 ORDER BY '${sortBy}' ASC `, (err, res) => {
+            response.status(200).json(res.recordset);
+          });
+      } else if (com == 3) {
+        res
+          .request()
+          .query(`SELECT * FROM dbo.Tickets where Company_ID=3 ORDER BY '${sortBy}' ASC `, (err, res) => {
+            response.status(200).json(res.recordset);
+          });
+      }
     }
+
   });
 });
 

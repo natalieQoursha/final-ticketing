@@ -11,6 +11,8 @@ const Test = () => {
   const [Ticket_ID, getTicketID] = useState("");
   const [Reply, setReply] = useState("");
   const history = useNavigate();
+  const user = JSON.parse(sessionStorage.getItem("user")) || undefined;
+  const companyID=user.Company_ID;
   
 
   const [toggle,setToggle]= useState(false)
@@ -18,6 +20,7 @@ const Test = () => {
     e.preventDefault()
     const info={
       sortBasedOn:"Created_ON",
+      companyID,
     };
 
     if(toggle){
@@ -39,6 +42,7 @@ const Test = () => {
     e.preventDefault()
     const info={
       sortBasedOn:"Ticket_ID",
+      companyID,
     };
 
     if(toggle){
@@ -59,6 +63,7 @@ const Test = () => {
     e.preventDefault()
     const info={
       sortBasedOn:"Ticket_Type",
+      companyID,
     };
 
     if(toggle){
@@ -79,6 +84,7 @@ const Test = () => {
     e.preventDefault()
     const info={
       sortBasedOn:"Status",
+      companyID,
     };
 
     if(toggle){
@@ -99,6 +105,7 @@ const Test = () => {
     e.preventDefault()
     const info={
       sortBasedOn:"Sevirity",
+      companyID,
     };
 
     if(toggle){
@@ -119,6 +126,7 @@ const Test = () => {
     e.preventDefault()
     const info={
       sortBasedOn:"Product_Types",
+      companyID,
     };
 
     if(toggle){
@@ -139,6 +147,7 @@ const Test = () => {
     e.preventDefault()
     const info={
       sortBasedOn:"Company_ID",
+      companyID,
     }
 
     if(toggle){
@@ -159,6 +168,7 @@ const Test = () => {
     e.preventDefault()
     const info={
       sortBasedOn:"Description",
+      companyID,
     }
 
     if(toggle){
@@ -176,85 +186,7 @@ const Test = () => {
   };
 
 
-  const handleSortingByDateASC = (e) => {
-    e.preventDefault()
-    const info={
-      sortBasedOn:"Created_ON",
-    };
-    axios.post("http://localhost:5000/api/ticket/sortingASC",info).then((res) => {
-      setUsers(res.data);
-    });
-  };
-
-  const handleSortingByTicketIDASC = (e) => {
-    e.preventDefault()
-    const info={
-      sortBasedOn:"Ticket_ID",
-    };
-    axios.post("http://localhost:5000/api/ticket/sortingASC",info).then((res) => {
-      setUsers(res.data);
-    });
-  };
-
-  const handleSortingByTicketTypeASC = (e) => {
-    e.preventDefault()
-    const info={
-      sortBasedOn:"Ticket_Type",
-    };
-    axios.post("http://localhost:5000/api/ticket/sortingASC",info).then((res) => {
-      setUsers(res.data);
-    });
-  };
-
-  const handleSortingByStatusASC = (e) => {
-    e.preventDefault()
-    const info={
-      sortBasedOn:"Status",
-    };
-    axios.post("http://localhost:5000/api/ticket/sortingASC",info).then((res) => {
-      setUsers(res.data);
-    });
-  };
-
-  const handleSortingBySeverityASC = (e) => {
-    e.preventDefault()
-    const info={
-      sortBasedOn:"Sevirity",
-    };
-    axios.post("http://localhost:5000/api/ticket/sortingASC",info).then((res) => {
-      setUsers(res.data);
-    });
-  };
-
-  const handleSortingByProductTypeASC= (e) => {
-    e.preventDefault()
-    const info={
-      sortBasedOn:"Product_Types",
-    };
-    axios.post("http://localhost:5000/api/ticket/sortingASC",info).then((res) => {
-      setUsers(res.data);
-    });
-  };
-
-  const handleSortingByCompanyIDASC = (e) => {
-    e.preventDefault()
-    const info={
-      sortBasedOn:"Company_ID",
-    }
-    axios.post("http://localhost:5000/api/ticket/sortingASC",info).then((res) => {
-      setUsers(res.data);
-    });
-  };
-  const handleSortingByDescriptionASC = (e) => {
-    e.preventDefault()
-    const info={
-      sortBasedOn:"Description",
-    }
-    axios.post("http://localhost:5000/api/ticket/sortingASC",info).then((res) => {
-      setUsers(res.data);
-    });
-  };
-
+  
 
 
   useEffect(() => {
@@ -292,8 +224,7 @@ const Test = () => {
     //window.location.reload();
   };
 
-  const user = JSON.parse(sessionStorage.getItem("user")) || undefined;
-  const companyID=user.Company_ID;
+
   function checkCompany() {
     if(companyID==1){
       return         <div>

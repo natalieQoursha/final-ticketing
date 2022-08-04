@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const SignIn = () => {
+
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const data = { Email, Password };
@@ -12,15 +13,18 @@ const SignIn = () => {
   const handleLogin = (e) => {
     e.preventDefault()
     const data = { Email, Password };
+    console.log(data)
+    
 
     axios.post("http://localhost:5000/api/user/login", data).then((res) => {
       if (res.status === 400) {
         alert("Wrong Credintials");
         return;
       }
-      sessionStorage.setItem("user", JSON.stringify(res.data));
+      else{
+        sessionStorage.setItem("user", JSON.stringify(res.data));
+      }
     });
-
 
     const user = JSON.parse(sessionStorage.getItem("user")) || undefined;
 
