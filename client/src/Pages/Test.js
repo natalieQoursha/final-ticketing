@@ -1,16 +1,7 @@
 import React, { useState, useEffect, Component } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "../test.css";
-import { useRef } from "react";
 
-export default function Test(props) {
-  const query = useRef();
-  const handleSearch = (e) => {
-    e.preventDefault();
-    const queryVal = query.current.value;
-    props.fetchMovies(queryVal.trim());
-  };
 
   const state = {
     movies: [],
@@ -239,8 +230,7 @@ export default function Test(props) {
         .post("http://localhost:5000/api/ticket/view-tickets", info)
         .then((res) => {
           setUsers(res.data);
-          const dataa = JSON.stringify(res.data);
-          console.log("dataa" + dataa);
+
         });
     };
 
@@ -306,39 +296,19 @@ export default function Test(props) {
 
   return (
     <>
-      <table>
+    
+    <div className="viewTable" >
+    <table>
         <thead>
           <tr>
-            <th>
-              <button onClick={handleSortingByTicketIDDES}>Ticket ID</button>
-            </th>
-            <th>
-              <button onClick={handleSortingBySeverityDES}>Severity</button>
-            </th>
-            <th>
-              <button onClick={handleSortingByProductTypeDES}>
-                Product Type{" "}
-              </button>
-            </th>
-            <th>
-              <button onClick={handleSortingByTicketTypeDES}>
-                Ticket Type
-              </button>
-            </th>
-            <th>
-              <button onClick={handleSortingByDateDES}>Created ON</button>
-            </th>
-            <th>
-              <button onClick={handleSortingByStatusDES}>Status</button>
-            </th>
-            <th>
-              <button onClick={handleSortingByCompanyIDDES}>Company ID</button>
-            </th>
-            <th>
-              <button onClick={handleSortingByDescriptionDES}>
-                Description
-              </button>
-            </th>
+            <th><button onClick={handleSortingByTicketIDDES}>Ticket ID</button></th>
+            <th><button onClick={handleSortingBySeverityDES}>Severity</button></th>
+            <th><button onClick={handleSortingByProductTypeDES}>Product Type </button></th>
+            <th><button onClick={handleSortingByTicketTypeDES}>Ticket Type</button></th>
+            <th><button  onClick={handleSortingByDateDES}  >Created ON</button></th>
+            <th><button onClick={handleSortingByStatusDES}>Status</button></th>
+            <th><button onClick={handleSortingByCompanyIDDES}>Company ID</button></th>
+            <th><button onClick={handleSortingByDescriptionDES}>Description</button></th>
           </tr>
         </thead>
 
@@ -360,41 +330,13 @@ export default function Test(props) {
             );
           })}
       </table>
+    </div>
+      
       <br />
       {checkCompany()}
-      <form onSubmit={handleSearch} className="search-bar">
-        <textField
-          className="search-bar"
-          autoFocus={true}
-          inputRef={query}
-          id="outlined-full-width"
-          label="Search sevirity"
-          required="true"
-          fullwidth
-          margin="normal"
-          InputLabelProps={{ shrink: true }}
-          inputProps={{
-            startAdornment: (
-              <inputAdornment position="start">
-                <searchIcon />
-              </inputAdornment>
-            ),
-            endAdornment: (
-              <inputAdornment position="end">
-                <button className="go" variant="contained" type="submit">
-                  Go
-                </button>
-              </inputAdornment>
-            ),
-            classes: {
-              root: classes.root,
-              focused: classes.focused,
-              notchedOutline: classes.notchedOutline,
-            },
-          }}
-          variant="outlined"
-        ></textField>
-      </form>
+
+
+
     </>
   );
 }
