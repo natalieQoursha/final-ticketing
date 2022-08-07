@@ -312,7 +312,7 @@ const Test = () => {
       
       <br />
       {checkCompany()}
-      <button  onClick={handleSearch}>Search</button>
+
       
 
 
