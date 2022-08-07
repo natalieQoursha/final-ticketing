@@ -18,7 +18,7 @@ const Navbar = () => {
             borderRadius: 40,
           }}
         >
-          <h1>STY</h1>
+          <h1>SYT</h1>
         </Link>
         <div class="nav__link">
           <Link
@@ -73,8 +73,8 @@ const Navbar = () => {
           <div class="nav__link">
             <h
               style={{
-                color: "red",
-                fontSize: 15,
+                color: "#ffebeb",
+                fontSize: 20,
               }}
             >
               {user.First_Name}
@@ -120,7 +120,7 @@ const Navbar = () => {
             >
               <button
                 style={{
-                  color: "black",
+                  color: "#ffebeb",
                   fontSize: 20,
                   borderRadius: 40,
                   background: "none",
@@ -152,8 +152,8 @@ const Navbar = () => {
           <div class="nav__link">
             <h
               style={{
-                color: "red",
-                fontSize: 15,
+                color: "#ffebeb",
+                fontSize: 20,
               }}
             >
               {user.First_Name}
@@ -199,9 +199,11 @@ const Navbar = () => {
             >
               <button
                 style={{
-                  color: "black",
+                  color: "#ffebeb",
                   fontSize: 20,
                   borderRadius: 40,
+                  background: "none",
+                  border: "none",
                 }}
                 onClick={handleLogout}
               >
@@ -229,7 +231,6 @@ const Navbar = () => {
           <div class="nav__link">
             <h
               style={{
-
                 color: "#ffebeb",
                 fontSize: 20,
               }}
@@ -245,6 +246,16 @@ const Navbar = () => {
               }}
             >
               Create ticket
+            </Link>
+            <Link
+              to="/test"
+              style={{
+                color: "#ffebeb",
+                fontSize: 20,
+                borderRadius: 40,
+              }}
+            >
+              view tickets
             </Link>
             <a
               href="https://www.estartasolutions.com/Pages/About.aspx"
@@ -277,24 +288,15 @@ const Navbar = () => {
             >
               <button
                 style={{
-                  color: "black",
+                  color: "#ffebeb",
                   fontSize: 20,
-                  borderRadius: 40,
+                  border: "none",
+                  background: "none",
                 }}
                 onClick={handleLogout}
               >
                 LOGOUT
               </button>
-            </Link>
-            <Link
-              to="/test"
-              style={{
-                color: "#ffebeb",
-                fontSize: 20,
-                borderRadius: 40,
-              }}
-            >
-              view tickets
             </Link>
           </div>
         </div>

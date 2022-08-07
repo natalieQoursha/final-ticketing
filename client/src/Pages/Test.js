@@ -2,277 +2,284 @@ import React, { useState, useEffect, Component } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const state = {
-  movies: [],
-  startIndex: 0,
-  progress: 0,
-  startIndex: 0,
-};
-const fetchMovies = (query) => {
-  fetch("http://google.com")
-    .then((res) => res, JSON())
-    .then((data) => {
-      this.setState({ movies: data.Search, progess: 0, startIndex: 0 });
-    });
-};
-const [users, setUsers] = useState();
-const [Status, setStatus] = useState("Accepted");
-const [Ticket_ID, getTicketID] = useState("");
-const [Reply, setReply] = useState("");
-const [data = {}, setData] = useState();
-const history = useNavigate();
-const user = JSON.parse(sessionStorage.getItem("user")) || undefined;
-const companyID = user.Company_ID;
-const classes = "";
+const Test = () => {
+  const [users, setUsers] = useState();
+  const [Status, setStatus] = useState("Accepted");
+  const [Ticket_ID, getTicketID] = useState("");
+  const [Reply, setReply] = useState("");
+  const history = useNavigate();
+  const user = JSON.parse(sessionStorage.getItem("user")) || undefined;
+  const companyID = user.Company_ID;
 
-const [toggle, setToggle] = useState(false);
-const handleSortingByDateDES = (e) => {
-  e.preventDefault();
-  const info = {
-    sortBasedOn: "Created_ON",
-    companyID,
-  };
-
-  if (toggle) {
-    axios.post("http://localhost:5000/api/ticket/sorting", info).then((res) => {
-      setUsers(res.data);
-    });
-    setToggle(!toggle);
-  } else {
-    axios
-      .post("http://localhost:5000/api/ticket/sortingASC", info)
-      .then((res) => {
-        setUsers(res.data);
-      });
-    setToggle(!toggle);
-  }
-};
-
-const handleSortingByTicketIDDES = (e) => {
-  e.preventDefault();
-  const info = {
-    sortBasedOn: "Ticket_ID",
-    companyID,
-  };
-
-  if (toggle) {
-    axios.post("http://localhost:5000/api/ticket/sorting", info).then((res) => {
-      setUsers(res.data);
-    });
-    setToggle(!toggle);
-  } else {
-    axios
-      .post("http://localhost:5000/api/ticket/sortingASC", info)
-      .then((res) => {
-        setUsers(res.data);
-      });
-    setToggle(!toggle);
-  }
-};
-
-const handleSortingByTicketTypeDES = (e) => {
-  e.preventDefault();
-  const info = {
-    sortBasedOn: "Ticket_Type",
-    companyID,
-  };
-
-  if (toggle) {
-    axios.post("http://localhost:5000/api/ticket/sorting", info).then((res) => {
-      setUsers(res.data);
-    });
-    setToggle(!toggle);
-  } else {
-    axios
-      .post("http://localhost:5000/api/ticket/sortingASC", info)
-      .then((res) => {
-        setUsers(res.data);
-      });
-    setToggle(!toggle);
-  }
-};
-
-const handleSortingByStatusDES = (e) => {
-  e.preventDefault();
-  const info = {
-    sortBasedOn: "Status",
-    companyID,
-  };
-
-  if (toggle) {
-    axios.post("http://localhost:5000/api/ticket/sorting", info).then((res) => {
-      setUsers(res.data);
-    });
-    setToggle(!toggle);
-  } else {
-    axios
-      .post("http://localhost:5000/api/ticket/sortingASC", info)
-      .then((res) => {
-        setUsers(res.data);
-      });
-    setToggle(!toggle);
-  }
-};
-
-const handleSortingBySeverityDES = (e) => {
-  e.preventDefault();
-  const info = {
-    sortBasedOn: "Sevirity",
-    companyID,
-  };
-
-  if (toggle) {
-    axios.post("http://localhost:5000/api/ticket/sorting", info).then((res) => {
-      setUsers(res.data);
-    });
-    setToggle(!toggle);
-  } else {
-    axios
-      .post("http://localhost:5000/api/ticket/sortingASC", info)
-      .then((res) => {
-        setUsers(res.data);
-      });
-    setToggle(!toggle);
-  }
-};
-
-const handleSortingByProductTypeDES = (e) => {
-  e.preventDefault();
-  const info = {
-    sortBasedOn: "Product_Types",
-    companyID,
-  };
-
-  if (toggle) {
-    axios.post("http://localhost:5000/api/ticket/sorting", info).then((res) => {
-      setUsers(res.data);
-    });
-    setToggle(!toggle);
-  } else {
-    axios
-      .post("http://localhost:5000/api/ticket/sortingASC", info)
-      .then((res) => {
-        setUsers(res.data);
-      });
-    setToggle(!toggle);
-  }
-};
-
-const handleSortingByCompanyIDDES = (e) => {
-  e.preventDefault();
-  const info = {
-    sortBasedOn: "Company_ID",
-    companyID,
-  };
-
-  if (toggle) {
-    axios.post("http://localhost:5000/api/ticket/sorting", info).then((res) => {
-      setUsers(res.data);
-    });
-    setToggle(!toggle);
-  } else {
-    axios
-      .post("http://localhost:5000/api/ticket/sortingASC", info)
-      .then((res) => {
-        setUsers(res.data);
-      });
-    setToggle(!toggle);
-  }
-};
-
-const handleSortingByDescriptionDES = (e) => {
-  e.preventDefault();
-  const info = {
-    sortBasedOn: "Description",
-    companyID,
-  };
-
-  if (toggle) {
-    axios.post("http://localhost:5000/api/ticket/sorting", info).then((res) => {
-      setUsers(res.data);
-    });
-    setToggle(!toggle);
-  } else {
-    axios
-      .post("http://localhost:5000/api/ticket/sortingASC", info)
-      .then((res) => {
-        setUsers(res.data);
-      });
-    setToggle(!toggle);
-  }
-};
-
-useEffect(() => {
-  const fetchUsers = () => {
-    const enduser = JSON.parse(sessionStorage.getItem("user")) || undefined;
+  const [toggle, setToggle] = useState(false);
+  const handleSortingByDateDES = (e) => {
+    e.preventDefault();
     const info = {
-      Company_ID: enduser.Company_ID,
+      sortBasedOn: "Created_ON",
+      companyID,
     };
 
-    axios
-      .post("http://localhost:5000/api/ticket/view-tickets", info)
-      .then((res) => {
-        setUsers(res.data);
-      });
+    if (toggle) {
+      axios
+        .post("http://localhost:5000/api/ticket/sorting", info)
+        .then((res) => {
+          setUsers(res.data);
+        });
+      setToggle(!toggle);
+    } else {
+      axios
+        .post("http://localhost:5000/api/ticket/sortingASC", info)
+        .then((res) => {
+          setUsers(res.data);
+        });
+      setToggle(!toggle);
+    }
   };
 
-  fetchUsers();
-}, []);
+  const handleSortingByTicketIDDES = (e) => {
+    e.preventDefault();
+    const info = {
+      sortBasedOn: "Ticket_ID",
+      companyID,
+    };
 
-const changeStatus = (e) => {
-  const data = { Status, Ticket_ID, Reply };
+    if (toggle) {
+      axios
+        .post("http://localhost:5000/api/ticket/sorting", info)
+        .then((res) => {
+          setUsers(res.data);
+        });
+      setToggle(!toggle);
+    } else {
+      axios
+        .post("http://localhost:5000/api/ticket/sortingASC", info)
+        .then((res) => {
+          setUsers(res.data);
+        });
+      setToggle(!toggle);
+    }
+  };
 
-  axios
-    .post("http://localhost:5000/api/ticket/test-update", data)
-    .then((res) => {
-      if (res.status === 200) {
-      }
-    });
+  const handleSortingByTicketTypeDES = (e) => {
+    e.preventDefault();
+    const info = {
+      sortBasedOn: "Ticket_Type",
+      companyID,
+    };
 
-  alert("Ticket updated successfully");
-};
+    if (toggle) {
+      axios
+        .post("http://localhost:5000/api/ticket/sorting", info)
+        .then((res) => {
+          setUsers(res.data);
+        });
+      setToggle(!toggle);
+    } else {
+      axios
+        .post("http://localhost:5000/api/ticket/sortingASC", info)
+        .then((res) => {
+          setUsers(res.data);
+        });
+      setToggle(!toggle);
+    }
+  };
 
-function checkCompany() {
-  if (companyID == 1) {
-    return (
-      <div>
-        <h3>Ticket control</h3>
-        <br />
-        <input
-          required
-          value={Ticket_ID}
-          onChange={(e) => getTicketID(e.target.value)}
-          type={"number"}
-          placeholder="Ticket ID"
-        ></input>
+  const handleSortingByStatusDES = (e) => {
+    e.preventDefault();
+    const info = {
+      sortBasedOn: "Status",
+      companyID,
+    };
 
-        <select
-          className="Choice"
-          value={Status}
-          onChange={(e) => setStatus(e.target.value)}
-          name="Status"
-          id="Status"
-          placeholder="Status"
-        >
-          <option className="Accepted" value="Accepted">
-            Accepted
-          </option>
+    if (toggle) {
+      axios
+        .post("http://localhost:5000/api/ticket/sorting", info)
+        .then((res) => {
+          setUsers(res.data);
+        });
+      setToggle(!toggle);
+    } else {
+      axios
+        .post("http://localhost:5000/api/ticket/sortingASC", info)
+        .then((res) => {
+          setUsers(res.data);
+        });
+      setToggle(!toggle);
+    }
+  };
 
-          <option className="Rejected" value="Rejected">
-            Rejected
-          </option>
-        </select>
-        <br />
-        <input
-          value={Reply}
-          onChange={(e) => setReply(e.target.value)}
-          type={"textarea"}
-          placeholder="Add reply (optional)"
-        ></input>
+  const handleSortingBySeverityDES = (e) => {
+    e.preventDefault();
+    const info = {
+      sortBasedOn: "Sevirity",
+      companyID,
+    };
 
-        <button onClick={changeStatus}>Update</button>
-      </div>
-    );
+    if (toggle) {
+      axios
+        .post("http://localhost:5000/api/ticket/sorting", info)
+        .then((res) => {
+          setUsers(res.data);
+        });
+      setToggle(!toggle);
+    } else {
+      axios
+        .post("http://localhost:5000/api/ticket/sortingASC", info)
+        .then((res) => {
+          setUsers(res.data);
+        });
+      setToggle(!toggle);
+    }
+  };
+
+  const handleSortingByProductTypeDES = (e) => {
+    e.preventDefault();
+    const info = {
+      sortBasedOn: "Product_Types",
+      companyID,
+    };
+
+    if (toggle) {
+      axios
+        .post("http://localhost:5000/api/ticket/sorting", info)
+        .then((res) => {
+          setUsers(res.data);
+        });
+      setToggle(!toggle);
+    } else {
+      axios
+        .post("http://localhost:5000/api/ticket/sortingASC", info)
+        .then((res) => {
+          setUsers(res.data);
+        });
+      setToggle(!toggle);
+    }
+  };
+
+  const handleSortingByCompanyIDDES = (e) => {
+    e.preventDefault();
+    const info = {
+      sortBasedOn: "Company_ID",
+      companyID,
+    };
+
+    if (toggle) {
+      axios
+        .post("http://localhost:5000/api/ticket/sorting", info)
+        .then((res) => {
+          setUsers(res.data);
+        });
+      setToggle(!toggle);
+    } else {
+      axios
+        .post("http://localhost:5000/api/ticket/sortingASC", info)
+        .then((res) => {
+          setUsers(res.data);
+        });
+      setToggle(!toggle);
+    }
+  };
+
+  const handleSortingByDescriptionDES = (e) => {
+    e.preventDefault();
+    const info = {
+      sortBasedOn: "Description",
+      companyID,
+    };
+
+    if (toggle) {
+      axios
+        .post("http://localhost:5000/api/ticket/sorting", info)
+        .then((res) => {
+          setUsers(res.data);
+        });
+      setToggle(!toggle);
+    } else {
+      axios
+        .post("http://localhost:5000/api/ticket/sortingASC", info)
+        .then((res) => {
+          setUsers(res.data);
+        });
+      setToggle(!toggle);
+    }
+  };
+
+  useEffect(() => {
+    const fetchUsers = () => {
+      const enduser = JSON.parse(sessionStorage.getItem("user")) || undefined;
+      const info = {
+        Company_ID: enduser.Company_ID,
+      };
+
+      axios
+        .post("http://localhost:5000/api/ticket/view-tickets", info)
+        .then((res) => {
+          setUsers(res.data);
+          // const dataa = JSON.stringify(res.data);
+          // console.log("dataa" + dataa);
+        });
+    };
+
+    fetchUsers();
+  }, []);
+
+  const changeStatus = (e) => {
+    const data = { Status, Ticket_ID, Reply };
+
+    axios
+      .post("http://localhost:5000/api/ticket/test-update", data)
+      .then((res) => {
+        if (res.status === 200) {
+        }
+      });
+
+    alert("Ticket updated successfully");
+    console.log(data);
+    //window.location.reload();
+  };
+
+  function checkCompany() {
+    if (companyID == 1) {
+      return (
+        <div>
+          <h3>Ticket control</h3>
+          <br />
+          <input
+            required
+            value={Ticket_ID}
+            onChange={(e) => getTicketID(e.target.value)}
+            type={"number"}
+            placeholder="Ticket ID"
+          ></input>
+
+          <select
+            className="Choice"
+            value={Status}
+            onChange={(e) => setStatus(e.target.value)}
+            name="Status"
+            id="Status"
+            placeholder="Status"
+          >
+            <option className="Accepted" value="Accepted">
+              Accepted
+            </option>
+
+            <option className="Rejected" value="Rejected">
+              Rejected
+            </option>
+          </select>
+          <br />
+          <input
+            value={Reply}
+            onChange={(e) => setReply(e.target.value)}
+            type={"textarea"}
+            placeholder="Add reply (optional)"
+          ></input>
+
+          <button onClick={changeStatus}>Update</button>
+        </div>
+      );
+    }
   }
 
   return (
@@ -282,34 +289,66 @@ function checkCompany() {
           <thead>
             <tr>
               <th>
-                <button onClick={handleSortingByTicketIDDES}>Ticket ID</button>
+                <button
+                  className="ticketingButton"
+                  onClick={handleSortingByTicketIDDES}
+                >
+                  Ticket ID
+                </button>
               </th>
               <th>
-                <button onClick={handleSortingBySeverityDES}>Severity</button>
+                <button
+                  className="ticketingButton"
+                  onClick={handleSortingBySeverityDES}
+                >
+                  Severity
+                </button>
               </th>
               <th>
-                <button onClick={handleSortingByProductTypeDES}>
+                <button
+                  className="ticketingButton"
+                  onClick={handleSortingByProductTypeDES}
+                >
                   Product Type{" "}
                 </button>
               </th>
               <th>
-                <button onClick={handleSortingByTicketTypeDES}>
+                <button
+                  className="ticketingButton"
+                  onClick={handleSortingByTicketTypeDES}
+                >
                   Ticket Type
                 </button>
               </th>
               <th>
-                <button onClick={handleSortingByDateDES}>Created ON</button>
+                <button
+                  className="ticketingButton"
+                  onClick={handleSortingByDateDES}
+                >
+                  Created ON
+                </button>
               </th>
               <th>
-                <button onClick={handleSortingByStatusDES}>Status</button>
+                <button
+                  className="ticketingButton"
+                  onClick={handleSortingByStatusDES}
+                >
+                  Status
+                </button>
               </th>
               <th>
-                <button onClick={handleSortingByCompanyIDDES}>
+                <button
+                  className="ticketingButton"
+                  onClick={handleSortingByCompanyIDDES}
+                >
                   Company ID
                 </button>
               </th>
               <th>
-                <button onClick={handleSortingByDescriptionDES}>
+                <button
+                  className="ticketingButton"
+                  onClick={handleSortingByDescriptionDES}
+                >
                   Description
                 </button>
               </th>
@@ -340,4 +379,6 @@ function checkCompany() {
       {checkCompany()}
     </>
   );
-}
+};
+
+export default Test;
