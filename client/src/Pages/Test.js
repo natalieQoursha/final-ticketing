@@ -352,6 +352,14 @@ const Test = () => {
                   Description
                 </button>
               </th>
+              <th>
+                <button
+                  className="ticketingButton"
+                  onClick={handleSortingByDescriptionDES}
+                >
+                  Reply
+                </button>
+              </th>
             </tr>
           </thead>
 
@@ -368,6 +376,7 @@ const Test = () => {
                     <td>{element.Status}</td>
                     <td>{element.Company_ID}</td>
                     <td>{element.Description}</td>
+                    <td>{element.Reply}</td>
                   </tbody>
                 </>
               );
