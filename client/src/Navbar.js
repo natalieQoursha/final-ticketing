@@ -75,7 +75,7 @@ const Navbar = () => {
           <div class="nav__link">
             <h
               style={{
-                color: "red",
+                color: "white",
                 fontSize: 15,
               }}
             >
@@ -154,7 +154,7 @@ const Navbar = () => {
           <div class="nav__link">
             <h
               style={{
-                color: "red",
+                color: "white",
                 fontSize: 15,
               }}
             >
@@ -279,18 +279,7 @@ const Navbar = () => {
                 borderRadius: 40,
               }}
             >
-              <button
-                style={{
-                  color: "#ffebeb",
-                  fontSize: 20,
-                  borderRadius: 40,
-                  background:"none",
-                  border: "none"
-                }}
-                onClick={handleLogout}
-              >
-                Logout
-              </button>
+
             </Link>
             <Link
               to="/test"
@@ -302,6 +291,18 @@ const Navbar = () => {
             >
               view tickets
             </Link>
+            <button
+                style={{
+                  color: "#ffebeb",
+                  fontSize: 20,
+                  borderRadius: 40,
+                  background:"none",
+                  border: "none"
+                }}
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
           </div>
         </div>
       );

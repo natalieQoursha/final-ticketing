@@ -11,6 +11,7 @@ const Test = () => {
   const history = useNavigate();
   const user = JSON.parse(sessionStorage.getItem("user")) || undefined;
   const companyID=user.Company_ID;
+  const role=user.Role;
   
 
   const [toggle,setToggle]= useState(false)
@@ -228,7 +229,7 @@ const Test = () => {
 
 
   function checkCompany() {
-    if(companyID==1){
+    if(companyID==1 && role=="Admin"){
       return         <div>
       <h3>Ticket control</h3>
       <br />
