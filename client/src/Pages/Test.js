@@ -1,7 +1,7 @@
 import React, { useState, useEffect,Component } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import SearchBar from "../components/SearchBar";
 
 const Test = () => {
   
@@ -200,6 +200,8 @@ const Test = () => {
         .post("http://localhost:5000/api/ticket/view-tickets", info)
         .then((res) => {
           setUsers(res.data);
+          // const dataa = JSON.stringify(res.data);
+          // console.log("dataa" + dataa);
 
         });
     };
@@ -269,17 +271,19 @@ const Test = () => {
 
   return (
     <>
-      <table>
+    
+    <div className="viewTable" >
+    <table>
         <thead>
           <tr>
-            <th><button onClick={handleSortingByTicketIDDES}>Ticket ID</button></th>
-            <th><button onClick={handleSortingBySeverityDES}>Severity</button></th>
-            <th><button onClick={handleSortingByProductTypeDES}>Product Type </button></th>
-            <th><button onClick={handleSortingByTicketTypeDES}>Ticket Type</button></th>
-            <th><button  onClick={handleSortingByDateDES}  >Created ON</button></th>
-            <th><button onClick={handleSortingByStatusDES}>Status</button></th>
-            <th><button onClick={handleSortingByCompanyIDDES}>Company ID</button></th>
-            <th><button onClick={handleSortingByDescriptionDES}>Description</button></th>
+            <th><button className="ticketingButton" onClick={handleSortingByTicketIDDES}>Ticket ID</button></th>
+            <th><button className="ticketingButton" onClick={handleSortingBySeverityDES}>Severity</button></th>
+            <th><button className="ticketingButton" onClick={handleSortingByProductTypeDES}>Product Type </button></th>
+            <th><button className="ticketingButton" onClick={handleSortingByTicketTypeDES}>Ticket Type</button></th>
+            <th><button  className="ticketingButton" onClick={handleSortingByDateDES}  >Created ON</button></th>
+            <th><button className="ticketingButton" onClick={handleSortingByStatusDES}>Status</button></th>
+            <th><button className="ticketingButton" onClick={handleSortingByCompanyIDDES}>Company ID</button></th>
+            <th><button className="ticketingButton" onClick={handleSortingByDescriptionDES}>Description</button></th>
           </tr>
         </thead>
 
@@ -302,8 +306,11 @@ const Test = () => {
             );
           })}
       </table>
+    </div>
+      
       <br />
       {checkCompany()}
+      <SearchBar/>
 
 
 

@@ -20,7 +20,7 @@ function SearchBar({ placeholder, data }) {
   return (
     <div className="search">
       <div className="searchInputs"></div>
-      <input type="text" placeholder={placeholder} onChange={handleFilter} />
+      <input type="text" placeholder={"search"} onChange={handleFilter} />
       <span>
         <FaSearch />
       </span>

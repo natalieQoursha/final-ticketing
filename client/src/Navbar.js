@@ -20,7 +20,7 @@ const Navbar = () => {
             borderRadius: 40,
           }}
         >
-          <h1>Ticketing</h1>
+          <h1>STY</h1>
         </Link>
         <div class="nav__link">
           <Link
@@ -69,7 +69,7 @@ const Navbar = () => {
               borderRadius: 40,
             }}
           >
-            <h1>Ticketing</h1>
+            <h1>SYT</h1>
           </Link>
 
           <div class="nav__link">
@@ -148,7 +148,7 @@ const Navbar = () => {
               borderRadius: 40,
             }}
           >
-            <h1>Ticketing</h1>
+            <h1>SYT</h1>
           </Link>
 
           <div class="nav__link">
@@ -204,6 +204,8 @@ const Navbar = () => {
                   color: "#ffebeb",
                   fontSize: 20,
                   borderRadius: 40,
+                  background: "none",
+                  border: "none"
                 }}
                 onClick={handleLogout}
               >
@@ -225,12 +227,13 @@ const Navbar = () => {
               borderRadius: 40,
             }}
           >
-            <h1>Ticketing</h1>
+            <h1>SYT</h1>
           </Link>
 
           <div class="nav__link">
             <h
               style={{
+
                 color: "#ffebeb",
                 fontSize: 20,
               }}
@@ -281,6 +284,8 @@ const Navbar = () => {
                   color: "#ffebeb",
                   fontSize: 20,
                   borderRadius: 40,
+                  background:"none",
+                  border: "none"
                 }}
                 onClick={handleLogout}
               >
