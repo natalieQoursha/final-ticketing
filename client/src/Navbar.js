@@ -1,13 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
 const Navbar = () => {
   const history = useNavigate();
   const user = JSON.parse(sessionStorage.getItem("user")) || undefined;
   const handleLogout = (e) => {
     sessionStorage.removeItem("user");
     history("/");
-    // window.location.reload();
   };
   if (user === undefined) {
     return (
@@ -20,7 +18,7 @@ const Navbar = () => {
             borderRadius: 40,
           }}
         >
-          <h1>STY</h1>
+          <h1>SYT</h1>
         </Link>
         <div class="nav__link">
           <Link
@@ -75,8 +73,8 @@ const Navbar = () => {
           <div class="nav__link">
             <h
               style={{
-                color: "white",
-                fontSize: 15,
+                color: "#ffebeb",
+                fontSize: 20,
               }}
             >
               {user.First_Name}
@@ -130,7 +128,7 @@ const Navbar = () => {
                 }}
                 onClick={handleLogout}
               >
-                Logout
+                LOGOUT
               </button>
             </Link>
           </div>
@@ -154,8 +152,8 @@ const Navbar = () => {
           <div class="nav__link">
             <h
               style={{
-                color: "white",
-                fontSize: 15,
+                color: "#ffebeb",
+                fontSize: 20,
               }}
             >
               {user.First_Name}
@@ -205,11 +203,11 @@ const Navbar = () => {
                   fontSize: 20,
                   borderRadius: 40,
                   background: "none",
-                  border: "none"
+                  border: "none",
                 }}
                 onClick={handleLogout}
               >
-                Logout
+                LOGOUT
               </button>
             </Link>
           </div>
@@ -233,7 +231,6 @@ const Navbar = () => {
           <div class="nav__link">
             <h
               style={{
-
                 color: "#ffebeb",
                 fontSize: 20,
               }}
@@ -249,6 +246,16 @@ const Navbar = () => {
               }}
             >
               Create ticket
+            </Link>
+            <Link
+              to="/test"
+              style={{
+                color: "#ffebeb",
+                fontSize: 20,
+                borderRadius: 40,
+              }}
+            >
+              view tickets
             </Link>
             <a
               href="https://www.estartasolutions.com/Pages/About.aspx"
@@ -279,30 +286,18 @@ const Navbar = () => {
                 borderRadius: 40,
               }}
             >
-
-            </Link>
-            <Link
-              to="/test"
-              style={{
-                color: "#ffebeb",
-                fontSize: 20,
-                borderRadius: 40,
-              }}
-            >
-              view tickets
-            </Link>
-            <button
+              <button
                 style={{
                   color: "#ffebeb",
                   fontSize: 20,
-                  borderRadius: 40,
-                  background:"none",
-                  border: "none"
+                  border: "none",
+                  background: "none",
                 }}
                 onClick={handleLogout}
               >
-                Logout
+                LOGOUT
               </button>
+            </Link>
           </div>
         </div>
       );
