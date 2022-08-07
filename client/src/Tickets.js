@@ -1,7 +1,6 @@
 import Popup from "./components/Popup";
 import "../src/Tickets.css";
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 
 function Tickets() {
   const [buttonPopup, setButtonPopup] = useState(false);
