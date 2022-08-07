@@ -4,8 +4,6 @@ import { useNavigate } from "react-router-dom";
 import SearchBar from "../components/SearchBar";
 
 const Test = () => {
-  
-
   const [users, setUsers] = useState();
   const [Status, setStatus] = useState("Accepted");
   const [Ticket_ID, getTicketID] = useState("");
@@ -58,6 +56,8 @@ const Test = () => {
       setToggle(!toggle)
     }
   };
+
+
 
   const handleSortingByTicketTypeDES = (e) => {
     e.preventDefault()
@@ -310,8 +310,6 @@ const Test = () => {
       
       <br />
       {checkCompany()}
-      <SearchBar/>
-
 
 
     </>
