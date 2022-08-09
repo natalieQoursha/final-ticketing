@@ -3,13 +3,13 @@
     direction: row;
     margin-top: 100px;
     border: 1px solid black;
-    /* padding: 10px; */
+    padding: 10px;
     flex-wrap: nowrap;
 }
 
 .text1{
     font-size: 40px;
-    margin-top: 10px;
+    margin-top: 20px;
     line-height: 30px;
     margin-left: 100px;
     color: rgb(175, 122, 179);

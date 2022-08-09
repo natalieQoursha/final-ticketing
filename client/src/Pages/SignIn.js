@@ -35,7 +35,7 @@ const SignIn = () => {
     } 
     else {
       alert("welcome");
-      history("/");
+      history("/test");
       window.location.reload();
     }
 
