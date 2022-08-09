@@ -1,9 +1,9 @@
 import React, { useState, useEffect, Component } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import arrow from "../images/arrow.png";
-import up from "../images/up.png";
-import down from "../images/down.png";
+// import arrow from "../images/arrow.png";
+// import up from "../images/up.png";
+// import down from "../images/down.png";
 
 const Test = () => {
   const [users, setUsers] = useState();
@@ -208,15 +208,15 @@ const Test = () => {
     }
   };
 
-  const flip = () => {
-    if (trigger) {
-      <img src={up} height="20" width="20" onClick={flip} />;
-      trigger = false;
-    } else {
-      <img src={down} height="20" width="20" onClick={flip} />;
-      trigger = true;
-    }
-  };
+  // const flip = () => {
+  //   if (trigger) {
+  //     // <img src={up} height="20" width="20" onClick={flip} />;
+  //     trigger = false;
+  //   } else {
+  //     // <img src={down} height="20" width="20" onClick={flip} />;
+  //     trigger = true;
+  //   }
+  // };
 
   useEffect(() => {
     const fetchUsers = () => {
@@ -305,55 +305,55 @@ const Test = () => {
               <th>
                 Ticket ID
                 <button onClick={handleSortingByTicketIDDES}>
-                  <img src={up} height="20" width="20" />
+                  {/* <img src={up} height="20" width="20" /> */}
                 </button>
               </th>
               <th>
                 Severity
                 <button onClick={handleSortingBySeverityDES}>
-                  <img src={arrow} height="20" width="20" />
+                  {/* <img src={arrow} height="20" width="20" /> */}
                 </button>
               </th>
               <th>
                 Product Type
                 <button onClick={handleSortingByProductTypeDES}>
-                  <img src={arrow} height="20" width="20" />
+                  {/* <img src={arrow} height="20" width="20" /> */}
                 </button>
               </th>
               <th>
                 Ticket Type
                 <button onClick={handleSortingByTicketTypeDES}>
-                  <img src={arrow} height="20" width="20" />
+                  {/* <img src={arrow} height="20" width="20" /> */}
                 </button>
               </th>
               <th>
                 Created ON
                 <button onClick={handleSortingByDateDES}>
-                  <img src={arrow} height="20" width="20" />
+                  {/* <img src={arrow} height="20" width="20" /> */}
                 </button>
               </th>
               <th>
                 Status
                 <button onClick={handleSortingByStatusDES}>
-                  <img src={arrow} height="20" width="20" />
+                  {/* <img src={arrow} height="20" width="20" /> */}
                 </button>
               </th>
               <th>
                 Company ID
                 <button onClick={handleSortingByCompanyIDDES}>
-                  <img src={arrow} height="20" width="20" />{" "}
+                  {/* <img src={arrow} height="20" width="20" />{" "} */}
                 </button>
               </th>
               <th>
                 Description
                 <button onClick={handleSortingByDescriptionDES}>
-                  <img src={arrow} height="20" width="20" />
+                  {/* <img src={arrow} height="20" width="20" /> */}
                 </button>
               </th>
               <th>
                 Reply
                 <button onClick={handleSortingByDescriptionDES}>
-                  <img src={arrow} height="20" width="20" />
+                  {/* <img src={arrow} height="20" width="20" /> */}
                 </button>
               </th>
             </tr>

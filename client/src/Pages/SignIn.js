@@ -2,7 +2,7 @@ import "../SignIn.css";
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import signin from "../images/signin.png";
+// import signin from "../images/signin.png";
 
 const SignIn = () => {
 
