@@ -1,0 +1,38 @@
+.container{
+    display:flex;
+    direction: row;
+    margin-top: 100px;
+    border: 1px solid black;
+    /* padding: 10px; */
+    flex-wrap: nowrap;
+}
+
+.text1{
+    font-size: 40px;
+    margin-top: 10px;
+    line-height: 30px;
+    margin-left: 100px;
+    color: rgb(175, 122, 179);
+
+    width:40%;
+    height: 50%;
+    
+}
+
+.text2{
+    margin-left: 10px;
+    font-size: 18px;
+    width:40%;
+    height: 50%;
+    color: rgba(255,199,60,255);
+    color: rgb(175, 122, 179);
+    
+}
+
+
+.imagee{
+    width:60%;
+    height: 50%;
+    margin-left: 10px;
+    
+}
