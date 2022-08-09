@@ -40,30 +40,6 @@ const Test = () => {
     }
   };
 
-  const handleSortingByTicketIDDES = (e) => {
-    e.preventDefault();
-    const info = {
-      sortBasedOn: "Ticket_ID",
-      companyID,
-    };
-
-    if (toggle) {
-      axios
-        .post("http://localhost:5000/api/ticket/sorting", info)
-        .then((res) => {
-          setUsers(res.data);
-        });
-      setToggle(!toggle);
-    } else {
-      axios
-        .post("http://localhost:5000/api/ticket/sortingASC", info)
-        .then((res) => {
-          setUsers(res.data);
-        });
-      setToggle(!toggle);
-    }
-  };
-
   const handleSortingByTicketTypeDES = (e) => {
     e.preventDefault();
     const info = {
@@ -303,14 +279,8 @@ const Test = () => {
           <thead>
             <tr>
               <th>
-                Ticket ID
-                <button onClick={handleSortingByTicketIDDES}>
-                  <img src={up} height="20" width="20" />
-                </button>
-              </th>
-              <th>
                 Severity
-                <button onClick={handleSortingBySeverityDES}>
+                <button onClick={handleSortingBySeverityDES} background="none">
                   <img src={arrow} height="20" width="20" />
                 </button>
               </th>
@@ -323,12 +293,6 @@ const Test = () => {
               <th>
                 Ticket Type
                 <button onClick={handleSortingByTicketTypeDES}>
-                  <img src={arrow} height="20" width="20" />
-                </button>
-              </th>
-              <th>
-                Created ON
-                <button onClick={handleSortingByDateDES}>
                   <img src={arrow} height="20" width="20" />
                 </button>
               </th>
@@ -364,11 +328,9 @@ const Test = () => {
               return (
                 <>
                   <tbody>
-                    <td>{element.Ticket_ID}</td>
                     <td>{element.Sevirity}</td>
                     <td>{element.Product_Types}</td>
                     <td>{element.Ticket_Type}</td>
-                    <td>{element.Created_On}</td>
                     <td>{element.Status}</td>
                     <td>{element.Company_ID}</td>
                     <td>{element.Description}</td>

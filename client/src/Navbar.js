@@ -15,7 +15,7 @@ const Navbar = () => {
           style={{
             color: "white",
             fontSize: 20,
-            borderRadius: 10,
+            borderRadius: 21,
           }}
         >
           <h1>SYT</h1>
@@ -26,7 +26,7 @@ const Navbar = () => {
             style={{
               color: "white",
               fontSize: 20,
-              borderRadius: 10,
+              borderRadius: 21,
             }}
           >
             Sign In
@@ -43,7 +43,7 @@ const Navbar = () => {
             style={{
               color: "white",
               fontSize: 20,
-              borderRadius: 10,
+              borderRadius: 21,
             }}
           >
             <h1>SYT</h1>
@@ -63,7 +63,7 @@ const Navbar = () => {
               style={{
                 color: "white",
                 fontSize: 20,
-                borderRadius: 10,
+                borderRadius: 21,
               }}
             >
               View all tickets
@@ -74,7 +74,7 @@ const Navbar = () => {
               style={{
                 color: "white",
                 fontSize: 20,
-                borderRadius: 10,
+                borderRadius: 21,
               }}
             >
               about
@@ -84,7 +84,7 @@ const Navbar = () => {
               style={{
                 color: "white",
                 fontSize: 20,
-                borderRadius: 10,
+                borderRadius: 21,
               }}
             >
               contact
@@ -94,14 +94,14 @@ const Navbar = () => {
               style={{
                 color: "white",
                 fontSize: 20,
-                borderRadius: 10,
+                borderRadius: 21,
               }}
             >
               <button
                 style={{
                   color: "white",
                   fontSize: 20,
-                  borderRadius: 10,
+                  borderRadius: 21,
                   background: "none",
                   border: "none",
                 }}
@@ -122,7 +122,7 @@ const Navbar = () => {
             style={{
               color: "white",
               fontSize: 20,
-              borderRadius: 10,
+              borderRadius: 21,
             }}
           >
             <h1>SYT</h1>
@@ -142,7 +142,7 @@ const Navbar = () => {
               style={{
                 color: "white",
                 fontSize: 20,
-                borderRadius: 10,
+                borderRadius: 21,
               }}
             >
               View tickets
@@ -153,7 +153,7 @@ const Navbar = () => {
               style={{
                 color: "white",
                 fontSize: 20,
-                borderRadius: 10,
+                borderRadius: 21,
               }}
             >
               about
@@ -163,7 +163,7 @@ const Navbar = () => {
               style={{
                 color: "white",
                 fontSize: 20,
-                borderRadius: 10,
+                borderRadius: 21,
               }}
             >
               contact
@@ -173,14 +173,14 @@ const Navbar = () => {
               style={{
                 color: "white",
                 fontSize: 20,
-                borderRadius: 10,
+                borderRadius: 21,
               }}
             >
               <button
                 style={{
                   color: "white",
                   fontSize: 20,
-                  borderRadius: 10,
+                  borderRadius: 21,
                   background: "none",
                   border: "none",
                 }}
@@ -201,7 +201,7 @@ const Navbar = () => {
             style={{
               color: "white",
               fontSize: 20,
-              borderRadius: 10,
+              borderRadius: 21,
             }}
           >
             <h1>SYT</h1>
@@ -221,7 +221,7 @@ const Navbar = () => {
               style={{
                 color: "white",
                 fontSize: 20,
-                borderRadius: 10,
+                borderRadius: 21,
               }}
             >
               Create ticket
@@ -231,7 +231,7 @@ const Navbar = () => {
               style={{
                 color: "white",
                 fontSize: 20,
-                borderRadius: 10,
+                borderRadius: 21,
               }}
             >
               view tickets
@@ -242,7 +242,7 @@ const Navbar = () => {
               style={{
                 color: "white",
                 fontSize: 20,
-                borderRadius: 10,
+                borderRadius: 21,
               }}
             >
               about
@@ -252,7 +252,7 @@ const Navbar = () => {
               style={{
                 color: "white",
                 fontSize: 20,
-                borderRadius: 10,
+                borderRadius: 21,
               }}
             >
               contact
@@ -262,7 +262,7 @@ const Navbar = () => {
               style={{
                 color: "white",
                 fontSize: 20,
-                borderRadius: 10,
+                borderRadius: 21,
               }}
             >
               <button

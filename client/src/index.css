@@ -41,7 +41,6 @@ a{
 .nav__link a {
   display: block;
   text-align: center;
-  border: #4d4d4d 1px solid;
   word-spacing: 2px;
   margin: 0 3px;
 }
