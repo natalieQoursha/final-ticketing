@@ -13,9 +13,9 @@ const Navbar = () => {
         <Link
           to="/"
           style={{
-            color: "#ffebeb",
+            color: "white",
             fontSize: 20,
-            borderRadius: 40,
+            borderRadius: 10,
           }}
         >
           <h1>SYT</h1>
@@ -24,34 +24,13 @@ const Navbar = () => {
           <Link
             to="/SignIn"
             style={{
-              color: "#ffebeb",
+              color: "white",
               fontSize: 20,
-              borderRadius: 40,
+              borderRadius: 10,
             }}
           >
             Sign In
           </Link>
-          <a
-            href="https://www.estartasolutions.com/Pages/About.aspx"
-            target="blank"
-            style={{
-              color: "#ffebeb",
-              fontSize: 20,
-              borderRadius: 40,
-            }}
-          >
-            about
-          </a>
-          <a
-            href="mailto:kareem.shaweesh077@gmail.com"
-            style={{
-              color: "#ffebeb",
-              fontSize: 20,
-              borderRadius: 40,
-            }}
-          >
-            contact
-          </a>
         </div>
       </div>
     );
@@ -62,9 +41,9 @@ const Navbar = () => {
           <Link
             to="/"
             style={{
-              color: "#ffebeb",
+              color: "white",
               fontSize: 20,
-              borderRadius: 40,
+              borderRadius: 10,
             }}
           >
             <h1>SYT</h1>
@@ -73,7 +52,7 @@ const Navbar = () => {
           <div class="nav__link">
             <h
               style={{
-                color: "#ffebeb",
+                color: "white",
                 fontSize: 20,
               }}
             >
@@ -82,9 +61,9 @@ const Navbar = () => {
             <Link
               to="/test"
               style={{
-                color: "#ffebeb",
+                color: "white",
                 fontSize: 20,
-                borderRadius: 40,
+                borderRadius: 10,
               }}
             >
               View all tickets
@@ -93,9 +72,9 @@ const Navbar = () => {
               href="https://www.estartasolutions.com/Pages/About.aspx"
               target="blank"
               style={{
-                color: "#ffebeb",
+                color: "white",
                 fontSize: 20,
-                borderRadius: 40,
+                borderRadius: 10,
               }}
             >
               about
@@ -103,9 +82,9 @@ const Navbar = () => {
             <a
               href="mailto:kareem.shaweesh077@gmail.com"
               style={{
-                color: "#ffebeb",
+                color: "white",
                 fontSize: 20,
-                borderRadius: 40,
+                borderRadius: 10,
               }}
             >
               contact
@@ -113,16 +92,16 @@ const Navbar = () => {
             <Link
               to="/"
               style={{
-                color: "#ffebeb",
+                color: "white",
                 fontSize: 20,
-                borderRadius: 40,
+                borderRadius: 10,
               }}
             >
               <button
                 style={{
-                  color: "#ffebeb",
+                  color: "white",
                   fontSize: 20,
-                  borderRadius: 40,
+                  borderRadius: 10,
                   background: "none",
                   border: "none",
                 }}
@@ -141,9 +120,9 @@ const Navbar = () => {
           <Link
             to="/"
             style={{
-              color: "#ffebeb",
+              color: "white",
               fontSize: 20,
-              borderRadius: 40,
+              borderRadius: 10,
             }}
           >
             <h1>SYT</h1>
@@ -152,7 +131,7 @@ const Navbar = () => {
           <div class="nav__link">
             <h
               style={{
-                color: "#ffebeb",
+                color: "white",
                 fontSize: 20,
               }}
             >
@@ -161,9 +140,9 @@ const Navbar = () => {
             <Link
               to="/test"
               style={{
-                color: "#ffebeb",
+                color: "white",
                 fontSize: 20,
-                borderRadius: 40,
+                borderRadius: 10,
               }}
             >
               View tickets
@@ -172,9 +151,9 @@ const Navbar = () => {
               href="https://www.estartasolutions.com/Pages/About.aspx"
               target="blank"
               style={{
-                color: "#ffebeb",
+                color: "white",
                 fontSize: 20,
-                borderRadius: 40,
+                borderRadius: 10,
               }}
             >
               about
@@ -182,9 +161,9 @@ const Navbar = () => {
             <a
               href="mailto:kareem.shaweesh077@gmail.com"
               style={{
-                color: "#ffebeb",
+                color: "white",
                 fontSize: 20,
-                borderRadius: 40,
+                borderRadius: 10,
               }}
             >
               contact
@@ -192,16 +171,16 @@ const Navbar = () => {
             <Link
               to="/"
               style={{
-                color: "#ffebeb",
+                color: "white",
                 fontSize: 20,
-                borderRadius: 40,
+                borderRadius: 10,
               }}
             >
               <button
                 style={{
-                  color: "#ffebeb",
+                  color: "white",
                   fontSize: 20,
-                  borderRadius: 40,
+                  borderRadius: 10,
                   background: "none",
                   border: "none",
                 }}
@@ -220,9 +199,9 @@ const Navbar = () => {
           <Link
             to="/"
             style={{
-              color: "#ffebeb",
+              color: "white",
               fontSize: 20,
-              borderRadius: 40,
+              borderRadius: 10,
             }}
           >
             <h1>SYT</h1>
@@ -231,7 +210,7 @@ const Navbar = () => {
           <div class="nav__link">
             <h
               style={{
-                color: "#ffebeb",
+                color: "white",
                 fontSize: 20,
               }}
             >
@@ -240,9 +219,9 @@ const Navbar = () => {
             <Link
               to="/tickets"
               style={{
-                color: "#ffebeb",
+                color: "white",
                 fontSize: 20,
-                borderRadius: 40,
+                borderRadius: 10,
               }}
             >
               Create ticket
@@ -250,9 +229,9 @@ const Navbar = () => {
             <Link
               to="/test"
               style={{
-                color: "#ffebeb",
+                color: "white",
                 fontSize: 20,
-                borderRadius: 40,
+                borderRadius: 10,
               }}
             >
               view tickets
@@ -261,9 +240,9 @@ const Navbar = () => {
               href="https://www.estartasolutions.com/Pages/About.aspx"
               target="blank"
               style={{
-                color: "#ffebeb",
+                color: "white",
                 fontSize: 20,
-                borderRadius: 40,
+                borderRadius: 10,
               }}
             >
               about
@@ -271,9 +250,9 @@ const Navbar = () => {
             <a
               href="mailto:kareem.shaweesh077@gmail.com"
               style={{
-                color: "#ffebeb",
+                color: "white",
                 fontSize: 20,
-                borderRadius: 40,
+                borderRadius: 10,
               }}
             >
               contact
@@ -281,14 +260,14 @@ const Navbar = () => {
             <Link
               to="/"
               style={{
-                color: "#ffebeb",
+                color: "white",
                 fontSize: 20,
-                borderRadius: 40,
+                borderRadius: 10,
               }}
             >
               <button
                 style={{
-                  color: "#ffebeb",
+                  color: "white",
                   fontSize: 20,
                   border: "none",
                   background: "none",

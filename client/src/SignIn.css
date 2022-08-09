@@ -1,23 +1,99 @@
-body{
-	background:white;
-	font:600 16px/18px 'Open Sans',sans-serif;
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
-.signupboxescontainers{
-	position: fixed;
-	width: 80%;
-	height: 40%;
-	display: grid;
-	flex-direction: column;
-	padding:2em;
-	background-color: gray;
-	justify-content: center;
-	border-radius: 50px;
+           
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: white;
+    color: #1c1e21;
 	
 }
-.signupboxess{
-	display:flex;
-	flex-direction: row;
-	padding-bottom: 2em;
-	justify-content: center;
-	font-size: 1.4em;
+
+main {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    margin: 0 auto;
+}
+
+.row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.colm-logo {
+    flex: 0 0 50%;
+    text-align: right;
+}
+
+.colm-form {
+    flex: 0 0 50%;
+    text-align: center;
+}
+
+.colm-logo h2 {
+    size: 100px;
+    font-weight: 5000;
+    padding: 0 30px;
+    line-height: 32px;
+	color: #0b2d50;
+}
+
+.colm-form .form-container {
+    background-color: pink;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+    margin-bottom: 100px;
+    padding: 20px;
+    max-width: 800px;
+	height: 350px;
+}
+
+.colm-form .form-container input, .colm-form .form-container .btn-login {
+    width: 100%;
+    margin: 5px 0;
+    height: 70px;
+    vertical-align: middle;
+    font-size: 30px;
+}
+
+.colm-form .form-container input {
+    border: 1px solid #dddfe2;
+    color: #1d2129;
+    padding: 0 8px;
+    outline: none;
+}
+
+.colm-form .form-container input:focus {
+    box-shadow: 0 0 0 2px #e7f3ff;
+}
+
+.colm-form .form-container .btn-login {
+    background-color: darkblue;
+    border: none;
+    border-radius: 6px;
+    font-size: 20px;
+    padding: 0 16px;
+    color: #ffffff;
+    font-weight: 700;
+}
+.colm-form .form-container .btn-login:hover{
+	background-color: #0b2d50;
+}
+
+.colm-form .form-container a {
+    display: block;
+    font-size: 14px;
+    text-decoration: none;
+    padding: 10px 0 20px;
+    border-bottom: 1px solid #dadde1;
 }

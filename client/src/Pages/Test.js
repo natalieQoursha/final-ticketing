@@ -1,6 +1,9 @@
 import React, { useState, useEffect, Component } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import arrow from "../images/arrow.png";
+import up from "../images/up.png";
+import down from "../images/down.png";
 
 const Test = () => {
   const [users, setUsers] = useState();
@@ -10,6 +13,7 @@ const Test = () => {
   const history = useNavigate();
   const user = JSON.parse(sessionStorage.getItem("user")) || undefined;
   const companyID = user.Company_ID;
+  const trigger = true;
 
   const [toggle, setToggle] = useState(false);
   const handleSortingByDateDES = (e) => {
@@ -204,6 +208,16 @@ const Test = () => {
     }
   };
 
+  const flip = () => {
+    if (trigger) {
+      <img src={up} height="20" width="20" onClick={flip} />;
+      trigger = false;
+    } else {
+      <img src={down} height="20" width="20" onClick={flip} />;
+      trigger = true;
+    }
+  };
+
   useEffect(() => {
     const fetchUsers = () => {
       const enduser = JSON.parse(sessionStorage.getItem("user")) || undefined;
@@ -289,75 +303,57 @@ const Test = () => {
           <thead>
             <tr>
               <th>
-                <button
-                  className="ticketingButton"
-                  onClick={handleSortingByTicketIDDES}
-                >
-                  Ticket ID
+                Ticket ID
+                <button onClick={handleSortingByTicketIDDES}>
+                  <img src={up} height="20" width="20" />
                 </button>
               </th>
               <th>
-                <button
-                  className="ticketingButton"
-                  onClick={handleSortingBySeverityDES}
-                >
-                  Severity
+                Severity
+                <button onClick={handleSortingBySeverityDES}>
+                  <img src={arrow} height="20" width="20" />
                 </button>
               </th>
               <th>
-                <button
-                  className="ticketingButton"
-                  onClick={handleSortingByProductTypeDES}
-                >
-                  Product Type{" "}
+                Product Type
+                <button onClick={handleSortingByProductTypeDES}>
+                  <img src={arrow} height="20" width="20" />
                 </button>
               </th>
               <th>
-                <button
-                  className="ticketingButton"
-                  onClick={handleSortingByTicketTypeDES}
-                >
-                  Ticket Type
+                Ticket Type
+                <button onClick={handleSortingByTicketTypeDES}>
+                  <img src={arrow} height="20" width="20" />
                 </button>
               </th>
               <th>
-                <button
-                  className="ticketingButton"
-                  onClick={handleSortingByDateDES}
-                >
-                  Created ON
+                Created ON
+                <button onClick={handleSortingByDateDES}>
+                  <img src={arrow} height="20" width="20" />
                 </button>
               </th>
               <th>
-                <button
-                  className="ticketingButton"
-                  onClick={handleSortingByStatusDES}
-                >
-                  Status
+                Status
+                <button onClick={handleSortingByStatusDES}>
+                  <img src={arrow} height="20" width="20" />
                 </button>
               </th>
               <th>
-                <button
-                  className="ticketingButton"
-                  onClick={handleSortingByCompanyIDDES}
-                >
-                  Company ID
+                Company ID
+                <button onClick={handleSortingByCompanyIDDES}>
+                  <img src={arrow} height="20" width="20" />{" "}
                 </button>
               </th>
               <th>
-                <button
-                  className="ticketingButton"
-                  onClick={handleSortingByDescriptionDES}
-                >
-                  Description
+                Description
+                <button onClick={handleSortingByDescriptionDES}>
+                  <img src={arrow} height="20" width="20" />
                 </button>
               </th>
               <th>
-                <button
-                  className="ticketingButton"
-                  onClick={handleSortingByDescriptionDES}
-                >
-                  Reply
+                Reply
+                <button onClick={handleSortingByDescriptionDES}>
+                  <img src={arrow} height="20" width="20" />
                 </button>
               </th>
             </tr>

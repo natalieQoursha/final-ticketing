@@ -2,6 +2,7 @@ import "../src/index.css";
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import back from "../src/images/bck.png";
 
 const Home = () => {
   const history = useNavigate();
