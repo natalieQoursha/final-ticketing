@@ -147,6 +147,7 @@ h3{
 h4{
   text-align: center;
   font-size: 2em;
+  color: rgb(122, 134, 182);
 }
 
 .home {
@@ -252,7 +253,7 @@ main {
   margin-left: auto;
 }
 h2{
-  color: white;
+  color: rgb(175, 122, 179);
 }
 
 *,
