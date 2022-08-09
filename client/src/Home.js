@@ -3,7 +3,6 @@ import "../src/Home.css"
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Imagee from "../src/Images/homeImg.png"
 
 const Home = () => {
 

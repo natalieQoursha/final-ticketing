@@ -2,6 +2,7 @@ import "../SignIn.css";
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import signin from "../images/signin.png";
 
 const SignIn = () => {
 
@@ -47,31 +48,38 @@ const SignIn = () => {
   };
 
   return (
-    <main style={{ padding: "1rem 0" }}>
-      <div className="signupboxescontainers">
-        <h1>Sign in</h1>
-        <div className="signupboxes">
-          <input
-            type={"text"}
-            value={Email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            placeholder="Email"
-          ></input>
-        </div>
-        <div className="signupboxes">
-          <input
-            type={"password"}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            placeholder="Password"
-          ></input>
-        </div>
-        <button onClick={handleLogin} className="submit">
-          login
-        </button>
-      </div>
-    </main>
+    <html>
+      <body>
+        <main>
+          <div class="row">
+            <div class="colm-logo">
+              <h2>Sign in to submit and review your tickets!</h2>
+            </div>
+            <div class="colm-form">
+              <div class="form-container">
+                <h4>Sign in</h4>
+                <input
+                  type="text"
+                  placeholder="Email address"
+                  value={Email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+                <input
+                  type={"password"}
+                  placeholder="Password"
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+                <button class="btn-login" onClick={handleLogin}>
+                  Login
+                </button>
+              </div>
+            </div>
+          </div>
+        </main>
+      </body>
+    </html>
   );
 };
 export default SignIn;

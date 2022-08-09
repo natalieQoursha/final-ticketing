@@ -30,3 +30,106 @@ main{
 pointer-events: none;
 opacity: 0;
 }
+.popup{
+    position: fixed;
+    right:10%;
+    top: 25%;
+    width: 80%;
+    height: 55%;
+    display: flex;
+    flex-direction: column;
+    padding:2rem;
+    background-color: gray;
+}
+
+h1{
+    font: bolder;
+    font-size: 2em;
+    text-shadow: 0 0 2px darkblue;
+  }
+.submit-btn{
+    margin-right: 20%;
+    width: 100%;
+    padding:0.7em 2em;
+    background-color: #ff1493;
+    color: white;
+    cursor:pointer;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 5px;
+    justify-content: center;
+}
+
+.submit-btn:hover {
+    background-color: black;
+    color:white;
+}
+
+.close-btn{
+    height: 20px;
+    width: 20px;
+    background-color: #ff1493;
+    color: white;
+    cursor:pointer;
+    margin-left: 100%;
+}
+.ticketingButton{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.alignment{
+    display:flex;
+    flex-direction: row;
+    padding-bottom:1%;
+    justify-content: center;
+    font-size: 2.8rem;
+}
+
+.alignment label {
+    color: #ffebeb;
+    width:15%
+}
+
+.alignment input,select{
+    width: 50%;
+}
+
+.txta{
+    width: 100%;
+}
+table {
+    padding-top: 2%;
+    margin: auto;
+    width:95%;
+    max-width: 95%;
+    width: 100%;
+    height: 200px;
+  }
+    
+th {
+    background-color:darkslateblue;    ;
+    color: #ffebeb;
+    font-size: 1.4em;
+    height: 3em;
+    }
+
+.th .flip:hover{
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+    
+td {
+    text-align: center;
+    font-size: 1.3em;
+    border: black 1px solid;
+    height: 2rem;  
+    color: black;  
+    font-style:oblique;
+    background-color: white;
+}
+  
+.scrollingTable {
+    width: 30em;
+    overflow-y: auto;
+}
