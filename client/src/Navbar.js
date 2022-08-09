@@ -214,7 +214,7 @@ const Navbar = () => {
                 fontSize: 20,
               }}
             >
-              {user.First_Name}
+              {user.First_Name.toUpperCase()}
             </h>
             <Link
               to="/tickets"
