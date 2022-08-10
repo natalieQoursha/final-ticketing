@@ -11,6 +11,7 @@ const Test = () => {
   const history = useNavigate();
   const user = JSON.parse(sessionStorage.getItem("user")) || undefined;
   const companyID = user.Company_ID;
+  const role = user.Role;
   const trigger = true;
 
   const [toggle, setToggle] = useState(false);
@@ -206,15 +207,6 @@ const Test = () => {
     }
   };
 
-  const flip = () => {
-    if (trigger) {
-      <img src={up} height="20" width="20" onClick={flip} />;
-      trigger = false;
-    } else {
-      <img src={down} height="20" width="20" onClick={flip} />;
-      trigger = true;
-    }
-  };
 
   useEffect(() => {
     const fetchUsers = () => {
@@ -227,8 +219,6 @@ const Test = () => {
         .post("http://localhost:5000/api/ticket/view-tickets", info)
         .then((res) => {
           setUsers(res.data);
-          // const dataa = JSON.stringify(res.data);
-          // console.log("dataa" + dataa);
         });
     };
 
@@ -247,7 +237,6 @@ const Test = () => {
 
     alert("Ticket updated successfully");
     console.log(data);
-    //window.location.reload();
   };
 
   function checkCompany() {
@@ -303,7 +292,6 @@ const Test = () => {
               <th>
                 Ticket ID
                 <button onClick={handleSortingByTicketIDDES}>
-                  <img src={up} height="20" width="20" />
                 </button>
               </th>
               <th>
@@ -344,7 +332,6 @@ const Test = () => {
               <th>
                 Reply
                 <button onClick={handleSortingByDescriptionDES}>
-                  <img src={arrow} height="20" width="20" />
                 </button>
               </th>
             </tr>

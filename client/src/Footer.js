@@ -11,7 +11,7 @@ const Footer = () => {
     <div>
       <div className="flex-wrapper">
         <div className="footer">
-          <SocialFollow/>
+          {/* <SocialFollow/> */}
 
         </div>
       </div>
