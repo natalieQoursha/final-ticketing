@@ -1,6 +1,6 @@
 
 
-  /* a.social {
+  a.social {
     margin: 0 1rem;
     transition: transform 250ms;
     display: inline-block;
@@ -25,4 +25,4 @@
   .instagram svg path{
     color: white !important;
     
-  } */
+  }

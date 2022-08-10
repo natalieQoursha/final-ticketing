@@ -1,67 +1,31 @@
 import React, { useState, useEffect, Component } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import up from "../Images/up.png";
+import up1 from "../Images/up.png";
+import up2 from "../Images/up.png";
+import up3 from "../Images/up.png";
+import up4 from "../Images/up.png";
+import up5 from "../Images/up.png";
+import up6 from "../Images/up.png";
 
 const Test = () => {
   const [users, setUsers] = useState();
   const [Status, setStatus] = useState("Accepted");
   const [Ticket_ID, getTicketID] = useState("");
   const [Reply, setReply] = useState("");
+  const [trig, setTrig] = useState(false);
   const history = useNavigate();
   const user = JSON.parse(sessionStorage.getItem("user")) || undefined;
   const companyID = user.Company_ID;
-  const role = user.Role;
-  const trigger = true;
-
-  const [toggle, setToggle] = useState(false);
-  const handleSortingByDateDES = (e) => {
-    e.preventDefault();
-    const info = {
-      sortBasedOn: "Created_ON",
-      companyID,
-    };
-
-    if (toggle) {
-      axios
-        .post("http://localhost:5000/api/ticket/sorting", info)
-        .then((res) => {
-          setUsers(res.data);
-        });
-      setToggle(!toggle);
-    } else {
-      axios
-        .post("http://localhost:5000/api/ticket/sortingASC", info)
-        .then((res) => {
-          setUsers(res.data);
-        });
-      setToggle(!toggle);
-    }
-  };
-
-  const handleSortingByTicketIDDES = (e) => {
-    e.preventDefault();
-    const info = {
-      sortBasedOn: "Ticket_ID",
-      companyID,
-    };
-
-    if (toggle) {
-      axios
-        .post("http://localhost:5000/api/ticket/sorting", info)
-        .then((res) => {
-          setUsers(res.data);
-        });
-      setToggle(!toggle);
-    } else {
-      axios
-        .post("http://localhost:5000/api/ticket/sortingASC", info)
-        .then((res) => {
-          setUsers(res.data);
-        });
-      setToggle(!toggle);
-    }
-  };
+  const [toggle, setToggle] = useState(up);
+  const [rotate, setRotate] = useState(true);
+  const [rotate1, setRotate1] = useState(true);
+  const [rotate2, setRotate2] = useState(true);
+  const [rotate3, setRotate3] = useState(true);
+  const [rotate4, setRotate4] = useState(true);
+  const [rotate5, setRotate5] = useState(true);
+  const [rotate6, setRotate6] = useState(true);
 
   const handleSortingByTicketTypeDES = (e) => {
     e.preventDefault();
@@ -85,6 +49,7 @@ const Test = () => {
         });
       setToggle(!toggle);
     }
+    setTrig(!trig);
   };
 
   const handleSortingByStatusDES = (e) => {
@@ -132,6 +97,7 @@ const Test = () => {
           setUsers(res.data);
         });
       setToggle(!toggle);
+      // setRotate(!rotate)
     }
   };
 
@@ -181,6 +147,7 @@ const Test = () => {
         });
       setToggle(!toggle);
     }
+    setTrig(!trig);
   };
 
   const handleSortingByDescriptionDES = (e) => {
@@ -206,7 +173,6 @@ const Test = () => {
       setToggle(!toggle);
     }
   };
-
 
   useEffect(() => {
     const fetchUsers = () => {
@@ -236,14 +202,15 @@ const Test = () => {
       });
 
     alert("Ticket updated successfully");
-    console.log(data);
   };
 
   function checkCompany() {
-    if (companyID == 1 && role=="Admin") {
+    if (companyID == 1) {
       return (
+        
         <div>
-          <h3>Ticket control</h3>
+          {users && console.log(users)}
+          <h3>Ticket control User</h3>
           <br />
           <input
             required
@@ -285,71 +252,121 @@ const Test = () => {
 
   return (
     <>
+    {console.log()}
       <div className="viewTable">
         <table>
           <thead>
             <tr>
               <th>
-                Ticket ID
-                <button onClick={handleSortingByTicketIDDES}>
-                </button>
-              </th>
-              <th>
                 Severity
-                <button onClick={handleSortingBySeverityDES}>
-                </button>
+                <img
+                  className={rotate ? "rerotateable" : "rotateable"}
+                  src={up}
+                  height="20"
+                  width="20"
+                  onClick={(e) => {
+                    handleSortingBySeverityDES(e);
+                    setRotate(!rotate);
+                  }}
+                />
               </th>
               <th>
                 Product Type
-                <button onClick={handleSortingByProductTypeDES}>
-                </button>
+                <img
+                  className={rotate1 ? "rerotateable" : "rotateable"}
+                  src={up1}
+                  height="20"
+                  width="20"
+                  onClick={(e) => {
+                    handleSortingByProductTypeDES(e);
+                    setRotate1(!rotate1);
+                  }}
+                />
               </th>
               <th>
                 Ticket Type
-                <button onClick={handleSortingByTicketTypeDES}>
-                </button>
-              </th>
-              <th>
-                Created ON
-                <button onClick={handleSortingByDateDES}>
-                </button>
+                <img
+                  className={rotate2 ? "rerotateable" : "rotateable"}
+                  src={up2}
+                  height="20"
+                  width="20"
+                  onClick={(e) => {
+                    handleSortingByTicketTypeDES(e);
+                    setRotate(!rotate2);
+                  }}
+                />
               </th>
               <th>
                 Status
-                <button onClick={handleSortingByStatusDES}>
-                </button>
+                <img
+                  className={rotate3 ? "rerotateable" : "rotateable"}
+                  src={up3}
+                  height="20"
+                  width="20"
+                  onClick={(e) => {
+                    handleSortingByStatusDES(e);
+                    setRotate(!rotate3);
+                  }}
+                />
               </th>
               <th>
                 Company ID
-                <button onClick={handleSortingByCompanyIDDES}>
-                </button>
+                <img
+                  className={rotate4 ? "rerotateable" : "rotateable"}
+                  src={up4}
+                  height="20"
+                  width="20"
+                  onClick={(e) => {
+                    handleSortingByCompanyIDDES(e);
+                    setRotate(!rotate4);
+                  }}
+                />
               </th>
-              <th>
+              {/* <th>
                 Description
-                <button onClick={handleSortingByDescriptionDES}>
-                </button>
-              </th>
+                <img
+                  className={rotate5 ? "rerotateable" : "rotateable"}
+                  src={up5}
+                  height="20"
+                  width="20"
+                  onClick={(e) => {
+                    handleSortingByDescriptionDES(e);
+                    setRotate(!rotate5);
+                  }}
+                />
+              </th> */}
               <th>
                 Reply
-                <button onClick={handleSortingByDescriptionDES}>
-                </button>
+                <img
+                  className={rotate6 ? "rerotateable" : "rotateable"}
+                  src={up6}
+                  height="20"
+                  width="20"
+                  onClick={(e) => {
+                    handleSortingByDescriptionDES(e);
+                    setRotate(!rotate6);
+                  }}
+                />
               </th>
             </tr>
           </thead>
 
           {users &&
             users.map((element) => {
+
               return (
                 <>
                   <tbody>
-                    <td>{element.Ticket_ID}</td>
                     <td>{element.Sevirity}</td>
                     <td>{element.Product_Types}</td>
                     <td>{element.Ticket_Type}</td>
-                    <td>{element.Created_On}</td>
-                    <td>{element.Status}</td>
+                    <td>
+                      {element.Status}
+
+
+                    </td>
                     <td>{element.Company_ID}</td>
-                    <td>{element.Description}</td>
+                    {/* <td>{element.Description}</td> */}
                     <td>{element.Reply}</td>
                   </tbody>
                 </>
@@ -360,8 +377,10 @@ const Test = () => {
 
       <br />
       {checkCompany()}
+
+    
+
     </>
   );
 };
-
 export default Test;

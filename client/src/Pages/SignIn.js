@@ -36,6 +36,7 @@ const SignIn = () => {
     } 
     else {
       // alert("welcome");
+
       history("/test");
       window.location.reload();
     }

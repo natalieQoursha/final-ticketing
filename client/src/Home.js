@@ -27,23 +27,15 @@ const Home = () => {
        
       </div>
 
-      <div class="imagee">
-      <div class="image"><img src={Imagee} width="500" height="300"/></div>
-      </div>
+   
+      <div class="homeImage"><img class="homeImage" src={Imagee}  /></div>
+
 
         
 
     </div>
 
-//     <div class="container">
-//     <div class="text a">Solving Your</div>
-//     <div class="text b ">Tickets right</div>
-//     <div class="text c">A powerful  easy system for tracking,</div>
-//     <div class="text d">and solving customer service tickets</div>
-//     <div class="image"><img src={Imagee} width="600" height="300"/></div>
-    
 
-// </div>
   );
 };
 export default Home;

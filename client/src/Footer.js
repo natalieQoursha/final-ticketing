@@ -2,7 +2,7 @@
 // import Facebook from "../src/images/face.png";
 // import Email from "../src/images/email.svg";
 // import Insta from "../src/images/instagram.png";
-import SocialFollow from "./components/SocialFollow"
+import SocialFollow from "../src/SocialFollow"
 
 const Footer = () => {
 
@@ -11,7 +11,7 @@ const Footer = () => {
     <div>
       <div className="flex-wrapper">
         <div className="footer">
-          {/* <SocialFollow/> */}
+          <SocialFollow/>
 
         </div>
       </div>
@@ -19,3 +19,4 @@ const Footer = () => {
   );
 };
 export default Footer;
+
