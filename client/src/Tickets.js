@@ -52,7 +52,7 @@ function Tickets() {
 
       <div className="popup">
         <div className=".popup-inner">
-          <h1>{`Welcome ${user.First_Name}, ${user.Company_Name}`}</h1>
+          <h1>{`Welcome ${user.First_Name.toUpperCase()}, from ${user.Company_Name.toUpperCase()}`}</h1>
           <br />
           <div className="alignment">
             <label for="Product_Types">Product : </label>

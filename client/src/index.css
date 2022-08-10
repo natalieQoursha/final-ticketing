@@ -56,7 +56,12 @@ a{
 .nav__link a {
   display: block;
   text-align: center;
+<<<<<<< HEAD
   padding: 10px 0;
+=======
+  word-spacing: 2px;
+  margin: 0 3px;
+>>>>>>> 6facc86037e23a976bba919d4eda8fb7550dd647
 }
 
 .nav__link a:hover {
