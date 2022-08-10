@@ -101,6 +101,7 @@ function Tickets() {
         <div>
           <textarea
           placeholder="Ticket Description : "
+          
             value={Description}
             rows="5"
             cols="50"

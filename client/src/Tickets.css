@@ -97,7 +97,10 @@ h1{
 }
 
 .txta{
-    width: 100%;
+    width: 80%;
+    margin-left: 80px;
+    margin-top: -31.5px;
+    text-align: center;
 }
 table {
     padding-top: 2%;

@@ -46,6 +46,8 @@ main {
     padding: 0 30px;
     line-height: 32px;
 	color: rgb(122, 134, 182);
+    font-size: 25px;
+    margin-top: -50px;
 }
 
 .colm-form .form-container {
