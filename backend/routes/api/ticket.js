@@ -152,20 +152,40 @@ router.post("/all-tickets", (req, response) => {
 router.post("/test-update", (req, response) => {
   const status = req.body.Status;
   const ID = req.body.Ticket_ID;
-  const reply = req.body.Reply;
+  // const reply = req.body.Reply;
 
   conn.connect().then((res) => {
     if (res.connected) {
       res
         .request()
         .query(
-          `UPDATE dbo.Tickets SET Status = '${status}', Reply = '${reply}'where Ticket_ID = '${ID}'`,
+          `UPDATE dbo.Tickets SET Status = '${status}'where Ticket_ID = '${ID}'`,
           (err, res) => {
             response.status(200).json();
           }
         );
-    }
+
+    }    
   });
 });
 
+
+router.post("/addReply", (req, response) => {
+  const reply = req.body.Reply;
+  const ID = req.body.Ticket_ID;
+
+  conn.connect().then((res) => {
+    if (res.connected) {
+      res
+        .request()
+        .query(
+          `UPDATE dbo.Tickets SET Reply = '${reply}'where Ticket_ID = '${ID}'`,
+          (err, res) => {
+            response.status(200).json();
+          }
+        );
+
+    }    
+  });
+});
 module.exports = router;

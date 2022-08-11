@@ -8,12 +8,26 @@ import up3 from "../Images/up.png";
 import up4 from "../Images/up.png";
 import up5 from "../Images/up.png";
 import up6 from "../Images/up.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons'
+import {TiDelete} from 'react-icons/ti'
+import "./Test.css";
+
 
 const Test = () => {
+  var btnZ = document.getElementById("Z");
+
+document.onkeydown = function (e) {
+    var keyCode = e.keyCode;
+    if(keyCode == 13) {
+        setReply();
+    }
+};
+
   const [users, setUsers] = useState();
   const [Status, setStatus] = useState("Accepted");
-  const [Ticket_ID, getTicketID] = useState("");
-  const [Reply, setReply] = useState("");
+  const [Ticket_ID, setTicketID] = useState("");
+  const [Reply, setReply] = useState([]);
   const [trig, setTrig] = useState(false);
   const history = useNavigate();
   const user = JSON.parse(sessionStorage.getItem("user")) || undefined;
@@ -26,6 +40,8 @@ const Test = () => {
   const [rotate4, setRotate4] = useState(true);
   const [rotate5, setRotate5] = useState(true);
   const [rotate6, setRotate6] = useState(true);
+
+
 
   const handleSortingByTicketTypeDES = (e) => {
     e.preventDefault();
@@ -75,6 +91,8 @@ const Test = () => {
       setToggle(!toggle);
     }
   };
+
+
 
   const handleSortingBySeverityDES = (e) => {
     e.preventDefault();
@@ -192,8 +210,8 @@ const Test = () => {
   }, []);
 
   const changeStatus = (e) => {
-    const data = { Status, Ticket_ID, Reply };
-
+    const data = { Status:"Accepted", Ticket_ID };
+    console.log("ID"+Ticket_ID)
     axios
       .post("http://localhost:5000/api/ticket/test-update", data)
       .then((res) => {
@@ -201,54 +219,79 @@ const Test = () => {
         }
       });
 
-    alert("Ticket updated successfully");
   };
 
-  function checkCompany() {
-    if (companyID == 1) {
-      return (
+  const addReply = (e) => {
+    const data = { Reply, Ticket_ID};
+    axios
+      .post("http://localhost:5000/api/ticket/addReply", data)
+      .then((res) => {
+        if (res.status === 200) {
+        }
+      });
+
+  };
+
+  const settTicketID = (ID) => {
+    setTicketID(ID);
+  };
+
+  const changeStatusRej = (e) => {
+    const data = { Status:"Rejected", Ticket_ID };
+    console.log("ID"+Ticket_ID)
+    axios
+      .post("http://localhost:5000/api/ticket/test-update", data)
+      .then((res) => {
+        if (res.status === 200) {
+        }
+      });
+  };
+
+  // function checkCompany() {
+  //   if (companyID == 1) {
+  //     return (
         
-        <div>
-          {users && console.log(users)}
-          <h3>Ticket control User</h3>
-          <br />
-          <input
-            required
-            value={Ticket_ID}
-            onChange={(e) => getTicketID(e.target.value)}
-            type={"number"}
-            placeholder="Ticket ID"
-          ></input>
+  //       <div>
+  //         {users && console.log(users)}
+  //         <h3>Ticket control User</h3>
+  //         <br />
+  //         <input
+  //           required
+  //           value={Ticket_ID}
+  //           onChange={(e) => getTicketID(e.target.value)}
+  //           type={"number"}
+  //           placeholder="Ticket ID"
+  //         ></input>
 
-          <select
-            className="Choice"
-            value={Status}
-            onChange={(e) => setStatus(e.target.value)}
-            name="Status"
-            id="Status"
-            placeholder="Status"
-          >
-            <option className="Accepted" value="Accepted">
-              Accepted
-            </option>
+  //         <select
+  //           className="Choice"
+  //           value={Status}
+  //           onChange={(e) => setStatus(e.target.value)}
+  //           name="Status"
+  //           id="Status"
+  //           placeholder="Status"
+  //         >
+  //           <option className="Accepted" value="Accepted">
+  //             Accepted
+  //           </option>
 
-            <option className="Rejected" value="Rejected">
-              Rejected
-            </option>
-          </select>
-          <br />
-          <input
-            value={Reply}
-            onChange={(e) => setReply(e.target.value)}
-            type={"textarea"}
-            placeholder="Add reply (optional)"
-          ></input>
+  //           <option className="Rejected" value="Rejected">
+  //             Rejected
+  //           </option>
+  //         </select>
+  //         <br />
+  //         <input
+  //           value={Reply}
+  //           onChange={(e) => setReply(e.target.value)}
+  //           type={"textarea"}
+  //           placeholder="Add reply (optional)"
+  //         ></input>
 
-          <button onClick={changeStatus}>Update</button>
-        </div>
-      );
-    }
-  }
+  //         <button onClick={changeStatus}>Update</button>
+  //       </div>
+  //     );
+  //   }
+  // }
 
   return (
     <>
@@ -354,6 +397,7 @@ const Test = () => {
           {users &&
             users.map((element) => {
 
+if (user.Role === "Admin") {
               return (
                 <>
                   <tbody>
@@ -362,21 +406,70 @@ const Test = () => {
                     <td>{element.Ticket_Type}</td>
                     <td>
                       {element.Status}
+                      <div className="next">
+                      <div className="checkIcon">
+                      <FontAwesomeIcon icon={faCheckSquare} size="1x" onClick={()=>{settTicketID(element.Ticket_ID);changeStatus();}} /></div><div className="red">
+                      <TiDelete className="Red" size="35px" onClick={()=>{settTicketID(element.Ticket_ID);changeStatusRej();}}> </TiDelete></div>
+                      </div>
+                    </td> 
 
-
-                    </td>
                     <td>{element.Company_ID}</td>
                     {/* <td>{element.Description}</td> */}
                     <td>{element.Reply}</td>
                   </tbody>
                 </>
-              );
+              );}
+              if (user.Role === "Employer" ) {
+                return (
+                  <>
+                    <tbody>
+                      <td>{element.Sevirity}</td>
+                      <td>{element.Product_Types}</td>
+                      <td>{element.Ticket_Type}</td>
+                      <td>{element.Status}</td>
+                      <td>{element.Company_ID}</td>
+                      {/* <td>{element.Description}</td> */}
+                      <td>
+                        <div>
+                            <input className="replyInput"
+                             value={Reply}
+                               onChange={(e) => setReply(e.target.value)}
+                              
+                               type={"textarea"} 
+                               placeholder="Add a reply"></input>
+                            <button className="replyButton" onClick={addReply()}>Update</button>
+                           </div>
+                        </td>
+                      
+                    </tbody>
+                  </>
+                );}
+
+                if (user.Role === "Customer" ) {
+                  return (
+                    <>
+                      <tbody>
+                        <td>{element.Sevirity}</td>
+                        <td>{element.Product_Types}</td>
+                        <td>{element.Ticket_Type}</td>
+                        <td>{element.Status}</td>
+                        <td>{element.Company_ID}</td>
+                        {/* <td>{element.Description}</td> */}
+                        <td>{element.Reply}</td>
+                      </tbody>
+                    </>
+                  );}
             })}
         </table>
       </div>
 
       <br />
-      {checkCompany()}
+      {/* {checkCompany()} */}
+
+
+
+      
+
 
     
 

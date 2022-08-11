@@ -27,10 +27,7 @@ export default function SocialFollow() {
         <FontAwesomeIcon icon={faInstagram} size="2x" color="red !important"/>
       </a>
 
-      <a
-        className="check icon">
-         <FontAwesomeIcon icon="fa-solid fa-circle-check" />     
-          </a>
+
 
 
       
