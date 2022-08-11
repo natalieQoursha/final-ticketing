@@ -26,12 +26,14 @@ document.onkeydown = function (e) {
 
   const [users, setUsers] = useState();
   const [Status, setStatus] = useState("Accepted");
-  const [Ticket_ID, setTicketID] = useState("");
-  const [Reply, setReply] = useState([]);
+  const [Ticket_ID, getTicketID] = useState("");
+  const [Assigned_To, setAssignedTo] = useState();
+  const [Reply, setReply] = useState("");
   const [trig, setTrig] = useState(false);
   const history = useNavigate();
   const user = JSON.parse(sessionStorage.getItem("user")) || undefined;
   const companyID = user.Company_ID;
+  const role = user.Role;
   const [toggle, setToggle] = useState(up);
   const [rotate, setRotate] = useState(true);
   const [rotate1, setRotate1] = useState(true);
@@ -66,6 +68,7 @@ document.onkeydown = function (e) {
       setToggle(!toggle);
     }
     setTrig(!trig);
+    setToggle(!toggle);
   };
 
   const handleSortingByStatusDES = (e) => {
@@ -90,6 +93,7 @@ document.onkeydown = function (e) {
         });
       setToggle(!toggle);
     }
+    setToggle(!toggle);
   };
 
 
@@ -117,6 +121,7 @@ document.onkeydown = function (e) {
       setToggle(!toggle);
       // setRotate(!rotate)
     }
+    setToggle(!toggle);
   };
 
   const handleSortingByProductTypeDES = (e) => {
@@ -141,6 +146,7 @@ document.onkeydown = function (e) {
         });
       setToggle(!toggle);
     }
+    setToggle(!toggle);
   };
 
   const handleSortingByCompanyIDDES = (e) => {
@@ -166,6 +172,7 @@ document.onkeydown = function (e) {
       setToggle(!toggle);
     }
     setTrig(!trig);
+    setToggle(!toggle);
   };
 
   const handleSortingByDescriptionDES = (e) => {
@@ -190,6 +197,7 @@ document.onkeydown = function (e) {
         });
       setToggle(!toggle);
     }
+    setToggle(!toggle);
   };
 
   useEffect(() => {
@@ -230,68 +238,27 @@ document.onkeydown = function (e) {
         }
       });
 
-  };
+          <select
+            className="Choice"
+            value={Status}
+            onChange={(e) => setStatus(e.target.value)}
+            name="Status"
+            id="Status"
+            placeholder="Status"
+          >
+            <option className="Accepted" value="Accepted">
+              Accepted
+            </option>
 
   const settTicketID = (ID) => {
     setTicketID(ID);
   };
 
-  const changeStatusRej = (e) => {
-    const data = { Status:"Rejected", Ticket_ID };
-    console.log("ID"+Ticket_ID)
-    axios
-      .post("http://localhost:5000/api/ticket/test-update", data)
-      .then((res) => {
-        if (res.status === 200) {
-        }
-      });
-  };
-
-  // function checkCompany() {
-  //   if (companyID == 1) {
-  //     return (
-        
-  //       <div>
-  //         {users && console.log(users)}
-  //         <h3>Ticket control User</h3>
-  //         <br />
-  //         <input
-  //           required
-  //           value={Ticket_ID}
-  //           onChange={(e) => getTicketID(e.target.value)}
-  //           type={"number"}
-  //           placeholder="Ticket ID"
-  //         ></input>
-
-  //         <select
-  //           className="Choice"
-  //           value={Status}
-  //           onChange={(e) => setStatus(e.target.value)}
-  //           name="Status"
-  //           id="Status"
-  //           placeholder="Status"
-  //         >
-  //           <option className="Accepted" value="Accepted">
-  //             Accepted
-  //           </option>
-
-  //           <option className="Rejected" value="Rejected">
-  //             Rejected
-  //           </option>
-  //         </select>
-  //         <br />
-  //         <input
-  //           value={Reply}
-  //           onChange={(e) => setReply(e.target.value)}
-  //           type={"textarea"}
-  //           placeholder="Add reply (optional)"
-  //         ></input>
-
-  //         <button onClick={changeStatus}>Update</button>
-  //       </div>
-  //     );
-  //   }
-  // }
+          <button onClick={changeStatus}>Update</button>
+        </div>
+      );
+    }
+  }
 
   return (
     <>
@@ -335,7 +302,7 @@ document.onkeydown = function (e) {
                   width="20"
                   onClick={(e) => {
                     handleSortingByTicketTypeDES(e);
-                    setRotate(!rotate2);
+                    setRotate2(!rotate2);
                   }}
                 />
               </th>
@@ -343,12 +310,12 @@ document.onkeydown = function (e) {
                 Status
                 <img
                   className={rotate3 ? "rerotateable" : "rotateable"}
-                  src={up3}
+                  src={up}
                   height="20"
                   width="20"
                   onClick={(e) => {
                     handleSortingByStatusDES(e);
-                    setRotate(!rotate3);
+                    setRotate3(!rotate3);
                   }}
                 />
               </th>
@@ -356,12 +323,12 @@ document.onkeydown = function (e) {
                 Company ID
                 <img
                   className={rotate4 ? "rerotateable" : "rotateable"}
-                  src={up4}
+                  src={up}
                   height="20"
                   width="20"
                   onClick={(e) => {
                     handleSortingByCompanyIDDES(e);
-                    setRotate(!rotate4);
+                    setRotate4(!rotate4);
                   }}
                 />
               </th>
@@ -369,12 +336,12 @@ document.onkeydown = function (e) {
                 Description
                 <img
                   className={rotate5 ? "rerotateable" : "rotateable"}
-                  src={up5}
+                  src={up}
                   height="20"
                   width="20"
                   onClick={(e) => {
-                    handleSortingByDescriptionDES(e);
-                    setRotate(!rotate5);
+                    handleSortingByTicketTypeDES(e);
+                    setRotate5(!rotate5);
                   }}
                 />
               </th> */}
@@ -387,7 +354,7 @@ document.onkeydown = function (e) {
                   width="20"
                   onClick={(e) => {
                     handleSortingByDescriptionDES(e);
-                    setRotate(!rotate6);
+                    setRotate6(!rotate6);
                   }}
                 />
               </th>
