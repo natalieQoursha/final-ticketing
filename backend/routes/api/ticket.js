@@ -92,6 +92,20 @@ router.post("/view-tickets", (req, response) => {
             response.status(200).json(res.recordset);
           });
       }
+      else if (CompanyID == 5) {
+        res
+          .request()
+          .query("Select * from dbo.Tickets where Company_ID=5", (err, res) => {
+            response.status(200).json(res.recordset);
+          });
+      }
+      else if (CompanyID == 6) {
+        res
+          .request()
+          .query("Select * from dbo.Tickets where Company_ID=6", (err, res) => {
+            response.status(200).json(res.recordset);
+          });
+      }
     }
   });
 });
@@ -173,6 +187,7 @@ router.post("/test-update", (req, response) => {
 router.post("/addReply", (req, response) => {
   const reply = req.body.Reply;
   const ID = req.body.Ticket_ID;
+  console.log("reply:"+reply)
 
   conn.connect().then((res) => {
     if (res.connected) {
