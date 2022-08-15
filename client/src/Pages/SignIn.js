@@ -2,7 +2,7 @@ import "../SignIn.css";
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import signin from "../images/signin.png";
+// import signin from "../images/signin.png";
 
 const SignIn = () => {
   const [Email, setEmail] = useState("");
@@ -17,7 +17,7 @@ const SignIn = () => {
 
     axios.post("http://localhost:5000/api/user/login", data).then((res) => {
       if (res.status === 400) {
-        alert("Wrong Credintials");
+        // alert("Wrong Credintials");
         return;
       } else {
         sessionStorage.setItem("user", JSON.stringify(res.data));
@@ -28,8 +28,9 @@ const SignIn = () => {
 
     if (user === undefined) {
     } else {
-      alert("welcome");
-      history("/");
+      // alert("welcome");
+
+      history("/test");
       window.location.reload();
     }
   };

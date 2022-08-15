@@ -45,13 +45,16 @@ main {
     font-weight: 5000;
     padding: 0 30px;
     line-height: 32px;
-	color: #0b2d50;
+	color: rgb(122, 134, 182);
+    font-size: 25px;
+    margin-top: -50px;
 }
 
 .colm-form .form-container {
-    background-color: pink;
+    
+    background-color: white;
     border: none;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px #ffc73c, 0 8px 16px #ffc73c;
     margin-bottom: 100px;
     padding: 20px;
     max-width: 800px;
@@ -78,7 +81,7 @@ main {
 }
 
 .colm-form .form-container .btn-login {
-    background-color: darkblue;
+    background-color: #9C9EFE;
     border: none;
     border-radius: 6px;
     font-size: 20px;

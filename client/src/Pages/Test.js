@@ -6,20 +6,30 @@ import up1 from "../images/up.png";
 import up2 from "../images/up.png";
 import up3 from "../images/up.png";
 import up4 from "../images/up.png";
-import up5 from "../images/up.png";
 import up6 from "../images/up.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckSquare, faCoffee } from "@fortawesome/free-solid-svg-icons";
+import { TiDelete } from "react-icons/ti";
+import "./Test.css";
 
 const Test = () => {
+  //   var btnZ = document.getElementById("Z");
+
+  // document.onkeydown = function (e) {
+  //     var keyCode = e.keyCode;
+  //     if(keyCode == 13) {
+  //         setReply();
+  //     }
+  // };
+
   const [users, setUsers] = useState();
   const [Status, setStatus] = useState("Accepted");
-  const [Ticket_ID, getTicketID] = useState("");
-  const [Assigned_To, setAssignedTo] = useState();
-  const [Reply, setReply] = useState("");
+  const [Ticket_ID, setTicketID] = useState("");
+  const [Reply, setReply] = useState([]);
   const [trig, setTrig] = useState(false);
   const history = useNavigate();
   const user = JSON.parse(sessionStorage.getItem("user")) || undefined;
   const companyID = user.Company_ID;
-  const role = user.Role;
   const [toggle, setToggle] = useState(up);
   const [rotate, setRotate] = useState(true);
   const [rotate1, setRotate1] = useState(true);
@@ -52,7 +62,6 @@ const Test = () => {
       setToggle(!toggle);
     }
     setTrig(!trig);
-    setToggle(!toggle);
   };
 
   const handleSortingByStatusDES = (e) => {
@@ -77,7 +86,6 @@ const Test = () => {
         });
       setToggle(!toggle);
     }
-    setToggle(!toggle);
   };
 
   const handleSortingBySeverityDES = (e) => {
@@ -103,7 +111,6 @@ const Test = () => {
       setToggle(!toggle);
       // setRotate(!rotate)
     }
-    setToggle(!toggle);
   };
 
   const handleSortingByProductTypeDES = (e) => {
@@ -128,13 +135,12 @@ const Test = () => {
         });
       setToggle(!toggle);
     }
-    setToggle(!toggle);
   };
 
   const handleSortingByCompanyIDDES = (e) => {
     e.preventDefault();
     const info = {
-      sortBasedOn: "Company_ID",
+      sortBasedOn: "Company_Name",
       companyID,
     };
 
@@ -154,7 +160,6 @@ const Test = () => {
       setToggle(!toggle);
     }
     setTrig(!trig);
-    setToggle(!toggle);
   };
 
   const handleSortingByDescriptionDES = (e) => {
@@ -179,7 +184,6 @@ const Test = () => {
         });
       setToggle(!toggle);
     }
-    setToggle(!toggle);
   };
 
   useEffect(() => {
@@ -193,7 +197,6 @@ const Test = () => {
         .post("http://localhost:5000/api/ticket/view-tickets", info)
         .then((res) => {
           setUsers(res.data);
-          const dataa = JSON.stringify(res.data);
         });
     };
 
@@ -201,85 +204,87 @@ const Test = () => {
   }, []);
 
   const changeStatus = (e) => {
-    const data = { Status: "Pending", Ticket_ID, Assigned_To };
-
+    const data = { Status: "Accepted", Ticket_ID };
+    console.log("ID" + Ticket_ID);
     axios
       .post("http://localhost:5000/api/ticket/test-update", data)
       .then((res) => {
         if (res.status === 200) {
         }
       });
-
-    alert("Ticket updated successfully");
   };
 
-  function checkCompany() {
-    if (user.Role === "Admin") {
-      return (
-        <div>
-          <h3>Admin ticket control</h3>
-          <br />
-          <input
-            required
-            value={Ticket_ID}
-            onChange={(e) => getTicketID(e.target.value)}
-            type={"number"}
-            placeholder="Ticket ID"
-          ></input>
-          <input
-            required
-            value={Assigned_To}
-            onChange={(e) => setAssignedTo(e.target.value)}
-            type={"text"}
-            placeholder="Assign ticket to"
-          ></input>
-          <br />
+  const addReply = (e) => {
+    const data = { Reply, Ticket_ID };
+    console.log("reply is:" + data.Reply);
+    axios
+      .post("http://localhost:5000/api/ticket/addReply", data)
+      .then((res) => {
+        if (res.status === 200) {
+        }
+      });
+  };
 
-          <button onClick={changeStatus}>Update</button>
-        </div>
-      );
-    } else if (user.Role === "Employer") {
-      return (
-        <div>
-          <h3>Employer ticket control</h3>
-          <br />
-          <input
-            required
-            value={Ticket_ID}
-            onChange={(e) => getTicketID(e.target.value)}
-            type={"number"}
-            placeholder="Ticket ID"
-          ></input>
+  const settTicketID = (ID) => {
+    setTicketID(ID);
+  };
 
-          <select
-            className="Choice"
-            value={Status}
-            onChange={(e) => setStatus(e.target.value)}
-            name="Status"
-            id="Status"
-            placeholder="Status"
-          >
-            <option className="Accepted" value="Accepted">
-              Accepted
-            </option>
+  const changeStatusRej = (e) => {
+    const data = { Status: "Rejected", Ticket_ID };
+    console.log("ID" + Ticket_ID);
+    axios
+      .post("http://localhost:5000/api/ticket/test-update", data)
+      .then((res) => {
+        if (res.status === 200) {
+        }
+      });
+  };
 
-            <option className="Rejected" value="Rejected">
-              Rejected
-            </option>
-          </select>
-          <br />
-          <input
-            value={Reply}
-            onChange={(e) => setReply(e.target.value)}
-            type={"textarea"}
-            placeholder="Add reply (optional)"
-          ></input>
+  // function checkCompany() {
+  //   if (companyID == 1) {
+  //     return (
 
-          <button onClick={changeStatus}>Update</button>
-        </div>
-      );
-    }
-  }
+  //       <div>
+  //         {users && console.log(users)}
+  //         <h3>Ticket control User</h3>
+  //         <br />
+  //         <input
+  //           required
+  //           value={Ticket_ID}
+  //           onChange={(e) => getTicketID(e.target.value)}
+  //           type={"number"}
+  //           placeholder="Ticket ID"
+  //         ></input>
+
+  //         <select
+  //           className="Choice"
+  //           value={Status}
+  //           onChange={(e) => setStatus(e.target.value)}
+  //           name="Status"
+  //           id="Status"
+  //           placeholder="Status"
+  //         >
+  //           <option className="Accepted" value="Accepted">
+  //             Accepted
+  //           </option>
+
+  //           <option className="Rejected" value="Rejected">
+  //             Rejected
+  //           </option>
+  //         </select>
+  //         <br />
+  //         <input
+  //           value={Reply}
+  //           onChange={(e) => setReply(e.target.value)}
+  //           type={"textarea"}
+  //           placeholder="Add reply (optional)"
+  //         ></input>
+
+  //         <button onClick={changeStatus}>Update</button>
+  //       </div>
+  //     );
+  //   }
+  // }
 
   return (
     <>
@@ -330,7 +335,7 @@ const Test = () => {
                 Status
                 <img
                   className={rotate3 ? "rerotateable" : "rotateable"}
-                  src={up}
+                  src={up3}
                   height="20"
                   width="20"
                   onClick={(e) => {
@@ -339,68 +344,111 @@ const Test = () => {
                   }}
                 />
               </th>
-              <th>
-                Company ID
-                <img
-                  className={rotate4 ? "rerotateable" : "rotateable"}
-                  src={up}
-                  height="20"
-                  width="20"
-                  onClick={(e) => {
-                    handleSortingByCompanyIDDES(e);
-                    setRotate4(!rotate4);
-                  }}
-                />
-              </th>
-              <th>
-                Description
-                <img
-                  className={rotate5 ? "rerotateable" : "rotateable"}
-                  src={up}
-                  height="20"
-                  width="20"
-                  onClick={(e) => {
-                    handleSortingByTicketTypeDES(e);
-                    setRotate5(!rotate5);
-                  }}
-                />
-              </th>
-              <th>
-                Reply
-                <img
-                  className={rotate6 ? "rerotateable" : "rotateable"}
-                  src={up6}
-                  height="20"
-                  width="20"
-                  onClick={(e) => {
-                    handleSortingByDescriptionDES(e);
-                    setRotate6(!rotate6);
-                  }}
-                />
-              </th>
+              <th>Company Name</th>
+              <th>Reply</th>
             </tr>
           </thead>
 
           {users &&
             users.map((element) => {
-              return (
-                <>
-                  <tbody>
-                    <td>{element.Sevirity}</td>
-                    <td>{element.Product_Types}</td>
-                    <td>{element.Ticket_Type}</td>
-                    <td>{element.Status}</td>
-                    <td>{element.Company_ID}</td>
-                    <td>{element.Description}</td>
-                    <td>{element.Reply}</td>
-                  </tbody>
-                </>
-              );
+              if (user.Role === "Admin") {
+                return (
+                  <>
+                    <tbody>
+                      <td>{element.Sevirity}</td>
+                      <td>{element.Product_Types}</td>
+                      <td>{element.Ticket_Type}</td>
+                      <td>
+                        {element.Status}
+                        <div className="next">
+                          <div className="checkIcon">
+                            <FontAwesomeIcon
+                              icon={faCheckSquare}
+                              size="1x"
+                              onClick={() => {
+                                settTicketID(element.Ticket_ID);
+                                changeStatus();
+                              }}
+                            />
+                          </div>
+                          <div className="red">
+                            <TiDelete
+                              className="Red"
+                              size="35px"
+                              onClick={() => {
+                                settTicketID(element.Ticket_ID);
+                                changeStatusRej();
+                              }}
+                            >
+                              {" "}
+                            </TiDelete>
+                          </div>
+                        </div>
+                      </td>
+
+                      <td>{element.Company_Name}</td>
+                      {/* <td>{element.Description}</td> */}
+                      <td>{element.Reply}</td>
+                    </tbody>
+                  </>
+                );
+              }
+              if (user.Role === "Employer") {
+                return (
+                  <>
+                    <tbody>
+                      <td>{element.Sevirity}</td>
+                      <td>{element.Product_Types}</td>
+                      <td>{element.Ticket_Type}</td>
+                      <td>{element.Status}</td>
+                      <td>{element.Company_Name}</td>
+                      {/* <td>{element.Description}</td> */}
+                      <td>
+                        <div>
+                          <input
+                            className="replyInput"
+                            value={element.Reply}
+                            type={"textarea"}
+                            placeholder="Add a reply"
+                          ></input>
+                          <button
+                            className="replyButton"
+                            onClick={(e) => {
+                              setReply(Reply);
+                              settTicketID(element.Ticket_ID);
+                              addReply(e.target.value);
+                            }}
+                          >
+                            Update
+                          </button>
+                        </div>
+                      </td>
+                    </tbody>
+                  </>
+                );
+              }
+
+              if (user.Role === "Customer") {
+                return (
+                  <>
+                    <tbody>
+                      <td>{element.Sevirity}</td>
+                      <td>{element.Product_Types}</td>
+                      <td>{element.Ticket_Type}</td>
+                      <td>{element.Status}</td>
+                      <td>{element.Company_ID}</td>
+                      {/* <td>{element.Description}</td> */}
+                      <td>{element.Reply}</td>
+                    </tbody>
+                  </>
+                );
+              }
             })}
         </table>
       </div>
-      {checkCompany()}
+
       <br />
+      {/* {checkCompany()} */}
     </>
   );
 };

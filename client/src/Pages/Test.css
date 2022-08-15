@@ -1,0 +1,20 @@
+.checkIcon svg path{
+    color: green;
+}
+.red svg path{
+    color: red;
+}
+.next{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.replyInput{
+    width:150px;
+}
+
+.replyButton{
+    background-color: white;
+    color: red;
+}

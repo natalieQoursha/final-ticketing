@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Fira Sans', sans-serif;
+    /* background-color: #dcd9ff; */
 }
 main{
     padding: 32px;
@@ -31,26 +32,27 @@ opacity: 0;
 }
 .popup{
     position: fixed;
-    right:10%;
+    right:18%;
     top: 25%;
-    width: 80%;
+    width: 60%;
     height: 55%;
     display: flex;
     flex-direction: column;
-    padding:2rem;
-    background-color: gray;
+    background-color: white;
+    box-shadow: 0 2px 4px #ffc73c, 0 8px 16px #ffc73c;
 }
 
 h1{
     font: bolder;
     font-size: 2em;
-    text-shadow: 0 0 2px darkblue;
+    color: rgb(175, 122, 179);
+
   }
 .submit-btn{
     margin-right: 20%;
     width: 100%;
     padding:0.7em 2em;
-    background-color: #ff1493;
+    background-color: #9C9EFE;
     color: white;
     cursor:pointer;
     font-size: 1em;
@@ -86,7 +88,7 @@ h1{
 }
 
 .alignment label {
-    color: #ffebeb;
+    color: rgb(175, 122, 179);
     width:15%
 }
 
@@ -95,21 +97,23 @@ h1{
 }
 
 .txta{
-    width: 100%;
+    width: 80%;
+    margin-left: 80px;
+    margin-top: -31.5px;
+    text-align: center;
 }
 table {
     padding-top: 2%;
     margin: auto;
-    width:95%;
     max-width: 95%;
     width: 100%;
-    height: 200px;
+    height: 100%;
   }
     
 th {
     background-color:darkslateblue;    ;
     color: #ffebeb;
-    font-size: 1.4em;
+    font-size: 20px;
     height: 3em;
     }
 
