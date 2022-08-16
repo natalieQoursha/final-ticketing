@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckSquare, faCoffee } from "@fortawesome/free-solid-svg-icons";
 import { TiDelete } from "react-icons/ti";
 import "./Test.css";
+import Button from "react-bootstrap/Button";
 
 const Test = () => {
   //   var btnZ = document.getElementById("Z");
@@ -402,7 +403,6 @@ const Test = () => {
                       <td>{element.Ticket_Type}</td>
                       <td>{element.Status}</td>
                       <td>{element.Company_Name}</td>
-                      {/* <td>{element.Description}</td> */}
                       <td>
                         <div>
                           <input
@@ -411,7 +411,7 @@ const Test = () => {
                             type={"textarea"}
                             placeholder="Add a reply"
                           ></input>
-                          <button
+                          <Button
                             className="replyButton"
                             onClick={(e) => {
                               setReply(Reply);
@@ -420,7 +420,7 @@ const Test = () => {
                             }}
                           >
                             Update
-                          </button>
+                          </Button>
                         </div>
                       </td>
                     </tbody>
