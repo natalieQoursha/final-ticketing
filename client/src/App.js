@@ -9,9 +9,11 @@ import Tickets from "./Tickets";
 import { useState } from "react";
 import Test from "./Pages/Test";
 import "./App.css";
-import Admin from "./Admin";
+import AdminView from "./Pages/AdminView"
+import ViewStatus from "./Pages/viewStatus"
 
-function App(props) {
+
+function App() {
   const [buttonPopup, setButtonPopup] = useState(false);
 
   return (
@@ -25,7 +27,9 @@ function App(props) {
             <Route path="/signUp" element={<SignUp />} />
             <Route path="/Tickets" element={<Tickets />} />
             <Route path="/test" element={<Test />} />
-            <Route path="/Admin" element={<Admin />} />
+            <Route path="/AdminView" element={<AdminView />} />
+            <Route path="/viewStatus" element={<ViewStatus />} />
+
           </Routes>
           <Footer />
         </BrowserRouter>

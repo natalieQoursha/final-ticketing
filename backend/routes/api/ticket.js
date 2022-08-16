@@ -70,14 +70,13 @@ router.post("/sortingASC", (req, response) => {
       } else if (com == 3) {
         res
           .request()
-          .query(
-            `Select * from dbo.Tickets Inner JOIN Companies ON Tickets.Company_ID=Companies.Company_ID  where Company_ID=3 ORDER BY '${sortBy}' ASC `,
-            (err, res) => {
-              response.status(200).json(res.recordset);
-            }
-          );
+          .query(`SELECT * FROM dbo.Tickets where Company_ID=3 ORDER BY '${sortBy}' ASC `, (err, res) => {
+            response.status(200).json(res.recordset);
+          });
       }
+          );
     }
+
   });
 });
 
@@ -85,51 +84,37 @@ router.post("/view-tickets", (req, response) => {
   const CompanyID = req.body.Company_ID;
   conn.connect().then((res) => {
     if (res.connected) {
-      if (CompanyID == 1) {
+      if (CompanyID == 10) {
+        res.request().query("Select * from dbo.Tickets", (err, res) => {
+          response.status(200).json(res.recordset);
+        });
+      } 
+      else if (CompanyID == 11) {
         res
           .request()
-          .query(
-            "Select * from dbo.Tickets Inner JOIN Companies ON Tickets.Company_ID=Companies.Company_ID ",
-            (err, res) => {
-              response.status(200).json(res.recordset);
-            }
-          );
-      } else if (CompanyID == 2) {
+          .query("Select * from dbo.Tickets where Company_ID=11", (err, res) => {
+            response.status(200).json(res.recordset);
+          });
+      } else if (CompanyID == 12) {
         res
           .request()
-          .query(
-            "Select * from dbo.Tickets Inner JOIN Companies ON Tickets.Company_ID=Companies.Company_ID  where Company_ID=2",
-            (err, res) => {
-              response.status(200).json(res.recordset);
-            }
-          );
-      } else if (CompanyID == 3) {
+          .query("Select * from dbo.Tickets where Company_ID=12", (err, res) => {
+            response.status(200).json(res.recordset);
+          });
+      }
+      else if (CompanyID == 13) {
         res
           .request()
-          .query(
-            "Select * from dbo.Tickets Inner JOIN Companies ON Tickets.Company_ID=Companies.Company_ID where Company_ID=3",
-            (err, res) => {
-              response.status(200).json(res.recordset);
-            }
-          );
-      } else if (CompanyID == 5) {
+          .query("Select * from dbo.Tickets where Company_ID=13", (err, res) => {
+            response.status(200).json(res.recordset);
+          });
+      }
+      else if (CompanyID == 15) {
         res
           .request()
-          .query(
-            "Select * from dbo.Tickets Inner JOIN Companies ON Tickets.Company_ID=Companies.Company_ID where Company_ID=5",
-            (err, res) => {
-              response.status(200).json(res.recordset);
-            }
-          );
-      } else if (CompanyID == 6) {
-        res
-          .request()
-          .query(
-            "Select * from dbo.Tickets Inner JOIN Companies ON Tickets.Company_ID=Companies.Company_ID where Company_ID=6",
-            (err, res) => {
-              response.status(200).json(res.recordset);
-            }
-          );
+          .query("Select * from dbo.Tickets where Company_ID=15", (err, res) => {
+            response.status(200).json(res.recordset);
+          });
       }
     }
   });
@@ -210,7 +195,7 @@ router.post("/test-update", (req, response) => {
 router.post("/addReply", (req, response) => {
   const reply = req.body.Reply;
   const ID = req.body.Ticket_ID;
-  console.log("reply:" + reply);
+  console.log("reply:"+reply)
 
   conn.connect().then((res) => {
     if (res.connected) {
@@ -222,7 +207,8 @@ router.post("/addReply", (req, response) => {
             response.status(200).json();
           }
         );
-    }
+
+    }    
   });
 });
 module.exports = router;

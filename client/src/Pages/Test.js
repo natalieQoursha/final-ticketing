@@ -14,19 +14,19 @@ import "./Test.css";
 import Button from "react-bootstrap/Button";
 
 const Test = () => {
-  //   var btnZ = document.getElementById("Z");
+//   var btnZ = document.getElementById("Z");
 
-  // document.onkeydown = function (e) {
-  //     var keyCode = e.keyCode;
-  //     if(keyCode == 13) {
-  //         setReply();
-  //     }
-  // };
+// document.onkeydown = function (e) {
+//     var keyCode = e.keyCode;
+//     if(keyCode == 13) {
+//         setReply();
+//     }
+// };
 
   const [users, setUsers] = useState();
   const [Status, setStatus] = useState("Accepted");
   const [Ticket_ID, setTicketID] = useState("");
-  const [Reply, setReply] = useState([]);
+  const [Reply, setReply] = useState();
   const [trig, setTrig] = useState(false);
   const history = useNavigate();
   const user = JSON.parse(sessionStorage.getItem("user")) || undefined;
@@ -198,15 +198,15 @@ const Test = () => {
         .post("http://localhost:5000/api/ticket/view-tickets", info)
         .then((res) => {
           setUsers(res.data);
-        });
+     });
     };
 
     fetchUsers();
   }, []);
 
   const changeStatus = (e) => {
-    const data = { Status: "Accepted", Ticket_ID };
-    console.log("ID" + Ticket_ID);
+    const data = { Status:"Accepted", Ticket_ID };
+    console.log("ID"+Ticket_ID)
     axios
       .post("http://localhost:5000/api/ticket/test-update", data)
       .then((res) => {
@@ -216,18 +216,23 @@ const Test = () => {
   };
 
   const addReply = (e) => {
-    const data = { Reply, Ticket_ID };
-    console.log("reply is:" + data.Reply);
+    const data = { Reply, Ticket_ID};
+    console.log("reply is:"+data.Reply)
     axios
       .post("http://localhost:5000/api/ticket/addReply", data)
       .then((res) => {
         if (res.status === 200) {
         }
       });
+
   };
 
   const settTicketID = (ID) => {
     setTicketID(ID);
+  };
+
+  const settReply = (reply) => {
+    setReply(reply);
   };
 
   const changeStatusRej = (e) => {
@@ -291,7 +296,7 @@ const Test = () => {
     <>
       <div className="viewTable">
         <table>
-          <thead>
+        <thead>
             <tr>
               <th>
                 Severity
@@ -345,8 +350,32 @@ const Test = () => {
                   }}
                 />
               </th>
-              <th>Company Name</th>
-              <th>Reply</th>
+              <th>
+                Company ID
+                <img
+                  className={rotate4 ? "rerotateable" : "rotateable"}
+                  src={up}
+                  height="20"
+                  width="20"
+                  onClick={(e) => {
+                    handleSortingByCompanyIDDES(e);
+                    setRotate4(!rotate4);
+                  }}
+                />
+              </th>
+                <th>
+                Reply
+                <img
+                  className={rotate6 ? "rerotateable" : "rotateable"}
+                  src={up6}
+                  height="20"
+                  width="20"
+                  onClick={(e) => {
+                    handleSortingByDescriptionDES(e);
+                    setRotate6(!rotate6);
+                  }}
+                />
+              </th>
             </tr>
           </thead>
 
@@ -402,53 +431,54 @@ const Test = () => {
                       <td>{element.Product_Types}</td>
                       <td>{element.Ticket_Type}</td>
                       <td>{element.Status}</td>
-                      <td>{element.Company_Name}</td>
+                      <td>{element.Company_ID}</td>
                       <td>
                         <div>
-                          <input
-                            className="replyInput"
-                            value={element.Reply}
-                            type={"textarea"}
-                            placeholder="Add a reply"
-                          ></input>
-                          <Button
-                            className="replyButton"
-                            onClick={(e) => {
-                              setReply(Reply);
-                              settTicketID(element.Ticket_ID);
-                              addReply(e.target.value);
-                            }}
-                          >
-                            Update
-                          </Button>
-                        </div>
-                      </td>
+                            <input className="replyInput"
+                             value={element.Ticket_ID.Reply}
+                             id={element.Ticket_ID}
+                             onChange={(e)=>{settReply(e.target.value);settTicketID(element.Ticket_ID);}}
+                               type={"textarea"}
+                               placeholder="Add a reply"></input>
+                            <button className="replyButton" onClick={(e)=>{addReply()}}
+                            >Update</button>
+                            
+                           </div>
+                        </td>
+                      
                     </tbody>
                   </>
                 );
               }
 
-              if (user.Role === "Customer") {
-                return (
-                  <>
-                    <tbody>
-                      <td>{element.Sevirity}</td>
-                      <td>{element.Product_Types}</td>
-                      <td>{element.Ticket_Type}</td>
-                      <td>{element.Status}</td>
-                      <td>{element.Company_ID}</td>
-                      {/* <td>{element.Description}</td> */}
-                      <td>{element.Reply}</td>
-                    </tbody>
-                  </>
-                );
-              }
+                if (user.Role === "Customer" ) {
+                  return (
+                    <>
+                      <tbody>
+                        <td>{element.Sevirity}</td>
+                        <td>{element.Product_Types}</td>
+                        <td>{element.Ticket_Type}</td>
+                        <td>{element.Status}</td>
+                        <td>{element.Company_ID}</td>
+                        {/* <td>{element.Description}</td> */}
+                        <td>{element.Reply}</td>
+                      </tbody>
+                    </>
+                  );}
             })}
         </table>
       </div>
 
       <br />
       {/* {checkCompany()} */}
+
+
+
+      
+
+
+    
+
     </>
   );
 };

@@ -7,13 +7,13 @@ const conn = new sql.ConnectionPool(DBconf);
 const bodyParser = require("body-parser");
 
 
-conn.connect().then((res) => {
-  if (res.connected) {
-    res.request().query("Select * from dbo.Tickets", (err, res) => {
-      (res.recordset);
-    });
-  }
-});
+// conn.connect().then((res) => {
+//   if (res.connected) {
+//     res.request().query("Select * from dbo.Tickets", (err, res) => {
+//       (res.recordset);
+//     });
+//   }
+// });
 
 const corsConf = {
   origin: "*",
