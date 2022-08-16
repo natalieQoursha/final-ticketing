@@ -68,27 +68,6 @@ const Navbar = () => {
             >
               View all tickets
             </Link>
-            <a
-              href="https://www.estartasolutions.com/Pages/About.aspx"
-              target="blank"
-              style={{
-                color: "white",
-                fontSize: 20,
-                borderRadius: 21,
-              }}
-            >
-              about
-            </a>
-            <a
-              href="mailto:kareem.shaweesh077@gmail.com"
-              style={{
-                color: "white",
-                fontSize: 20,
-                borderRadius: 21,
-              }}
-            >
-              contact
-            </a>
             <Link
               to="/"
               style={{
@@ -147,27 +126,6 @@ const Navbar = () => {
             >
               View tickets
             </Link>
-            <a
-              href="https://www.estartasolutions.com/Pages/About.aspx"
-              target="blank"
-              style={{
-                color: "white",
-                fontSize: 20,
-                borderRadius: 21,
-              }}
-            >
-              about
-            </a>
-            <a
-              href="mailto:kareem.shaweesh077@gmail.com"
-              style={{
-                color: "white",
-                fontSize: 20,
-                borderRadius: 21,
-              }}
-            >
-              contact
-            </a>
             <Link
               to="/"
               style={{
@@ -236,27 +194,6 @@ const Navbar = () => {
             >
               view tickets
             </Link>
-            <a
-              href="https://www.estartasolutions.com/Pages/About.aspx"
-              target="blank"
-              style={{
-                color: "white",
-                fontSize: 20,
-                borderRadius: 21,
-              }}
-            >
-              about
-            </a>
-            <a
-              href="mailto:kareem.shaweesh077@gmail.com"
-              style={{
-                color: "white",
-                fontSize: 20,
-                borderRadius: 21,
-              }}
-            >
-              contact
-            </a>
             <Link
               to="/"
               style={{

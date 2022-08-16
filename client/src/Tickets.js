@@ -48,7 +48,6 @@ function Tickets() {
   };
   return (
     <form onSubmit={submitUser}>
-      {console.log("hello")}
 
       <div className="popup">
         <div className=".popup-inner">

@@ -11,29 +11,65 @@ router.post("/sorting", (req, response) => {
     const com = req.body.companyID;
     console.log(sortBy);
     if (res.connected) {
-      if (com == 1) {
+      if (com == 10) {
         res
           .request()
           .query(
-            `Select * from dbo.Tickets Inner JOIN Companies ON Tickets.Company_ID=Companies.Company_ID ORDER BY '${sortBy}' DESC`,
+            `SELECT * FROM dbo.Tickets ORDER BY '${sortBy}' DESC`,
             (err, res) => {
               response.status(200).json(res.recordset);
             }
           );
-      } else if (com == 2) {
+      } else if (com == 11) {
         res
           .request()
           .query(
-            `Select * from dbo.Tickets Inner JOIN Companies ON Tickets.Company_ID=Companies.Company_ID where Company_ID=2 ORDER BY '${sortBy}' DESC `,
+            `SELECT * FROM dbo.Tickets where Company_ID=11 ORDER BY '${sortBy}' DESC `,
             (err, res) => {
               response.status(200).json(res.recordset);
             }
           );
-      } else if (com == 3) {
+      } else if (com == 12) {
         res
           .request()
           .query(
-            `Select * from dbo.Tickets Inner JOIN Companies ON Tickets.Company_ID=Companies.Company_ID  where Company_ID=3 ORDER BY '${sortBy}' DESC `,
+            `SELECT * FROM dbo.Tickets where Company_ID=12 ORDER BY '${sortBy}' DESC `,
+            (err, res) => {
+              response.status(200).json(res.recordset);
+            }
+          );
+      } else if (com == 13) {
+        res
+          .request()
+          .query(
+            `SELECT * FROM dbo.Tickets where Company_ID=13 ORDER BY '${sortBy}' DESC `,
+            (err, res) => {
+              response.status(200).json(res.recordset);
+            }
+          );
+      } else if (com == 15) {
+        res
+          .request()
+          .query(
+            `SELECT * FROM dbo.Tickets where Company_ID=15 ORDER BY '${sortBy}' DESC `,
+            (err, res) => {
+              response.status(200).json(res.recordset);
+            }
+          );
+      } else if (com == 16) {
+        res
+          .request()
+          .query(
+            `SELECT * FROM dbo.Tickets where Company_ID=16 ORDER BY '${sortBy}' DESC `,
+            (err, res) => {
+              response.status(200).json(res.recordset);
+            }
+          );
+      } else if (com == 17) {
+        res
+          .request()
+          .query(
+            `SELECT * FROM dbo.Tickets where Company_ID=17 ORDER BY '${sortBy}' DESC `,
             (err, res) => {
               response.status(200).json(res.recordset);
             }
@@ -49,34 +85,71 @@ router.post("/sortingASC", (req, response) => {
     const com = req.body.companyID;
     console.log(sortBy);
     if (res.connected) {
-      if (com == 1) {
+      if (com == 10) {
         res
           .request()
           .query(
-            `Select * from dbo.Tickets Inner JOIN Companies ON Tickets.Company_ID=Companies.Company_ID  ORDER BY '${sortBy}' ASC`,
+            `SELECT * FROM dbo.Tickets ORDER BY '${sortBy}' ASC`,
             (err, res) => {
               response.status(200).json(res.recordset);
             }
           );
-      } else if (com == 2) {
+      } else if (com == 11) {
         res
           .request()
           .query(
-            `Select * from dbo.Tickets Inner JOIN Companies ON Tickets.Company_ID=Companies.Company_ID  where Company_ID=2 ORDER BY '${sortBy}' ASC `,
+            `SELECT * FROM dbo.Tickets where Company_ID=11 ORDER BY '${sortBy}' ASC `,
             (err, res) => {
               response.status(200).json(res.recordset);
             }
           );
-      } else if (com == 3) {
+      } else if (com == 12) {
         res
           .request()
-          .query(`SELECT * FROM dbo.Tickets where Company_ID=3 ORDER BY '${sortBy}' ASC `, (err, res) => {
-            response.status(200).json(res.recordset);
-          });
+          .query(
+            `SELECT * FROM dbo.Tickets where Company_ID=12 ORDER BY '${sortBy}' ASC `,
+            (err, res) => {
+              response.status(200).json(res.recordset);
+            }
+          );
+      } else if (com == 13) {
+        res
+          .request()
+          .query(
+            `SELECT * FROM dbo.Tickets where Company_ID=13 ORDER BY '${sortBy}' ASC `,
+            (err, res) => {
+              response.status(200).json(res.recordset);
+            }
+          );
+      } else if (com == 15) {
+        res
+          .request()
+          .query(
+            `SELECT * FROM dbo.Tickets where Company_ID=15 ORDER BY '${sortBy}' ASC `,
+            (err, res) => {
+              response.status(200).json(res.recordset);
+            }
+          );
+      } else if (com == 16) {
+        res
+          .request()
+          .query(
+            `SELECT * FROM dbo.Tickets where Company_ID=16 ORDER BY '${sortBy}' ASC `,
+            (err, res) => {
+              response.status(200).json(res.recordset);
+            }
+          );
+      } else if (com == 17) {
+        res
+          .request()
+          .query(
+            `SELECT * FROM dbo.Tickets where Company_ID=17 ORDER BY '${sortBy}' ASC `,
+            (err, res) => {
+              response.status(200).json(res.recordset);
+            }
+          );
       }
-          );
     }
-
   });
 });
 
@@ -88,33 +161,60 @@ router.post("/view-tickets", (req, response) => {
         res.request().query("Select * from dbo.Tickets", (err, res) => {
           response.status(200).json(res.recordset);
         });
-      } 
-      else if (CompanyID == 11) {
+      } else if (CompanyID == 11) {
         res
           .request()
-          .query("Select * from dbo.Tickets where Company_ID=11", (err, res) => {
-            response.status(200).json(res.recordset);
-          });
+          .query(
+            "Select * from dbo.Tickets where Company_ID=11",
+            (err, res) => {
+              response.status(200).json(res.recordset);
+            }
+          );
       } else if (CompanyID == 12) {
         res
           .request()
-          .query("Select * from dbo.Tickets where Company_ID=12", (err, res) => {
-            response.status(200).json(res.recordset);
-          });
-      }
-      else if (CompanyID == 13) {
+          .query(
+            "Select * from dbo.Tickets where Company_ID=12",
+            (err, res) => {
+              response.status(200).json(res.recordset);
+            }
+          );
+      } else if (CompanyID == 13) {
         res
           .request()
-          .query("Select * from dbo.Tickets where Company_ID=13", (err, res) => {
-            response.status(200).json(res.recordset);
-          });
-      }
-      else if (CompanyID == 15) {
+          .query(
+            "Select * from dbo.Tickets where Company_ID=13",
+            (err, res) => {
+              response.status(200).json(res.recordset);
+            }
+          );
+      } else if (CompanyID == 15) {
         res
           .request()
-          .query("Select * from dbo.Tickets where Company_ID=15", (err, res) => {
-            response.status(200).json(res.recordset);
-          });
+          .query(
+            "Select * from dbo.Tickets where Company_ID=15",
+            (err, res) => {
+              response.status(200).json(res.recordset);
+            }
+          );
+      } else if (CompanyID == 16) {
+        res
+          .request()
+          .query(
+            "Select * from dbo.Tickets where Company_ID=16",
+            (err, res) => {
+              response.status(200).json(res.recordset);
+            }
+          );
+      } else if (CompanyID == 17) {
+        res
+          .request()
+          .query(
+            "Select * from dbo.Tickets where Company_ID=17",
+            (err, res) => {
+              response.status(200).json(res.recordset);
+            }
+          );
       }
     }
   });
@@ -150,34 +250,9 @@ router.post("/all-tickets", (req, response) => {
   });
 });
 
-router.post("/all-tickets", (req, response) => {
-  const PT = req.body.Product_Types;
-  const TT = req.body.Ticket_Type;
-  const stat = "Submitted";
-  const severity = req.body.Sevirity;
-  const ID = 11;
-  const Created_ON = 2022 - 10 - 10;
-  const userid = 2;
-
-  conn.connect().then((res) => {
-    if (res.connected) {
-      res
-        .request()
-        .query(
-          `INSERT INTO dbo.Tickets (Product_Types,Ticket_Type,Status,Sevirity,Company_ID,Created_ON, User_ID) VALUES ('${PT}','${TT}','${stat}', '${severity}', '${ID}','${Created_ON}', '${userid}')`,
-          (err, res) => {
-            response.status(200).json();
-          }
-        );
-    }
-  });
-});
-
 router.post("/test-update", (req, response) => {
   const status = req.body.Status;
   const ID = req.body.Ticket_ID;
-  // const reply = req.body.Reply;
-
   conn.connect().then((res) => {
     if (res.connected) {
       res
@@ -195,7 +270,7 @@ router.post("/test-update", (req, response) => {
 router.post("/addReply", (req, response) => {
   const reply = req.body.Reply;
   const ID = req.body.Ticket_ID;
-  console.log("reply:"+reply)
+  console.log("reply:" + reply);
 
   conn.connect().then((res) => {
     if (res.connected) {
@@ -207,8 +282,7 @@ router.post("/addReply", (req, response) => {
             response.status(200).json();
           }
         );
-
-    }    
+    }
   });
 });
 module.exports = router;
