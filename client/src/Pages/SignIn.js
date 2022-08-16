@@ -19,12 +19,11 @@ const SignIn = () => {
 
     axios.post("http://localhost:5000/api/user/login", data).then((res) => {
       if (res.status === 400) {
-        // alert("Wrong Credintials");
+        alert("Wrong Credintials");
         return;
       }
       else{
         sessionStorage.setItem("user", JSON.stringify(res.data));
-
 
       }
     });

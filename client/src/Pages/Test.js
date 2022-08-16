@@ -203,7 +203,7 @@ const Test = () => {
         .post("http://localhost:5000/api/ticket/view-tickets", info)
         .then((res) => {
           setUsers(res.data);
-        });
+     });
     };
 
     fetchUsers();
@@ -303,7 +303,6 @@ const Test = () => {
     {console.log()}
       <div className="viewTable">
         <table>
-
         <thead>
             <tr>
               <th>

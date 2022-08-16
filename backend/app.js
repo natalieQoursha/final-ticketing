@@ -7,13 +7,13 @@ const conn = new sql.ConnectionPool(DBconf);
 const bodyParser = require("body-parser");
 
 
-conn.connect().then((res) => {
-  if (res.connected) {
-    res.request().query("Select * from dbo.Tickets", (err, res) => {
-      (res.recordset);
-    });
-  }
-});
+// conn.connect().then((res) => {
+//   if (res.connected) {
+//     res.request().query("Select * from dbo.Tickets", (err, res) => {
+//       (res.recordset);
+//     });
+//   }
+// });
 
 const corsConf = {
   origin: "*",
@@ -26,6 +26,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/api/user", require("./routes/api/user"))
 app.use("/api/ticket", require("./routes/api/ticket"))
 app.use("/api/service", require("./routes/api/service"))
+app.use("/api/admin", require("./routes/api/admin"))
 
 
 app.use(bodyParser.urlencoded({extended:false}))

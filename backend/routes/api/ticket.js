@@ -74,35 +74,35 @@ router.post("/view-tickets", (req, response) => {
   const CompanyID = req.body.Company_ID;
   conn.connect().then((res) => {
     if (res.connected) {
-      if (CompanyID == 1) {
+      if (CompanyID == 10) {
         res.request().query("Select * from dbo.Tickets", (err, res) => {
           response.status(200).json(res.recordset);
         });
       } 
-      else if (CompanyID == 2) {
+      else if (CompanyID == 11) {
         res
           .request()
-          .query("Select * from dbo.Tickets where Company_ID=2", (err, res) => {
+          .query("Select * from dbo.Tickets where Company_ID=11", (err, res) => {
             response.status(200).json(res.recordset);
           });
-      } else if (CompanyID == 3) {
+      } else if (CompanyID == 12) {
         res
           .request()
-          .query("Select * from dbo.Tickets where Company_ID=3", (err, res) => {
-            response.status(200).json(res.recordset);
-          });
-      }
-      else if (CompanyID == 5) {
-        res
-          .request()
-          .query("Select * from dbo.Tickets where Company_ID=5", (err, res) => {
+          .query("Select * from dbo.Tickets where Company_ID=12", (err, res) => {
             response.status(200).json(res.recordset);
           });
       }
-      else if (CompanyID == 6) {
+      else if (CompanyID == 13) {
         res
           .request()
-          .query("Select * from dbo.Tickets where Company_ID=6", (err, res) => {
+          .query("Select * from dbo.Tickets where Company_ID=13", (err, res) => {
+            response.status(200).json(res.recordset);
+          });
+      }
+      else if (CompanyID == 15) {
+        res
+          .request()
+          .query("Select * from dbo.Tickets where Company_ID=15", (err, res) => {
             response.status(200).json(res.recordset);
           });
       }
