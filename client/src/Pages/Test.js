@@ -30,7 +30,7 @@ const Test = () => {
   const [trig, setTrig] = useState(false);
   const history = useNavigate();
   const user = JSON.parse(sessionStorage.getItem("user")) || undefined;
-  const companyID = user.Company_ID;
+  const companyID = user.Company_Name;
   const [toggle, setToggle] = useState(up);
   const [rotate, setRotate] = useState(true);
   const [rotate1, setRotate1] = useState(true);
@@ -191,7 +191,7 @@ const Test = () => {
     const fetchUsers = () => {
       const enduser = JSON.parse(sessionStorage.getItem("user")) || undefined;
       const info = {
-        Company_ID: enduser.Company_ID,
+        Company_Name: enduser.Company_Name,
       };
 
       axios
@@ -350,7 +350,7 @@ const Test = () => {
                 />
               </th>
               <th>
-                Company ID
+                Company Name
                 <img
                   className={rotate4 ? "rerotateable" : "rotateable"}
                   src={up}
@@ -430,7 +430,7 @@ const Test = () => {
                       <td>{element.Product_Types}</td>
                       <td>{element.Ticket_Type}</td>
                       <td>{element.Status}</td>
-                      <td>{element.Company_ID}</td>
+                      <td>{element.Company_Name}</td>
                       <td>
                         <div>
                           <input
@@ -467,7 +467,7 @@ const Test = () => {
                       <td>{element.Product_Types}</td>
                       <td>{element.Ticket_Type}</td>
                       <td>{element.Status}</td>
-                      <td>{element.Company_ID}</td>
+                      <td>{element.Company_Name}</td>
                       {/* <td>{element.Description}</td> */}
                       <td>{element.Reply}</td>
                     </tbody>
