@@ -44,7 +44,7 @@ router.post("/available-services", (req, response) => {
       res
         .request()
         .query(
-          `Select * from dbo.Products where Product_ID not in (Select Product_ID from dbo.Services where Company_Name = '${com}')`,
+          `Select * from dbo.Products where Product_ID not in (Select Product_ID from dbo.Services where Company_ID = '${com}')`,
           (err, res) => {
             response.status(200).json(res.recordset);
           }

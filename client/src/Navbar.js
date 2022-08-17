@@ -58,6 +58,7 @@ const Navbar = () => {
             >
               {user.First_Name}
             </h>
+
             <Link
               to="/test"
               style={{
@@ -166,6 +167,16 @@ const Navbar = () => {
           </Link>
 
           <div class="nav__link">
+
+          <h
+              style={{
+                color: "white",
+                fontSize: 20,
+              }}
+            >
+              {user.Company_Name}
+            </h>
+
             <h
               style={{
                 color: "white",
