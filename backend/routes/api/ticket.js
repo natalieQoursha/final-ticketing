@@ -153,33 +153,41 @@ router.post("/sortingASC", (req, response) => {
   });
 });
 
-
-
-
 router.post("/view-tickets", (req, response) => {
   const CompanyID = req.body.Company_ID;
-  const rol=req.body.role;
-  console.log("role is: "+rol)
-  const stat="Rejected"
+  console.log("com " + CompanyID);
+  const rol = req.body.role;
+  console.log("role is: " + rol);
+  const stat = "Rejected";
   conn.connect().then((res) => {
     if (res.connected) {
-      if (CompanyID == 10 && rol=="Admin") {
+      if (CompanyID == 10 && rol == "Admin") {
         res.request().query(`Select * from dbo.Tickets `, (err, res) => {
           response.status(200).json(res.recordset);
-          {console.log("nat")}
-          {console.log(res.recordset)}
-
+          console.log("nat");
+          {
+            console.log("nat");
+          }
+          {
+            console.log(res.recordset);
+          }
         });
-      } 
-      else if (CompanyID == 10 && rol=="Employer") {
-        res.request().query(`Select * from dbo.Tickets  where Status != '${stat}'  `, (err, res) => {
-          response.status(200).json(res.recordset);
-          {console.log("nat")}
-          {console.log(res.recordset)}
-
-        });
-      } 
-      else if (CompanyID == 11) {
+      } else if (CompanyID == 10 && rol == "Employer") {
+        res
+          .request()
+          .query(
+            `Select * from dbo.Tickets  where Status != '${stat}'  `,
+            (err, res) => {
+              response.status(200).json(res.recordset);
+              {
+                console.log("nat");
+              }
+              {
+                console.log(res.recordset);
+              }
+            }
+          );
+      } else if (CompanyID == 11) {
         res
           .request()
           .query(
