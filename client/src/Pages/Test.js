@@ -375,6 +375,7 @@ const Test = () => {
                   }}
                 />
               </th>
+              <th>Assign</th>
             </tr>
           </thead>
 
@@ -414,10 +415,9 @@ const Test = () => {
                           </div>
                         </div>
                       </td>
-
                       <td>{element.Company_Name}</td>
-                      {/* <td>{element.Description}</td> */}
                       <td>{element.Reply}</td>
+                      <td>+</td>
                     </tbody>
                   </>
                 );
