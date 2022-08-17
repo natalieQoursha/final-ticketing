@@ -14,7 +14,7 @@ const Navbar = () => {
           to="/"
           style={{
             color: "white",
-            fontSize: 20,
+            fontSize: 15,
             borderRadius: 21,
           }}
         >
@@ -25,7 +25,7 @@ const Navbar = () => {
             to="/SignIn"
             style={{
               color: "white",
-              fontSize: 20,
+              fontSize: 15,
               borderRadius: 21,
             }}
           >
@@ -42,7 +42,7 @@ const Navbar = () => {
             to="/"
             style={{
               color: "white",
-              fontSize: 20,
+              fontSize: 15,
               borderRadius: 21,
             }}
           >
@@ -53,7 +53,7 @@ const Navbar = () => {
             <h
               style={{
                 color: "white",
-                fontSize: 20,
+                fontSize0: 15,
               }}
             >
               {user.First_Name}
@@ -63,7 +63,7 @@ const Navbar = () => {
               to="/test"
               style={{
                 color: "white",
-                fontSize: 20,
+                fontSize: 15,
                 borderRadius: 21,
               }}
             >
@@ -73,14 +73,14 @@ const Navbar = () => {
               to="/"
               style={{
                 color: "white",
-                fontSize: 20,
+                fontSize: 15,
                 borderRadius: 21,
               }}
             >
               <button
                 style={{
                   color: "white",
-                  fontSize: 20,
+                  fontSize: 15,
                   borderRadius: 21,
                   background: "none",
                   border: "none",
@@ -101,7 +101,7 @@ const Navbar = () => {
             to="/"
             style={{
               color: "white",
-              fontSize: 20,
+              fontSize: 15,
               borderRadius: 21,
             }}
           >
@@ -112,7 +112,7 @@ const Navbar = () => {
             <h
               style={{
                 color: "white",
-                fontSize: 20,
+                fontSize: 15,
               }}
             >
               {user.First_Name}
@@ -121,7 +121,7 @@ const Navbar = () => {
               to="/test"
               style={{
                 color: "white",
-                fontSize: 20,
+                fontSize: 15,
                 borderRadius: 21,
               }}
             >
@@ -131,14 +131,14 @@ const Navbar = () => {
               to="/"
               style={{
                 color: "white",
-                fontSize: 20,
+                fontSize: 15,
                 borderRadius: 21,
               }}
             >
               <button
                 style={{
                   color: "white",
-                  fontSize: 20,
+                  fontSize: 15,
                   borderRadius: 21,
                   background: "none",
                   border: "none",
@@ -159,7 +159,7 @@ const Navbar = () => {
             to="/"
             style={{
               color: "white",
-              fontSize: 20,
+              fontSize: 15,
               borderRadius: 21,
             }}
           >
@@ -171,7 +171,7 @@ const Navbar = () => {
           <h
               style={{
                 color: "white",
-                fontSize: 20,
+                fontSize: 15,
               }}
             >
               {user.Company_Name}
@@ -180,7 +180,7 @@ const Navbar = () => {
             <h
               style={{
                 color: "white",
-                fontSize: 20,
+                fontSize: 15,
               }}
             >
               {user.First_Name.toUpperCase()}
@@ -189,7 +189,7 @@ const Navbar = () => {
               to="/tickets"
               style={{
                 color: "white",
-                fontSize: 20,
+                fontSize: 15,
                 borderRadius: 21,
               }}
             >
@@ -199,7 +199,7 @@ const Navbar = () => {
               to="/test"
               style={{
                 color: "white",
-                fontSize: 20,
+                fontSize: 15,
                 borderRadius: 21,
               }}
             >
@@ -209,14 +209,14 @@ const Navbar = () => {
               to="/"
               style={{
                 color: "white",
-                fontSize: 20,
+                fontSize: 15,
                 borderRadius: 21,
               }}
             >
               <button
                 style={{
                   color: "white",
-                  fontSize: 20,
+                  fontSize: 15,
                   border: "none",
                   background: "none",
                 }}

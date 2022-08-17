@@ -192,6 +192,7 @@ const Test = () => {
       const enduser = JSON.parse(sessionStorage.getItem("user")) || undefined;
       const info = {
         Company_ID: enduser.Company_ID,
+        role:enduser.Role
       };
 
       axios
@@ -290,11 +291,13 @@ const Test = () => {
   //     );
   //   }
   // }
-
+  if(user.Role == "Customer"){
   return (
+    
     <>
       <div className="viewTable">
         <table>
+          
           <thead>
             <tr>
               <th>
@@ -349,8 +352,8 @@ const Test = () => {
                   }}
                 />
               </th>
-              <th>
-                Company Name
+
+              { <th>
                 <img
                   className={rotate4 ? "rerotateable" : "rotateable"}
                   src={up}
@@ -361,7 +364,7 @@ const Test = () => {
                     setRotate4(!rotate4);
                   }}
                 />
-              </th>
+              </th> }
               <th>
                 Reply
                 <img
@@ -415,8 +418,8 @@ const Test = () => {
                         </div>
                       </td>
 
-                      <td>{element.Company_Name}</td>
-                      {/* <td>{element.Description}</td> */}
+                      {
+                      /* <td>{element.Description}</td> */}
                       <td>{element.Reply}</td>
                     </tbody>
                   </>
@@ -430,7 +433,199 @@ const Test = () => {
                       <td>{element.Product_Types}</td>
                       <td>{element.Ticket_Type}</td>
                       <td>{element.Status}</td>
-                      <td>{element.Company_Name}</td>
+                      <td>
+                        <div>
+                          <input
+                            className="replyInput"
+                            value={element.Ticket_ID.Reply}
+                            id={element.Ticket_ID}
+                            onChange={(e) => {
+                              settReply(e.target.value);
+                              settTicketID(element.Ticket_ID);
+                            }}
+                            type={"textarea"}
+                            placeholder="Add a reply"
+                          ></input>
+                          <button
+                            className="replyButton"
+                            onClick={(e) => {
+                              addReply();
+                            }}
+                          >
+                            Update
+                          </button>
+                        </div>
+                      </td>
+                    </tbody>
+                  </>
+                );
+              }
+
+              if (user.Role === "Customer") {
+                return (
+                  <>
+                    <tbody>
+                      <td>{element.Sevirity}</td>
+                      <td>{element.Product_Types}</td>
+                      <td>{element.Ticket_Type}</td>
+                      <td>{element.Status}</td>
+                      {/* <td>{element.Description}</td> */}
+                      <td>{element.Reply}</td>
+                    </tbody>
+                  </>
+                );
+              }
+            })}
+        </table>
+      </div>
+
+      <br />
+      {/* {checkCompany()} */}
+    </>
+  );
+} else{
+  return (
+    
+    <>
+      <div className="viewTable">
+        <table>
+          
+          <thead>
+            <tr>
+              <th>
+                Severity
+                <img
+                  className={rotate ? "rerotateable" : "rotateable"}
+                  src={up}
+                  height="20"
+                  width="20"
+                  onClick={(e) => {
+                    handleSortingBySeverityDES(e);
+                    setRotate(!rotate);
+                  }}
+                />
+              </th>
+              <th>
+                Product Type
+                <img
+                  className={rotate1 ? "rerotateable" : "rotateable"}
+                  src={up1}
+                  height="20"
+                  width="20"
+                  onClick={(e) => {
+                    handleSortingByProductTypeDES(e);
+                    setRotate1(!rotate1);
+                  }}
+                />
+              </th>
+              <th>
+                Ticket Type
+                <img
+                  className={rotate2 ? "rerotateable" : "rotateable"}
+                  src={up2}
+                  height="20"
+                  width="20"
+                  onClick={(e) => {
+                    handleSortingByTicketTypeDES(e);
+                    setRotate2(!rotate2);
+                  }}
+                />
+              </th>
+              <th>
+                Status
+                <img
+                  className={rotate3 ? "rerotateable" : "rotateable"}
+                  src={up3}
+                  height="20"
+                  width="20"
+                  onClick={(e) => {
+                    handleSortingByStatusDES(e);
+                    setRotate3(!rotate3);
+                  }}
+                />
+              </th>
+
+              {<th>
+                Company Name
+                <img
+                  className={rotate4 ? "rerotateable" : "rotateable"}
+                  src={up}
+                  height="20"
+                  width="20"
+                  onClick={(e) => {
+                    handleSortingByCompanyIDDES(e);
+                    setRotate4(!rotate4);
+                  }}
+                />
+              </th>}
+              <th>
+                Reply
+                <img
+                  className={rotate6 ? "rerotateable" : "rotateable"}
+                  src={up6}
+                  height="20"
+                  width="20"
+                  onClick={(e) => {
+                    handleSortingByDescriptionDES(e);
+                    setRotate6(!rotate6);
+                  }}
+                />
+              </th>
+            </tr>
+          </thead>
+
+          {users &&
+            users.map((element) => {
+              if (user.Role === "Admin") {
+                return (
+                  <>
+                    <tbody>
+                      <td>{element.Sevirity}</td>
+                      <td>{element.Product_Types}</td>
+                      <td>{element.Ticket_Type}</td>
+                      <td>
+                        {element.Status}
+                        <div className="next">
+                          <div className="checkIcon">
+                            <FontAwesomeIcon
+                              icon={faCheckSquare}
+                              size="1x"
+                              onClick={() => {
+                                settTicketID(element.Ticket_ID);
+                                changeStatus();
+                              }}
+                            />
+                          </div>
+                          <div className="red">
+                            <TiDelete
+                              className="Red"
+                              size="35px"
+                              onClick={() => {
+                                settTicketID(element.Ticket_ID);
+                                changeStatusRej();
+                              }}
+                            >
+                              {" "}
+                            </TiDelete>
+                          </div>
+                        </div>
+                      </td>
+<td>{element.Company_Name}</td>
+                      
+                      <td>{element.Description}</td>
+                      <td>{element.Reply}</td>
+                    </tbody>
+                  </>
+                );
+              }
+              if (user.Role === "Employer") {
+                return (
+                  <>
+                    <tbody>
+                      <td>{element.Sevirity}</td>
+                      <td>{element.Product_Types}</td>
+                      <td>{element.Ticket_Type}</td>
+                      <td>{element.Status}</td>
                       <td>
                         <div>
                           <input
@@ -468,7 +663,7 @@ const Test = () => {
                       <td>{element.Ticket_Type}</td>
                       <td>{element.Status}</td>
                       <td>{element.Company_Name}</td>
-                      {/* <td>{element.Description}</td> */}
+                      <td>{element.Description}</td>
                       <td>{element.Reply}</td>
                     </tbody>
                   </>
@@ -477,10 +672,8 @@ const Test = () => {
             })}
         </table>
       </div>
-
       <br />
-      {/* {checkCompany()} */}
     </>
   );
-};
+}}
 export default Test;
