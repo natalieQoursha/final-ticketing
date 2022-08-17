@@ -1,10 +1,10 @@
 import "../src/index.css";
 import "../src/Home.css";
-import { Link, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import Imagee from "../src/images/homeImg.png";
-const user = JSON.parse(sessionStorage.getItem("user")) || undefined;
+import Image from "../src/images/homeImg.png";
+import { Link, useNavigate } from "react-router-dom";
 
+const user = JSON.parse(sessionStorage.getItem("user")) || undefined;
 const Home = () => {
   return (
     <div class="container">
@@ -20,7 +20,7 @@ const Home = () => {
       </div>
 
       <div class="homeImage">
-        <img class="homeImage" src={Imagee} />
+        <img class="homeImage" src={Image} />
       </div>
     </div>
   );

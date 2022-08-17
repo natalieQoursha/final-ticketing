@@ -11,30 +11,40 @@ export default function Admin() {
   const history = useNavigate();
   const [Companies, setCompanies] = useState();
   const [Services, setServices] = useState();
-  const companyName =
-    JSON.parse(sessionStorage.getItem("companyName")) || undefined;
-  const companyID =
-    JSON.parse(sessionStorage.getItem("companyID")) || undefined;
+  const companyName =JSON.parse(sessionStorage.getItem("companyName")) || undefined;
+  const companyID =JSON.parse(sessionStorage.getItem("companyID")) || undefined;
   const [ProductID, setProductID] = useState();
   const [ProductName, setProductName] = useState();
 
-  const addService = () => {
-    const data = { companyID };
-    axios.post("http://localhost:5000/api/service/addService").then((res) => {
+  const addService = (props) => {
+    const ProductName=props.Product_Name;
+    const ProductID=props.Product_ID;
+    const data={companyName,companyID,ProductName,ProductID}
+    axios.post("http://localhost:5000/api/service/addService",data).then((res) => {
       if (res.status === 200) {
+        alert("service added ")
       }
     });
-    alert("Service Added Successfully");
+
   };
-  const removeService = () => {};
+  const removeService = (props) => {
+    const serviceID=props.Service_ID;
+    const data={serviceID}
+    axios.post("http://localhost:5000/api/service/removeService",data).then((res) => {
+      if (res.status === 200) {
+        alert("service removed ")
+      }
+    });
+
+  };
 
   useEffect(() => {
+    const data = { companyID };
     const fetchCompanies = () => {
       axios
-        .post("http://localhost:5000/api/admin/admin-services")
+        .post("http://localhost:5000/api/admin/admin-services",data)
         .then((res) => {
           setCompanies(res.data);
-          console.log();
         });
     };
     fetchCompanies();
@@ -78,7 +88,9 @@ export default function Admin() {
                   <Card.Text>{element.Company_Description}</Card.Text>
                 </Card.Body>
                 <Card.Footer>
-                  <Button onClick={(addService) => {}}>Remove service</Button>
+                  <Button onClick={() => {
+                    removeService(element);
+                  }}>Remove service</Button>
                 </Card.Footer>
               </Card>
             </div>
@@ -95,7 +107,10 @@ export default function Admin() {
                   <Card.Title>{element.Product_Name}</Card.Title>
                 </Card.Body>
                 <Card.Footer>
-                  <Button onClick={addService}>Add Service</Button>
+                  <Button  onClick={() => {
+                    addService(element);
+                  }
+                              }>Add Service</Button>
                 </Card.Footer>
               </Card>
             </div>
