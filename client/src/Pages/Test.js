@@ -191,7 +191,7 @@ const Test = () => {
     const fetchUsers = () => {
       const enduser = JSON.parse(sessionStorage.getItem("user")) || undefined;
       const info = {
-        Company_Name: enduser.Company_Name,
+        Company_ID: enduser.Company_ID,
       };
 
       axios

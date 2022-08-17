@@ -11,15 +11,12 @@ export default function Admin() {
   const history = useNavigate();
   const [Companies, setCompanies] = useState();
   const [Services, setServices] = useState();
-  const companyName =
-    JSON.parse(sessionStorage.getItem("companyName")) || undefined;
-  const companyID =
-    JSON.parse(sessionStorage.getItem("companyID")) || undefined;
+  const companyName =JSON.parse(sessionStorage.getItem("companyName")) || undefined;
+  const companyID =JSON.parse(sessionStorage.getItem("companyID")) || undefined;
   const [ProductID, setProductID] = useState();
   const [ProductName, setProductName] = useState();
 
   const addService = () => {
-    const data = { companyID };
     axios.post("http://localhost:5000/api/service/addService").then((res) => {
       if (res.status === 200) {
       }
@@ -29,12 +26,12 @@ export default function Admin() {
   const removeService = () => {};
 
   useEffect(() => {
+    const data = { companyID };
     const fetchCompanies = () => {
       axios
-        .post("http://localhost:5000/api/admin/admin-services")
+        .post("http://localhost:5000/api/admin/admin-services",data)
         .then((res) => {
           setCompanies(res.data);
-          console.log();
         });
     };
     fetchCompanies();
@@ -75,6 +72,7 @@ export default function Admin() {
               <Card>
                 <Card.Body>
                   <Card.Title>{element.Product_Name}</Card.Title>
+                  {console.log("ele"+element.Product_Name)}
                   <Card.Text>{element.Company_Description}</Card.Text>
                 </Card.Body>
                 <Card.Footer>

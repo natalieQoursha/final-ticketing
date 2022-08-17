@@ -27,9 +27,10 @@ router.post("/admin-services", (req, response) => {
       res
         .request()
         .query(
-          `Select * from dbo.Services where Company_Name = '${com}'`,
+          `Select * from dbo.Services where Company_ID = '${com}'`,
           (err, res) => {
             response.status(200).json(res.recordset);
+            console.log(res.recordset)
           }
         );
     }

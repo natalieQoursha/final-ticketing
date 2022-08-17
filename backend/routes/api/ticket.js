@@ -158,11 +158,15 @@ router.post("/sortingASC", (req, response) => {
 
 router.post("/view-tickets", (req, response) => {
   const CompanyID = req.body.Company_ID;
+  console.log("com "+CompanyID)
   conn.connect().then((res) => {
     if (res.connected) {
       if (CompanyID == 10) {
         res.request().query("Select * from dbo.Tickets", (err, res) => {
           response.status(200).json(res.recordset);
+          {console.log("nat")}
+          {console.log(res.recordset)}
+
         });
       } else if (CompanyID == 11) {
         res
