@@ -9,9 +9,9 @@ import Tickets from "./Tickets";
 import { useState } from "react";
 import Test from "./Pages/Test";
 import "./App.css";
-import AdminView from "./Pages/AdminView"
-import ViewStatus from "./Pages/viewStatus"
-
+import AdminView from "./Pages/AdminView";
+import ViewStatus from "./Pages/viewStatus";
+import Assign from "./Pages/assign";
 
 function App() {
   const [buttonPopup, setButtonPopup] = useState(false);
@@ -29,7 +29,7 @@ function App() {
             <Route path="/test" element={<Test />} />
             <Route path="/AdminView" element={<AdminView />} />
             <Route path="/viewStatus" element={<ViewStatus />} />
-
+            <Route path="/assign" element={<Assign />} />
           </Routes>
           <Footer />
         </BrowserRouter>
