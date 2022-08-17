@@ -69,6 +69,16 @@ const Navbar = () => {
               View all tickets
             </Link>
             <Link
+              to="/adminview"
+              style={{
+                color: "white",
+                fontSize: 20,
+                borderRadius: 21,
+              }}
+            >
+              Services control
+            </Link>
+            <Link
               to="/"
               style={{
                 color: "white",
