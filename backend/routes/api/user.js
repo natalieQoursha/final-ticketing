@@ -53,7 +53,6 @@ router.post("/login", (req, res) => {
   console.log(req.body);
   const userName = req.body.Email;
   const Pass = req.body.Password;
-
   conn.connect().then((response) => {
     console.log("test");
     if (response.connected) {

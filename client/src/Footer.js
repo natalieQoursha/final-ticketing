@@ -1,22 +1,14 @@
-// import Images from "../src/images/about.png";
-// import Facebook from "../src/images/face.png";
-// import Email from "../src/images/email.svg";
-// import Insta from "../src/images/instagram.png";
-import SocialFollow from "../src/SocialFollow"
+import SocialFollow from "../src/SocialFollow";
 
 const Footer = () => {
-
-
   return (
     <div>
       <div className="flex-wrapper">
         <div className="footer">
-          <SocialFollow/>
-
+          <SocialFollow />
         </div>
       </div>
     </div>
   );
 };
 export default Footer;
-
