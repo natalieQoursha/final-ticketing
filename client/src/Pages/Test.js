@@ -1,12 +1,12 @@
 import React, { useState, useEffect, Component } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import up from "../images/up.png";
-import up1 from "../images/up.png";
-import up2 from "../images/up.png";
-import up3 from "../images/up.png";
-import up4 from "../images/up.png";
-import up6 from "../images/up.png";
+import up from "../Images/up.png";
+import up1 from "../Images/up.png";
+import up2 from "../Images/up.png";
+import up3 from "../Images/up.png";
+import up4 from "../Images/up.png";
+import up6 from "../Images/up.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckSquare, faCoffee } from "@fortawesome/free-solid-svg-icons";
 import { TiDelete } from "react-icons/ti";
