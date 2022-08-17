@@ -70,4 +70,18 @@ router.post("/login", (req, res) => {
   });
 });
 
+
+router.post("/view-employees", (req, response) => {
+  console.log("nat")
+
+  conn.connect().then((res) => {
+    if (res.connected) {
+      res.request().query("Select * from dbo.Users where Role='Employer'", (err, res) => {
+        response.status(200).json(res.recordset);
+      });
+    }
+  });
+});
+
+
 module.exports = router;

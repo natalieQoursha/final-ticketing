@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 // import signin from "../images/signin.png";
 
-const SignIn = () => {
+const SignIn = ({setLoggedUser}) => {
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const data = { Email, Password };
@@ -21,19 +21,11 @@ const SignIn = () => {
         return;
       } else {
         sessionStorage.setItem("user", JSON.stringify(res.data));
-
+        setLoggedUser(res.data)
+        history('/test')
       }
     });
 
-    const user = JSON.parse(sessionStorage.getItem("user")) || undefined;
-
-    if (user === undefined) {
-    } else {
-      // alert("welcome");
-
-      history("/test");
-      window.location.reload();
-    }
   };
 
   return (

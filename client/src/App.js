@@ -11,10 +11,13 @@ import Test from "./Pages/Test";
 import "./App.css";
 import AdminView from "./Pages/AdminView"
 import ViewStatus from "./Pages/viewStatus"
+import Assign from "./Pages/assign"
+
 
 
 function App() {
   const [buttonPopup, setButtonPopup] = useState(false);
+  const [loggedUser,setLoggedUser]= useState(null)
 
   return (
     <>
@@ -23,12 +26,14 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/signIn" element={<SignIn />} />
+            <Route path="/signIn" element={<SignIn setLoggedUser={setLoggedUser}/>} />
             <Route path="/signUp" element={<SignUp />} />
             <Route path="/Tickets" element={<Tickets />} />
             <Route path="/test" element={<Test />} />
             <Route path="/AdminView" element={<AdminView />} />
             <Route path="/viewStatus" element={<ViewStatus />} />
+            <Route path="/assign" element={<Assign />} />
+
 
           </Routes>
           <Footer />

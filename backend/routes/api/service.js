@@ -44,6 +44,27 @@ router.post("/removeService", (req, response) => {
   });
 });
 
+router.post("/assignTickets", (req, response) => {
+  const ID = req.body.TicketID;
+  const empID = req.body.empID;
+  const name=req.body.empName;
+
+  conn.connect().then((res) => {
+    if (res.connected) {
+      res
+        .request()
+        .query(
+          `INSERT INTO dbo.Assignment(Ticket_ID,Employer_ID,Employer_Name) VALUES 
+          ('${ID}','${empID}','${name}')`
+          ,
+          (err, res) => {
+            response.status(200).json(res.recordset);
+            console.log(res.recordset);
+          }
+        );
+    }
+  });
+});
 
 router.post("/view-service", (req, response) => {
   const CompanyID = req.body.Company_ID;
