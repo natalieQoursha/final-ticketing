@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Component } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import up from "../images/up.png";
 import up1 from "../images/up.png";
 import up2 from "../images/up.png";
@@ -11,17 +11,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckSquare, faCoffee } from "@fortawesome/free-solid-svg-icons";
 import { TiDelete } from "react-icons/ti";
 import "./Test.css";
-import Button from "react-bootstrap/Button";
 
 const Test = () => {
-  //   var btnZ = document.getElementById("Z");
-
-  // document.onkeydown = function (e) {
-  //     var keyCode = e.keyCode;
-  //     if(keyCode == 13) {
-  //         setReply();
-  //     }
-  // };
 
   const [users, setUsers] = useState();
   const [Status, setStatus] = useState("Accepted");
@@ -39,6 +30,9 @@ const Test = () => {
   const [rotate4, setRotate4] = useState(true);
   const [rotate5, setRotate5] = useState(true);
   const [rotate6, setRotate6] = useState(true);
+  const newObj = (TID) => {
+    sessionStorage.setItem("ticketID", JSON.stringify(TID));
+  };
 
   const handleSortingByTicketTypeDES = (e) => {
     e.preventDefault();
@@ -246,52 +240,6 @@ const Test = () => {
       });
   };
 
-  // function checkCompany() {
-  //   if (companyID == 1) {
-  //     return (
-
-  //       <div>
-  //         {users && console.log(users)}
-  //         <h3>Ticket control User</h3>
-  //         <br />
-  //         <input
-  //           required
-  //           value={Ticket_ID}
-  //           onChange={(e) => getTicketID(e.target.value)}
-  //           type={"number"}
-  //           placeholder="Ticket ID"
-  //         ></input>
-
-  //         <select
-  //           className="Choice"
-  //           value={Status}
-  //           onChange={(e) => setStatus(e.target.value)}
-  //           name="Status"
-  //           id="Status"
-  //           placeholder="Status"
-  //         >
-  //           <option className="Accepted" value="Accepted">
-  //             Accepted
-  //           </option>
-
-  //           <option className="Rejected" value="Rejected">
-  //             Rejected
-  //           </option>
-  //         </select>
-  //         <br />
-  //         <input
-  //           value={Reply}
-  //           onChange={(e) => setReply(e.target.value)}
-  //           type={"textarea"}
-  //           placeholder="Add reply (optional)"
-  //         ></input>
-
-  //         <button onClick={changeStatus}>Update</button>
-  //       </div>
-  //     );
-  //   }
-  // }
-
   return (
     <>
       <div className="viewTable">
@@ -422,7 +370,15 @@ const Test = () => {
                       <td>{element.Company_Name}</td>
                       {/* <td>{element.Description}</td> */}
                       <td>{element.Reply}</td>
-                      <td>+</td>
+                      <td><Link to = "/assign" style={{
+            color: "Black",
+            fontSize: 20,
+            borderRadius: 21,
+          }} onClick={() => {
+            newObj(element.Ticket_ID);
+            
+          }}>Assign</Link></td>
+                     
                     </tbody>
                   </>
                 );
