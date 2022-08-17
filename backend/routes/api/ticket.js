@@ -127,14 +127,7 @@ router.post("/sortingASC", (req, response) => {
     }
 
   });
-      }
-
-      else if (com == 15) {
-        res
-          .request()
-          .query(`SELECT * FROM dbo.Tickets where Company_ID=15 ORDER BY '${sortBy}' ASC `, (err, res) => {
-            response.status(200).json(res.recordset);
-          });
+});
 
 
 
