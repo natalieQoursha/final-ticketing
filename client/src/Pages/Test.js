@@ -5,7 +5,6 @@ import up from "../images/up.png";
 import up1 from "../images/up.png";
 import up2 from "../images/up.png";
 import up3 from "../images/up.png";
-import up4 from "../images/up.png";
 import up6 from "../images/up.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckSquare, faCoffee } from "@fortawesome/free-solid-svg-icons";
@@ -13,7 +12,6 @@ import { TiDelete } from "react-icons/ti";
 import "./Test.css";
 
 const Test = () => {
-
   const [users, setUsers] = useState();
   const [Status, setStatus] = useState("Accepted");
   const [Ticket_ID, setTicketID] = useState("");
@@ -104,7 +102,6 @@ const Test = () => {
           setUsers(res.data);
         });
       setToggle(!toggle);
-      // setRotate(!rotate)
     }
   };
 
@@ -240,205 +237,200 @@ const Test = () => {
       });
   };
 
-  return (
-    <>
-      <div className="viewTable">
-        <table>
+  if (user.Role === "Admin") {
+    return (
+      <>
+        <table
+          id="dtBasicExample"
+          class="table table-striped table-bordered table-sm"
+          cellspacing="0"
+          width="100%"
+        >
           <thead>
-            <tr>
-              <th>
-                Severity
-                <img
-                  className={rotate ? "rerotateable" : "rotateable"}
-                  src={up}
-                  height="20"
-                  width="20"
-                  onClick={(e) => {
-                    handleSortingBySeverityDES(e);
-                    setRotate(!rotate);
-                  }}
-                />
-              </th>
-              <th>
-                Product Type
-                <img
-                  className={rotate1 ? "rerotateable" : "rotateable"}
-                  src={up1}
-                  height="20"
-                  width="20"
-                  onClick={(e) => {
-                    handleSortingByProductTypeDES(e);
-                    setRotate1(!rotate1);
-                  }}
-                />
-              </th>
-              <th>
-                Ticket Type
-                <img
-                  className={rotate2 ? "rerotateable" : "rotateable"}
-                  src={up2}
-                  height="20"
-                  width="20"
-                  onClick={(e) => {
-                    handleSortingByTicketTypeDES(e);
-                    setRotate2(!rotate2);
-                  }}
-                />
-              </th>
-              <th>
-                Status
-                <img
-                  className={rotate3 ? "rerotateable" : "rotateable"}
-                  src={up3}
-                  height="20"
-                  width="20"
-                  onClick={(e) => {
-                    handleSortingByStatusDES(e);
-                    setRotate3(!rotate3);
-                  }}
-                />
-              </th>
-
-              {
-                <th>
-                  Company Name
-                  <img
-                    className={rotate4 ? "rerotateable" : "rotateable"}
-                    src={up}
-                    height="20"
-                    width="20"
-                    onClick={(e) => {
-                      handleSortingByCompanyIDDES(e);
-                      setRotate4(!rotate4);
-                    }}
-                  />
-                </th>
-              }
-              <th>
-                Reply
-                <img
-                  className={rotate6 ? "rerotateable" : "rotateable"}
-                  src={up6}
-                  height="20"
-                  width="20"
-                  onClick={(e) => {
-                    handleSortingByDescriptionDES(e);
-                    setRotate6(!rotate6);
-                  }}
-                />
-              </th>
+            <tr className="centered">
+              <th>Sevirity</th>
+              <th>Product Type</th>
+              <th>Ticket Type</th>
+              <th>Status</th>
+              <th>Company Name</th>
+              <th>Reply</th>
+              <th>Assign Ticket</th>
             </tr>
           </thead>
-
           {users &&
             users.map((element) => {
-              if (user.Role === "Admin") {
-                return (
+              return (
+                <tbody>
                   <>
-                    <tbody>
-                      <td>{element.Sevirity}</td>
-                      <td>{element.Product_Types}</td>
-                      <td>{element.Ticket_Type}</td>
-                      <td>
-                        {element.Status}
-                        <div className="next">
-                          <div className="checkIcon">
-                            <FontAwesomeIcon
-                              icon={faCheckSquare}
-                              size="1x"
-                              onClick={() => {
-                                settTicketID(element.Ticket_ID);
-                                changeStatus();
-                              }}
-                            />
-                          </div>
-                          <div className="red">
-                            <TiDelete
-                              className="Red"
-                              size="35px"
-                              onClick={() => {
-                                settTicketID(element.Ticket_ID);
-                                changeStatusRej();
-                              }}
-                            >
-                              {" "}
-                            </TiDelete>
-                          </div>
-                        </div>
-                      </td>
-
-                      <td>{element.Company_Name}</td>
-                      {/* <td>{element.Description}</td> */}
-                      <td>{element.Reply}</td>
-                      <td><Link to = "/assign" style={{
-            color: "Black",
-            fontSize: 20,
-            borderRadius: 21,
-          }} onClick={() => {
-            newObj(element.Ticket_ID);
-            
-          }}>Assign</Link></td>
-                     
-                    </tbody>
-                  </>
-                );
-              }
-              if (user.Role === "Employer") {
-                return (
-                  <>
-                    <tbody>
-                      <td>{element.Sevirity}</td>
-                      <td>{element.Product_Types}</td>
-                      <td>{element.Ticket_Type}</td>
-                      <td>{element.Status}</td>
-                      <td>
-                        <div>
-                          <input
-                            className="replyInput"
-                            value={element.Ticket_ID.Reply}
-                            id={element.Ticket_ID}
-                            onChange={(e) => {
-                              settReply(e.target.value);
+                    <td>{element.Sevirity}</td>
+                    <td>{element.Product_Types}</td>
+                    <td>{element.Ticket_Type}</td>
+                    <td>
+                      {element.Status}
+                      <div className="next">
+                        <div className="checkIcon">
+                          <FontAwesomeIcon
+                            icon={faCheckSquare}
+                            size="20px"
+                            onClick={() => {
                               settTicketID(element.Ticket_ID);
+                              changeStatus();
                             }}
-                            type={"textarea"}
-                            placeholder="Add a reply"
-                          ></input>
-                          <button
-                            className="replyButton"
-                            onClick={(e) => {
-                              addReply();
-                            }}
-                          >
-                            Update
-                          </button>
+                          />
                         </div>
-                      </td>
-                    </tbody>
+                        <div className="red">
+                          <TiDelete
+                            className="Red"
+                            size="20px"
+                            onClick={() => {
+                              settTicketID(element.Ticket_ID);
+                              changeStatusRej();
+                            }}
+                          ></TiDelete>
+                        </div>
+                      </div>
+                    </td>
+                    <td>{element.Company_Name}</td>
+                    <td>{element.Reply}</td>
+                    <td>
+                      <Link
+                        to="/assign"
+                        style={{
+                          color: "Black",
+                          fontSize: 15,
+                        }}
+                        onClick={() => {
+                          newObj(element.Ticket_ID);
+                        }}
+                      >
+                        Assign
+                      </Link>
+                    </td>
                   </>
-                );
-              }
-
-              if (user.Role === "Customer") {
-                return (
-                  <>
-                    <tbody>
-                      <td>{element.Sevirity}</td>
-                      <td>{element.Product_Types}</td>
-                      <td>{element.Ticket_Type}</td>
-                      <td>{element.Status}</td>
-                      <td>{element.Company_Name}</td>
-                      <td>{element.Description}</td>
-                      <td>{element.Reply}</td>
-                    </tbody>
-                  </>
-                );
-              }
+                </tbody>
+              );
             })}
         </table>
-      </div>
-      <br />
-    </>
-  );
+      </>
+    );
+  }
+  if (user.Role === "Employer") {
+    return (
+      <>
+        <table
+          id="dtBasicExample"
+          class="table table-striped table-bordered table-sm"
+          cellspacing="0"
+          width="100%"
+        >
+          <thead>
+            <tr className="centered">
+              <th>Sevirity</th>
+              <th>Product Type</th>
+              <th>Ticket Type</th>
+              <th>Status</th>
+              <th>Reply</th>
+            </tr>
+          </thead>
+          {users &&
+            users.map((element) => {
+              return (
+                <tbody>
+                  <>
+                    <td>{element.Sevirity}</td>
+                    <td>{element.Product_Types}</td>
+                    <td>{element.Ticket_Type}</td>
+                    <td>
+                      {element.Status}
+                      <div className="next">
+                        <div className="checkIcon">
+                          <FontAwesomeIcon
+                            icon={faCheckSquare}
+                            size="20px"
+                            onClick={() => {
+                              settTicketID(element.Ticket_ID);
+                              changeStatus();
+                            }}
+                          />
+                        </div>
+                        <div className="red">
+                          <TiDelete
+                            className="Red"
+                            size="20px"
+                            onClick={() => {
+                              settTicketID(element.Ticket_ID);
+                              changeStatusRej();
+                            }}
+                          ></TiDelete>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div>
+                        <input
+                          className="replyInput"
+                          value={element.Ticket_ID.Reply}
+                          id={element.Ticket_ID}
+                          onChange={(e) => {
+                            settReply(e.target.value);
+                            settTicketID(element.Ticket_ID);
+                          }}
+                          type={"textarea"}
+                          placeholder="Add a reply"
+                        ></input>
+                        <button
+                          className="replyButton"
+                          onClick={(e) => {
+                            addReply();
+                          }}
+                        >
+                          Update
+                        </button>
+                      </div>
+                    </td>
+                  </>
+                </tbody>
+              );
+            })}
+        </table>
+      </>
+    );
+  }
+  if (user.Role === "Customer") {
+    return (
+      <>
+        <table
+          id="dtBasicExample"
+          class="table table-striped table-bordered table-sm"
+          cellspacing="0"
+          width="100%"
+        >
+          <thead>
+            <tr className="centered">
+              <th>Sevirity</th>
+              <th>Product Type</th>
+              <th>Ticket Type</th>
+              <th>Status</th>
+              <th>Reply</th>
+            </tr>
+          </thead>
+          {users &&
+            users.map((element) => {
+              return (
+                <tbody>
+                  <>
+                    <td>{element.Sevirity}</td>
+                    <td>{element.Product_Types}</td>
+                    <td>{element.Ticket_Type}</td>
+                    <td>{element.Status}</td>
+                    <td>{element.Reply}</td>
+                  </>
+                </tbody>
+              );
+            })}
+        </table>
+      </>
+    );
+  }
 };
 export default Test;

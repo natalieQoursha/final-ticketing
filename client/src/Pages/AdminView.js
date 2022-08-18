@@ -1,10 +1,9 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import "bootstrap/dist/css/bootstrap.min.css";
-import CardGroup from "react-bootstrap/CardGroup";
 import "./AdminView.css";
-import { Link, useNavigate } from "react-router-dom";
-import React, { useState, useEffect, Component } from "react";
+import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function Admin() {
@@ -39,30 +38,28 @@ export default function Admin() {
       {Companies &&
         Companies.map((element) => {
           return (
-            <div className="cards">
-              <Card>
+            <div class="card text-center">
+              <div class="card-body">
                 <Card.Img
                   variant="top"
                   src={require(`../Pictures/${element.Company_Logo}`)}
-                  width="50"
-                  height="50"
+                  height="15%"
                 />
-                <Card.Body>
-                  <Card.Title>{element.Company_Name}</Card.Title>
-
-                  <Card.Text>{element.Company_Description}</Card.Text>
-                </Card.Body>
-                <Card.Footer>
-                  <Button
-                    onClick={() => {
-                      changeStatus(element.Company_Name, element.Company_ID);
-                      viewStatus();
-                    }}
-                  >
-                    View services
-                  </Button>
-                </Card.Footer>
-              </Card>
+                <h1 class="card-title">{element.Company_Name}</h1>
+                <h3 class="card-text">{element.Company_Description}</h3>
+                <Button
+                  onClick={() => {
+                    changeStatus(element.Company_Name, element.Company_ID);
+                    viewStatus();
+                  }}
+                  style={{
+                    fontSize: 20,
+                    borderRadius: 10,
+                  }}
+                >
+                  View Services
+                </Button>
+              </div>
             </div>
           );
         })}

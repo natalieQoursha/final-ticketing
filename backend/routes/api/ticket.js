@@ -162,16 +162,21 @@ router.post("/view-tickets", (req, response) => {
   conn.connect().then((res) => {
     if (res.connected) {
       if (CompanyID == 10 && rol == "Admin") {
-        res.request().query(`Select * from dbo.Tickets `, (err, res) => {
-          response.status(200).json(res.recordset);
-          console.log("nat");
-          {
-            console.log("nat");
-          }
-          {
-            console.log(res.recordset);
-          }
-        });
+        res
+          .request()
+          .query(
+            `Select * from dbo.Tickets Inner JOIN Companies ON Tickets.Company_ID=Companies.Company_ID`,
+            (err, res) => {
+              response.status(200).json(res.recordset);
+              console.log("nat");
+              {
+                console.log("nat");
+              }
+              {
+                console.log(res.recordset);
+              }
+            }
+          );
       } else if (CompanyID == 10 && rol == "Employer") {
         res
           .request()

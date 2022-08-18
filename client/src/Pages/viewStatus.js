@@ -104,7 +104,7 @@ export default function Admin() {
             </div>
           );
         })}
-      <h1>----------------------</h1>
+      <br />
       <h1>Available Services</h1>
       {Services &&
         Services.map((element) => {
