@@ -58,8 +58,8 @@ router.post("/assignTickets", (req, response) => {
           ('${ID}','${empID}','${name}')`
           ,
           (err, res) => {
+            console.log(res.recordset)
             response.status(200).json(res.recordset);
-            console.log(res.recordset);
           }
         );
     }
