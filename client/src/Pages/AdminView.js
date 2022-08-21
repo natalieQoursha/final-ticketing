@@ -3,10 +3,11 @@ import Card from "react-bootstrap/Card";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./AdminView.css";
 import { useNavigate } from "react-router-dom";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
+import { UserContext } from "../App";
 
-export default function Admin() {
+export default function Admin({ setLoggedUser }) {
   const history = useNavigate();
 
   const [Companies, setCompanies] = useState();
@@ -34,35 +35,37 @@ export default function Admin() {
   }, []);
 
   return (
-    <>
-      {Companies &&
-        Companies.map((element) => {
-          return (
-            <div class="card text-center">
-              <div class="card-body">
-                <Card.Img
-                  variant="top"
-                  src={require(`../Pictures/${element.Company_Logo}`)}
-                  height="15%"
-                />
-                <h1 class="card-title">{element.Company_Name}</h1>
-                <h3 class="card-text">{element.Company_Description}</h3>
-                <Button
-                  onClick={() => {
-                    changeStatus(element.Company_Name, element.Company_ID);
-                    viewStatus();
-                  }}
-                  style={{
-                    fontSize: 20,
-                    borderRadius: 10,
-                  }}
-                >
-                  View Services
-                </Button>
+    <UserContext.Provider value={setLoggedUser}>
+      <>
+        {Companies &&
+          Companies.map((element) => {
+            return (
+              <div class="card text-center">
+                <div class="card-body">
+                  <Card.Img
+                    variant="top"
+                    src={require(`../Pictures/${element.Company_Logo}`)}
+                    height="15%"
+                  />
+                  <h1 class="card-title">{element.Company_Name}</h1>
+                  <h3 class="card-text">{element.Company_Description}</h3>
+                  <Button
+                    onClick={() => {
+                      changeStatus(element.Company_Name, element.Company_ID);
+                      viewStatus();
+                    }}
+                    style={{
+                      fontSize: 20,
+                      borderRadius: 10,
+                    }}
+                  >
+                    View Services
+                  </Button>
+                </div>
               </div>
-            </div>
-          );
-        })}
-    </>
+            );
+          })}
+      </>
+    </UserContext.Provider>
   );
 }

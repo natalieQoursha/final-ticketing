@@ -30,7 +30,7 @@ router.post("/admin-services", (req, response) => {
           `Select * from dbo.Services where Company_ID = '${com}'`,
           (err, res) => {
             response.status(200).json(res.recordset);
-            console.log(res.recordset)
+            console.log(res.recordset);
           }
         );
     }

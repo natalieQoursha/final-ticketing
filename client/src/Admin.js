@@ -3,8 +3,11 @@ import Button from "react-bootstrap/Button";
 import React, { useState, useEffect, Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
+import { UserContext } from "./App";
 
-export default function Admin() {
+export default function Admin({ setLoggedUser }) {
+  const UserContext = UserContext(UserContext);
+  const [loggedUser, setLoggedUser] = useState(true);
   const [users, setUsers] = useState();
 
   useEffect(() => {
@@ -19,20 +22,22 @@ export default function Admin() {
   }, []);
 
   return (
-    <div className="row">
-      First test
-      {users &&
-        users.map((users) => {
-          <Card style={{ width: "18rem" }}>
-            <Card.Img variant="top" src="holder.js/100px180" />
-            <Card.Body>
-              <Card.Title>{users.Company_Name}</Card.Title>
-              <Card.Text>{users.Description}</Card.Text>
-              <Button variant="primary">View services</Button>
-            </Card.Body>
-          </Card>;
-        })}
-      Last test
-    </div>
+    <UserContext.Provider value={setLoggedUser}>
+      <div className="row">
+        First test
+        {users &&
+          users.map((users) => {
+            <Card style={{ width: "18rem" }}>
+              <Card.Img variant="top" src="holder.js/100px180" />
+              <Card.Body>
+                <Card.Title>{users.Company_Name}</Card.Title>
+                <Card.Text>{users.Description}</Card.Text>
+                <Button variant="primary">View services</Button>
+              </Card.Body>
+            </Card>;
+          })}
+        Last test
+      </div>
+    </UserContext.Provider>
   );
 }

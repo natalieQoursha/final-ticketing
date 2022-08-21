@@ -1,12 +1,15 @@
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState, useEffect, Component } from "react";
 import axios from "axios";
+import useTheme from "../App";
+import { UserContext } from "../App";
 
-export default function Admin() {
+export default function Admin({ setLoggedUser }) {
   const [employees, setEmployees] = useState();
   const TicketID = JSON.parse(sessionStorage.getItem("ticketID")) || undefined;
 
   const Assign = (props) => {
+    useTheme();
     // const cid=props.ID;
     const empName = props.First_Name;
     const empID = props.ID;
@@ -33,7 +36,7 @@ export default function Admin() {
   }, []);
 
   return (
-    <>
+    <UserContext.Provider value={setLoggedUser}>
       <div className="viewTable">
         <table>
           <thead className="centered">
@@ -68,6 +71,6 @@ export default function Admin() {
             })}
         </table>
       </div>
-    </>
+    </UserContext.Provider>
   );
 }

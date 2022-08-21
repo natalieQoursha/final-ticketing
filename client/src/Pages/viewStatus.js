@@ -4,10 +4,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import CardGroup from "react-bootstrap/CardGroup";
 import "./AdminView.css";
 import { Link, useNavigate } from "react-router-dom";
-import React, { useState, useEffect, Component } from "react";
+import React, { useState, useEffect, Component, createContext } from "react";
 import axios from "axios";
+import { UserContext } from "../App";
 
-export default function Admin() {
+export default function Admin({ setLoggedUser }) {
   const history = useNavigate();
   const [Companies, setCompanies] = useState();
   const [Services, setServices] = useState();
@@ -73,60 +74,62 @@ export default function Admin() {
   }, []);
 
   return (
-    <>
-      <Button
-        onClick={() => {
-          reviewStatus();
-        }}
-      >
-        Back
-      </Button>
-      <h1>Active services</h1>
-      {Companies &&
-        Companies.map((element) => {
-          return (
-            <div className="cards">
-              <Card>
-                <Card.Body>
-                  <Card.Title>{element.Product_Name}</Card.Title>
-                  <Card.Text>{element.Company_Description}</Card.Text>
-                </Card.Body>
-                <Card.Footer>
-                  <Button
-                    onClick={() => {
-                      removeService(element);
-                    }}
-                  >
-                    Remove service
-                  </Button>
-                </Card.Footer>
-              </Card>
-            </div>
-          );
-        })}
-      <br />
-      <h1>Available Services</h1>
-      {Services &&
-        Services.map((element) => {
-          return (
-            <div className="cards">
-              <Card>
-                <Card.Body>
-                  <Card.Title>{element.Product_Name}</Card.Title>
-                </Card.Body>
-                <Card.Footer>
-                  <Button
-                    onClick={() => {
-                      addService(element);
-                    }}
-                  >
-                    Add Service
-                  </Button>
-                </Card.Footer>
-              </Card>
-            </div>
-          );
-        })}
-    </>
+    <UserContext.Provider value={setLoggedUser}>
+      <>
+        <Button
+          onClick={() => {
+            reviewStatus();
+          }}
+        >
+          Back
+        </Button>
+        <h1>Active services</h1>
+        {Companies &&
+          Companies.map((element) => {
+            return (
+              <div className="cards">
+                <Card>
+                  <Card.Body>
+                    <Card.Title>{element.Product_Name}</Card.Title>
+                    <Card.Text>{element.Company_Description}</Card.Text>
+                  </Card.Body>
+                  <Card.Footer>
+                    <Button
+                      onClick={() => {
+                        removeService(element);
+                      }}
+                    >
+                      Remove service
+                    </Button>
+                  </Card.Footer>
+                </Card>
+              </div>
+            );
+          })}
+        <br />
+        <h1>Available Services</h1>
+        {Services &&
+          Services.map((element) => {
+            return (
+              <div className="cards">
+                <Card>
+                  <Card.Body>
+                    <Card.Title>{element.Product_Name}</Card.Title>
+                  </Card.Body>
+                  <Card.Footer>
+                    <Button
+                      onClick={() => {
+                        addService(element);
+                      }}
+                    >
+                      Add Service
+                    </Button>
+                  </Card.Footer>
+                </Card>
+              </div>
+            );
+          })}
+      </>
+    </UserContext.Provider>
   );
 }

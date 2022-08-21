@@ -6,39 +6,38 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import SignUp from "./Pages/SignUp";
 import SignIn from "./Pages/SignIn";
 import Tickets from "./Tickets";
-import { useState } from "react";
+import { useState, createContext } from "react";
 import Test from "./Pages/Test";
 import "./App.css";
 import AdminView from "./Pages/AdminView";
 import ViewStatus from "./Pages/viewStatus";
 import Assign from "./Pages/assign";
 
-function App() {
+export const UserContext = createContext();
+
+function App({ setLoggedUser }) {
   const [buttonPopup, setButtonPopup] = useState(false);
-  const [loggedUser, setLoggedUser] = useState(null);
 
   return (
-    <>
+    <UserContext.Provider value={setLoggedUser}>
       <div className={buttonPopup ? "unclickable" : "tickets"}>
-        <BrowserRouter>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route
-              path="/signIn"
-              element={<SignIn setLoggedUser={setLoggedUser} />}
-            />
-            <Route path="/signUp" element={<SignUp />} />
-            <Route path="/Tickets" element={<Tickets />} />
-            <Route path="/test" element={<Test />} />
-            <Route path="/AdminView" element={<AdminView />} />
-            <Route path="/viewStatus" element={<ViewStatus />} />
-            <Route path="/assign" element={<Assign />} />
-          </Routes>
-          <Footer />
-        </BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route
+            path="/signIn"
+            element={<SignIn setLoggedUser={setLoggedUser} />}
+          />
+          <Route path="/signUp" element={<SignUp />} />
+          <Route path="/Tickets" element={<Tickets />} />
+          <Route path="/test" element={<Test />} />
+          <Route path="/AdminView" element={<AdminView />} />
+          <Route path="/viewStatus" element={<ViewStatus />} />
+          <Route path="/assign" element={<Assign />} />
+        </Routes>
+        <Footer />
       </div>
-    </>
+    </UserContext.Provider>
   );
 }
 export default App;

@@ -2,16 +2,13 @@ import React, { useState, useEffect, Component } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import up from "../images/up.png";
-import up1 from "../images/up.png";
-import up2 from "../images/up.png";
-import up3 from "../images/up.png";
-import up6 from "../images/up.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckSquare, faCoffee } from "@fortawesome/free-solid-svg-icons";
 import { TiDelete } from "react-icons/ti";
 import "./Test.css";
+import { UserContext } from "../App";
 
-const Test = () => {
+const Test = ({ setLoggedUser }) => {
   const [users, setUsers] = useState();
   const [Status, setStatus] = useState("Accepted");
   const [Ticket_ID, setTicketID] = useState("");
@@ -239,197 +236,201 @@ const Test = () => {
 
   if (user.Role === "Admin") {
     return (
-      <>
-        <table
-          id="dtBasicExample"
-          class="table table-striped table-bordered table-sm"
-          cellspacing="0"
-          width="100%"
-        >
-          <thead>
-            <tr className="centered">
-              <th>Sevirity</th>
-              <th>Product Type</th>
-              <th>Ticket Type</th>
-              <th>Status</th>
-              <th>Company Name</th>
-              <th>Reply</th>
-              <th>Assign Ticket</th>
-            </tr>
-          </thead>
-          {users &&
-            users.map((element) => {
-              return (
-                <tbody>
-                  <>
-                    <td>{element.Sevirity}</td>
-                    <td>{element.Product_Types}</td>
-                    <td>{element.Ticket_Type}</td>
-                    <td>
-                      {element.Status}
-                      <div className="next">
-                        <div className="checkIcon">
-                          <FontAwesomeIcon
-                            icon={faCheckSquare}
-                            size="20px"
-                            onClick={() => {
-                              settTicketID(element.Ticket_ID);
-                              changeStatus();
-                            }}
-                          />
+      <UserContext.Provider value={setLoggedUser}>
+        <>
+          <table
+            id="dtBasicExample"
+            class="table table-striped table-bordered table-sm"
+            cellspacing="0"
+            width="100%"
+          >
+            <thead>
+              <tr className="centered">
+                <th>Sevirity</th>
+                <th>Product Type</th>
+                <th>Ticket Type</th>
+                <th>Status</th>
+                <th>Company Name</th>
+                <th>Reply</th>
+                <th>Assign Ticket</th>
+              </tr>
+            </thead>
+            {users &&
+              users.map((element) => {
+                return (
+                  <tbody>
+                    <>
+                      <td>{element.Sevirity}</td>
+                      <td>{element.Product_Types}</td>
+                      <td>{element.Ticket_Type}</td>
+                      <td>
+                        {element.Status}
+                        <div className="next">
+                          <div className="checkIcon">
+                            <FontAwesomeIcon
+                              icon={faCheckSquare}
+                              size="20px"
+                              onClick={() => {
+                                settTicketID(element.Ticket_ID);
+                                changeStatus();
+                              }}
+                            />
+                          </div>
+                          <div className="red">
+                            <TiDelete
+                              className="Red"
+                              size="20px"
+                              onClick={() => {
+                                settTicketID(element.Ticket_ID);
+                                changeStatusRej();
+                              }}
+                            ></TiDelete>
+                          </div>
                         </div>
-                        <div className="red">
-                          <TiDelete
-                            className="Red"
-                            size="20px"
-                            onClick={() => {
-                              settTicketID(element.Ticket_ID);
-                              changeStatusRej();
-                            }}
-                          ></TiDelete>
-                        </div>
-                      </div>
-                    </td>
-                    <td>{element.Company_Name}</td>
-                    <td>{element.Reply}</td>
-                    <td>
-                      <Link
-                        to="/assign"
-                        style={{
-                          color: "Black",
-                          fontSize: 15,
-                        }}
-                        onClick={() => {
-                          newObj(element.Ticket_ID);
-                        }}
-                      >
-                        Assign
-                      </Link>
-                    </td>
-                  </>
-                </tbody>
-              );
-            })}
-        </table>
-      </>
+                      </td>
+                      <td>{element.Company_Name}</td>
+                      <td>{element.Reply}</td>
+                      <td>
+                        <Link
+                          to="/assign"
+                          style={{
+                            color: "Black",
+                            fontSize: 15,
+                          }}
+                          onClick={() => {
+                            newObj(element.Ticket_ID);
+                          }}
+                        >
+                          Assign
+                        </Link>
+                      </td>
+                    </>
+                  </tbody>
+                );
+              })}
+          </table>
+        </>
+      </UserContext.Provider>
     );
   }
   if (user.Role === "Employer") {
     return (
-      <>
-        <table
-          id="dtBasicExample"
-          class="table table-striped table-bordered table-sm"
-          cellspacing="0"
-          width="100%"
-        >
-          <thead>
-            <tr className="centered">
-              <th>Sevirity</th>
-              <th>Product Type</th>
-              <th>Ticket Type</th>
-              <th>Status</th>
-              <th>Reply</th>
-            </tr>
-          </thead>
-          {users &&
-            users.map((element) => {
-              return (
-                <tbody>
-                  <>
-                    <td>{element.Sevirity}</td>
-                    <td>{element.Product_Types}</td>
-                    <td>{element.Ticket_Type}</td>
-                    <td>
-                      {element.Status}
-                      <div className="next">
-                        <div className="checkIcon">
-                          <FontAwesomeIcon
-                            icon={faCheckSquare}
-                            size="20px"
-                            onClick={() => {
-                              settTicketID(element.Ticket_ID);
-                              changeStatus();
-                            }}
-                          />
+      <UserContext.Provider value={setLoggedUser}>
+        <>
+          <table
+            id="dtBasicExample"
+            class="table table-striped table-bordered table-sm"
+            cellspacing="0"
+            width="100%"
+          >
+            <thead>
+              <tr className="centered">
+                <th>Sevirity</th>
+                <th>Product Type</th>
+                <th>Ticket Type</th>
+                <th>Status</th>
+                <th>Reply</th>
+              </tr>
+            </thead>
+            {users &&
+              users.map((element) => {
+                return (
+                  <tbody>
+                    <>
+                      <td>{element.Sevirity}</td>
+                      <td>{element.Product_Types}</td>
+                      <td>{element.Ticket_Type}</td>
+                      <td>
+                        {element.Status}
+                        <div className="next">
+                          <div className="checkIcon">
+                            <FontAwesomeIcon
+                              icon={faCheckSquare}
+                              size="20px"
+                              onClick={() => {
+                                settTicketID(element.Ticket_ID);
+                                changeStatus();
+                              }}
+                            />
+                          </div>
+                          <div className="red">
+                            <TiDelete
+                              className="Red"
+                              size="20px"
+                              onClick={() => {
+                                settTicketID(element.Ticket_ID);
+                                changeStatusRej();
+                              }}
+                            ></TiDelete>
+                          </div>
                         </div>
-                        <div className="red">
-                          <TiDelete
-                            className="Red"
-                            size="20px"
-                            onClick={() => {
+                      </td>
+                      <td>
+                        <div>
+                          <input
+                            className="replyInput"
+                            value={element.Ticket_ID.Reply}
+                            id={element.Ticket_ID}
+                            onChange={(e) => {
+                              settReply(e.target.value);
                               settTicketID(element.Ticket_ID);
-                              changeStatusRej();
                             }}
-                          ></TiDelete>
+                            type={"textarea"}
+                            placeholder="Add a reply"
+                          ></input>
+                          <button
+                            className="replyButton"
+                            onClick={(e) => {
+                              addReply();
+                            }}
+                          >
+                            Update
+                          </button>
                         </div>
-                      </div>
-                    </td>
-                    <td>
-                      <div>
-                        <input
-                          className="replyInput"
-                          value={element.Ticket_ID.Reply}
-                          id={element.Ticket_ID}
-                          onChange={(e) => {
-                            settReply(e.target.value);
-                            settTicketID(element.Ticket_ID);
-                          }}
-                          type={"textarea"}
-                          placeholder="Add a reply"
-                        ></input>
-                        <button
-                          className="replyButton"
-                          onClick={(e) => {
-                            addReply();
-                          }}
-                        >
-                          Update
-                        </button>
-                      </div>
-                    </td>
-                  </>
-                </tbody>
-              );
-            })}
-        </table>
-      </>
+                      </td>
+                    </>
+                  </tbody>
+                );
+              })}
+          </table>
+        </>{" "}
+      </UserContext.Provider>
     );
   }
   if (user.Role === "Customer") {
     return (
-      <>
-        <table
-          id="dtBasicExample"
-          class="table table-striped table-bordered table-sm"
-          cellspacing="0"
-          width="100%"
-        >
-          <thead>
-            <tr className="centered">
-              <th>Sevirity</th>
-              <th>Product Type</th>
-              <th>Ticket Type</th>
-              <th>Status</th>
-              <th>Reply</th>
-            </tr>
-          </thead>
-          {users &&
-            users.map((element) => {
-              return (
-                <tbody>
-                  <>
+      <UserContext.Provider value={setLoggedUser}>
+        <>
+          <table
+            id="dtBasicExample"
+            class="table table-striped table-bordered table-sm"
+            cellspacing="0"
+            width="100%"
+          >
+            <thead>
+              <tr className="centered">
+                <th>Sevirity</th>
+                <th>Product Type</th>
+                <th>Ticket Type</th>
+                <th>Status</th>
+                <th>Reply</th>
+              </tr>
+            </thead>
+            {users &&
+              users.map((element) => {
+                return (
+                  <tbody>
                     <td>{element.Sevirity}</td>
                     <td>{element.Product_Types}</td>
                     <td>{element.Ticket_Type}</td>
                     <td>{element.Status}</td>
                     <td>{element.Reply}</td>
-                  </>
-                </tbody>
-              );
-            })}
-        </table>
-      </>
+                  </tbody>
+                );
+              })}
+          </table>
+        </>
+      </UserContext.Provider>
     );
   }
 };

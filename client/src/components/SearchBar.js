@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "./SearchBar.css";
 import { FaSearch } from "react-icons/fa";
+import { UserContext } from "../App";
 
-function SearchBar({ placeholder, data }) {
+function SearchBar({ placeholder, data, setLoggedUser }) {
   const [filteredData, setFilteredData] = useState([]);
 
   const handleFilter = (event) => {
@@ -16,7 +17,7 @@ function SearchBar({ placeholder, data }) {
       setFilteredData(newFilter);
     }
   };
-  
+
   return (
     <div className="search">
       <div className="searchInputs"></div>
