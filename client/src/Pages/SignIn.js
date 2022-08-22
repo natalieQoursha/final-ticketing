@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 // import signin from "../images/signin.png";
-
 const SignIn = ({setLoggedUser}) => {
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
@@ -38,6 +37,8 @@ const SignIn = ({setLoggedUser}) => {
             </div>
             <div class="colm-form">
               <div class="form-container">
+              
+
                 <h4>Sign in</h4>
                 <input
                   type="text"

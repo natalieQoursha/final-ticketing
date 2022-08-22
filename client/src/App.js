@@ -12,7 +12,7 @@ import "./App.css";
 import AdminView from "./Pages/AdminView";
 import ViewStatus from "./Pages/viewStatus";
 import Assign from "./Pages/assign";
-
+import TicketsAdmin from "./Pages/ticketsAdmin"
 function App() {
   const [buttonPopup, setButtonPopup] = useState(false);
   const [loggedUser, setLoggedUser] = useState(null);
@@ -34,6 +34,8 @@ function App() {
             <Route path="/AdminView" element={<AdminView />} />
             <Route path="/viewStatus" element={<ViewStatus />} />
             <Route path="/assign" element={<Assign />} />
+            <Route path="/TicketsAdmin" element={<TicketsAdmin />} />
+
           </Routes>
           <Footer />
         </BrowserRouter>

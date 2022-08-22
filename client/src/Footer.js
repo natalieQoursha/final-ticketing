@@ -1,3 +1,4 @@
+import React from "react";
 import SocialFollow from "../src/SocialFollow";
 
 const Footer = () => {
