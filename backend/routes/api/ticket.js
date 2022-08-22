@@ -155,9 +155,7 @@ router.post("/sortingASC", (req, response) => {
 
 router.post("/view-tickets", (req, response) => {
   const CompanyID = req.body.Company_ID;
-  console.log("com " + CompanyID);
   const rol = req.body.role;
-  console.log("role is: " + rol);
   const stat = "Rejected";
   conn.connect().then((res) => {
     if (res.connected) {
@@ -168,12 +166,9 @@ router.post("/view-tickets", (req, response) => {
             `Select * from dbo.Tickets Inner JOIN Companies ON Tickets.Company_ID=Companies.Company_ID`,
             (err, res) => {
               response.status(200).json(res.recordset);
-              console.log("nat");
               {
-                console.log("nat");
               }
               {
-                console.log(res.recordset);
               }
             }
           );
@@ -185,10 +180,8 @@ router.post("/view-tickets", (req, response) => {
             (err, res) => {
               response.status(200).json(res.recordset);
               {
-                console.log("nat");
               }
               {
-                console.log(res.recordset);
               }
             }
           );
@@ -336,6 +329,30 @@ router.post("/addReply", (req, response) => {
           `UPDATE dbo.Tickets SET Reply = '${reply}'where Ticket_ID = '${ID}'`,
           (err, res) => {
             response.status(200).json();
+          }
+        );
+    }
+  });
+});
+
+router.post("/search", (req, response) => {
+  const word = req.body.serachedWord;
+
+  console.log("kareemeeee "+word)
+
+  conn.connect().then((res) => {
+    if (res.connected) {
+      res
+        .request()
+        .query(
+          `Select * from dbo.Tickets Inner JOIN Companies ON Company_Name LIKE '%${word}%' 
+          or Sevirity LIKE '%${word}%' or Status LIKE '%${word}%' or Product_Types LIKE '%${word}%'
+          or Ticket_Type LIKE '%${word}%'
+          `,
+          (err, res) => {
+            response.status(200).json(res.recordset);
+            console.log(res.recordset.length)
+            
           }
         );
     }
