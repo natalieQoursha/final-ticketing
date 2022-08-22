@@ -1,8 +1,9 @@
 import "../src/Tickets.css";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-
-function Tickets() {
+import { UserContext } from "../src/App";
+import { useContext } from "react";
+function Tickets({ setLoggedUser }) {
   const [Ticket_Type, setTicketType] = useState("");
   const [Sevirity, setSeverity] = useState("");
   const [productType, setProductType] = useState("");
@@ -10,6 +11,7 @@ function Tickets() {
   const [Product_Types, setProduct] = useState();
 
   const user = JSON.parse(sessionStorage.getItem("user"));
+  const userz = useContext(UserContext);
 
   useEffect(() => {
     const fetchUsers = () => {

@@ -35,39 +35,38 @@ export default function Admin() {
   return (
     <>
       <div className="viewTable">
-         <table>
-         <thead className="centered">
-           <th>Username</th>
-           <th>Assign</th>
-         </thead>
-         {employees &&
-           employees.map((element) => {
-             return (
-               <>
-                 <tbody className="bordered">
-                   <td className="bordered">{element.First_Name}</td>
-                   <td>
-                     <button
-                       onClick={() => {
-                         Assign(element);
-                       }}
-                       style={{
-                         color: "Black",
-                         fontSize: 15,
-                         color: "white",
-                         background: "darkblue",
-                         border: "1px gray solid",
-                       }}
-                     >
-                       Assign
-                     </button>
-                   </td>
-                 </tbody>
-               </>
-             );
-           })}
-       </table>
-       
+        <table>
+          <thead className="centered">
+            <th>Username</th>
+            <th>Assign</th>
+          </thead>
+          {employees &&
+            employees.map((element) => {
+              return (
+                <>
+                  <tbody className="bordered">
+                    <td className="bordered">{element.First_Name}</td>
+                    <td>
+                      <button
+                        onClick={() => {
+                          Assign(element);
+                        }}
+                        style={{
+                          color: "Black",
+                          fontSize: 15,
+                          color: "white",
+                          background: "darkblue",
+                          border: "1px gray solid",
+                        }}
+                      >
+                        Assign
+                      </button>
+                    </td>
+                  </tbody>
+                </>
+              );
+            })}
+        </table>
       </div>
     </>
   );

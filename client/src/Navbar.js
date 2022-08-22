@@ -1,6 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
 import React from "react";
-const Navbar = () => {
+import { useState, createContext, useContext } from "react";
+import { UserContext } from "./App";
+const Navbar = ({ setLoggedUser }) => {
+  const userz = useContext(UserContext);
   const history = useNavigate();
   const user = JSON.parse(sessionStorage.getItem("user")) || undefined;
   const handleLogout = (e) => {

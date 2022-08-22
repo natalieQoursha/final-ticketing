@@ -3,8 +3,14 @@ import Button from "react-bootstrap/Button";
 import React, { useState, useEffect, Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
+import { useContext } from "react";
+import { UserContext } from "../App";
 
-export default function Admin() {
+export default function Admin({ setLoggedUser }) {
+  const user = useContext(UserContext);
+
+  const UserContext = UserContext(UserContext);
+  const [loggedUser, setLoggedUser] = useState(true);
   const [users, setUsers] = useState();
 
   useEffect(() => {

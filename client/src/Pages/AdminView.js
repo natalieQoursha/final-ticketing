@@ -3,12 +3,13 @@ import Card from "react-bootstrap/Card";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./AdminView.css";
 import { useNavigate } from "react-router-dom";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
+import { UserContext } from "../App";
 
 export default function Admin() {
   const history = useNavigate();
-
+  const user = useContext(UserContext);
   const [Companies, setCompanies] = useState();
 
   const viewStatus = () => {
@@ -38,7 +39,7 @@ export default function Admin() {
       {Companies &&
         Companies.map((element) => {
           return (
-            <div class="card text-center">
+            <div className="Nice">
               <div class="card-body">
                 <Card.Img
                   variant="top"

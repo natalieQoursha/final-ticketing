@@ -1,0 +1,36 @@
+.cards{
+    display:inline-grid;
+    text-align: center;
+    height: 100px;
+    width: 20%;
+    margin-left: 10%;
+    margin-bottom: 4%;
+}
+.card-title{
+    font-size: 25px;
+}
+.card-footer{
+    background-color: rgb(122, 134, 182);
+    height: 50px;
+}
+.Remove{
+    font-size: 20px;
+    height: auto;
+    background-color: rgb(175, 122, 179);
+    border: none;
+}
+
+.Remove:hover{
+    background-color: lightcoral;
+}
+
+.Add{
+    font-size: 20px;
+    height: auto;
+    background-color: rgb(175, 122, 179);
+    border: none;
+}
+
+.Add:hover{
+    background-color: lightseagreen;
+}

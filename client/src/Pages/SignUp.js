@@ -1,8 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useContext } from "react";
+import { UserContext } from "../App";
 
 const SignUp = () => {
+  const user = useContext(UserContext);
   const [First_Name, setFirstName] = useState("");
   const [Last_Name, setLastName] = useState("");
   const [Email, setEmail] = useState("");
@@ -23,9 +26,6 @@ const SignUp = () => {
 
     const x = JSON.parse(localStorage.getItem("user"));
   };
-
-
-
 
   return (
     <main style={{ padding: "1rem 0" }}>
@@ -50,14 +50,14 @@ const SignUp = () => {
         </div>
         <div className="signupboxes">
           <form>
-          <input
-            type={"email"}
-            value={Email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            placeholder="Email"
-            pattern="[[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 4}$]"
-          ></input>
+            <input
+              type={"email"}
+              value={Email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              placeholder="Email"
+              pattern="[[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 4}$]"
+            ></input>
           </form>
 
           <input
@@ -83,9 +83,8 @@ const SignUp = () => {
           ></input>
         </div>
         <button className="submit" onClick={handleSignUp}>
-            Sign up
-          </button>
-
+          Sign up
+        </button>
       </div>
     </main>
   );

@@ -1,11 +1,14 @@
 import "../src/index.css";
 import "../src/Home.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Component } from "react";
 import Image from "../src/images/homeImg.png";
-import { Link, useNavigate } from "react-router-dom";
+import { UserContext } from "../src/App";
+import { useContext } from "react";
 
-const user = JSON.parse(sessionStorage.getItem("user")) || undefined;
-const Home = () => {
+const userz = JSON.parse(sessionStorage.getItem("user")) || undefined;
+
+const Home = ({ setLoggedUser }) => {
+  const user = useContext(UserContext);
   return (
     <div class="container">
       <div class="text1">

@@ -4,10 +4,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import CardGroup from "react-bootstrap/CardGroup";
 import "./AdminView.css";
 import { Link, useNavigate } from "react-router-dom";
-import React, { useState, useEffect, Component } from "react";
+import React, { useState, useEffect, Component, createContext } from "react";
 import axios from "axios";
+import { UserContext } from "../App";
+import { useContext } from "react";
+import "./viewStatus.css";
 
-export default function Admin() {
+export default function Admin({ setLoggedUser }) {
+  const user = useContext(UserContext);
   const history = useNavigate();
   const [Companies, setCompanies] = useState();
   const [Services, setServices] = useState();
@@ -88,23 +92,29 @@ export default function Admin() {
             <div className="cards">
               <Card>
                 <Card.Body>
-                  <Card.Title>{element.Product_Name}</Card.Title>
+                  <Card.Title className="card-title">
+                    {element.Product_Name}
+                  </Card.Title>
                   <Card.Text>{element.Company_Description}</Card.Text>
                 </Card.Body>
-                <Card.Footer>
-                  <Button
-                    onClick={() => {
-                      removeService(element);
-                    }}
-                  >
-                    Remove service
-                  </Button>
-                </Card.Footer>
+                <Button
+                  className="Remove"
+                  onClick={() => {
+                    removeService(element);
+                  }}
+                >
+                  -
+                </Button>
               </Card>
             </div>
           );
         })}
       <br />
+      <br />
+      <br />
+      <br />
+      <br />
+
       <h1>Available Services</h1>
       {Services &&
         Services.map((element) => {
@@ -114,15 +124,14 @@ export default function Admin() {
                 <Card.Body>
                   <Card.Title>{element.Product_Name}</Card.Title>
                 </Card.Body>
-                <Card.Footer>
-                  <Button
-                    onClick={() => {
-                      addService(element);
-                    }}
-                  >
-                    Add Service
-                  </Button>
-                </Card.Footer>
+                <Button
+                  className="Add"
+                  onClick={() => {
+                    addService(element);
+                  }}
+                >
+                  +
+                </Button>
               </Card>
             </div>
           );

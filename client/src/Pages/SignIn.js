@@ -2,12 +2,15 @@ import "../SignIn.css";
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-// import signin from "../images/signin.png";
-const SignIn = ({setLoggedUser}) => {
+import { useContext } from "react";
+import { UserContext } from "../App";
+
+const SignIn = ({ setLoggedUser }) => {
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const data = { Email, Password };
   const history = useNavigate();
+  const user = useContext(UserContext);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -20,11 +23,10 @@ const SignIn = ({setLoggedUser}) => {
         return;
       } else {
         sessionStorage.setItem("user", JSON.stringify(res.data));
-        setLoggedUser(res.data)
-        history('/test')
+        setLoggedUser(res.data);
+        history("/test");
       }
     });
-
   };
 
   return (

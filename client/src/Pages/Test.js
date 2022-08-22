@@ -5,10 +5,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckSquare, faCoffee} from "@fortawesome/free-solid-svg-icons";
 import { TiDelete } from "react-icons/ti";
 import "./Test.css";
-import SearchBar  from "../components/SearchBar";
-import BookData from "../data.json"
+import SearchBar from "../components/SearchBar";
 import { FaPlusCircle } from "react-icons/fa";
+import "./Modal.css";
+import Modal from "./Modal";
+
 const Test = () => {
+  const [modal, setModal] = useState();
+
   const [users, setUsers] = useState();
   const [Ticket_ID, setTicketID] = useState("");
   const [Reply, setReply] = useState();
@@ -128,7 +132,6 @@ const Test = () => {
               <th>Status </th>
               <th>Assign Ticket</th>
               <th>More</th>
-              
             </tr>
           </thead>
           {users &&
@@ -180,9 +183,7 @@ const Test = () => {
                       </Link>
                     </td>
                     <td>
-                      <FaPlusCircle size="20px" >
-                        </FaPlusCircle>
-
+                      <Modal />
                     </td>
                   </>
                 </tbody>

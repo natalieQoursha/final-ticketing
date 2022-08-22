@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import "./SearchBar.css";
 
 import { FaSearch } from "react-icons/fa";
+// import { UseContext, UserContext } from "../App";
 
-function SearchBar({ placeholder, data }) {
+function SearchBar({ placeholder, data, setLoggedUser }) {
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
 
+  // const user = UseContext(UserContext);
   const handleFilter = (event) => {
     const searchWord = event.target.value;
     setWordEntered(searchWord);
@@ -21,11 +23,14 @@ function SearchBar({ placeholder, data }) {
     }
   };
 
+<<<<<<< HEAD
   const clearInput = () => {
     setFilteredData([]);
     setWordEntered("");
   };
 
+=======
+>>>>>>> 19db9b019ecf28cd8877dcc52eff6a28ed7df57c
   return (
     <div className="search">
       <div className="searchInputs">

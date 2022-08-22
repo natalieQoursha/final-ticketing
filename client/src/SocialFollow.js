@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./SocialFollow.css";
 import { MdContactSupport } from "react-icons/ai";
-
+import { UserContext } from "./App";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faYoutube,
@@ -10,7 +10,9 @@ import {
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
 
-export default function SocialFollow() {
+export default function SocialFollow({ setLoggedUser }) {
+  const user = useContext(UserContext);
+
   return (
     <div class="social-container">
       <a

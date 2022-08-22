@@ -309,9 +309,10 @@ router.post("/test-update", (req, response) => {
         .query(
           `UPDATE dbo.Tickets SET Status = '${status}'where Ticket_ID = '${ID}'`,
           (err, res) => {
-            response.status(200).json();
+            if (err) console.log(error);
           }
         );
+      res.request().query(`Select * from dbo.tickets`);
     }
   });
 });
