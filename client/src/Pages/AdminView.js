@@ -7,9 +7,9 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { UserContext } from "../App";
 
-export default function Admin({ setLoggedUser }) {
+export default function Admin() {
   const history = useNavigate();
-
+  const user = useContext(UserContext);
   const [Companies, setCompanies] = useState();
 
   const viewStatus = () => {
@@ -35,37 +35,35 @@ export default function Admin({ setLoggedUser }) {
   }, []);
 
   return (
-    <UserContext.Provider value={setLoggedUser}>
-      <>
-        {Companies &&
-          Companies.map((element) => {
-            return (
-              <div class="card text-center">
-                <div class="card-body">
-                  <Card.Img
-                    variant="top"
-                    src={require(`../Pictures/${element.Company_Logo}`)}
-                    height="15%"
-                  />
-                  <h1 class="card-title">{element.Company_Name}</h1>
-                  <h3 class="card-text">{element.Company_Description}</h3>
-                  <Button
-                    onClick={() => {
-                      changeStatus(element.Company_Name, element.Company_ID);
-                      viewStatus();
-                    }}
-                    style={{
-                      fontSize: 20,
-                      borderRadius: 10,
-                    }}
-                  >
-                    View Services
-                  </Button>
-                </div>
+    <>
+      {Companies &&
+        Companies.map((element) => {
+          return (
+            <div className="Nice">
+              <div class="card-body">
+                <Card.Img
+                  variant="top"
+                  src={require(`../Pictures/${element.Company_Logo}`)}
+                  height="15%"
+                />
+                <h1 class="card-title">{element.Company_Name}</h1>
+                <h3 class="card-text">{element.Company_Description}</h3>
+                <Button
+                  onClick={() => {
+                    changeStatus(element.Company_Name, element.Company_ID);
+                    viewStatus();
+                  }}
+                  style={{
+                    fontSize: 20,
+                    borderRadius: 10,
+                  }}
+                >
+                  View Services
+                </Button>
               </div>
-            );
-          })}
-      </>
-    </UserContext.Provider>
+            </div>
+          );
+        })}
+    </>
   );
 }

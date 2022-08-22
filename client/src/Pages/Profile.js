@@ -5,10 +5,6 @@ function Profile({ authorized }) {
   if (!authorized) {
     return <Redirect to="/login" />;
   }
-  return (
-    <UserContext.Consumer>
-      <div>Profiles menu</div>;\
-    </UserContext.Consumer>
-  );
+  return <div>Profiles menu</div>;
 }
 export default Profile;

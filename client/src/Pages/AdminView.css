@@ -8,3 +8,20 @@ margin: auto;
     margin-bottom: 10px;
     margin-top: 10px;
 }
+.card{
+    display:inline-grid;
+    text-align: center;
+    height: 100px;
+    width: 20%;
+    margin-left: 10%;
+    margin-bottom: 10%;
+}
+.Nice{
+    display:inline-grid;
+    text-align: center;
+    height: 100px;
+    width: 20%;
+    margin-left: 10%;
+    margin-bottom: 10%;
+    
+}

@@ -8,6 +8,7 @@ function SearchBar({ placeholder, data, setLoggedUser }) {
 
   const handleFilter = (event) => {
     const searchWord = event.target.value;
+    const user = useContext(UserContext);
     const newFilter = data.filter((value) => {
       return value.Ticket_Type.toLowerCase().includes(searchWord.toLowerCase());
     });

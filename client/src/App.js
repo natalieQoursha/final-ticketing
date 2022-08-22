@@ -16,28 +16,24 @@ import Assign from "./Pages/assign";
 export const UserContext = createContext();
 
 function App({ setLoggedUser }) {
-  const [buttonPopup, setButtonPopup] = useState(false);
-
   return (
-    <UserContext.Provider value={setLoggedUser}>
-      <div className={buttonPopup ? "unclickable" : "tickets"}>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route
-            path="/signIn"
-            element={<SignIn setLoggedUser={setLoggedUser} />}
-          />
-          <Route path="/signUp" element={<SignUp />} />
-          <Route path="/Tickets" element={<Tickets />} />
-          <Route path="/test" element={<Test />} />
-          <Route path="/AdminView" element={<AdminView />} />
-          <Route path="/viewStatus" element={<ViewStatus />} />
-          <Route path="/assign" element={<Assign />} />
-        </Routes>
-        <Footer />
-      </div>
-    </UserContext.Provider>
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route
+          path="/signIn"
+          element={<SignIn setLoggedUser={setLoggedUser} />}
+        />
+        <Route path="/signUp" element={<SignUp />} />
+        <Route path="/Tickets" element={<Tickets />} />
+        <Route path="/test" element={<Test />} />
+        <Route path="/AdminView" element={<AdminView />} />
+        <Route path="/viewStatus" element={<ViewStatus />} />
+        <Route path="/assign" element={<Assign />} />
+      </Routes>
+      <Footer />
+    </>
   );
 }
 export default App;
