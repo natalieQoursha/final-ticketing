@@ -2,10 +2,15 @@ import "../SignIn.css";
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+<<<<<<< HEAD
 import { useContext } from "react";
 import { UserContext } from "../App";
 
 const SignIn = ({ setLoggedUser }) => {
+=======
+// import signin from "../images/signin.png";
+const SignIn = ({setLoggedUser}) => {
+>>>>>>> 9a1b60c4e205d1aaa71998c2049c7e9d3b9dc543
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const data = { Email, Password };
@@ -39,6 +44,8 @@ const SignIn = ({ setLoggedUser }) => {
             </div>
             <div class="colm-form">
               <div class="form-container">
+              
+
                 <h4>Sign in</h4>
                 <input
                   type="text"

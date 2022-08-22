@@ -56,7 +56,7 @@ function Tickets({ setLoggedUser }) {
           <br />
           <div className="alignment">
             <label for="Product_Types">Product : </label>
-            <select
+            {/* <select
               onChange={(e) => setProductType(e.target.value)}
               name="Product_Types"
               id="Product_Types"
@@ -66,7 +66,7 @@ function Tickets({ setLoggedUser }) {
                   <option value={info.Product_Name}>{info.Product_Name}</option>
                 );
               })}
-            </select>
+            </select> */}
           </div>
           <div className="alignment">
             <label for="Ticket_Type">Ticket type : </label>
