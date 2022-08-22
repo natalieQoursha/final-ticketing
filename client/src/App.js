@@ -12,6 +12,7 @@ import "./App.css";
 import AdminView from "./Pages/AdminView";
 import ViewStatus from "./Pages/viewStatus";
 import Assign from "./Pages/assign";
+import Modal from "./Pages/Modal";
 
 export const UserContext = createContext();
 
@@ -31,6 +32,7 @@ function App({ setLoggedUser }) {
         <Route path="/AdminView" element={<AdminView />} />
         <Route path="/viewStatus" element={<ViewStatus />} />
         <Route path="/assign" element={<Assign />} />
+        <Route path="/Modal" element={<Modal />} />
       </Routes>
       <Footer />
     </>

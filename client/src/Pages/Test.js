@@ -1,174 +1,27 @@
 import React, { useState, useEffect, Component } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import up from "../images/up.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckSquare, faCoffee } from "@fortawesome/free-solid-svg-icons";
 import { TiDelete } from "react-icons/ti";
 import "./Test.css";
-import { UserContext } from "../App";
-import { useContext } from "react";
+import SearchBar from "../components/SearchBar";
+import { FaPlusCircle } from "react-icons/fa";
+import "./Modal.css";
+import Modal from "./Modal";
 
 const Test = () => {
-  const user = useContext(UserContext);
+  const [modal, setModal] = useState();
+
   const [users, setUsers] = useState();
-  const [Status, setStatus] = useState("Accepted");
   const [Ticket_ID, setTicketID] = useState("");
   const [Reply, setReply] = useState();
-  const [trig, setTrig] = useState(false);
   const history = useNavigate();
-  const userss = JSON.parse(sessionStorage.getItem("user")) || undefined;
-  const companyID = userss.Company_Name;
-  const [toggle, setToggle] = useState(up);
+  const user = JSON.parse(sessionStorage.getItem("user")) || undefined;
+  const companyID = user.Company_Name;
 
   const newObj = (TID) => {
     sessionStorage.setItem("ticketID", JSON.stringify(TID));
-  };
-
-  const handleSortingByTicketTypeDES = (e) => {
-    e.preventDefault();
-    const info = {
-      sortBasedOn: "Ticket_Type",
-      companyID,
-    };
-
-    if (toggle) {
-      axios
-        .post("http://localhost:5000/api/ticket/sorting", info)
-        .then((res) => {
-          setUsers(res.data);
-        });
-      setToggle(!toggle);
-    } else {
-      axios
-        .post("http://localhost:5000/api/ticket/sortingASC", info)
-        .then((res) => {
-          setUsers(res.data);
-        });
-      setToggle(!toggle);
-    }
-    setTrig(!trig);
-  };
-
-  const handleSortingByStatusDES = (e) => {
-    e.preventDefault();
-    const info = {
-      sortBasedOn: "Status",
-      companyID,
-    };
-
-    if (toggle) {
-      axios
-        .post("http://localhost:5000/api/ticket/sorting", info)
-        .then((res) => {
-          setUsers(res.data);
-        });
-      setToggle(!toggle);
-    } else {
-      axios
-        .post("http://localhost:5000/api/ticket/sortingASC", info)
-        .then((res) => {
-          setUsers(res.data);
-        });
-      setToggle(!toggle);
-    }
-  };
-
-  const handleSortingBySeverityDES = (e) => {
-    e.preventDefault();
-    const info = {
-      sortBasedOn: "Sevirity",
-      companyID,
-    };
-
-    if (toggle) {
-      axios
-        .post("http://localhost:5000/api/ticket/sorting", info)
-        .then((res) => {
-          setUsers(res.data);
-        });
-      setToggle(!toggle);
-    } else {
-      axios
-        .post("http://localhost:5000/api/ticket/sortingASC", info)
-        .then((res) => {
-          setUsers(res.data);
-        });
-      setToggle(!toggle);
-    }
-  };
-
-  const handleSortingByProductTypeDES = (e) => {
-    e.preventDefault();
-    const info = {
-      sortBasedOn: "Product_Types",
-      companyID,
-    };
-
-    if (toggle) {
-      axios
-        .post("http://localhost:5000/api/ticket/sorting", info)
-        .then((res) => {
-          setUsers(res.data);
-        });
-      setToggle(!toggle);
-    } else {
-      axios
-        .post("http://localhost:5000/api/ticket/sortingASC", info)
-        .then((res) => {
-          setUsers(res.data);
-        });
-      setToggle(!toggle);
-    }
-  };
-
-  const handleSortingByCompanyIDDES = (e) => {
-    e.preventDefault();
-    const info = {
-      sortBasedOn: "Company_Name",
-      companyID,
-    };
-
-    if (toggle) {
-      axios
-        .post("http://localhost:5000/api/ticket/sorting", info)
-        .then((res) => {
-          setUsers(res.data);
-        });
-      setToggle(!toggle);
-    } else {
-      axios
-        .post("http://localhost:5000/api/ticket/sortingASC", info)
-        .then((res) => {
-          setUsers(res.data);
-        });
-      setToggle(!toggle);
-    }
-    setTrig(!trig);
-  };
-
-  const handleSortingByDescriptionDES = (e) => {
-    e.preventDefault();
-    const info = {
-      sortBasedOn: "Description",
-      companyID,
-    };
-
-    if (toggle) {
-      axios
-        .post("http://localhost:5000/api/ticket/sorting", info)
-        .then((res) => {
-          setUsers(res.data);
-        });
-      setToggle(!toggle);
-    } else {
-      axios
-        .post("http://localhost:5000/api/ticket/sortingASC", info)
-        .then((res) => {
-          setUsers(res.data);
-        });
-      setToggle(!toggle);
-    }
   };
 
   useEffect(() => {
@@ -196,7 +49,6 @@ const Test = () => {
       .post("http://localhost:5000/api/ticket/test-update", data)
       .then((res) => {
         if (res.status === 200) {
-          console.log("res.data",res.data)
         }
       });
   };
@@ -212,7 +64,9 @@ const Test = () => {
       });
   };
 
-  
+  const settTicketID = (ID) => {
+    setTicketID(ID);
+  };
 
   const settReply = (reply) => {
     setReply(reply);
@@ -229,9 +83,11 @@ const Test = () => {
       });
   };
 
-  if (userss.Role === "Admin") {
+  if (user.Role === "Admin") {
     return (
       <>
+        {/* <SearchBar placeholder="Search ..." data={users} /> */}
+
         <table
           id="dtBasicExample"
           class="table table-striped table-bordered table-sm"
@@ -240,13 +96,13 @@ const Test = () => {
         >
           <thead>
             <tr className="centered">
-              <th>Sevirity</th>
+              <th>Company Name</th>
+              <th>Severity</th>
               <th>Product Type</th>
               <th>Ticket Type</th>
-              <th>Status</th>
-              <th>Company Name</th>
-              <th>Reply</th>
+              <th>Status </th>
               <th>Assign Ticket</th>
+              <th>More</th>
             </tr>
           </thead>
           {users &&
@@ -254,6 +110,7 @@ const Test = () => {
               return (
                 <tbody>
                   <>
+                    <td>{element.Company_Name}</td>
                     <td>{element.Sevirity}</td>
                     <td>{element.Product_Types}</td>
                     <td>{element.Ticket_Type}</td>
@@ -265,7 +122,7 @@ const Test = () => {
                             icon={faCheckSquare}
                             size="20px"
                             onClick={() => {
-                              setTicketID(element.Ticket_ID);
+                              settTicketID(element.Ticket_ID);
                               changeStatus();
                             }}
                           />
@@ -275,15 +132,13 @@ const Test = () => {
                             className="Red"
                             size="20px"
                             onClick={() => {
-                              setTicketID(element.Ticket_ID);
+                              settTicketID(element.Ticket_ID);
                               changeStatusRej();
                             }}
                           ></TiDelete>
                         </div>
                       </div>
                     </td>
-                    <td>{element.Company_Name}</td>
-                    <td>{element.Reply}</td>
                     <td>
                       <Link
                         to="/assign"
@@ -298,6 +153,9 @@ const Test = () => {
                         Assign
                       </Link>
                     </td>
+                    <td>
+                      <Modal />
+                    </td>
                   </>
                 </tbody>
               );
@@ -306,7 +164,7 @@ const Test = () => {
       </>
     );
   }
-  if (userss.Role === "Employer") {
+  if (user.Role === "Employer") {
     return (
       <>
         <table
@@ -340,7 +198,7 @@ const Test = () => {
                             icon={faCheckSquare}
                             size="20px"
                             onClick={() => {
-                              setTicketID(element.Ticket_ID);
+                              settTicketID(element.Ticket_ID);
                               changeStatus();
                             }}
                           />
@@ -350,7 +208,7 @@ const Test = () => {
                             className="Red"
                             size="20px"
                             onClick={() => {
-                              setTicketID(element.Ticket_ID);
+                              settTicketID(element.Ticket_ID);
                               changeStatusRej();
                             }}
                           ></TiDelete>
@@ -365,7 +223,7 @@ const Test = () => {
                           id={element.Ticket_ID}
                           onChange={(e) => {
                             settReply(e.target.value);
-                            setTicketID(element.Ticket_ID);
+                            settTicketID(element.Ticket_ID);
                           }}
                           type={"textarea"}
                           placeholder="Add a reply"
@@ -388,7 +246,7 @@ const Test = () => {
       </>
     );
   }
-  if (userss.Role === "Customer") {
+  if (user.Role === "Customer") {
     return (
       <>
         <table
@@ -410,11 +268,13 @@ const Test = () => {
             users.map((element) => {
               return (
                 <tbody>
-                  <td>{element.Sevirity}</td>
-                  <td>{element.Product_Types}</td>
-                  <td>{element.Ticket_Type}</td>
-                  <td>{element.Status}</td>
-                  <td>{element.Reply}</td>
+                  <>
+                    <td>{element.Sevirity}</td>
+                    <td>{element.Product_Types}</td>
+                    <td>{element.Ticket_Type}</td>
+                    <td>{element.Status}</td>
+                    <td>{element.Reply}</td>
+                  </>
                 </tbody>
               );
             })}

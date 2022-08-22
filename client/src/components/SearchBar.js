@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import "./SearchBar.css";
 import { FaSearch } from "react-icons/fa";
-import { UserContext } from "../App";
+// import { UseContext, UserContext } from "../App";
 
 function SearchBar({ placeholder, data, setLoggedUser }) {
   const [filteredData, setFilteredData] = useState([]);
 
+  // const user = UseContext(UserContext);
   const handleFilter = (event) => {
     const searchWord = event.target.value;
-    const user = useContext(UserContext);
     const newFilter = data.filter((value) => {
       return value.Ticket_Type.toLowerCase().includes(searchWord.toLowerCase());
     });

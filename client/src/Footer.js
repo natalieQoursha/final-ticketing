@@ -3,7 +3,7 @@ import { UserContext } from "./App";
 import React, { useState } from "react";
 import { useContext } from "react";
 
-const Footer = ({ setLoggedUser }) => {
+const Footer = () => {
   const user = useContext(UserContext);
 
   return (

@@ -191,6 +191,9 @@ const Navbar = ({ setLoggedUser }) => {
 
             <h
               style={{
+                padding : "0 10px 0 10px",
+
+
                 color: "white",
                 fontSize: 20,
               }}
