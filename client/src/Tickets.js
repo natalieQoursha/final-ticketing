@@ -56,17 +56,21 @@ function Tickets({ setLoggedUser }) {
           <br />
           <div className="alignment">
             <label for="Product_Types">Product : </label>
-            {/* <select
-              onChange={(e) => setProductType(e.target.value)}
-              name="Product_Types"
-              id="Product_Types"
-            >
-              {Product_Types?.map((info) => {
-                return (
-                  <option value={info.Product_Name}>{info.Product_Name}</option>
-                );
-              })}
-            </select> */}
+            {
+              <select
+                onChange={(e) => setProductType(e.target.value)}
+                name="Product_Types"
+                id="Product_Types"
+              >
+                {Product_Types?.map((info) => {
+                  return (
+                    <option value={info.Product_Name}>
+                      {info.Product_Name}
+                    </option>
+                  );
+                })}
+              </select>
+            }
           </div>
           <div className="alignment">
             <label for="Ticket_Type">Ticket type : </label>
