@@ -21,6 +21,7 @@ const Test = () => {
   const companyID = user.Company_Name;
   const loaded=[];
   const [datar, setData] = useState(" ");
+  const enduser = JSON.parse(sessionStorage.getItem("user")) || undefined;
 
   const newObj = (TID) => {
     sessionStorage.setItem("ticketID", JSON.stringify(TID));
@@ -30,7 +31,6 @@ const Test = () => {
 
   useEffect(() => {
     const fetchUsers = () => {
-      const enduser = JSON.parse(sessionStorage.getItem("user")) || undefined;
       const info = {
         Company_ID: enduser.Company_ID,
         role: enduser.Role,
@@ -91,14 +91,11 @@ const Test = () => {
   };
 
   const search = (e) => {
-    const info = {serachedWord:datar};
+    const info = {serachedWord:datar,role: enduser.Role};
     axios
       .post("http://localhost:5000/api/ticket/search", info)
       .then((res) => {
         setUsers(res.data)
-        console.log("xx is: "+res.data)
-        
-
       });
     
   };
@@ -196,6 +193,13 @@ const Test = () => {
   if (user.Role === "Employer") {
     return (
       <>
+                  <input
+                          onChange={(e) => {
+                            setData(e.target.value) ; search()
+                          }}
+                          type={"textarea"}
+                          placeholder="Search.. "
+                        ></input>
         <table
           id="dtBasicExample"
           class="table table-striped table-bordered table-sm"
@@ -278,6 +282,13 @@ const Test = () => {
   if (user.Role === "Customer") {
     return (
       <>
+                  <input
+                          onChange={(e) => {
+                            setData(e.target.value) ; search()
+                          }}
+                          type={"textarea"}
+                          placeholder="Search.. "
+                        ></input>
         <table
           id="dtBasicExample"
           class="table table-striped table-bordered table-sm"

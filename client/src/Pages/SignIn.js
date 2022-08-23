@@ -23,7 +23,7 @@ const SignIn = ({ setLoggedUser }) => {
         return;
       } else {
         sessionStorage.setItem("user", JSON.stringify(res.data));
-        setLoggedUser(res.data);
+        // setLoggedUser(res.data);
         history("/test");
       }
     });
