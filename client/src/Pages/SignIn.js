@@ -1,74 +1,69 @@
 import "../SignIn.css";
-import { Link, useNavigate } from "react-router-dom";
-import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 import axios from "axios";
-<<<<<<< HEAD
 import { useContext } from "react";
 import { UserContext } from "../App";
 
 const SignIn = ({ setLoggedUser }) => {
-=======
-// import signin from "../images/signin.png";
-const SignIn = ({setLoggedUser}) => {
->>>>>>> 9a1b60c4e205d1aaa71998c2049c7e9d3b9dc543
-  const [Email, setEmail] = useState("");
-  const [Password, setPassword] = useState("");
-  const data = { Email, Password };
-  const history = useNavigate();
-  const user = useContext(UserContext);
-
-  const handleLogin = (e) => {
-    e.preventDefault();
+  const SignIn = ({ setLoggedUser }) => {
+    const [Email, setEmail] = useState("");
+    const [Password, setPassword] = useState("");
     const data = { Email, Password };
-    console.log(data);
+    const history = useNavigate();
+    const user = useContext(UserContext);
 
-    axios.post("http://localhost:5000/api/user/login", data).then((res) => {
-      if (res.status === 400) {
-        alert("Wrong Credintials");
-        return;
-      } else {
-        sessionStorage.setItem("user", JSON.stringify(res.data));
-        setLoggedUser(res.data);
-        history("/test");
-      }
-    });
-  };
+    const handleLogin = (e) => {
+      e.preventDefault();
+      const data = { Email, Password };
+      console.log(data);
 
-  return (
-    <html>
-      <body>
-        <main>
-          <div class="row">
-            <div class="colm-logo">
-              <h2>Sign in to submit and review your tickets!</h2>
-            </div>
-            <div class="colm-form">
-              <div class="form-container">
-              
+      axios.post("http://localhost:5000/api/user/login", data).then((res) => {
+        if (res.status === 400) {
+          alert("Wrong Credintials");
+          return;
+        } else {
+          sessionStorage.setItem("user", JSON.stringify(res.data));
+          setLoggedUser(res.data);
+          history("/test");
+        }
+      });
+    };
 
-                <h4>Sign in</h4>
-                <input
-                  type="text"
-                  placeholder="Email address"
-                  value={Email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-                <input
-                  type={"password"}
-                  placeholder="Password"
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-                <button class="btn-login" onClick={handleLogin}>
-                  Login
-                </button>
+    return (
+      <html>
+        <body>
+          <main>
+            <div class="row">
+              <div class="colm-logo">
+                <h2>Sign in to submit and review your tickets!</h2>
+              </div>
+              <div class="colm-form">
+                <div class="form-container">
+                  <h4>Sign in</h4>
+                  <input
+                    type="text"
+                    placeholder="Email address"
+                    value={Email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                  />
+                  <input
+                    type={"password"}
+                    placeholder="Password"
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                  />
+                  <button class="btn-login" onClick={handleLogin}>
+                    Login
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        </main>
-      </body>
-    </html>
-  );
+          </main>
+        </body>
+      </html>
+    );
+  };
 };
 export default SignIn;

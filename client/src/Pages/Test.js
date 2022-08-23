@@ -2,20 +2,15 @@ import React, { useState, useEffect, Component } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckSquare, faCoffee} from "@fortawesome/free-solid-svg-icons";
+import { faCheckSquare, faCoffee } from "@fortawesome/free-solid-svg-icons";
 import { TiDelete } from "react-icons/ti";
 import "./Test.css";
-<<<<<<< HEAD
-import SearchBar from "../components/SearchBar";
 import { FaPlusCircle } from "react-icons/fa";
 import "./Modal.css";
 import Modal from "./Modal";
+import SearchBar from "../components/SearchBar";
+import BookData from "../data.json";
 
-=======
-import SearchBar  from "../components/SearchBar";
-import BookData from "../data.json"
-import { FaPlusCircle } from "react-icons/fa";
->>>>>>> 9a1b60c4e205d1aaa71998c2049c7e9d3b9dc543
 const Test = () => {
   const [modal, setModal] = useState();
 
@@ -25,21 +20,13 @@ const Test = () => {
   const history = useNavigate();
   const user = JSON.parse(sessionStorage.getItem("user")) || undefined;
   const companyID = user.Company_Name;
-<<<<<<< HEAD
-=======
-  const loaded=[];
+  const loaded = [];
   const [datar, setData] = useState(" ");
->>>>>>> 9a1b60c4e205d1aaa71998c2049c7e9d3b9dc543
 
   const newObj = (TID) => {
     sessionStorage.setItem("ticketID", JSON.stringify(TID));
   };
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 9a1b60c4e205d1aaa71998c2049c7e9d3b9dc543
   useEffect(() => {
     const fetchUsers = () => {
       const enduser = JSON.parse(sessionStorage.getItem("user")) || undefined;
@@ -52,10 +39,8 @@ const Test = () => {
         .post("http://localhost:5000/api/ticket/view-tickets", info)
         .then((res) => {
           setUsers(res.data);
-          console.log("xy is: "+res.data)
-
+          console.log("xy is: " + res.data);
         });
-
     };
 
     fetchUsers();
@@ -103,35 +88,27 @@ const Test = () => {
   };
 
   const search = (e) => {
-    const info = {serachedWord:datar};
-    axios
-      .post("http://localhost:5000/api/ticket/search", info)
-      .then((res) => {
-        setUsers(res.data)
-        console.log("xx is: "+res.data)
-        
-
-      });
-    
+    const info = { serachedWord: datar };
+    axios.post("http://localhost:5000/api/ticket/search", info).then((res) => {
+      setUsers(res.data);
+      console.log("xx is: " + res.data);
+    });
   };
 
   if (user.Role === "Admin") {
     return (
       <>
-<<<<<<< HEAD
         {/* <SearchBar placeholder="Search ..." data={users} /> */}
-=======
-            {/* <SearchBar placeholder="Search ..." data={BookData} /> */}
+        {/* <SearchBar placeholder="Search ..." data={BookData} /> */}
 
-            <input
-                          onChange={(e) => {
-                            setData(e.target.value) ; search()
-                          }}
-                          type={"textarea"}
-                          placeholder="Search.. "
-                        ></input>
-
->>>>>>> 9a1b60c4e205d1aaa71998c2049c7e9d3b9dc543
+        <input
+          onChange={(e) => {
+            setData(e.target.value);
+            search();
+          }}
+          type={"textarea"}
+          placeholder="Search.. "
+        ></input>
 
         <table
           id="dtBasicExample"
@@ -148,10 +125,6 @@ const Test = () => {
               <th>Status </th>
               <th>Assign Ticket</th>
               <th>More</th>
-<<<<<<< HEAD
-=======
-              
->>>>>>> 9a1b60c4e205d1aaa71998c2049c7e9d3b9dc543
             </tr>
           </thead>
           {users &&
@@ -203,13 +176,8 @@ const Test = () => {
                       </Link>
                     </td>
                     <td>
-<<<<<<< HEAD
                       <Modal />
-=======
-                      <FaPlusCircle size="20px" >
-                        </FaPlusCircle>
-
->>>>>>> 9a1b60c4e205d1aaa71998c2049c7e9d3b9dc543
+                      <FaPlusCircle size="20px"></FaPlusCircle>
                     </td>
                   </>
                 </tbody>
