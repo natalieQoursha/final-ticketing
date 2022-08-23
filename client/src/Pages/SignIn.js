@@ -1,6 +1,6 @@
 import "../SignIn.css";
-import { Link, useNavigate } from "react-router-dom";
-import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 import axios from "axios";
 import { useContext } from "react";
 import { UserContext } from "../App";

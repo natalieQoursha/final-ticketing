@@ -2,11 +2,10 @@ import React, { useState, useEffect, Component } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckSquare, faCoffee} from "@fortawesome/free-solid-svg-icons";
+import { faCheckSquare, faCoffee } from "@fortawesome/free-solid-svg-icons";
 import { TiDelete } from "react-icons/ti";
 import "./Test.css";
 import SearchBar from "../components/SearchBar";
-import { FaPlusCircle } from "react-icons/fa";
 import "./Modal.css";
 import Modal from "./Modal";
 
@@ -19,15 +18,13 @@ const Test = () => {
   const history = useNavigate();
   const user = JSON.parse(sessionStorage.getItem("user")) || undefined;
   const companyID = user.Company_Name;
-  const loaded=[];
+  const loaded = [];
   const [datar, setData] = useState(" ");
   const enduser = JSON.parse(sessionStorage.getItem("user")) || undefined;
 
   const newObj = (TID) => {
     sessionStorage.setItem("ticketID", JSON.stringify(TID));
   };
-
-
 
   useEffect(() => {
     const fetchUsers = () => {
@@ -40,10 +37,8 @@ const Test = () => {
         .post("http://localhost:5000/api/ticket/view-tickets", info)
         .then((res) => {
           setUsers(res.data);
-          console.log("xy is: "+res.data)
-
+          console.log("xy is: " + res.data);
         });
-
     };
 
     fetchUsers();
@@ -103,16 +98,14 @@ const Test = () => {
   if (user.Role === "Admin") {
     return (
       <>
-            {/* <SearchBar placeholder="Search ..." data={BookData} /> */}
-
-            <input
-                          onChange={(e) => {
-                            setData(e.target.value) ; search()
-                          }}
-                          type={"textarea"}
-                          placeholder="Search.. "
-                        ></input>
-
+        <input
+          onChange={(e) => {
+            setData(e.target.value);
+            search();
+          }}
+          type={"textarea"}
+          placeholder="Search.. "
+        ></input>
 
         <table
           id="dtBasicExample"
@@ -193,13 +186,14 @@ const Test = () => {
   if (user.Role === "Employer") {
     return (
       <>
-                  <input
-                          onChange={(e) => {
-                            setData(e.target.value) ; search()
-                          }}
-                          type={"textarea"}
-                          placeholder="Search.. "
-                        ></input>
+        <input
+          onChange={(e) => {
+            setData(e.target.value);
+            search();
+          }}
+          type={"textarea"}
+          placeholder="Search.. "
+        ></input>
         <table
           id="dtBasicExample"
           class="table table-striped table-bordered table-sm"
@@ -282,13 +276,14 @@ const Test = () => {
   if (user.Role === "Customer") {
     return (
       <>
-                  <input
-                          onChange={(e) => {
-                            setData(e.target.value) ; search()
-                          }}
-                          type={"textarea"}
-                          placeholder="Search.. "
-                        ></input>
+        <input
+          onChange={(e) => {
+            setData(e.target.value);
+            search();
+          }}
+          type={"textarea"}
+          placeholder="Search.. "
+        ></input>
         <table
           id="dtBasicExample"
           class="table table-striped table-bordered table-sm"

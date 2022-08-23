@@ -1,7 +1,6 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import "bootstrap/dist/css/bootstrap.min.css";
-import CardGroup from "react-bootstrap/CardGroup";
 import "./AdminView.css";
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState, useEffect, Component, createContext } from "react";
@@ -85,36 +84,38 @@ export default function Admin({ setLoggedUser }) {
       >
         Back
       </Button>
-      <h1>Active services</h1>
+      <div className="underline1">
+        <h1>Active services</h1>
+      </div>
+      <div className="UpDownBorder">
+        <h3>
+          Select a service to remove or select multiple services to remove at
+          once
+        </h3>
+      </div>
+      <br /> <br />
       {Companies &&
         Companies.map((element) => {
           return (
             <div className="cards">
-              <Card>
-                <Card.Body>
-                  <Card.Title className="card-title">
-                    {element.Product_Name}
-                  </Card.Title>
-                  <Card.Text>{element.Company_Description}</Card.Text>
-                </Card.Body>
-                <Button
-                  className="Remove"
-                  onClick={() => {
-                    removeService(element);
-                  }}
-                >
-                  -
-                </Button>
-              </Card>
+              <label for="Product_Name" className="card-title">
+                <input type="checkbox" />
+                {element.Product_Name}
+              </label>
             </div>
           );
         })}
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-
+      <div className="UpDownBorder">
+        <button
+          type=""
+          value="Submit"
+          onClick={() => {
+            removeService();
+          }}
+        >
+          Remove
+        </button>
+      </div>
       <h1>Available Services</h1>
       {Services &&
         Services.map((element) => {
