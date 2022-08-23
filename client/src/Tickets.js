@@ -62,13 +62,13 @@ function Tickets({ setLoggedUser }) {
                 name="Product_Types"
                 id="Product_Types"
               >
-                {Product_Types?.map((info) => {
+                {/* {Product_Types?.map((info) => {
                   return (
                     <option value={info.Product_Name}>
                       {info.Product_Name}
                     </option>
                   );
-                })}
+                })} */}
               </select>
             }
           </div>
