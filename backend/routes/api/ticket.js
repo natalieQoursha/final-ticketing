@@ -338,11 +338,10 @@ router.post("/addReply", (req, response) => {
 
 router.post("/search", (req, response) => {
   const word = req.body.serachedWord;
-
-  console.log("kareemeeee "+word)
-
+  const rol=req.body.role;
   conn.connect().then((res) => {
     if (res.connected) {
+      if(rol=="Admin" || rol=="Employer"){
       res
         .request()
         .query(
@@ -356,6 +355,24 @@ router.post("/search", (req, response) => {
             
           }
         );
+      }
+      else{
+        res
+        .request()
+        .query(
+          `Select * from dbo.Tickets Inner JOIN Companies ON Company_Name LIKE '%${word}%' 
+          or Sevirity LIKE '%${word}%' or Status LIKE '%${word}%' or Product_Types LIKE '%${word}%'
+          or Ticket_Type LIKE '%${word}%'
+          `,
+          (err, res) => {
+            response.status(200).json(res.recordset);
+            console.log(res.recordset.length)
+            
+          }
+        );
+      }
+
+    
     }
   });
 });
