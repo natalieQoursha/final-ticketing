@@ -91,7 +91,7 @@ const Test = () => {
   };
 
   const search = (e) => {
-    const info = {serachedWord:datar,role: enduser.Role};
+    const info = {serachedWord:datar,Company_ID: enduser.Company_ID,};
     axios
       .post("http://localhost:5000/api/ticket/search", info)
       .then((res) => {

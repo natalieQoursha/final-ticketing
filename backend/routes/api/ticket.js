@@ -338,10 +338,10 @@ router.post("/addReply", (req, response) => {
 
 router.post("/search", (req, response) => {
   const word = req.body.serachedWord;
-  const rol=req.body.role;
+  const com=req.body.Company_ID;
   conn.connect().then((res) => {
     if (res.connected) {
-      if(rol=="Admin" || rol=="Employer"){
+      if(com==10){
       res
         .request()
         .query(
@@ -356,7 +356,86 @@ router.post("/search", (req, response) => {
           }
         );
       }
-      else{
+      else if(com==11){
+        res
+        .request()
+        .query(
+          `Select * from dbo.Tickets Inner JOIN Companies ON Company_Name LIKE '%${word}%' 
+          or Sevirity LIKE '%${word}%' or Status LIKE '%${word}%' or Product_Types LIKE '%${word}%'
+          or Ticket_Type LIKE '%${word}%'
+          `,
+          (err, res) => {
+            response.status(200).json(res.recordset);
+            console.log(res.recordset.length)
+            
+          }
+        );
+      }
+
+      else if(com==12){
+        res
+        .request()
+        .query(
+          `Select * from dbo.Tickets Inner JOIN Companies ON Company_Name LIKE '%${word}%' 
+          or Sevirity LIKE '%${word}%' or Status LIKE '%${word}%' or Product_Types LIKE '%${word}%'
+          or Ticket_Type LIKE '%${word}%'
+          `,
+          (err, res) => {
+            response.status(200).json(res.recordset);
+            console.log(res.recordset.length)
+            
+          }
+        );
+      }
+      else if(com==13){
+        res
+        .request()
+        .query(
+          `Select * from dbo.Tickets Inner JOIN Companies ON Company_Name LIKE '%${word}%' 
+          or Sevirity LIKE '%${word}%' or Status LIKE '%${word}%' or Product_Types LIKE '%${word}%'
+          or Ticket_Type LIKE '%${word}%'
+          `,
+          (err, res) => {
+            response.status(200).json(res.recordset);
+            console.log(res.recordset.length)
+            
+          }
+        );
+      }
+
+      else if(com==15){
+        res
+        .request()
+        .query(
+          `Select * from dbo.Tickets Inner JOIN Companies ON Company_Name LIKE '%${word}%' 
+          or Sevirity LIKE '%${word}%' or Status LIKE '%${word}%' or Product_Types LIKE '%${word}%'
+          or Ticket_Type LIKE '%${word}%'
+          `,
+          (err, res) => {
+            response.status(200).json(res.recordset);
+            console.log(res.recordset.length)
+            
+          }
+        );
+      }
+
+      else if(com==16){
+        res
+        .request()
+        .query(
+          `Select * from dbo.Tickets Inner JOIN Companies ON Company_Name LIKE '%${word}%' 
+          or Sevirity LIKE '%${word}%' or Status LIKE '%${word}%' or Product_Types LIKE '%${word}%'
+          or Ticket_Type LIKE '%${word}%'
+          `,
+          (err, res) => {
+            response.status(200).json(res.recordset);
+            console.log(res.recordset.length)
+            
+          }
+        );
+      }
+
+      else if(com==17){
         res
         .request()
         .query(
