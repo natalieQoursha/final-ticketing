@@ -10,7 +10,8 @@ export default function Admin() {
     // const cid=props.ID;
     const empName = props.First_Name;
     const empID = props.ID;
-    const data = { empName, empID, TicketID };
+    const newStat = "Assigned";
+    const data = { empName, empID, TicketID, newStat };
     axios
       .post("http://localhost:5000/api/service/assignTickets", data)
       .then((res) => {

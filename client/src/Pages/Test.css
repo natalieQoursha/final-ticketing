@@ -11,7 +11,7 @@
 }
 
 .replyInput{
-    width:150px;
+    width:80%;
 }
 
 .replyButton{
@@ -28,6 +28,38 @@
     text-align: center;
 }
 .bordered{
-    border: 1px gray solid;
+    border: 0.5px gray solid;
+}
+.search{
+    font-size: 18px;
+    width: 50%;
+    height: 4rem ;
+    display: flex;
+    margin: auto;
+    border: none;
+    border: 01px black solid;
+    background-color: #D3D3D3;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
+.search::placeholder{
+    font-size: 18px;
+    color: black;
+}
+
+.input-icons {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.input-icons i {
+    position: absolute;
+    margin-left: 72%;
+    margin-top: 4px;
+}
+   
+.icon {
+    padding: 10px;
+    min-width: 40px;
+}

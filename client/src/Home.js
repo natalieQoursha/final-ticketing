@@ -14,7 +14,7 @@ const Home = ({ setLoggedUser }) => {
       <div class="text1">
         Solving Your
         <br />
-        Tickets right
+        Tickets Right
         <div class="text2">
           A powerful easy system for tracking,
           <br></br>

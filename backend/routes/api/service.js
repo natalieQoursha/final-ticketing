@@ -8,21 +8,19 @@ const conn = new sql.ConnectionPool(DBconf);
 router.post("/addService", (req, response) => {
   const PID = req.body.ProductID;
   const PNAME = req.body.ProductName;
-  const comName=req.body.companyName;
-  const comID=req.body.companyID;
-  const isactive=1;
+  const comName = req.body.companyName;
+  const comID = req.body.companyID;
+  const isactive = 1;
   conn.connect().then((res) => {
     if (res.connected) {
-      res
-        .request()
-        .query(
-          `INSERT INTO dbo.Services (Company_ID,Product_ID,IsActive,Company_Name,Product_Name) VALUES 
+      res.request().query(
+        `INSERT INTO dbo.Services (Company_ID,Product_ID,IsActive,Company_Name,Product_Name) VALUES 
           ('${comID}','${PID}','${isactive}','${comName}','${PNAME}')`,
-          (err, res) => {
-            response.status(200).json(res.recordset);
-            console.log(res.recordset);
-          }
-        );
+        (err, res) => {
+          response.status(200).json(res.recordset);
+          console.log(res.recordset);
+        }
+      );
     }
   });
 });
@@ -47,21 +45,19 @@ router.post("/removeService", (req, response) => {
 router.post("/assignTickets", (req, response) => {
   const ID = req.body.TicketID;
   const empID = req.body.empID;
-  const name=req.body.empName;
+  const name = req.body.empName;
+  const newSt = req.body.status;
 
   conn.connect().then((res) => {
     if (res.connected) {
-      res
-        .request()
-        .query(
-          `INSERT INTO dbo.Assignment(Ticket_ID,Employer_ID,Employer_Name) VALUES 
-          ('${ID}','${empID}','${name}')`
-          ,
-          (err, res) => {
-            console.log(res.recordset)
-            response.status(200).json(res.recordset);
-          }
-        );
+      res.request().query(
+        `INSERT INTO dbo.Assignment(Ticket_ID,Employer_ID,Employer_Name) Values ('${ID}','${empID}','${name}')
+          UPDATE dbo.Tickets SET Tickets.Status = 'Assigned' from dbo.Assignment Where Tickets.Ticket_ID = '${ID}'`,
+        (err, res) => {
+          console.log(res.recordset);
+          response.status(200).json(res.recordset);
+        }
+      );
     }
   });
 });
