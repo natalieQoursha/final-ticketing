@@ -75,7 +75,7 @@ export default function Admin({ setLoggedUser }) {
   return (
     <>
       <div className="UpDownBorder">
-        <h1>
+        <div className="left">
           <button
             className="bttn"
             onClick={() => {
@@ -84,8 +84,10 @@ export default function Admin({ setLoggedUser }) {
           >
             Back
           </button>
-          Active services
-        </h1>
+        </div>
+        <div className="center">
+          <h1>Active services</h1>
+        </div>
       </div>
       <br />
       <br />
