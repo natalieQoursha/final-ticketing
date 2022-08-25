@@ -85,7 +85,7 @@ export default function Admin({ setLoggedUser }) {
             Back
           </button>
         </div>
-        <div className="center">
+        <div className="centerr">
           <h1>Active services</h1>
         </div>
       </div>
@@ -106,7 +106,9 @@ export default function Admin({ setLoggedUser }) {
           );
         })}
       <div className="UpDownBorder">
-        <h1>Available Services</h1>
+        <div className="center">
+          <h1>Available Services</h1>
+        </div>
       </div>
       <br />
       <br />

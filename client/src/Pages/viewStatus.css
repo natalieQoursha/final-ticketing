@@ -42,14 +42,12 @@
 
 .UpDownBorder{
     display: flex;
-    flex-direction: row;
     border-top: 1px gray solid;
     border-bottom: 0.5px gray solid;
-    text-align: center;
 }
 .bttn{
     margin-right: 92%;
-    width: 100px;
+    width: 80px;
     height: auto;
     font-size: 1.7rem;
     background-color: rgb(122, 134, 182);
@@ -61,7 +59,13 @@
 }
 .center{
     margin:auto;
+    align-items: center;
+}
+.centerr{
+    display:inline;
+    margin-left: 39%;
+    text-align: center;
 }
 .left{
-    margin: 10px;
+    margin: 1%;
 }
