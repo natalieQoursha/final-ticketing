@@ -100,7 +100,7 @@ export default function Admin({ setLoggedUser }) {
                 removeService(element);
               }}
             >
-              <label className="card-title">{element.Product_Name}</label>
+              n<label className="card-title">{element.Product_Name}</label>
               <label className="Add">-</label>
             </div>
           );

@@ -19,7 +19,7 @@ const Test = ({ setLoggedUser }) => {
   const user = JSON.parse(sessionStorage.getItem("user")) || undefined;
   const companyID = user.Company_Name;
   const loaded = [];
-  const [datar, setData] = useState(" ");
+  const [datar, setData] = useState("");
   const enduser = JSON.parse(sessionStorage.getItem("user")) || undefined;
   const history = useNavigate();
   const userz = useContext(UserContext);
@@ -237,16 +237,18 @@ const Test = ({ setLoggedUser }) => {
                     </td>
                     <td>
                       <div>
+                        {element.Reply}
+                        <br />
                         <input
                           className="replyInput"
                           value={element.Ticket_ID.Reply}
                           id={element.Ticket_ID}
+                          placeholder="Add/Edit reply.."
                           onChange={(e) => {
                             settReply(e.target.value);
                             settTicketID(element.Ticket_ID);
                           }}
                           type={"textarea"}
-                          placeholder={element.Reply}
                         ></input>
                         <button
                           className="replyButton"

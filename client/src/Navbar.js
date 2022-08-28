@@ -57,7 +57,7 @@ const Navbar = ({ setLoggedUser }) => {
             <h
               style={{
                 color: "white",
-                fontSize0: 20,
+                fontSize: 20,
               }}
             >
               {user.First_Name}
@@ -81,7 +81,7 @@ const Navbar = ({ setLoggedUser }) => {
                 borderRadius: 21,
               }}
             >
-              Services control
+              Control Services
             </Link>
             <Link
               to="/"
