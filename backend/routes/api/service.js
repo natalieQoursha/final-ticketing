@@ -54,7 +54,6 @@ router.post("/assignTickets", (req, response) => {
         `INSERT INTO dbo.Assignment(Ticket_ID,Employer_ID,Employer_Name) Values ('${ID}','${empID}','${name}')
           UPDATE dbo.Tickets SET Tickets.Status = 'Assigned' from dbo.Assignment Where Tickets.Ticket_ID = '${ID}'`,
         (err, res) => {
-          console.log(res.recordset);
           response.status(200).json(res.recordset);
         }
       );
