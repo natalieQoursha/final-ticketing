@@ -7,7 +7,6 @@ export default function Admin() {
   const TicketID = JSON.parse(sessionStorage.getItem("ticketID")) || undefined;
 
   const Assign = (props) => {
-    // const cid=props.ID;
     const empName = props.First_Name;
     const empID = props.ID;
     const newStat = "Assigned";
@@ -17,6 +16,8 @@ export default function Admin() {
       .then((res) => {
         if (res.status === 200) {
           alert("Assigned successfully!");
+        } else {
+          alert("Ticket has already been assigned");
         }
       });
   };
@@ -38,7 +39,7 @@ export default function Admin() {
       <div className="viewTable">
         <table>
           <thead className="centered">
-            <th>Username</th>
+            <th>User</th>
             <th>Assign</th>
           </thead>
           {employees &&

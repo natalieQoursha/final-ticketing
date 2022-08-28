@@ -51,7 +51,7 @@ function Tickets({ setLoggedUser }) {
   return (
     <form onSubmit={submitUser}>
       <div className="popup">
-        <div className=".popup-inner">
+        <div className="popup-inner">
           <h1>{`Welcome ${user.First_Name.toUpperCase()}, from ${user.Company_Name.toUpperCase()}`}</h1>
           <br />
           <div className="alignment">

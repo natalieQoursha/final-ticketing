@@ -1,14 +1,15 @@
-import React, { useState, useEffect, Component } from "react";
+import React, { useReducer, useState, useEffect, Component } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckSquare, faCoffee } from "@fortawesome/free-solid-svg-icons";
+import { faCheckSquare } from "@fortawesome/free-solid-svg-icons";
 import { TiDelete } from "react-icons/ti";
 import "./Test.css";
 import "./Modal.css";
-import Modal from "./Modal";
 import { useContext } from "react";
 import { UserContext } from "../App";
+import Modal from "./Modal";
+import "./Modal.css";
 
 const Test = ({ setLoggedUser }) => {
   const [modal, setModal] = useState();
@@ -18,10 +19,11 @@ const Test = ({ setLoggedUser }) => {
   const user = JSON.parse(sessionStorage.getItem("user")) || undefined;
   const companyID = user.Company_Name;
   const loaded = [];
-  const [datar, setData] = useState(" ");
+  const [datar, setData] = useState("");
   const enduser = JSON.parse(sessionStorage.getItem("user")) || undefined;
   const history = useNavigate();
   const userz = useContext(UserContext);
+  const [reducerValue, forceUpdate] = useReducer((x) => x + 1, 0);
 
   const newObj = (TID) => {
     sessionStorage.setItem("ticketID", JSON.stringify(TID));
@@ -43,7 +45,7 @@ const Test = ({ setLoggedUser }) => {
     };
 
     fetchUsers();
-  }, []);
+  }, [reducerValue]);
 
   const changeStatus = (e) => {
     const data = { Status: "Accepted", Ticket_ID };
@@ -151,13 +153,14 @@ const Test = ({ setLoggedUser }) => {
                         }}
                         onClick={() => {
                           newObj(element.Ticket_ID);
+                          forceUpdate();
                         }}
                       >
                         Assign
                       </Link>
                     </td>
                     <td>
-                      <Modal />
+                      <Modal prop={element} />
                     </td>
                   </>
                 </tbody>
@@ -219,6 +222,7 @@ const Test = ({ setLoggedUser }) => {
                             onClick={() => {
                               settTicketID(element.Ticket_ID);
                               changeStatus();
+                              forceUpdate();
                             }}
                           />
                         </div>
@@ -229,6 +233,7 @@ const Test = ({ setLoggedUser }) => {
                             onClick={() => {
                               settTicketID(element.Ticket_ID);
                               changeStatusRej();
+                              forceUpdate();
                             }}
                           ></TiDelete>
                         </div>
@@ -236,21 +241,24 @@ const Test = ({ setLoggedUser }) => {
                     </td>
                     <td>
                       <div>
+                        {element.Reply}
+                        <br />
                         <input
                           className="replyInput"
                           value={element.Ticket_ID.Reply}
                           id={element.Ticket_ID}
+                          placeholder="Add/Edit reply.."
                           onChange={(e) => {
                             settReply(e.target.value);
                             settTicketID(element.Ticket_ID);
                           }}
                           type={"textarea"}
-                          placeholder={element.Reply}
                         ></input>
                         <button
                           className="replyButton"
                           onClick={(e) => {
                             addReply();
+                            forceUpdate();
                           }}
                         >
                           Update
@@ -297,6 +305,7 @@ const Test = ({ setLoggedUser }) => {
               <th>Product Type</th>
               <th>Ticket Type</th>
               <th>Status</th>
+              <th>Description</th>
               <th>Reply</th>
             </tr>
           </thead>
@@ -309,6 +318,7 @@ const Test = ({ setLoggedUser }) => {
                     <td>{element.Product_Types}</td>
                     <td>{element.Ticket_Type}</td>
                     <td>{element.Status}</td>
+                    <td>{element.Description}</td>
                     <td>{element.Reply}</td>
                   </>
                 </tbody>

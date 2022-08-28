@@ -342,7 +342,7 @@ router.post("/search", (req, response) => {
         res.request().query(
           `Select * from dbo.Tickets Inner JOIN Companies ON Company_Name LIKE '%${word}%' 
           or Sevirity LIKE '%${word}%' or Status LIKE '%${word}%' or Product_Types LIKE '%${word}%'
-          or Ticket_Type LIKE '%${word}%' where Tickets.Company_ID=Companies.Company_ID and Status != '${stat}'`,
+          or Ticket_Type LIKE '%${word}%' where Tickets.Company_ID=Companies.Company_ID`,
           (err, res) => {
             response.status(200).json(res.recordset);
             console.log(res.recordset.length);
