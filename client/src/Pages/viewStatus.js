@@ -1,7 +1,13 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./AdminView.css";
 import { useNavigate } from "react-router-dom";
-import React, { useState, useEffect, Component, createContext } from "react";
+import React, {
+  useState,
+  useEffect,
+  Component,
+  createContext,
+  useReducer,
+} from "react";
 import axios from "axios";
 import { UserContext } from "../App";
 import { useContext } from "react";
@@ -16,6 +22,7 @@ export default function Admin({ setLoggedUser }) {
     JSON.parse(sessionStorage.getItem("companyName")) || undefined;
   const companyID =
     JSON.parse(sessionStorage.getItem("companyID")) || undefined;
+  const [reducerValue, forceUpdate] = useReducer((x) => x + 1, 0);
 
   const addService = (props) => {
     const ProductName = props.Product_Name;
@@ -25,9 +32,9 @@ export default function Admin({ setLoggedUser }) {
       .post("http://localhost:5000/api/service/addService", data)
       .then((res) => {
         if (res.status === 200) {
-          window.location.reload();
         }
       });
+    forceUpdate();
   };
   const removeService = (props) => {
     const serviceID = props.Service_ID;
@@ -39,7 +46,7 @@ export default function Admin({ setLoggedUser }) {
         if (res.status === 200) {
         }
       });
-    window.location.reload();
+    forceUpdate();
   };
 
   useEffect(() => {
@@ -52,7 +59,7 @@ export default function Admin({ setLoggedUser }) {
         });
     };
     fetchCompanies();
-  }, []);
+  }, [reducerValue]);
   const reviewStatus = () => {
     {
       history("/AdminView");
@@ -70,7 +77,7 @@ export default function Admin({ setLoggedUser }) {
         });
     };
     fetchServices();
-  }, []);
+  }, [reducerValue]);
 
   return (
     <>
@@ -98,9 +105,10 @@ export default function Admin({ setLoggedUser }) {
               className="checked"
               onClick={() => {
                 removeService(element);
+                forceUpdate();
               }}
             >
-              n<label className="card-title">{element.Product_Name}</label>
+              <label className="card-title">{element.Product_Name}</label>
               <label className="Add">-</label>
             </div>
           );
@@ -120,6 +128,7 @@ export default function Admin({ setLoggedUser }) {
                 className="card-title"
                 onClick={() => {
                   addService(element);
+                  forceUpdate();
                 }}
               >
                 {element.Product_Name}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Component } from "react";
+import React, { useReducer, useState, useEffect, Component } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -23,6 +23,7 @@ const Test = ({ setLoggedUser }) => {
   const enduser = JSON.parse(sessionStorage.getItem("user")) || undefined;
   const history = useNavigate();
   const userz = useContext(UserContext);
+  const [reducerValue, forceUpdate] = useReducer((x) => x + 1, 0);
 
   const newObj = (TID) => {
     sessionStorage.setItem("ticketID", JSON.stringify(TID));
@@ -44,7 +45,7 @@ const Test = ({ setLoggedUser }) => {
     };
 
     fetchUsers();
-  }, []);
+  }, [reducerValue]);
 
   const changeStatus = (e) => {
     const data = { Status: "Accepted", Ticket_ID };
@@ -152,6 +153,7 @@ const Test = ({ setLoggedUser }) => {
                         }}
                         onClick={() => {
                           newObj(element.Ticket_ID);
+                          forceUpdate();
                         }}
                       >
                         Assign
@@ -220,6 +222,7 @@ const Test = ({ setLoggedUser }) => {
                             onClick={() => {
                               settTicketID(element.Ticket_ID);
                               changeStatus();
+                              forceUpdate();
                             }}
                           />
                         </div>
@@ -230,6 +233,7 @@ const Test = ({ setLoggedUser }) => {
                             onClick={() => {
                               settTicketID(element.Ticket_ID);
                               changeStatusRej();
+                              forceUpdate();
                             }}
                           ></TiDelete>
                         </div>
@@ -254,6 +258,7 @@ const Test = ({ setLoggedUser }) => {
                           className="replyButton"
                           onClick={(e) => {
                             addReply();
+                            forceUpdate();
                           }}
                         >
                           Update
