@@ -1,7 +1,6 @@
+import React, { useContext }   from 'react';
 import SocialFollow from "../src/SocialFollow";
 import { UserContext } from "./App";
-import { useState } from "react";
-import { useContext } from "react";
 
 const Footer = () => {
   const user = useContext(UserContext);
