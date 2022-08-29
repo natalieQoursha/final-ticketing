@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Modal.css";
 
-export default function Modal() {
+export default function Modal(props) {
   const [modal, setModal] = useState(false);
 
   const toggleModal = () => {
@@ -22,20 +22,38 @@ export default function Modal() {
     if (modal) {
       return (
         <div className="whole">
-          <div onClick={toggleModal} className="overlay"></div>
-          <div className="modal-content">
-            <h1>More information</h1>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident
-              perferendis suscipit officia recusandae, eveniet quaerat assumenda
-              id fugit, dignissimos maxime non natus placeat illo iusto!
-              Sapiente dolorum id maiores dolores? Illum pariatur possimus
-              quaerat ipsum quos molestiae rem aspernatur dicta tenetur. Sunt
-              placeat tempora vitae enim incidunt porro fuga ea.
-            </p>
-            <button className="close-modal" onClick={toggleModal}>
-              CLOSE
-            </button>
+          <div className="design">
+            <div className="overlay">
+              <div
+                className="modal-content"
+                style={{
+                  background: "white",
+                }}
+              >
+                <p className="popuptitle">More</p>
+                <p className="popupcontent">
+                  Ticket ID: {props.prop.Ticket_ID}
+                </p>
+                <p className="popupcontent">
+                  Ticket Description: {props.prop.Description}
+                </p>
+                <p className="popupcontent">Ticket Reply: {props.prop.Reply}</p>
+                <p className="popupcontent">
+                  Submitted on: {props.prop.Created_On}
+                </p>
+                <button
+                  className="close-modal"
+                  style={{
+                    background: "#9C9EFE",
+                    color: "white",
+                    border: "none",
+                  }}
+                  onClick={toggleModal}
+                >
+                  CLOSE
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       );

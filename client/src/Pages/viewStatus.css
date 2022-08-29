@@ -1,41 +1,71 @@
-.cards{
+.checked{
     display:inline-grid;
     text-align: center;
-    height: 100px;
+    height: auto;
     width: 20%;
     margin-left: 10%;
     margin-bottom: 4%;
+    border: 1px black solid;
+    border-radius: 4px;
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 25%, rgba(0,255,7,1) 100%);
+}
+.notchecked:hover{
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(0,255,7,1) 25%, rgba(255,255,255,1) 100%);
+}
+.notchecked{
+    display:inline-grid;
+    text-align: center;
+    height: auto;
+    width: 20%;
+    margin-left: 10%;
+    margin-bottom: 4%;
+    border: 1px black solid;
+    border-radius: 4px;
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 25%, rgba(255,0,0,1) 100%);
+}
+.checked:hover{
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,0,0,1) 25%, rgba(255,255,255,1) 100%);
 }
 .card-title{
     font-size: 2.6rem
 }
-.card-footer{
-    background-color: rgb(122, 134, 182);
-    height: 50px;
-}
-.Remove{
-    font-size: 20px;
-    height: auto;
-    background-color: rgb(175, 122, 179);
-    border: none;
-}
-
-.Remove:hover{
-    background-color: lightcoral;
-}
 
 .Add{
-    font-size: 20px;
-    height: auto;
-    background-color: rgb(175, 122, 179);
+    font-size: 25px;
     border: none;
+    margin-bottom: auto;
 }
 
-.Add:hover{
-    background-color: lightseagreen;
-}
 .UpDownBorder{
+    display: flex;
     border-top: 1px gray solid;
     border-bottom: 0.5px gray solid;
+}
+.bttn{
+    margin-right: 92%;
+    width: 80px;
+    height: auto;
+    font-size: 1.7rem;
+    background-color: rgb(122, 134, 182);
+    color: white
+}
+.bttn:hover{
+    background-color:white;
+    color: black;
+}
+.center{
+    margin:auto;
+    align-items: center;
+}
+.centerr{
+    display:inline;
+    margin-left: 39%;
     text-align: center;
+}
+.left{
+    margin: 1%;
 }

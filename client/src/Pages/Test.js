@@ -1,26 +1,30 @@
-import React, { useState, useEffect, Component } from "react";
+import React, { useReducer, useState, useEffect, Component } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckSquare, faCoffee } from "@fortawesome/free-solid-svg-icons";
+import { faCheckSquare } from "@fortawesome/free-solid-svg-icons";
 import { TiDelete } from "react-icons/ti";
 import "./Test.css";
-import SearchBar from "../components/SearchBar";
 import "./Modal.css";
+import { useContext } from "react";
+import { UserContext } from "../App";
 import Modal from "./Modal";
+import Assign from "./assign";
+import "./Modal.css";
 
-const Test = () => {
+const Test = ({ setLoggedUser }) => {
   const [modal, setModal] = useState();
-
   const [users, setUsers] = useState();
   const [Ticket_ID, setTicketID] = useState("");
   const [Reply, setReply] = useState();
-  const history = useNavigate();
   const user = JSON.parse(sessionStorage.getItem("user")) || undefined;
   const companyID = user.Company_Name;
   const loaded = [];
-  const [datar, setData] = useState(" ");
+  const [datar, setData] = useState("");
   const enduser = JSON.parse(sessionStorage.getItem("user")) || undefined;
+  const history = useNavigate();
+  const userz = useContext(UserContext);
+  const [reducerValue, forceUpdate] = useReducer((x) => x + 1, 0);
 
   const newObj = (TID) => {
     sessionStorage.setItem("ticketID", JSON.stringify(TID));
@@ -42,7 +46,7 @@ const Test = () => {
     };
 
     fetchUsers();
-  }, []);
+  }, [reducerValue]);
 
   const changeStatus = (e) => {
     const data = { Status: "Accepted", Ticket_ID };
@@ -51,8 +55,10 @@ const Test = () => {
       .post("http://localhost:5000/api/ticket/test-update", data)
       .then((res) => {
         if (res.status === 200) {
+          history("/test");
         }
       });
+    history("/test");
   };
 
   const addReply = (e) => {
@@ -80,33 +86,38 @@ const Test = () => {
     axios
       .post("http://localhost:5000/api/ticket/test-update", data)
       .then((res) => {
-        if (res.status === 200) {
+        if (res.status === 400) {
         }
       });
+    history("/test");
   };
 
   const search = (e) => {
-    const info = {serachedWord:datar,Company_ID: enduser.Company_ID,};
-    axios
-      .post("http://localhost:5000/api/ticket/search", info)
-      .then((res) => {
-        setUsers(res.data)
-      });
-    
+    const info = { serachedWord: datar, Company_ID: enduser.Company_ID };
+    axios.post("http://localhost:5000/api/ticket/search", info).then((res) => {
+      setUsers(res.data);
+    });
   };
 
   if (user.Role === "Admin") {
     return (
       <>
-        <input
-          onChange={(e) => {
-            setData(e.target.value);
-            search();
-          }}
-          type={"textarea"}
-          placeholder="Search.. "
-        ></input>
-
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <div class="input-icons">
+          <i class="fa fa-search icon" />
+          <input
+            className="search"
+            onChange={(e) => {
+              setData(e.target.value);
+              search();
+            }}
+            type={"textarea"}
+            placeholder="Search.."
+          ></input>
+        </div>
         <table
           id="dtBasicExample"
           class="table table-striped table-bordered table-sm"
@@ -133,47 +144,12 @@ const Test = () => {
                     <td>{element.Sevirity}</td>
                     <td>{element.Product_Types}</td>
                     <td>{element.Ticket_Type}</td>
+                    <td>{element.Status}</td>
                     <td>
-                      {element.Status}
-                      <div className="next">
-                        <div className="checkIcon">
-                          <FontAwesomeIcon
-                            icon={faCheckSquare}
-                            size="20px"
-                            onClick={() => {
-                              settTicketID(element.Ticket_ID);
-                              changeStatus();
-                            }}
-                          />
-                        </div>
-                        <div className="red">
-                          <TiDelete
-                            className="Red"
-                            size="20px"
-                            onClick={() => {
-                              settTicketID(element.Ticket_ID);
-                              changeStatusRej();
-                            }}
-                          ></TiDelete>
-                        </div>
-                      </div>
+                      <Assign prop={element} />
                     </td>
                     <td>
-                      <Link
-                        to="/assign"
-                        style={{
-                          color: "Black",
-                          fontSize: 15,
-                        }}
-                        onClick={() => {
-                          newObj(element.Ticket_ID);
-                        }}
-                      >
-                        Assign
-                      </Link>
-                    </td>
-                    <td>
-                      <Modal />
+                      <Modal prop={element} />
                     </td>
                   </>
                 </tbody>
@@ -186,14 +162,22 @@ const Test = () => {
   if (user.Role === "Employer") {
     return (
       <>
-        <input
-          onChange={(e) => {
-            setData(e.target.value);
-            search();
-          }}
-          type={"textarea"}
-          placeholder="Search.. "
-        ></input>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <div class="input-icons">
+          <i class="fa fa-search icon" />
+          <input
+            className="search"
+            onChange={(e) => {
+              setData(e.target.value);
+              search();
+            }}
+            type={"textarea"}
+            placeholder="Search.."
+          ></input>
+        </div>
         <table
           id="dtBasicExample"
           class="table table-striped table-bordered table-sm"
@@ -227,6 +211,7 @@ const Test = () => {
                             onClick={() => {
                               settTicketID(element.Ticket_ID);
                               changeStatus();
+                              forceUpdate();
                             }}
                           />
                         </div>
@@ -237,6 +222,7 @@ const Test = () => {
                             onClick={() => {
                               settTicketID(element.Ticket_ID);
                               changeStatusRej();
+                              forceUpdate();
                             }}
                           ></TiDelete>
                         </div>
@@ -244,21 +230,24 @@ const Test = () => {
                     </td>
                     <td>
                       <div>
+                        {element.Reply}
+                        <br />
                         <input
                           className="replyInput"
                           value={element.Ticket_ID.Reply}
                           id={element.Ticket_ID}
+                          placeholder="Add/Edit reply.."
                           onChange={(e) => {
                             settReply(e.target.value);
                             settTicketID(element.Ticket_ID);
                           }}
                           type={"textarea"}
-                          placeholder="Add a reply"
                         ></input>
                         <button
                           className="replyButton"
                           onClick={(e) => {
                             addReply();
+                            forceUpdate();
                           }}
                         >
                           Update
@@ -276,14 +265,23 @@ const Test = () => {
   if (user.Role === "Customer") {
     return (
       <>
-        <input
-          onChange={(e) => {
-            setData(e.target.value);
-            search();
-          }}
-          type={"textarea"}
-          placeholder="Search.. "
-        ></input>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <div class="input-icons">
+          <i class="fa fa-search icon" />
+          <input
+            className="search"
+            onChange={(e) => {
+              setData(e.target.value);
+              search();
+            }}
+            type={"textarea"}
+            placeholder="Search.."
+          ></input>
+        </div>
+
         <table
           id="dtBasicExample"
           class="table table-striped table-bordered table-sm"
@@ -296,6 +294,7 @@ const Test = () => {
               <th>Product Type</th>
               <th>Ticket Type</th>
               <th>Status</th>
+              <th>Description</th>
               <th>Reply</th>
             </tr>
           </thead>
@@ -308,6 +307,7 @@ const Test = () => {
                     <td>{element.Product_Types}</td>
                     <td>{element.Ticket_Type}</td>
                     <td>{element.Status}</td>
+                    <td>{element.Description}</td>
                     <td>{element.Reply}</td>
                   </>
                 </tbody>

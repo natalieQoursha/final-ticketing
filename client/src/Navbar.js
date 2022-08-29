@@ -6,10 +6,11 @@ const Navbar = ({ setLoggedUser }) => {
   const userz = useContext(UserContext);
   const history = useNavigate();
   const user = JSON.parse(sessionStorage.getItem("user")) || undefined;
-  const handleLogout = (e) => {
+  const handleLogout = () => {
     sessionStorage.removeItem("user");
     history("/");
   };
+
   if (user === undefined) {
     return (
       <div className="navbar">
@@ -56,7 +57,7 @@ const Navbar = ({ setLoggedUser }) => {
             <h
               style={{
                 color: "white",
-                fontSize0: 20,
+                fontSize: 20,
               }}
             >
               {user.First_Name}
@@ -80,7 +81,7 @@ const Navbar = ({ setLoggedUser }) => {
                 borderRadius: 21,
               }}
             >
-              Services control
+              Control Services
             </Link>
             <Link
               to="/"
@@ -191,8 +192,7 @@ const Navbar = ({ setLoggedUser }) => {
 
             <h
               style={{
-                padding : "0 10px 0 10px",
-
+                padding: "0 10px 0 10px",
 
                 color: "white",
                 fontSize: 20,
@@ -232,8 +232,9 @@ const Navbar = ({ setLoggedUser }) => {
                 style={{
                   color: "white",
                   fontSize: 20,
-                  border: "none",
+                  borderRadius: 21,
                   background: "none",
+                  border: "none",
                 }}
                 onClick={handleLogout}
               >
@@ -244,7 +245,6 @@ const Navbar = ({ setLoggedUser }) => {
         </div>
       );
     }
-
     return;
   }
 };

@@ -28,7 +28,7 @@ function App({ setLoggedUser }) {
         />
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/Tickets" element={<Tickets />} />
-        <Route path="/test" element={<Test />} />
+        <Route path="/test" element={<Test setLoggedUser={setLoggedUser} />} />
         <Route path="/AdminView" element={<AdminView />} />
         <Route path="/viewStatus" element={<ViewStatus />} />
         <Route path="/assign" element={<Assign />} />

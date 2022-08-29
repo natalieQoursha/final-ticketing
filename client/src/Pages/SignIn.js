@@ -39,8 +39,6 @@ const SignIn = ({ setLoggedUser }) => {
             </div>
             <div class="colm-form">
               <div class="form-container">
-              
-
                 <h4>Sign in</h4>
                 <input
                   type="text"

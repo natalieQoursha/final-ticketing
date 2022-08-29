@@ -166,10 +166,6 @@ router.post("/view-tickets", (req, response) => {
             `Select * from dbo.Tickets Inner JOIN Companies ON Tickets.Company_ID=Companies.Company_ID`,
             (err, res) => {
               response.status(200).json(res.recordset);
-              {
-              }
-              {
-              }
             }
           );
       } else if (CompanyID == 10 && rol == "Employer") {
@@ -189,7 +185,7 @@ router.post("/view-tickets", (req, response) => {
         res
           .request()
           .query(
-            "Select * from dbo.Tickets where Company_ID=11  ",
+            `Select * from dbo.Tickets where Company_ID=11`,
             (err, res) => {
               response.status(200).json(res.recordset);
             }
@@ -198,7 +194,7 @@ router.post("/view-tickets", (req, response) => {
         res
           .request()
           .query(
-            "Select * from dbo.Tickets where Company_ID=12",
+            `Select * from dbo.Tickets where Company_ID=12`,
             (err, res) => {
               response.status(200).json(res.recordset);
             }
@@ -207,7 +203,7 @@ router.post("/view-tickets", (req, response) => {
         res
           .request()
           .query(
-            "Select * from dbo.Tickets Inner JOIN Companies ON Tickets.Company_ID=Companies.Company_ID where Company_ID=13",
+            `Select * from dbo.Tickets where Company_ID=13`,
             (err, res) => {
               response.status(200).json(res.recordset);
             }
@@ -300,7 +296,6 @@ router.post("/all-tickets", (req, response) => {
 router.post("/test-update", (req, response) => {
   const status = req.body.Status;
   const ID = req.body.Ticket_ID;
-  // const reply = req.body.Reply;
 
   conn.connect().then((res) => {
     if (res.connected) {
@@ -338,120 +333,32 @@ router.post("/addReply", (req, response) => {
 
 router.post("/search", (req, response) => {
   const word = req.body.serachedWord;
-  const com=req.body.Company_ID;
+  const com = req.body.Company_ID;
+  const stat = "Rejected";
+
   conn.connect().then((res) => {
     if (res.connected) {
-      if(com==10){
-      res
-        .request()
-        .query(
+      if (com == 10) {
+        res.request().query(
           `Select * from dbo.Tickets Inner JOIN Companies ON Company_Name LIKE '%${word}%' 
           or Sevirity LIKE '%${word}%' or Status LIKE '%${word}%' or Product_Types LIKE '%${word}%'
-          or Ticket_Type LIKE '%${word}%'
-          `,
+          or Ticket_Type LIKE '%${word}%' where Tickets.Company_ID=Companies.Company_ID`,
           (err, res) => {
             response.status(200).json(res.recordset);
-            console.log(res.recordset.length)
-            
+            console.log(res.recordset.length);
+          }
+        );
+      } else {
+        res.request().query(
+          `Select * from dbo.Tickets Inner JOIN Companies ON Tickets.Company_ID=Companies.Company_ID where Tickets.Company_ID=${com} and (Company_Name LIKE '%${word}%'
+          or Sevirity LIKE '%${word}%' or Status LIKE '%${word}%' or Product_Types LIKE '%${word}%'
+          or Ticket_Type LIKE '%${word}%')`,
+          (err, res) => {
+            response.status(200).json(res.recordset);
+            console.log(res.recordset.length);
           }
         );
       }
-      else if(com==11){
-        res
-        .request()
-        .query(
-          `Select * from dbo.Tickets Inner JOIN Companies ON Company_Name LIKE '%${word}%' 
-          or Sevirity LIKE '%${word}%' or Status LIKE '%${word}%' or Product_Types LIKE '%${word}%'
-          or Ticket_Type LIKE '%${word}%'
-          `,
-          (err, res) => {
-            response.status(200).json(res.recordset);
-            console.log(res.recordset.length)
-            
-          }
-        );
-      }
-
-      else if(com==12){
-        res
-        .request()
-        .query(
-          `Select * from dbo.Tickets Inner JOIN Companies ON Company_Name LIKE '%${word}%' 
-          or Sevirity LIKE '%${word}%' or Status LIKE '%${word}%' or Product_Types LIKE '%${word}%'
-          or Ticket_Type LIKE '%${word}%'
-          `,
-          (err, res) => {
-            response.status(200).json(res.recordset);
-            console.log(res.recordset.length)
-            
-          }
-        );
-      }
-      else if(com==13){
-        res
-        .request()
-        .query(
-          `Select * from dbo.Tickets Inner JOIN Companies ON Company_Name LIKE '%${word}%' 
-          or Sevirity LIKE '%${word}%' or Status LIKE '%${word}%' or Product_Types LIKE '%${word}%'
-          or Ticket_Type LIKE '%${word}%'
-          `,
-          (err, res) => {
-            response.status(200).json(res.recordset);
-            console.log(res.recordset.length)
-            
-          }
-        );
-      }
-
-      else if(com==15){
-        res
-        .request()
-        .query(
-          `Select * from dbo.Tickets Inner JOIN Companies ON Company_Name LIKE '%${word}%' 
-          or Sevirity LIKE '%${word}%' or Status LIKE '%${word}%' or Product_Types LIKE '%${word}%'
-          or Ticket_Type LIKE '%${word}%'
-          `,
-          (err, res) => {
-            response.status(200).json(res.recordset);
-            console.log(res.recordset.length)
-            
-          }
-        );
-      }
-
-      else if(com==16){
-        res
-        .request()
-        .query(
-          `Select * from dbo.Tickets Inner JOIN Companies ON Company_Name LIKE '%${word}%' 
-          or Sevirity LIKE '%${word}%' or Status LIKE '%${word}%' or Product_Types LIKE '%${word}%'
-          or Ticket_Type LIKE '%${word}%'
-          `,
-          (err, res) => {
-            response.status(200).json(res.recordset);
-            console.log(res.recordset.length)
-            
-          }
-        );
-      }
-
-      else if(com==17){
-        res
-        .request()
-        .query(
-          `Select * from dbo.Tickets Inner JOIN Companies ON Company_Name LIKE '%${word}%' 
-          or Sevirity LIKE '%${word}%' or Status LIKE '%${word}%' or Product_Types LIKE '%${word}%'
-          or Ticket_Type LIKE '%${word}%'
-          `,
-          (err, res) => {
-            response.status(200).json(res.recordset);
-            console.log(res.recordset.length)
-            
-          }
-        );
-      }
-
-    
     }
   });
 });

@@ -1,8 +1,8 @@
+import React, { useContext }   from 'react';
+import { useState, useEffect } from "react";
 import "../src/Tickets.css";
 import axios from "axios";
-import React, { useState, useEffect } from "react";
 import { UserContext } from "../src/App";
-import { useContext } from "react";
 function Tickets({ setLoggedUser }) {
   const [Ticket_Type, setTicketType] = useState("");
   const [Sevirity, setSeverity] = useState("");
@@ -51,7 +51,7 @@ function Tickets({ setLoggedUser }) {
   return (
     <form onSubmit={submitUser}>
       <div className="popup">
-        <div className=".popup-inner">
+        <div className="popup-inner">
           <h1>{`Welcome ${user.First_Name.toUpperCase()}, from ${user.Company_Name.toUpperCase()}`}</h1>
           <br />
           <div className="alignment">
@@ -62,7 +62,7 @@ function Tickets({ setLoggedUser }) {
                 name="Product_Types"
                 id="Product_Types"
               >
-                {/* {Product_Types?.map((info) => {
+                {Product_Types.map((info) => {
                   return (
                     <option value={info.Product_Name}>
                       {info.Product_Name}

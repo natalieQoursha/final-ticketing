@@ -1,9 +1,13 @@
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./AdminView.css";
-import { Link, useNavigate } from "react-router-dom";
-import React, { useState, useEffect, Component, createContext } from "react";
+import { useNavigate } from "react-router-dom";
+import React, {
+  useState,
+  useEffect,
+  Component,
+  createContext,
+  useReducer,
+} from "react";
 import axios from "axios";
 import { UserContext } from "../App";
 import { useContext } from "react";
@@ -18,8 +22,7 @@ export default function Admin({ setLoggedUser }) {
     JSON.parse(sessionStorage.getItem("companyName")) || undefined;
   const companyID =
     JSON.parse(sessionStorage.getItem("companyID")) || undefined;
-  const [ProductID, setProductID] = useState();
-  const [ProductName, setProductName] = useState();
+  const [reducerValue, forceUpdate] = useReducer((x) => x + 1, 0);
 
   const addService = (props) => {
     const ProductName = props.Product_Name;
@@ -29,20 +32,21 @@ export default function Admin({ setLoggedUser }) {
       .post("http://localhost:5000/api/service/addService", data)
       .then((res) => {
         if (res.status === 200) {
-          alert("service added ");
         }
       });
+    forceUpdate();
   };
   const removeService = (props) => {
     const serviceID = props.Service_ID;
     const data = { serviceID };
+
     axios
       .post("http://localhost:5000/api/service/removeService", data)
       .then((res) => {
         if (res.status === 200) {
-          alert("service removed ");
         }
       });
+    forceUpdate();
   };
 
   useEffect(() => {
@@ -55,7 +59,7 @@ export default function Admin({ setLoggedUser }) {
         });
     };
     fetchCompanies();
-  }, []);
+  }, [reducerValue]);
   const reviewStatus = () => {
     {
       history("/AdminView");
@@ -73,67 +77,63 @@ export default function Admin({ setLoggedUser }) {
         });
     };
     fetchServices();
-  }, []);
+  }, [reducerValue]);
 
   return (
     <>
-      <Button
-        onClick={() => {
-          reviewStatus();
-        }}
-      >
-        Back
-      </Button>
-      <div className="underline1">
-        <h1>Active services</h1>
-      </div>
       <div className="UpDownBorder">
-        <h3>
-          Select a service to remove or select multiple services to remove at
-          once
-        </h3>
+        <div className="left">
+          <button
+            className="bttn"
+            onClick={() => {
+              reviewStatus();
+            }}
+          >
+            Back
+          </button>
+        </div>
+        <div className="centerr">
+          <h1>Active services</h1>
+        </div>
       </div>
-      <br /> <br />
+      <br />
+      <br />
       {Companies &&
         Companies.map((element) => {
           return (
-            <div className="cards">
-              <label for="Product_Name" className="card-title">
-                <input type="checkbox" />
-                {element.Product_Name}
-              </label>
+            <div
+              className="checked"
+              onClick={() => {
+                removeService(element);
+                forceUpdate();
+              }}
+            >
+              <label className="card-title">{element.Product_Name}</label>
+              <label className="Add">-</label>
             </div>
           );
         })}
       <div className="UpDownBorder">
-        <button
-          type=""
-          value="Submit"
-          onClick={() => {
-            removeService();
-          }}
-        >
-          Remove
-        </button>
+        <div className="center">
+          <h1>Available Services</h1>
+        </div>
       </div>
-      <h1>Available Services</h1>
+      <br />
+      <br />
       {Services &&
         Services.map((element) => {
           return (
-            <div className="cards">
-              <Card>
-                <Card.Body>
-                  <Card.Title>{element.Product_Name}</Card.Title>
-                </Card.Body>
-                <Button
-                  className="Add"
-                  onClick={() => {
-                    addService(element);
-                  }}
-                >
-                  +
-                </Button>
-              </Card>
+            <div className="notchecked">
+              <label
+                className="card-title"
+                onClick={() => {
+                  addService(element);
+                  forceUpdate();
+                }}
+              >
+                {element.Product_Name}
+              </label>
+              <label className="Add">+</label>
             </div>
           );
         })}
