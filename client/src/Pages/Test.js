@@ -9,6 +9,7 @@ import "./Modal.css";
 import { useContext } from "react";
 import { UserContext } from "../App";
 import Modal from "./Modal";
+import Assign from "./assign";
 import "./Modal.css";
 
 const Test = ({ setLoggedUser }) => {
@@ -145,19 +146,7 @@ const Test = ({ setLoggedUser }) => {
                     <td>{element.Ticket_Type}</td>
                     <td>{element.Status}</td>
                     <td>
-                      <Link
-                        to="/assign"
-                        style={{
-                          color: "Black",
-                          fontSize: 15,
-                        }}
-                        onClick={() => {
-                          newObj(element.Ticket_ID);
-                          forceUpdate();
-                        }}
-                      >
-                        Assign
-                      </Link>
+                      <Assign prop={element} />
                     </td>
                     <td>
                       <Modal prop={element} />
