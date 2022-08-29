@@ -2,7 +2,7 @@ import React, { useContext }   from 'react';
 import SocialFollow from "../src/SocialFollow";
 import { UserContext } from "./App";
 
-import React, { Component }  from 'react';
+// import React, { Component }  from 'react';
 
 
 const Footer = () => {

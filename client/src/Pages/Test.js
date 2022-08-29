@@ -11,7 +11,8 @@ import { UserContext } from "../App";
 import Modal from "./Modal";
 import Assign from "./assign";
 import "./Modal.css";
-
+import "./status.css";
+import Table from "react-bootstrap/Table";
 const Test = ({ setLoggedUser }) => {
   const [modal, setModal] = useState();
   const [users, setUsers] = useState();
@@ -41,7 +42,6 @@ const Test = ({ setLoggedUser }) => {
         .post("http://localhost:5000/api/ticket/view-tickets", info)
         .then((res) => {
           setUsers(res.data);
-          console.log("xy is: " + res.data);
         });
     };
 
@@ -118,14 +118,10 @@ const Test = ({ setLoggedUser }) => {
             placeholder="Search.."
           ></input>
         </div>
-        <table
-          id="dtBasicExample"
-          class="table table-striped table-bordered table-sm"
-          cellspacing="0"
-          width="100%"
-        >
+
+        <Table striped bordered hover>
           <thead>
-            <tr className="centered">
+            <tr>
               <th>Company Name</th>
               <th>Severity</th>
               <th>Product Type</th>
@@ -135,27 +131,35 @@ const Test = ({ setLoggedUser }) => {
               <th>More</th>
             </tr>
           </thead>
-          {users &&
-            users.map((element) => {
-              return (
-                <tbody>
-                  <>
+
+          <tbody>
+            {users &&
+              users.map((element) => {
+                const x =
+                  element.Status === "Rejected"
+                    ? `rejectedstatus`
+                    : element.Status === "Accepted"
+                    ? `accstatus`
+                    : `assignedstatus`;
+
+                return (
+                  <tr>
                     <td>{element.Company_Name}</td>
                     <td>{element.Sevirity}</td>
                     <td>{element.Product_Types}</td>
                     <td>{element.Ticket_Type}</td>
-                    <td>{element.Status}</td>
+                    <td className={x}>{element.Status}</td>
                     <td>
                       <Assign prop={element} />
                     </td>
                     <td>
                       <Modal prop={element} />
                     </td>
-                  </>
-                </tbody>
-              );
-            })}
-        </table>
+                  </tr>
+                );
+              })}
+          </tbody>
+        </Table>
       </>
     );
   }
@@ -178,14 +182,10 @@ const Test = ({ setLoggedUser }) => {
             placeholder="Search.."
           ></input>
         </div>
-        <table
-          id="dtBasicExample"
-          class="table table-striped table-bordered table-sm"
-          cellspacing="0"
-          width="100%"
-        >
+
+        <Table striped bordered hover>
           <thead>
-            <tr className="centered">
+            <tr>
               <th>Sevirity</th>
               <th>Product Type</th>
               <th>Ticket Type</th>
@@ -193,15 +193,23 @@ const Test = ({ setLoggedUser }) => {
               <th>Reply</th>
             </tr>
           </thead>
-          {users &&
-            users.map((element) => {
-              return (
-                <tbody>
-                  <>
+
+          <tbody>
+            {users &&
+              users.map((element) => {
+                const x =
+                element.Status === "Rejected"
+                  ? `rejectedstatus`
+                  : element.Status === "Accepted"
+                  ? `accstatus`
+                  : `assignedstatus`;
+                return (
+                  <tr>
                     <td>{element.Sevirity}</td>
                     <td>{element.Product_Types}</td>
                     <td>{element.Ticket_Type}</td>
-                    <td>
+                    <td className={x}>
+                    
                       {element.Status}
                       <div className="next">
                         <div className="checkIcon">
@@ -254,11 +262,11 @@ const Test = ({ setLoggedUser }) => {
                         </button>
                       </div>
                     </td>
-                  </>
-                </tbody>
-              );
-            })}
-        </table>
+                  </tr>
+                );
+              })}
+          </tbody>
+        </Table>
       </>
     );
   }
@@ -282,38 +290,40 @@ const Test = ({ setLoggedUser }) => {
           ></input>
         </div>
 
-        <table
-          id="dtBasicExample"
-          class="table table-striped table-bordered table-sm"
-          cellspacing="0"
-          width="100%"
-        >
+        <Table striped bordered hover>
           <thead>
-            <tr className="centered">
+            <tr>
               <th>Sevirity</th>
               <th>Product Type</th>
               <th>Ticket Type</th>
-              <th>Status</th>
+              <th >Status</th>
               <th>Description</th>
               <th>Reply</th>
             </tr>
           </thead>
-          {users &&
-            users.map((element) => {
-              return (
-                <tbody>
-                  <>
+
+          <tbody>
+            {users &&
+              users.map((element) => {
+                const x =
+                element.Status === "Rejected"
+                  ? `rejectedstatus`
+                  : element.Status === "Accepted"
+                  ? `accstatus`
+                  : `assignedstatus`;
+                return (
+                  <tr>
                     <td>{element.Sevirity}</td>
                     <td>{element.Product_Types}</td>
                     <td>{element.Ticket_Type}</td>
-                    <td>{element.Status}</td>
+                    <td className={x}>{element.Status}</td>
                     <td>{element.Description}</td>
                     <td>{element.Reply}</td>
-                  </>
-                </tbody>
-              );
-            })}
-        </table>
+                  </tr>
+                );
+              })}
+          </tbody>
+        </Table>
       </>
     );
   }

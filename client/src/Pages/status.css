@@ -1,0 +1,12 @@
+.rejectedstatus {
+color : red !important;
+
+}
+
+.accstatus {
+color : rgb(1,210,1) !important;
+}
+
+.assignedstatus{
+color : blue !important;
+}
