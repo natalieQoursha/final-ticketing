@@ -238,13 +238,13 @@ const Test = ({ setLoggedUser }) => {
                     </td>
                     <td>
                       <div>
-                        {element.Reply}
+                        {/* {element.Reply} */}
                         <br />
                         <input
                           className="replyInput"
                           value={element.Ticket_ID.Reply}
                           id={element.Ticket_ID}
-                          placeholder="Add/Edit reply.."
+                          placeholder={element.Reply}
                           onChange={(e) => {
                             settReply(e.target.value);
                             settTicketID(element.Ticket_ID);

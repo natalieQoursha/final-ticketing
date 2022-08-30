@@ -34,7 +34,7 @@ function App({ setLoggedUser }) {
         <Route path="/Modal" element={<Modal />} />
 
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
