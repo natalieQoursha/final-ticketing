@@ -39,6 +39,7 @@ export default function Admin() {
             <div className="Nice">
               <div class="card-body">
                 <Card.Img
+                // class="card-pic"
                   variant="top"
                   src={require(`../Pictures/${element.Company_Logo}`)}
                   height="70%"

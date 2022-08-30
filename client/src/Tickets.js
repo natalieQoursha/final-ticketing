@@ -68,7 +68,7 @@ function Tickets({ setLoggedUser }) {
                       {info.Product_Name}
                     </option>
                   );
-                })}
+                })} */}
               </select>
             }
           </div>
