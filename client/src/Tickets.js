@@ -1,8 +1,8 @@
+import React, { useContext }   from 'react';
+import { useState, useEffect } from "react";
 import "../src/Tickets.css";
 import axios from "axios";
-import React, { useState, useEffect } from "react";
 import { UserContext } from "../src/App";
-import { useContext } from "react";
 function Tickets({ setLoggedUser }) {
   const [Ticket_Type, setTicketType] = useState("");
   const [Sevirity, setSeverity] = useState("");
@@ -62,7 +62,7 @@ function Tickets({ setLoggedUser }) {
                 name="Product_Types"
                 id="Product_Types"
               >
-                {Product_Types?.map((info) => {
+                {Product_Types.map((info) => {
                   return (
                     <option value={info.Product_Name}>
                       {info.Product_Name}
