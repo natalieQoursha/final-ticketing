@@ -6,20 +6,17 @@ import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { UserContext } from "../App";
+import ViewStatus from "./viewStatus";
 
 export default function Admin() {
   const history = useNavigate();
   const user = useContext(UserContext);
   const [Companies, setCompanies] = useState();
 
-  const viewStatus = () => {
-    {
-      history("/viewStatus");
-    }
-  };
   const changeStatus = (name, ID) => {
-    sessionStorage.setItem("companyName", JSON.stringify(name));
-    sessionStorage.setItem("companyID", JSON.stringify(ID));
+    // const companyName =
+    // JSON.parse(sessionStorage.getItem("companyName")) || undefined;
+    // console.log("kkk"+companyName)
   };
 
   useEffect(() => {
@@ -48,19 +45,14 @@ export default function Admin() {
                 />
                 <h1 class="card-title">{element.Company_Name}</h1>
                 <h3 class="card-text">{element.Company_Description}</h3>
-                <Button
-                  className="enzl"
+                {/* <button
                   onClick={() => {
                     changeStatus(element.Company_Name, element.Company_ID);
-                    viewStatus();
-                  }}
-                  style={{
-                    fontSize: 20,
-                    borderRadius: 10,
                   }}
                 >
-                  View Services
-                </Button>
+                  Nigga
+                </button> */}
+                <ViewStatus props={element} />;
               </div>
             </div>
           );
