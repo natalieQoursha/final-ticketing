@@ -13,16 +13,26 @@ import { UserContext } from "../App";
 import { useContext } from "react";
 import "./viewStatus.css";
 
-export default function Admin({ setLoggedUser }) {
+export default function Admin(props) {
   const user = useContext(UserContext);
   const history = useNavigate();
   const [Companies, setCompanies] = useState();
   const [Services, setServices] = useState();
+  sessionStorage.setItem(
+    "companyName",
+    JSON.stringify(props.props.Company_Name)
+  );
+  sessionStorage.setItem("companyID", JSON.stringify(props.props.Company_ID));
   const companyName =
     JSON.parse(sessionStorage.getItem("companyName")) || undefined;
   const companyID =
     JSON.parse(sessionStorage.getItem("companyID")) || undefined;
   const [reducerValue, forceUpdate] = useReducer((x) => x + 1, 0);
+  const [popup, setPopup] = useState(false);
+
+  const togglePopup = () => {
+    setPopup(!popup);
+  };
 
   const addService = (props) => {
     const ProductName = props.Product_Name;
@@ -60,11 +70,7 @@ export default function Admin({ setLoggedUser }) {
     };
     fetchCompanies();
   }, [reducerValue]);
-  const reviewStatus = () => {
-    {
-      history("/AdminView");
-    }
-  };
+
   useEffect(() => {
     const data = { companyID, companyName };
     const fetchServices = () => {
@@ -79,64 +85,84 @@ export default function Admin({ setLoggedUser }) {
     fetchServices();
   }, [reducerValue]);
 
-  return (
-    <>
-      <div className="UpDownBorder">
-        <div className="left">
-          <button
-            className="bttn"
-            onClick={() => {
-              reviewStatus();
-            }}
-          >
-            Back
-          </button>
-        </div>
-        <div className="centerr">
-          <h1>Active services</h1>
-        </div>
-      </div>
-      <br />
-      <br />
-      {Companies &&
-        Companies.map((element) => {
-          return (
-            <div
-              className="checked"
-              onClick={() => {
-                removeService(element);
-                forceUpdate();
-              }}
-            >
-              <label className="card-title">{element.Product_Name}</label>
-              <label className="Add">-</label>
-            </div>
-          );
-        })}
-      <div className="UpDownBorder">
-        <div className="center">
-          <h1>Available Services</h1>
-        </div>
-      </div>
-      <br />
-      <br />
-      {Services &&
-        Services.map((element) => {
-          return (
-            <div className="notchecked">
-              <label
-                className="card-title"
-                onClick={() => {
-                  addService(element);
-                  forceUpdate();
+  if (!popup)
+    return (
+      <>
+        <button onClick={togglePopup} className="btn-modal">
+          Edit services
+        </button>
+      </>
+    );
+  if (popup)
+    return (
+      <>
+        <div className="whole">
+          <div className="design">
+            <div className="overlay">
+              <div
+                className="modal-content"
+                style={{
+                  background: "white",
+                  height: "auto",
+                  width: "auto",
                 }}
               >
-                {element.Product_Name}
-              </label>
-              <label className="Add">+</label>
+                <div className="viewTable">
+                  <table>
+                    <div className="container">
+                      <div className="leftdiv">
+                        <h1>Active services</h1>
+                        <br />
+                        {Companies &&
+                          Companies.map((element) => {
+                            return (
+                              <div
+                                className="checked"
+                                onClick={() => {
+                                  removeService(element);
+                                  forceUpdate();
+                                }}
+                              >
+                                <label className="card-title">
+                                  {element.Product_Name}
+                                </label>
+                              </div>
+                            );
+                          })}
+                      </div>
+                      <div className="rightdiv">
+                        <div className="right">
+                          <h1>Available services</h1>
+                          <br />
+                        </div>
+
+                        {Services &&
+                          Services.map((element) => {
+                            return (
+                              <div className="notchecked">
+                                <label
+                                  className="card-title"
+                                  onClick={() => {
+                                    addService(element);
+                                    forceUpdate();
+                                  }}
+                                >
+                                  {element.Product_Name}
+                                </label>
+                              </div>
+                            );
+                          })}
+                      </div>
+                    </div>
+                  </table>
+                </div>
+                <button className="btn-modal" onClick={togglePopup}>
+                  Done
+                </button>
+              </div>
             </div>
-          );
-        })}
-    </>
-  );
+          </div>
+        </div>
+      </>
+    );
 }

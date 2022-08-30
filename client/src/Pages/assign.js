@@ -42,7 +42,15 @@ export default function Admin() {
     if (!popup)
       return (
         <>
-          <button onClick={setPopup} className="btn-modal">
+          <button
+            onClick={setPopup}
+            className="btn-modal"
+            style={{
+              background: "#9C9EFE",
+              color: "white",
+              border: "none",
+            }}
+          >
             Assign
           </button>
         </>
@@ -76,11 +84,9 @@ export default function Admin() {
                                 Assign(element);
                               }}
                               style={{
-                                color: "Black",
-                                fontSize: 15,
+                                background: "#9C9EFE",
                                 color: "white",
-                                background: "darkblue",
-                                border: "1px gray solid",
+                                border: "none",
                               }}
                             >
                               Assign

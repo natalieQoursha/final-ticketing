@@ -28,7 +28,8 @@
     text-align: center;
 }
 .bordered{
-    border: 0.5px gray solid;
+    border-top: 2px gray solid;
+    border-bottom: 1px gray solid;
 }
 .search{
     font-size: 18px;
