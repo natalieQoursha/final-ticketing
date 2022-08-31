@@ -11,7 +11,8 @@ import React, {
 export default function Assign(props) {
   // const [users, setUsers] = useState();
 
-export default function Admin() {
+  const [user, setUser] = useState();
+  const [assigned, setAssigned] = useState("none");
   const [employees, setEmployees] = useState();
   sessionStorage.setItem("ticketID", JSON.stringify(props.prop.Ticket_ID));
   const TicketID = JSON.parse(sessionStorage.getItem("ticketID"));
@@ -54,7 +55,8 @@ export default function Admin() {
       .catch((e) => console.log(e));
   };
 
-  useEffect(() => {    const info = { TicketID };
+  useEffect(() => {
+    const info = { TicketID };
 
     const fetchCompanies = () => {
       axios
@@ -88,7 +90,7 @@ export default function Admin() {
               }}
             >
               <th>
-                Assigned to: 
+                Assigned to:
                 {assigned &&
                   assigned.map((element) => {
                     return element.Employer_Name;
@@ -96,7 +98,6 @@ export default function Admin() {
               </th>
 
               <div className="viewTable">
-                <label className="labelTitle">{"Assigned to: "}</label>
                 <table>
                   <thead className="centered">
                     <th>User</th>

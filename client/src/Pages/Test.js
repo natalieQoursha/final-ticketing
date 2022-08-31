@@ -9,7 +9,7 @@ import "./Modal.css";
 import { useContext } from "react";
 import { UserContext } from "../App";
 import Modal from "./Modal";
-import Assign from "./Assign";
+import Assign from "./assign";
 import "./status.css";
 import Table from "react-bootstrap/Table";
 const Test = ({ setLoggedUser }) => {
