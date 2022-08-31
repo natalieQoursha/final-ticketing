@@ -1,15 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Quicksand";
   color: #333;
   font-size: 1em;
 }
-
-
+html {
+  font: 80% / 1.15 sans-serif;
+}
 
 a{
   text-decoration: none;
@@ -83,8 +82,6 @@ a{
   color: rgb(17, 19, 19);
   font-weight: 700;
   font-size: 20px;
-
-  font-family: poppins,sans-serif;
 }
 @media screen and (min-width: 600px) {
   .nav__link {
@@ -224,10 +221,6 @@ body {
   font-size: 20px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
 .placeholders{
   display: block;
   margin-top: 15%;
@@ -247,7 +240,6 @@ main {
   width: 100%;
   height: 40px;
   margin:auto;
-  font-family: Verdana, Arial, Tahoma, Times New Roman;
   word-spacing: 1px;
   line-height: 100%;
   padding-top: 10px;
@@ -266,10 +258,6 @@ h2{
 *::before,
 *::after {
   box-sizing: border-box;
-}
-
-html {
-  font: 62.5% / 1.15 sans-serif;
 }
 
 h2 {
@@ -463,8 +451,6 @@ input[type="text"] {
 }
 .c-cb {
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
   font-weight: 400;
   font-size: 1.6rem;
   line-height: 1.25;
@@ -483,7 +469,6 @@ input[type="text"] {
   height: 44px;
 }
 .c-cb > input[type="checkbox"] {
-  -webkit-font-smoothing: antialiased;
   cursor: pointer;
   position: absolute;
   z-index: 1;

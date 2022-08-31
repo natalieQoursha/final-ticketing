@@ -62,6 +62,7 @@
     align-items: right;
     width: auto;
     height: auto;
+    margin: auto;
 }
 .leftdiv{
     display: flex;
@@ -71,8 +72,10 @@
     justify-content: left;    
     width: auto;
     height: auto;
+    margin: auto;
 }
 .container{
     margin: auto;
+    padding: 2rem;
     height: 100%;
 }

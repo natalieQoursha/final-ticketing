@@ -43,16 +43,16 @@ router.post("/removeService", (req, response) => {
 });
 
 router.post("/assignTickets", (req, response) => {
-  const ID = req.body.TicketID;
-  const empID = req.body.empID;
   const name = req.body.empName;
-  const newSt = req.body.status;
+  const empID = req.body.empID;
+  const newSt = req.body.newStat;
+  const ticID = req.body.TicketID;
 
   conn.connect().then((res) => {
     if (res.connected) {
       res.request().query(
         `INSERT INTO dbo.Assignment(Ticket_ID,Employer_ID,Employer_Name) Values ('${ID}','${empID}','${name}')
-          UPDATE dbo.Tickets SET Tickets.Status = 'Assigned' from dbo.Assignment Where Tickets.Ticket_ID = '${ID}'`,
+          UPDATE dbo.Tickets SET Tickets.Status = 'Assigned' from dbo.Assignment Where Tickets.Ticket_ID = '${ticID}'`,
         (err, res) => {
           response.status(200).json(res.recordset);
         }

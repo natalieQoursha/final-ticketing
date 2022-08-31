@@ -3,7 +3,6 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Fira Sans', sans-serif;
-    /* background-color: #dcd9ff; */
 }
 .popup{
     position: fixed;
@@ -97,7 +96,6 @@ td {
     border: black 1px solid;
     height: 2rem;  
     color: black;  
-    font-style:oblique;
     background-color: white;
 }
   

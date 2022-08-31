@@ -3,14 +3,11 @@
     margin: 0;
     box-sizing: border-box;
 }
-           
 body {
     font-family: 'Poppins', sans-serif;
     background-color: white;
     color: #1c1e21;
-	
 }
-
 main {
     height: 100%;
     width: 100%;

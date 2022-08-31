@@ -121,14 +121,14 @@ const Test = ({ setLoggedUser }) => {
 
         <Table striped bordered hover>
           <thead>
-            <tr>
-              <th>Company Name</th>
-              <th>Severity</th>
-              <th>Product Type</th>
-              <th>Ticket Type</th>
-              <th>Status </th>
-              <th>Assign Ticket</th>
-              <th>More</th>
+            <tr className="table-header">
+              <th className="table-header">Company Name</th>
+              <th className="table-header">Severity</th>
+              <th className="table-header">Product Type</th>
+              <th className="table-header">Ticket Type</th>
+              <th className="table-header">Status </th>
+              <th className="table-header">Assign Ticket</th>
+              <th className="table-header">More</th>
             </tr>
           </thead>
 
@@ -198,18 +198,17 @@ const Test = ({ setLoggedUser }) => {
             {users &&
               users.map((element) => {
                 const x =
-                element.Status === "Rejected"
-                  ? `rejectedstatus`
-                  : element.Status === "Accepted"
-                  ? `accstatus`
-                  : `assignedstatus`;
+                  element.Status === "Rejected"
+                    ? `rejectedstatus`
+                    : element.Status === "Accepted"
+                    ? `accstatus`
+                    : `assignedstatus`;
                 return (
                   <tr>
                     <td>{element.Sevirity}</td>
                     <td>{element.Product_Types}</td>
                     <td>{element.Ticket_Type}</td>
                     <td className={x}>
-                    
                       {element.Status}
                       <div className="next">
                         <div className="checkIcon">
@@ -295,7 +294,7 @@ const Test = ({ setLoggedUser }) => {
               <th>Sevirity</th>
               <th>Product Type</th>
               <th>Ticket Type</th>
-              <th >Status</th>
+              <th>Status</th>
               <th>Description</th>
               <th>Reply</th>
             </tr>
@@ -305,11 +304,11 @@ const Test = ({ setLoggedUser }) => {
             {users &&
               users.map((element) => {
                 const x =
-                element.Status === "Rejected"
-                  ? `rejectedstatus`
-                  : element.Status === "Accepted"
-                  ? `accstatus`
-                  : `assignedstatus`;
+                  element.Status === "Rejected"
+                    ? `rejectedstatus`
+                    : element.Status === "Accepted"
+                    ? `accstatus`
+                    : `assignedstatus`;
                 return (
                   <tr>
                     <td>{element.Sevirity}</td>

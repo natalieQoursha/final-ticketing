@@ -2,7 +2,7 @@ import React, { useState, useEffect, Component } from "react";
 import axios from "axios";
 import "./Modal.css";
 
-export default function Admin() {
+export default function Admin(props) {
   const [employees, setEmployees] = useState();
   const TicketID = JSON.parse(sessionStorage.getItem("ticketID")) || undefined;
   const [popup, setPopup] = useState(false);
@@ -42,15 +42,7 @@ export default function Admin() {
     if (!popup)
       return (
         <>
-          <button
-            onClick={setPopup}
-            className="btn-modal"
-            style={{
-              background: "#9C9EFE",
-              color: "white",
-              border: "none",
-            }}
-          >
+          <button onClick={setPopup} className="btn-modal">
             Assign
           </button>
         </>
@@ -68,6 +60,7 @@ export default function Admin() {
               }}
             >
               <div className="viewTable">
+                <label className="labelTitle">{"Assigned to: "}</label>
                 <table>
                   <thead className="centered">
                     <th>User</th>
