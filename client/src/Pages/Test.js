@@ -9,8 +9,7 @@ import "./Modal.css";
 import { useContext } from "react";
 import { UserContext } from "../App";
 import Modal from "./Modal";
-import Assign from "./assign";
-import "./Modal.css";
+import Assign from "./Assign";
 import "./status.css";
 import Table from "react-bootstrap/Table";
 const Test = ({ setLoggedUser }) => {
@@ -237,6 +236,7 @@ const Test = ({ setLoggedUser }) => {
                     </td>
                     <td>
                       <div>
+                        {/* {element.Reply} */}
                         <br />
                         <input
                           className="replyInput"

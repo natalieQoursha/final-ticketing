@@ -42,18 +42,44 @@ router.post("/removeService", (req, response) => {
   });
 });
 
-router.post("/assignTickets", (req, response) => {
-  const name = req.body.empName;
-  const empID = req.body.empID;
-  const newSt = req.body.newStat;
-  const ticID = req.body.TicketID;
 
+router.post("/assignTickets", (req, response) => {
+  const ID = req.body.TicketID;
+  const empID = req.body.empID;
+  const name = req.body.empName;
+  conn.connect().then((res) => {
+    if (res.connected) {
+      res
+        .request()
+        .query(
+           
+        ` if exists(SELECT * from Assignment where Ticket_ID='${ID}' )            
+        BEGIN            
+         UPDATE dbo.Assignment SET Employer_Name = '${name}' where Ticket_ID = '${ID}'
+        End                    
+        else            
+        begin  
+        INSERT INTO dbo.Assignment(Ticket_ID,Employer_ID,Employer_Name) Values ('${ID}','${empID}','${name}')
+         UPDATE dbo.Tickets SET Tickets.Status = 'Assigned' from dbo.Assignment Where Tickets.Ticket_ID = '${ID}'
+        end`,
+
+        
+          (err, res) => {
+            response.status(200).json(res.recordset);
+            console.log(res.recordset);
+          }
+        );
+    }
+  });
+})
+
+router.post("/view-assigment", (req, response) => {
+  const tic_ID = req.body.TicketID;
   conn.connect().then((res) => {
     if (res.connected) {
       res.request().query(
-        `INSERT INTO dbo.Assignment(Ticket_ID,Employer_ID,Employer_Name) Values ('${ID}','${empID}','${name}')
-          UPDATE dbo.Tickets SET Tickets.Status = 'Assigned' from dbo.Assignment Where Tickets.Ticket_ID = '${ticID}'`,
-        (err, res) => {
+        `Select Assignment.Employer_Name from dbo.Assignment where Ticket_ID='${tic_ID}'`,
+        (err, res) => { 
           response.status(200).json(res.recordset);
         }
       );
@@ -74,7 +100,6 @@ router.post("/view-service", (req, response) => {
             "Select Services.Product_Name from dbo.Services where Company_ID=11",
             (err, res) => {
               response.status(200).json(res.recordset);
-              console.log(res.recordset);
             }
           );
       } else if (CompanyID == 12) {

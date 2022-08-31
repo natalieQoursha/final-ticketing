@@ -33,3 +33,6 @@ margin: auto;
     background-color: rgb(122, 134, 255);
     border: 2px black solid;
 }
+.cardpic{
+    border-radius: 50%;
+}

@@ -476,7 +476,6 @@ input[type="text"] {
   opacity: 0;
 }
 .c-cb > label {
-  font-size: inherit;
   font-family: inherit;
   line-height: inherit;
   display: inline-block;

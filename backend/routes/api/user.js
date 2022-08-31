@@ -71,11 +71,14 @@ router.post("/login", (req, res) => {
 });
 
 router.post("/view-employees", (req, response) => {
+  const tic_ID = req.body.TicketID;
+
   conn.connect().then((res) => {
     if (res.connected) {
       res
         .request()
-        .query("Select * from dbo.Users where Role='Employer'", (err, res) => {
+        .query(`Select First_Name from dbo.Users where Role='Employer' and ID not in
+        (Select Employer_ID from dbo.Assignment where Ticket_ID='${tic_ID}')`, (err, res) => {
           response.status(200).json(res.recordset);
         });
     }
