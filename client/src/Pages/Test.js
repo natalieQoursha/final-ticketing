@@ -9,8 +9,7 @@ import "./Modal.css";
 import { useContext } from "react";
 import { UserContext } from "../App";
 import Modal from "./Modal";
-import Assign from "./assign";
-import "./Modal.css";
+import Assign from "./Assign";
 import "./status.css";
 import Table from "react-bootstrap/Table";
 const Test = ({ setLoggedUser }) => {
@@ -121,14 +120,14 @@ const Test = ({ setLoggedUser }) => {
 
         <Table striped bordered hover>
           <thead>
-            <tr>
-              <th>Company Name</th>
-              <th>Severity</th>
-              <th>Product Type</th>
-              <th>Ticket Type</th>
-              <th>Status </th>
-              <th>Assign Ticket</th>
-              <th>More</th>
+            <tr className="th">
+              <th className="th">Company Name</th>
+              <th className="th">Severity</th>
+              <th className="th">Product Type</th>
+              <th className="th">Ticket Type</th>
+              <th className="th">Status </th>
+              <th className="th">Assign Ticket</th>
+              <th className="th">More</th>
             </tr>
           </thead>
 

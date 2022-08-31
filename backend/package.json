@@ -15,5 +15,8 @@
     "msnodesqlv8": "^2.6.0",
     "mssql": "^8.1.2",
     "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
   }
 }

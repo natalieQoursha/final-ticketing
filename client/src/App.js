@@ -11,7 +11,7 @@ import Test from "./Pages/Test";
 import "./App.css";
 import AdminView from "./Pages/AdminView";
 import ViewStatus from "./Pages/viewStatus";
-import Assign from "./Pages/assign";
+import Assign from "./Pages/Assign";
 import Modal from "./Pages/Modal";
 export const UserContext = createContext();
 

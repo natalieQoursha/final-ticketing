@@ -1,56 +1,77 @@
-import React, { useState, useEffect, Component } from "react";
 import axios from "axios";
 import "./Modal.css";
+import { AiOutlineConsoleSql } from "react-icons/ai";
+import React, {
+  useState,
+  useEffect,
+  Component,
+  createContext,
+  useReducer,
+} from "react";
+export default function Assign(props) {
+  // const [users, setUsers] = useState();
 
-export default function Admin() {
+  const [user, setUser] = useState();
+  const [assigned, setAssigned] = useState("none");
   const [employees, setEmployees] = useState();
-  const TicketID = JSON.parse(sessionStorage.getItem("ticketID")) || undefined;
+  sessionStorage.setItem("ticketID", JSON.stringify(props.prop.Ticket_ID));
+  const TicketID = JSON.parse(sessionStorage.getItem("ticketID"));
+  const [reducerValue, forceUpdate] = useReducer((x) => x + 1, 0);
+
   const [popup, setPopup] = useState(false);
 
   const togglePopup = () => {
     setPopup(!popup);
   };
 
-  const Assign = (props) => {
+  useEffect(() => {
+    const info = { TicketID };
+    const fetchAssigned = () => {
+      axios
+        .post("http://localhost:5000/api/service/view-assigment", info)
+
+        .then((res) => {
+          setAssigned(res.data);
+        });
+    };
+    fetchAssigned();
+  }, [reducerValue]);
+
+  const AssignTicket = (props) => {
     const empName = props.First_Name;
     const empID = props.ID;
-    const newStat = "Assigned";
-    const data = { empName, empID, TicketID, newStat };
+
+    const data = { empName, empID, TicketID };
     axios
       .post("http://localhost:5000/api/service/assignTickets", data)
       .then((res) => {
-        if (res.status === 200) {
-          alert("Assigned successfully!");
-        } else {
-          alert("Ticket has already been assigned");
-        }
-      });
+        setUser(res.data);
+        // if (res.status === 200) {
+        //   alert("Assigned successfully!");
+        // } else {
+        //   alert("Ticket has already been assigned");
+        // }
+      })
+      .catch((e) => console.log(e));
   };
 
-  useEffect(() => {
+  useEffect(() => {    const info = { TicketID };
+
     const fetchCompanies = () => {
       axios
-        .post("http://localhost:5000/api/user/view-employees")
+        .post("http://localhost:5000/api/user/view-employees", info)
 
         .then((res) => {
           setEmployees(res.data);
         });
     };
     fetchCompanies();
-  }, []);
+  }, [reducerValue]);
   {
     if (!popup)
       return (
         <>
-          <button
-            onClick={setPopup}
-            className="btn-modal"
-            style={{
-              background: "#9C9EFE",
-              color: "white",
-              border: "none",
-            }}
-          >
+          <button onClick={setPopup} className="btn-modal">
             Assign
           </button>
         </>
@@ -67,6 +88,14 @@ export default function Admin() {
                 background: "white",
               }}
             >
+              <th>
+                Assigned to: 
+                {assigned &&
+                  assigned.map((element) => {
+                    return element.Employer_Name;
+                  })}
+              </th>
+
               <div className="viewTable">
                 <table>
                   <thead className="centered">
@@ -81,7 +110,8 @@ export default function Admin() {
                           <td>
                             <button
                               onClick={() => {
-                                Assign(element);
+                                AssignTicket(element);
+                                forceUpdate();
                               }}
                               style={{
                                 background: "#9C9EFE",
@@ -97,6 +127,7 @@ export default function Admin() {
                     })}
                 </table>
                 <br />
+
                 <button
                   className="close-modal"
                   style={{

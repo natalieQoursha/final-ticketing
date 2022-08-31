@@ -38,11 +38,12 @@ export default function Admin() {
           return (
             <div className="Nice">
               <div class="card-body">
-                <Card.Img
+                <Card.Img className="cardpic"
                 // class="card-pic"
                   variant="top"
                   src={require(`../Pictures/${element.Company_Logo}`)}
-                  height="70%"
+                  height="70%" 
+
                 />
                 <h1 class="card-title">{element.Company_Name}</h1>
                 <h3 class="card-text">{element.Company_Description}</h3>
